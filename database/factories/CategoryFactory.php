@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
  */
 class CategoryFactory extends Factory
 {
+    private static ?string $name;
+
     /**
      * Define the model's default state.
      *
@@ -17,11 +19,19 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->sentence(2);
+        $name = static::$name ?? fake()->unique()->sentence(2);
         $slug = Str::slug($name);
         return [
            'name'=>$name,
            'slug'=>$slug,
         ];
     }
+
+    public function unverified(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
+    }
+
 }

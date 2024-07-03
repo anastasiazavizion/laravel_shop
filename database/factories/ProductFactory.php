@@ -17,26 +17,21 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-
-        $title = fake()->sentence(2);
+        $title =  fake()->unique()->sentence(2);
         $slug = Str::slug($title);
 
-        $randomImages =[
-            'https://m.media-amazon.com/images/I/41WpqIvJWRL._AC_UY436_QL65_.jpg',
-            'https://m.media-amazon.com/images/I/61ghDjhS8vL._AC_UY436_QL65_.jpg',
-            'https://m.media-amazon.com/images/I/61c1QC4lF-L._AC_UY436_QL65_.jpg',
-            'https://m.media-amazon.com/images/I/710VzyXGVsL._AC_UY436_QL65_.jpg',
-            'https://m.media-amazon.com/images/I/61EPT-oMLrL._AC_UY436_QL65_.jpg'
-        ];
+        $imageId = rand(1,1000);
+        $imageUrl = "https://picsum.photos/id/{$imageId}/800/600";
 
         return [
             'slug'=>$slug,
             'title'=>$title,
-            'SKU'=>fake()->uuid,
+            'SKU'=>fake()->unique()->ean13(),
             'description'=>fake()->text,
-            'price'=>fake()->numberBetween(1,200),
+            'price'=>fake()->randomFloat(2,10, 200),
+            'discount'=>fake()->boolean() ? rand(10,40) : null,
             'quantity'=>fake()->numberBetween(1,10),
-            'thumbnail' => $randomImages[rand(0, 4)]
+            'thumbnail' => $imageUrl
         ];
     }
 }

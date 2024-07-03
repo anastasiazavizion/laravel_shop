@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enum\Role;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -28,7 +30,7 @@ class UserFactory extends Factory
             'lastname' => fake()->lastName(),
             'phone' => fake()->unique()->e164PhoneNumber(),
             'email' => fake()->unique()->safeEmail(),
-            'birthday' => fake()->dateTimeThisCentury,
+            'birthday' => fake()->dateTimeBetween('-70 years', '-18 years'),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
@@ -43,5 +45,31 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'email' => 'admin@gmail.com',
+        ])->afterCreating(function (User $user){
+            $user->syncRoles([Role::ADMIN->value]);
+        });
+    }
+
+    public function moderator(): static
+    {
+        return $this->afterCreating(function (User $user){
+            $user->syncRoles([Role::MODERATOR->value]);
+        });
+    }
+
+
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user){
+            if(!$user->hasAnyRole(...Role::values())){
+                $user->assignRole(Role::CUSTOMER->value);
+            }
+        });
     }
 }
