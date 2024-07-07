@@ -12,7 +12,7 @@ const form = ref({
     name: "",
     lastname: "",
     password: "",
-    password_confirmed: "",
+    password_confirmation: "",
     phone: "",
     email: "",
     birthday:""
@@ -24,8 +24,9 @@ const store = useStore();
 
 const register = async () => {
     axios.post('/api/register', form.value)
-        .then(function (response) {
-            console.log(response);
+        .then(async function (response) {
+            await store.dispatch('auth/login');
+            await router.push('/admin/dashboard');
         })
         .catch(function (error) {
             if(error.response.status === 422){
@@ -77,7 +78,7 @@ const register = async () => {
 
             <div>
                 <label>Confirm Password</label>
-                <input type="password" v-model="form.password_confirmed" name="password_confirmed" id="password" class="form-control">
+                <input type="password" v-model="form.password_confirmation" name="password_confirmation" id="password_confirmation" class="form-control">
             </div>
 
             <div class="flex items-center justify-end mt-4">
