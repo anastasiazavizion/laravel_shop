@@ -6,8 +6,7 @@ function hello(){
 
 <template>
     <div>
-        <h1>HOME уауа</h1>
-        <button @click="hello">btn</button>
+        <h1>HOME</h1>
     </div>
 </template>
 

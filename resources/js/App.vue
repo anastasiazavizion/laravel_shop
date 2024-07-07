@@ -8,17 +8,17 @@ const router = useRouter();
 const logout = async () => {
     try {
         const { data } = await axios.post('/api/logout');
-        store.dispatch('logout');
+        store.dispatch('auth/logout');
         router.push('/login');
     } catch (error) {
         console.error(error);
     }
 };
 const user = computed(()=>{
-    return store.getters.user
+    return store.getters['auth/user']
 })
 const authenticated = computed(()=>{
-    return store.getters.authenticated
+    return store.getters['auth/authenticated']
 })
 const showingNavigationDropdown = ref(false);
 </script>
@@ -34,9 +34,14 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <router-link to="/home" v-if="authenticated">Home</router-link>
-                                <router-link to="/test">Test</router-link>
+                                <router-link  v-if="authenticated" to="/admin/dashboard">Dashboard</router-link>
+                                <router-link  v-if="authenticated" to="/admin/products">Products</router-link>
+                                <router-link  v-if="authenticated" to="/admin/categories">Categories</router-link>
+                                <router-link  v-if="authenticated" to="/admin/categories/create">Create Category</router-link>
                                 <a v-if="authenticated" @click.prevent="logout" href="/logout">Logout</a>
                                 <router-link v-if="!authenticated" to="/login">Login</router-link>
+                                <router-link  v-if="!authenticated" to="/register">Register</router-link>
+                                <span>{{user.name}}</span>
                             </div>
                         </div>
 
@@ -79,7 +84,6 @@ const showingNavigationDropdown = ref(false);
                 >
                     <div class="pt-2 pb-3 space-y-1">
                         <router-link to="/home">Home</router-link>
-                        <router-link to="/test">Test</router-link>
                     </div>
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">

@@ -18,3 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+_ide_*.php
+.phpstorm.meta.php
+
