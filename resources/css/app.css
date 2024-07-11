@@ -13,4 +13,16 @@
     form > div{
         @apply mt-2;
     }
+
+    table td, table th{
+        @apply border-collapse border border-slate-400 p-2 ;
+    }
+    table th{
+        @apply bg-gray-200;
+    }
+
+    svg{
+        @apply inline;
+    }
+
 }

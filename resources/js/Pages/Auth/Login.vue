@@ -45,7 +45,7 @@ const login = async () => {
     errors.value = [];
     try {
         await axios.get('/sanctum/csrf-cookie');
-        const response = await axios.post('/api/login', auth.value);
+        const response = await axios.post('/login', auth.value);
         await store.dispatch('auth/login');
         router.push('/admin/dashboard');
     } catch (error) {

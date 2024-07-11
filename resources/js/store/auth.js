@@ -22,7 +22,7 @@ const mutations = {
 const actions = {
     async login({ commit }) {
         try {
-            const response = await axios.get('/api/user');
+            const response = await axios.get('/user');
             const userData = response.data;
             commit('SET_USER', userData);
             commit('SET_AUTHENTICATED', true);

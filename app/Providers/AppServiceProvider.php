@@ -2,10 +2,18 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contract\CategoryRepositoryContract;
+use App\Repositories\CategoryRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+    //container
+    public array $bindings = [
+        CategoryRepositoryContract::class=>CategoryRepository::class
+    ];
+
     /**
      * Register any application services.
      */

@@ -23,7 +23,7 @@ const router = useRouter();
 const store = useStore();
 
 const register = async () => {
-    axios.post('/api/register', form.value)
+    axios.post('/register', form.value)
         .then(async function (response) {
             await store.dispatch('auth/login');
             await router.push('/admin/dashboard');

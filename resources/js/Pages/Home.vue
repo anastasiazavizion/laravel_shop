@@ -1,7 +1,5 @@
 <script setup>
-function hello(){
-    console.log('hello');
-}
+
 </script>
 
 <template>

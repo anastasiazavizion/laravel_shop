@@ -7,7 +7,7 @@ const router = useRouter();
 
 const logout = async () => {
     try {
-        const { data } = await axios.post('/api/logout');
+        const { data } = await axios.post('/logout');
         store.dispatch('auth/logout');
         router.push('/login');
     } catch (error) {
@@ -21,27 +21,47 @@ const authenticated = computed(()=>{
     return store.getters['auth/authenticated']
 })
 const showingNavigationDropdown = ref(false);
+
+
+
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import Dropdown from "@/Components/Dropdown.vue";
+import DropdownLink from "@/Components/DropdownLink.vue";
+
+
 </script>
 
 <template>
+
     <div>
         <div class="min-h-screen">
             <nav class="bg-black text-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between items-center h-16">
-                        <div class="flex">
+                        <div class="flex justify-center items-center">
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center sm:justify-center">
                                 <router-link to="/home" v-if="authenticated">Home</router-link>
-                                <router-link  v-if="authenticated" to="/admin/dashboard">Dashboard</router-link>
-                                <router-link  v-if="authenticated" to="/admin/products">Products</router-link>
-                                <router-link  v-if="authenticated" to="/admin/categories">Categories</router-link>
-                                <router-link  v-if="authenticated" to="/admin/categories/create">Create Category</router-link>
-                                <a v-if="authenticated" @click.prevent="logout" href="/logout">Logout</a>
+
+                                <Dropdown v-if="authenticated" title="Products">
+                                    <DropdownLink to="/admin/products">All Products</DropdownLink>
+                                    <DropdownLink v-if="can('create product')" to="/admin/products/create">Create Product</DropdownLink>
+                                </Dropdown>
+
+                                <Dropdown v-if="authenticated" title="Categories">
+                                    <DropdownLink to="/admin/categories">All Categories</DropdownLink>
+                                    <DropdownLink v-if="can('create category')" to="/admin/categories/create">Create Category</DropdownLink>
+                                </Dropdown>
+
+                                <Dropdown :title="user.name" v-if="authenticated">
+                                    <DropdownLink v-if="is('admin')" :to="{name:'admin.dashboard'}">Admin panel</DropdownLink>
+                                    <DropdownLink  @click.prevent="logout" to="#">Logout</DropdownLink>
+                                </Dropdown>
+
                                 <router-link v-if="!authenticated" to="/login">Login</router-link>
                                 <router-link  v-if="!authenticated" to="/register">Register</router-link>
-                                <span>{{user.name}}</span>
                             </div>
                         </div>
 
