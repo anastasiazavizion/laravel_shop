@@ -12,4 +12,11 @@
     <body class="font-sans antialiased">
      <div id="app"></div>
     </body>
+    <script type="text/javascript">
+        @auth
+        window.Laravel = {
+            jsPermissions: {!! auth()->check() ? auth()->user()?->jsPermissions() : []!!}
+        }
+        @endauth
+    </script>
 </html>

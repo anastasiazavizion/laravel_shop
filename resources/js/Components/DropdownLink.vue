@@ -1,19 +1,25 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { MenuItem } from "@headlessui/vue";
+import { useRouter } from 'vue-router';
 
 defineProps({
-    href: {
-        type: String,
-        required: true,
-    },
+    to: [String, Object]
 });
+
+const router = useRouter();
+
+function handleClick(to, close) {
+    router.push(to);
+    close(); // Close the menu after navigation
+}
 </script>
 
 <template>
-    <Link
-        :href="href"
-        class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-    >
-        <slot />
-    </Link>
+    <div class="py-1">
+        <MenuItem v-slot="{ active, close }">
+            <button @click="handleClick(to, close)" :class="[active ? 'bg-gray-100' : '', 'text-gray-700 block px-4 py-2 text-sm']">
+                <slot></slot>
+            </button>
+        </MenuItem>
+    </div>
 </template>

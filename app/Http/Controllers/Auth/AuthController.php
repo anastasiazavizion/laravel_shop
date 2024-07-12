@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController
+class AuthController
 {
     public function authenticate(Request $request)
     {
@@ -27,4 +27,5 @@ class LoginController
         $request->session()->regenerateToken();
         return response()->json(['message' => 'Logout'], 200);
     }
+
 }
