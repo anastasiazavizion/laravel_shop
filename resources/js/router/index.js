@@ -133,7 +133,6 @@ const routes = [
             title:`Register`
         }
     },
-
 ];
 
 const router =  createRouter({
@@ -162,7 +161,6 @@ router.beforeEach((to, from, next) => {
                 break;
             }
         }
-
         if(allow){
             next()
         }else{

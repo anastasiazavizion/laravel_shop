@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import {mapActions, useStore} from 'vuex'
+import {useStore} from 'vuex'
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import Errors from "@/Components/Errors.vue";

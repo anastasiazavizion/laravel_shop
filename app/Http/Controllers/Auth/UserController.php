@@ -9,9 +9,8 @@ class UserController
 {
     public function user(Request $request)
     {
-        return response()->json(Auth::user());
+        $user = $request->user();
+        return response()->json(['user'=>$user, 'permissions'=>$user->jsPermissions()]);
 
     }
-
-
 }
