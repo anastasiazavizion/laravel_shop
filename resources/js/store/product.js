@@ -9,6 +9,7 @@ const state = {
 const getters = {
     products: state => state.products,
     product: state => state.product,
+    productCategoriesIds: state => state.product.categories.map(a=>a.id),
     errors: state => state.errors,
 };
 

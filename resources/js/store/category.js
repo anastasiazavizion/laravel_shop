@@ -8,6 +8,7 @@ const state = {
 
 const getters = {
     categories: state => state.categories,
+    categoriesIds: state => state.categories.map(a => a.id),
     category: state => state.category,
     errors: state => state.errors,
 };

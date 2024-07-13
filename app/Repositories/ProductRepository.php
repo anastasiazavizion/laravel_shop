@@ -24,7 +24,9 @@ class ProductRepository implements ProductRepositoryContract
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
         $data['thumbnail'] = '';
-        return Product::create($data);
+        $product =  Product::create($data);
+        $product->categories()->attach($data['categories']);
+        return $product;
     }
 
     public function update(UpdateRequest $request, Product $product) : Product
@@ -33,6 +35,7 @@ class ProductRepository implements ProductRepositoryContract
         $data['slug'] = Str::slug($data['title']);
         $data['thumbnail'] = '';
         $product->update($data);
+        $product->categories()->sync($data['categories']);
         return $product;
     }
 

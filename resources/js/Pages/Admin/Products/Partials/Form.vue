@@ -2,7 +2,7 @@
 import {computed, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
-import { useRoute } from 'vue-router';
+import {useRoute} from 'vue-router';
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
@@ -15,62 +15,71 @@ const product = ref(null);
 const errors = ref([]);
 
 const props = defineProps({
-    edit:Boolean
+    edit: Boolean
 })
 
 const form = ref({
-    id:null,
+    id: null,
     title: "",
     SKU: "",
     description: "",
     price: 0,
     discount: 0,
     quantity: 0,
+    categories: []
 });
 
-if(props.edit){
+const categories = ref([]);
+
     onMounted(async () => {
+
+        await store.dispatch('category/getAll');
+        categories.value = store.getters['category/categories'];
+
+        if (props.edit) {
         const id = route.params.id;
-            const payload = {
-                id: id
-            };
-            await store.dispatch('product/getProduct', payload);
-            product.value = store.getters['product/product'];
+        const payload = {
+            id: id
+        };
+        await store.dispatch('product/getProduct', payload);
+        product.value = store.getters['product/product'];
 
-            form.value.id = id;
-            form.value.title = product.value.title;
-            form.value.SKU = product.value.SKU;
-            form.value.description = product.value.description;
-            form.value.price = product.value.price;
-            form.value.discount = product.value.discount;
-            form.value.quantity = product.value.quantity;
+        form.value.id = id;
+        form.value.title = product.value.title;
+        form.value.SKU = product.value.SKU;
+        form.value.description = product.value.description;
+        form.value.price = product.value.price;
+        form.value.discount = product.value.discount;
+        form.value.quantity = product.value.quantity;
+        form.value.categories = store.getters['product/productCategoriesIds'];
+        }
     })
-}
 
-async function handleRequest(){
+
+async function handleRequest() {
     if (props.edit) {
-        await store.dispatch('product/updateProduct', { id: route.params.id, data: form.value });
-    }else {
+        await store.dispatch('product/updateProduct', {id: route.params.id, data: form.value});
+    } else {
         await store.dispatch('product/createProduct', form.value);
     }
     errors.value = await store.getters['product/errors'];
-    if(Object.keys(errors.value).length === 0){
+    if (Object.keys(errors.value).length === 0) {
         await router.push('/admin/products');
     }
 }
 
 
-const btnTitle = computed(()=>{
+const btnTitle = computed(() => {
     return props.edit ? 'Update' : 'Create'
 })
 
-const header = computed(()=>{
+const header = computed(() => {
     return props.edit ? 'Edit Product' : 'Create Product'
 })
 </script>
 
 <template>
-    <Header>{{header}}</Header>
+    <Header>{{ header }}</Header>
     <Card>
         <form @submit.prevent="handleRequest" class="flex flex-col w-full">
             <div>
@@ -110,7 +119,15 @@ const header = computed(()=>{
             </div>
 
             <div>
-                <PrimaryButton type="submit">{{btnTitle}}</PrimaryButton>
+                <label for="categories">Categories</label>
+                <select multiple name="categories" id="categories" v-model="form.categories">
+                    <option :value="category.id" :key="category.id" v-for="category in categories">{{category.name}}</option>
+                </select>
+                <Errors :errors="errors.categories"/>
+            </div>
+
+            <div>
+                <PrimaryButton type="submit">{{ btnTitle }}</PrimaryButton>
             </div>
         </form>
     </Card>

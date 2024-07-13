@@ -39,6 +39,7 @@ class ProductsController  extends Controller
      */
     public function show(Product  $product)
     {
+        $product->load(['categories']);
         return response()->json($product, 200);
     }
 
