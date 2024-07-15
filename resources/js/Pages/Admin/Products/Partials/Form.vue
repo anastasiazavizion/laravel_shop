@@ -7,6 +7,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
 import Errors from "@/Components/Errors.vue";
+import BaseListBox from "@/Components/BaseListBox.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -32,7 +33,6 @@ const form = ref({
 const categories = ref([]);
 
     onMounted(async () => {
-
         await store.dispatch('category/getAll');
         categories.value = store.getters['category/categories'];
 
@@ -55,7 +55,6 @@ const categories = ref([]);
         }
     })
 
-
 async function handleRequest() {
     if (props.edit) {
         await store.dispatch('product/updateProduct', {id: route.params.id, data: form.value});
@@ -67,7 +66,6 @@ async function handleRequest() {
         await router.push('/admin/products');
     }
 }
-
 
 const btnTitle = computed(() => {
     return props.edit ? 'Update' : 'Create'
@@ -120,9 +118,7 @@ const header = computed(() => {
 
             <div>
                 <label for="categories">Categories</label>
-                <select multiple name="categories" id="categories" v-model="form.categories">
-                    <option :value="category.id" :key="category.id" v-for="category in categories">{{category.name}}</option>
-                </select>
+                <BaseListBox name="categories" id="categories" multiple v-model="form.categories" :options="categories" prop-name="name"></BaseListBox>
                 <Errors :errors="errors.categories"/>
             </div>
 
