@@ -20,10 +20,11 @@ onMounted(async () => {
 async function deleteProduct(id) {
     if(confirm('Are you sure?')){
         await store.dispatch('product/deleteProduct', {id:id});
-        router.go(0);
+        setTimeout(function (){
+           // router.go(0);
+        }, 3000)
     }
 }
-
 </script>
 
 <template>
@@ -33,6 +34,7 @@ async function deleteProduct(id) {
             <thead>
             <tr>
                 <th>Title</th>
+                <th></th>
                 <th>SKU</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -46,6 +48,9 @@ async function deleteProduct(id) {
                 <td>
                     <router-link :to="{name:'admin.products.show', params:{id:product.id}}">{{product.title}}</router-link>
                 </td>
+                <td>
+                    <img :src="product.thumbnail_url" class="w-36">
+                </td>
                 <td>{{product.SKU}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.price}}</td>
@@ -58,6 +63,5 @@ async function deleteProduct(id) {
             </tr>
             </tbody>
         </table>
-
     </Card>
 </template>

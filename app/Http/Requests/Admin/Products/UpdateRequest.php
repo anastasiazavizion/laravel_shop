@@ -27,12 +27,14 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title'=>['required', 'string', 'min:2', Rule::unique('products', 'title')->ignore(request('id'))],
-            'SKU'=>['required', 'string', 'min:5', 'unique:products,id'],
+            'SKU'=>['required', 'string', 'min:5',  Rule::unique('products', 'SKU')->ignore(request('id'))],
             'description'=>['nullable', 'string', 'min:5'],
             'price'=>['required', 'numeric'],
             'discount'=>['nullable', 'numeric'],
             'quantity'=>['required', 'numeric'],
+            'thumbnail'=>['nullable', 'file'],
             'categories.*'=>['required', 'exists:categories,id'],
+            'images.*'=>[ 'image:jpg,jpeg,png'],
         ];
     }
 }

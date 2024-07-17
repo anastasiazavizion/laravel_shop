@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface ProductRepositoryContract
 {
-    public function create(CreateRequest $request) : Product;
-    public function update(UpdateRequest $request,Product $product) : Product;
+    public function create(CreateRequest $request) : Product|false;
+    public function update(Product $product,UpdateRequest $request) : bool;
     public function getAll() : Collection;
 }
