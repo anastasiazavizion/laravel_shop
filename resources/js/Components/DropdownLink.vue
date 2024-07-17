@@ -17,7 +17,7 @@ function handleClick(to, close) {
 <template>
     <div class="py-1">
         <MenuItem v-slot="{ active, close }">
-            <button @click="handleClick(to, close)" :class="[active ? 'bg-gray-100' : '', 'text-gray-700 block px-4 py-2 text-sm']">
+            <button @click="handleClick(to, close)" :class="[active ? 'bg-gray-100' : '', 'w-full text-gray-700 block px-4 py-2 text-sm']">
                 <slot></slot>
             </button>
         </MenuItem>
