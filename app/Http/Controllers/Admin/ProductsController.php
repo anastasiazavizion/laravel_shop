@@ -33,9 +33,8 @@ class ProductsController  extends Controller
     {
         if($product = $this->repository->create($request)){
             return response()->json(['message' => "Product $product->title was created", 'data'=>$product], 200);
-        }else{
-            return response()->json(['message' => 'Something was wrong', 'data'=>[]], 500);
         }
+        return response()->json(['message' => 'Something was wrong', 'data'=>[]], 500);
     }
 
     /**
@@ -54,9 +53,8 @@ class ProductsController  extends Controller
     {
         if($this->repository->update($product,$request)){
             return response()->json(['message' => "Product $product->title was updated", 'data'=>$product], 200);
-        }else{
-            return response()->json(['message' => 'Something was wrong', 'data'=>[]], 500);
         }
+        return response()->json(['message' => 'Something was wrong', 'data'=>[]], 500);
     }
 
     /**
