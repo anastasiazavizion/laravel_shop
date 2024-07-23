@@ -8,7 +8,26 @@ axios.defaults.withXSRFToken = true;
 
 import store from "./store/index.js";
 
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
+
 axios.interceptors.response.use(function (response) {
+
+    if(response.data.message){
+        if(response.status === 200){
+            toast.success(response.data.message, {
+                timeout: 3000
+            });
+        }
+
+        if(response.status === 500){
+            toast.error(response.data.message, {
+                timeout: 3000
+            });
+        }
+    }
+
     // Any status code that lies within the range of 2xx causes this function to trigger
     // Do something with response data
     return response;

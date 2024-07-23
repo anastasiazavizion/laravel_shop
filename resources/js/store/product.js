@@ -47,8 +47,13 @@ const actions = {
 
     async updateProduct({ commit }, { id, data }) {
         commit('setErrors', []);
+        data.append('_method', 'put');
         try {
-            const response = await axios.put('/products/'+id, data);
+            const response = await axios.post('/products/'+id, data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
         } catch (error) {
             if(error.response.status === 422){
                 commit('setErrors', error.response.data.errors);
@@ -61,7 +66,11 @@ const actions = {
     async createProduct({ commit }, data) {
         commit('setErrors', []);
         try {
-            const response = await axios.post('/products/', data);
+            const response = await axios.post('/products/', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
         } catch (error) {
             if(error.response.status === 422){
                 console.log(error.response.data.errors);

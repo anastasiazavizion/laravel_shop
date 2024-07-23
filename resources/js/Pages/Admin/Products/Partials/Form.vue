@@ -27,7 +27,9 @@ const form = ref({
     price: 0,
     discount: 0,
     quantity: 0,
-    categories: []
+    categories: [],
+    images: [],
+    thumbnail:null
 });
 
 const categories = ref([]);
@@ -56,10 +58,23 @@ const categories = ref([]);
     })
 
 async function handleRequest() {
+
+    let formData = new FormData();
+
+    for (const key in form.value) {
+        if (Array.isArray(form.value[key])) {
+            form.value[key].forEach((item, index) => {
+                formData.append(`${key}[${index}]`, item);
+            });
+        } else {
+            formData.append(key, form.value[key]);
+        }
+    }
+
     if (props.edit) {
-        await store.dispatch('product/updateProduct', {id: route.params.id, data: form.value});
+        await store.dispatch('product/updateProduct', {id: route.params.id, data: formData});
     } else {
-        await store.dispatch('product/createProduct', form.value);
+       await store.dispatch('product/createProduct', formData);
     }
     errors.value = await store.getters['product/errors'];
     if (Object.keys(errors.value).length === 0) {
@@ -74,6 +89,29 @@ const btnTitle = computed(() => {
 const header = computed(() => {
     return props.edit ? 'Edit Product' : 'Create Product'
 })
+
+function updateThumbnail(event){
+    let files = event.target.files;
+    if (files.length){
+        form.value.thumbnail = files[0];
+    }else{
+        form.value.thumbnail = null;
+    }
+}
+
+function updateImages(event){
+    let files = event.target.files;
+    if (files.length){
+        let arr = [];
+        for(let f of files){
+            arr.push(f);
+        }
+        form.value.images = arr;
+    }else{
+        form.value.images = [];
+    }
+}
+
 </script>
 
 <template>
@@ -120,6 +158,18 @@ const header = computed(() => {
                 <label for="categories">Categories</label>
                 <BaseListBox name="categories" id="categories" multiple v-model="form.categories" :options="categories" prop-name="name"></BaseListBox>
                 <Errors :errors="errors.categories"/>
+            </div>
+
+            <div>
+                <label for="thumbnail">Thumbnail</label>
+                <input @change="updateThumbnail($event)" type="file" name="thumbnail" id="thumbnail">
+                <Errors :errors="errors.thumbnail"/>
+            </div>
+
+            <div>
+                <label for="images">Images</label>
+                <input multiple @change="updateImages($event)" type="file" name="images[]">
+                <Errors :errors="errors.images"/>
             </div>
 
             <div>
