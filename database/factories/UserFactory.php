@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'lastname' => fake()->lastName(),
             'phone' => fake()->unique()->e164PhoneNumber(),
             'email' => fake()->unique()->safeEmail(),
-            'birthday' => fake()->dateTimeBetween('-70 years', '-18 years'),
+            'birthday' => fake()->dateTimeBetween('-70 years', '-18 years')->format('Y-m-d'),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
