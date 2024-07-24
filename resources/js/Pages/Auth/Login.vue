@@ -23,7 +23,7 @@
 
 <script setup>
 import {useStore} from 'vuex'
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {useRouter} from "vue-router";
 import Errors from "@/Components/Errors.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
@@ -47,7 +47,13 @@ const login = async () => {
         await axios.get('/sanctum/csrf-cookie');
         const response = await axios.post('/login', auth.value);
         await store.dispatch('auth/login');
-        router.push('/admin/dashboard');
+        const user = await store.getters['auth/user'];
+        const roles = window.Laravel.jsPermissions['roles'];
+        if(roles.includes('admin') || roles.includes('moderator')){
+            router.push('/admin/dashboard');
+        }else{
+            router.push('/');
+        }
     } catch (error) {
         if (error.response && (error.response.status === 422)) {
             errors.value = error.response.data.errors;

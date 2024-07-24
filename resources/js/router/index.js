@@ -15,124 +15,153 @@ import ShowProduct from "@/Pages/Admin/Products/Show.vue";
 import EditProduct from "@/Pages/Admin/Products/Edit.vue";
 import ProductsCreate from "@/Pages/Admin/Products/Create.vue";
 
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+import GeneralLayout from "@/Layouts/GeneralLayout.vue";
+import AuthLayout from "@/Layouts/AuthLayout.vue";
+
 const routes = [
     {
-        path: "/home",
-        component: Home,
-        meta:{
-            middleware:["auth"],
-        },
-    },
-    {
-        path: "/",
-        component: Home
+        path: '/admin',
+        component: AdminLayout,
+        children:[
+            {
+                name:"admin.dashboard",
+                path:"dashboard",
+                component:Dashboard,
+                meta:{
+                    middleware:["admin"],
+                    title:`Dashboard`
+                }
+            },
+            {
+                name:"admin.products",
+                path:"products",
+                component:Products,
+                meta:{
+                    middleware:["auth"],
+                    title:`Products`
+                }
+            },
+            {
+                name:"admin.categories",
+                path:"categories",
+                component:Categories,
+                meta:{
+                    middleware:["auth"],
+                    title:`Categories`
+                }
+            },
+
+            {
+                name:"admin.categories.show",
+                path:"categories/:id",
+                component:ShowCategory,
+                meta:{
+                    middleware:["auth"],
+                    title:`Category`
+                }
+            },
+
+            {
+                name:"admin.categories.edit",
+                path:"categories/:id/edit",
+                component:EditCategory,
+                meta:{
+                    middleware:["auth", "can:edit category"],
+                    title:`Category`
+                }
+            },
+
+            {
+                name:"admin.categories.create",
+                path:"categories/create",
+                component:CategoriesCreate,
+                meta:{
+                    middleware:["auth", "can:create category"],
+                    title:`Category create`
+                }
+            },
+
+            {
+                name:"admin.products.show",
+                path:"products/:id",
+                component:ShowProduct,
+                meta:{
+                    middleware:["auth"],
+                    title:`Product`
+                }
+            },
+            {
+                name:"admin.products.edit",
+                path:"products/:id/edit",
+                component:EditProduct,
+                meta:{
+                    middleware:["auth", "can:edit product"],
+                    title:`Product`
+                }
+            },
+
+            {
+                name:"admin.products.create",
+                path:"products/create",
+                component:ProductsCreate,
+                meta:{
+                    middleware:["auth", "can:create product"],
+                    title:`Product create`
+                }
+            },
+
+        ]
     },
 
     {
-        name:"login",
-        path:"/login",
-        component:Login,
-        meta:{
-            middleware:"guest",
-            title:`Login`
-        }
-    },
-    {
-        name:"admin.dashboard",
-        path:"/admin/dashboard",
-        component:Dashboard,
-        meta:{
-            middleware:["admin"],
-            title:`Dashboard`
-        }
-    },
-    {
-        name:"admin.products",
-        path:"/admin/products",
-        component:Products,
-        meta:{
-            middleware:["auth"],
-            title:`Products`
-        }
-    },
-    {
-        name:"admin.categories",
-        path:"/admin/categories",
-        component:Categories,
-        meta:{
-            middleware:["auth"],
-            title:`Categories`
-        }
+        component:AuthLayout,
+        path: '/auth',
+        children: [
+            {
+                name:"login",
+                path:"login",
+                component:Login,
+                meta:{
+                    middleware:"guest",
+                    title:`Login`
+                }
+            },
+
+            {
+                name:"register",
+                path:"register",
+                component:Register,
+                meta:{
+                    middleware:"guest",
+                    title:`Register`
+                }
+            }
+        ]
+
     },
 
     {
-        name:"admin.categories.show",
-        path:"/admin/categories/:id",
-        component:ShowCategory,
-        meta:{
-            middleware:["auth"],
-            title:`Category`
-        }
+        path: '/',
+        component: GeneralLayout,
+        children: [
+            {
+                path: '',
+                component: Home,
+                meta: {
+                    middleware: ["auth"],
+                },
+            },
+            {
+                path: '/home',
+                component: Home,
+                meta: {
+                    middleware: ["auth"],
+                },
+            },
+        ],
     },
 
-    {
-        name:"admin.categories.edit",
-        path:"/admin/categories/:id/edit",
-        component:EditCategory,
-        meta:{
-            middleware:["auth", "can:edit category"],
-            title:`Category`
-        }
-    },
-
-    {
-        name:"admin.categories.create",
-        path:"/admin/categories/create",
-        component:CategoriesCreate,
-        meta:{
-            middleware:["auth", "can:create category"],
-            title:`Category create`
-        }
-    },
-
-    {
-        name:"admin.products.show",
-        path:"/admin/products/:id",
-        component:ShowProduct,
-        meta:{
-            middleware:["auth"],
-            title:`Product`
-        }
-    },
-    {
-        name:"admin.products.edit",
-        path:"/admin/products/:id/edit",
-        component:EditProduct,
-        meta:{
-            middleware:["auth", "can:edit product"],
-            title:`Product`
-        }
-    },
-
-    {
-        name:"admin.products.create",
-        path:"/admin/products/create",
-        component:ProductsCreate,
-        meta:{
-            middleware:["auth", "can:create product"],
-            title:`Product create`
-        }
-    },
-
-    {
-        name:"register",
-        path:"/register",
-        component:Register,
-        meta:{
-            middleware:"guest",
-            title:`Register`
-        }
-    },
 ];
 
 const router =  createRouter({
