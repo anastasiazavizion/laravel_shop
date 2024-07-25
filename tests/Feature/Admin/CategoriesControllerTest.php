@@ -48,7 +48,7 @@ class CategoriesControllerTest extends TestCase
             'name' => $data['name']
         ]);
         $response = $this->actingAs($this->user())
-            ->postJson(route('admin.categories.store'), $data);
+            ->post(route('admin.categories.store'), $data);
         $response->assertStatus(200);
         $response->assertJsonFragment(['message' => 'OK']);
         $this->assertDatabaseHas(Category::class, [
@@ -63,7 +63,7 @@ class CategoriesControllerTest extends TestCase
             'name' => $data['name']
         ]);
         $response = $this->actingAs($this->user(Role::CUSTOMER))
-            ->postJson(route('admin.categories.store'), $data);
+            ->post(route('admin.categories.store'), $data);
         $response->assertForbidden();
     }
 
@@ -75,7 +75,7 @@ class CategoriesControllerTest extends TestCase
         ];
         $this->assertDatabaseMissing(Category::class, ['name'=>$data['name']]);
         $response = $this->actingAs($this->user())
-            ->postJson(route('admin.categories.store'), $data);
+            ->post(route('admin.categories.store'), $data);
         $response->assertJsonValidationErrors(['name', 'parent_id']);
         $response->assertStatus(422);
     }
