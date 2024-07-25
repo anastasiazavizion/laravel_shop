@@ -35,6 +35,9 @@ const register = async () => {
         });
 };
 
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
 </script>
 <template>
     <Header>Register</Header>
@@ -54,7 +57,7 @@ const register = async () => {
 
             <div>
                 <label>Birthday</label>
-                <input type="text" v-model="form.birthday" name="birthday" id="birthday" class="form-control">
+                <VueDatePicker :enable-time-picker="false" v-model="form.birthday" name="birthday" id="birthday" class="form-control" />
                 <Errors :errors="errors.birthday"/>
             </div>
 
