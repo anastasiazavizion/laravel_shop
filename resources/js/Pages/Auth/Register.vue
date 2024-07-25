@@ -26,7 +26,13 @@ const register = async () => {
     axios.post('/register', form.value)
         .then(async function (response) {
             await store.dispatch('auth/login');
-            await router.push('/admin/dashboard');
+            const user = await store.getters['auth/user'];
+            const roles = window.Laravel.jsPermissions['roles'];
+            if(roles.includes('admin') || roles.includes('moderator')){
+                router.push('/admin/dashboard');
+            }else{
+                router.push('/');
+            }
         })
         .catch(function (error) {
             if(error.response.status === 422){

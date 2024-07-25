@@ -20,6 +20,9 @@ const user = computed(()=>{
 const authenticated = computed(()=>{
     return store.getters['auth/authenticated']
 })
+console.log(authenticated.value);
+
+
 const showingNavigationDropdown = ref(false);
 </script>
 <template>
