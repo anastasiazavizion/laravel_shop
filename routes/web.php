@@ -14,13 +14,10 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
-Route::name('admin.')->group(function (){
+Route::middleware(['auth:sanctum','role:admin|moderator'])->name('admin.')->group(function (){
     Route::resource('categories', CategoriesController::class)->except(['create', 'edit']);
-    Route::resource('products', ProductsController::class)
-        ->middleware('auth:sanctum')
-        ->except(['create', 'edit']);
+    Route::resource('products', ProductsController::class);
 });
-
 
 
 Route::get('{any}', function () {
