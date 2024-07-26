@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Categories\CreateRequest;
 use App\Http\Requests\Admin\Categories\UpdateRequest;
 use App\Models\Category;
-use App\Repositories\CategoryRepository;
+use App\Repositories\Contract\CategoryRepositoryContract;
 
 class CategoriesController extends Controller
 {
 
-    public function __construct(protected CategoryRepository $repository)
+    public function __construct(protected CategoryRepositoryContract $repository)
     {
 
     }

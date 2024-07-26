@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Repositories\Contract\CategoryRepositoryContract;
 use App\Repositories\CategoryRepository;
 use App\Repositories\Contract\ImageRepositoryContract;
+use App\Repositories\Contract\ProductRepositoryContract;
 use App\Repositories\ImageRepository;
+use App\Repositories\ProductRepository;
 use App\Services\Contracts\FileServiceContract;
 use App\Services\FileService;
 use Illuminate\Support\ServiceProvider;
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->bind(CategoryRepositoryContract::class, CategoryRepository::class);
+        $this->app->bind(ProductRepositoryContract::class, ProductRepository::class);
         $this->app->bind(ImageRepositoryContract::class, ImageRepository::class);
         $this->app->bind(FileServiceContract::class, FileService::class);
     }

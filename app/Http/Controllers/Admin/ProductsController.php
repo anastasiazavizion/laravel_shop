@@ -6,14 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Products\CreateRequest;
 use App\Http\Requests\Admin\Products\UpdateRequest;
 use App\Models\Product;
-use App\Repositories\Contract\ImageRepositoryContract;
-use App\Repositories\ProductRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Repositories\Contract\ProductRepositoryContract;
 
 class ProductsController  extends Controller
 {
-    public function __construct(protected ProductRepository $repository)
+    public function __construct(protected ProductRepositoryContract $repository)
     {
 
     }
