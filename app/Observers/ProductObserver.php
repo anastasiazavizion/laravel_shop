@@ -30,8 +30,7 @@ class ProductObserver
     public function deleted(Product $product): void
     {
         $product->categories()->detach();
-        $imageRepository = app(ImageRepositoryContract::class);
-        $imageRepository->detach($product,'images');
+        app(ImageRepositoryContract::class)->detach($product,'images');
         $fileService = app(FileServiceContract::class);
         $fileService->remove($product->thumbnail);
     }
