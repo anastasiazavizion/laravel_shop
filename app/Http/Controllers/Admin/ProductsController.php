@@ -8,6 +8,23 @@ use App\Http\Requests\Admin\Products\UpdateRequest;
 use App\Models\Product;
 use App\Repositories\Contract\ProductRepositoryContract;
 
+
+class A{
+    private static $instance = null;
+
+    private function __construct(){}
+
+    public static function getInstance()
+    {
+        if(is_null(self::$instance)){
+            self::$instance = new self();
+        }
+        return  self::$instance;
+    }
+}
+
+
+
 class ProductsController  extends Controller
 {
     public function __construct(protected ProductRepositoryContract $repository)
@@ -20,6 +37,18 @@ class ProductsController  extends Controller
      */
     public function index()
     {
+        $obj1 = A::getInstance();
+
+        echo $obj1::$str;
+
+        $obj2 = A::getInstance();
+        echo "<br>";
+        echo $obj2::$str;
+
+        die;
+
+
+
         return response()->json($this->repository->getAll());
     }
 

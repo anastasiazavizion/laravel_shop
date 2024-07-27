@@ -8,6 +8,10 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 
+
+
+
+
 Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
 
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
