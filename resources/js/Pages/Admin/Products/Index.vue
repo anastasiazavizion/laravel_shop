@@ -37,7 +37,7 @@ async function deleteProduct(id) {
 
 <template>
 <Header>All products</Header>
-    <Card>
+    <Card id="products">
         <table class="w-full">
             <thead>
             <tr>
