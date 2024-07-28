@@ -57,21 +57,23 @@ class ProductRepository implements ProductRepositoryContract
 
     public function setProductRelationsData(Product $product, array $data): void
     {
-
         $product->categories()->sync($data['categories']);
         if(!empty($data['attributes']['images'])){
-            //product->images_dir - subdirectory
             $this->imageRepository->attach($product, 'images', $data['attributes']['images'], $product->images_dir);
+        }
+        if(!empty($data['deleted_images'])){
+            $this->imageRepository->detach($product, 'images', $data['deleted_images']);
         }
     }
 
     public function formRequestData(FormRequest $request) : array
     {
         return [
-            'attributes'=>collect($request->validated())->except(['categories'])
+            'attributes'=>collect($request->validated())->except(['categories', 'deleted_images'])
                 ->prepend(Str::slug($request->get('title')), 'slug')
                 ->toArray(),
-            'categories'=>$request->get('categories', [])
+            'categories'=>$request->get('categories', []),
+            'deleted_images'=>$request->get('deleted_images', []),
         ];
     }
 }

@@ -6,7 +6,7 @@ import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
 import {XMarkIcon} from "@heroicons/vue/24/solid";
 import {PencilIcon} from "@heroicons/vue/24/solid";
-
+import Swal from 'sweetalert2';
 const store = useStore();
 const router = useRouter();
 
@@ -18,11 +18,19 @@ onMounted(async () => {
 })
 
 async function deleteProduct(id) {
-    if(confirm('Are you sure?')){
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+    });
+    if (result.isConfirmed) {
         await store.dispatch('product/deleteProduct', {id:id});
         setTimeout(function (){
-           // router.go(0);
-        }, 3000)
+            router.go(0);
+        }, 2000)
     }
 }
 </script>
