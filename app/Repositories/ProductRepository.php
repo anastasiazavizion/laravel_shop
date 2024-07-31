@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Repositories\Contract\ImageRepositoryContract;
 use App\Repositories\Contract\ProductRepositoryContract;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Collection;
@@ -50,9 +51,13 @@ class ProductRepository implements ProductRepositoryContract
         }
     }
 
-    public function getAll() : Collection
+    public function getAll(bool $paginate = false) : Collection|LengthAwarePaginator
     {
-        return Product::query()->with(['categories'])->latest()->get();
+        $query = Product::query()->with(['categories'])->latest();
+        if($paginate){
+            return  $query->paginate(config('app.products_limit'));
+        }
+        return $query->get();
     }
 
     public function setProductRelationsData(Product $product, array $data): void
@@ -74,6 +79,16 @@ class ProductRepository implements ProductRepositoryContract
                 ->toArray(),
             'categories'=>$request->get('categories', []),
             'deleted_images'=>$request->get('deleted_images', []),
+        ];
+    }
+
+    public function getGallery(Product $product) : array
+    {
+        return [
+            $product->thumbnail_url,
+            ...$product->images->map(function ($image){
+                return $image->url;
+            })
         ];
     }
 }

@@ -36,4 +36,24 @@
         focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150;
     }
 
+    .btn-style{
+        @apply p-1 rounded-md text-white font-bold cursor-pointer hover:shadow-md;
+        background-color: $btnAdditionalColor;
+    }
+    .btn-style:hover{
+        background-color: $btnAdditionalColorHover;
+    }
+
+    .pagination-link-active{
+        @apply text-white;
+        background-color: $btnAdditionalColor;
+    }
+
+    .pagination-link{
+        @apply p-2 text-sm sm:p-3 border border-slate-300;
+    }
+}
+
+.swiper-button-next, .swiper-button-prev{
+   color: red!important;
 }

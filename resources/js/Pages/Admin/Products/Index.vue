@@ -13,8 +13,8 @@ const router = useRouter();
 const products = ref([]);
 
 onMounted(async () => {
-    await store.dispatch('product/getAll');
-    products.value = store.getters['product/products'];
+    await store.dispatch('product_admin/getAll');
+    products.value = store.getters['product_admin/products'];
 })
 
 async function deleteProduct(id) {
@@ -27,7 +27,7 @@ async function deleteProduct(id) {
         cancelButtonText: 'No, cancel!',
     });
     if (result.isConfirmed) {
-        await store.dispatch('product/deleteProduct', {id:id});
+        await store.dispatch('product_admin/deleteProduct', {id:id});
         setTimeout(function (){
             router.go(0);
         }, 2000)

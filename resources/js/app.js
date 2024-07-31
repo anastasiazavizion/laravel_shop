@@ -7,6 +7,9 @@ import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
+import { register } from 'swiper/element/bundle';
+register();
+
 createApp(App)
     .use(router)
     .use(store)

@@ -36,7 +36,8 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex justify-center items-center">
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center sm:justify-center">
-                                <router-link v-if="authenticated" to="/home">Home</router-link>
+                                <router-link  to="/home">Home</router-link>
+                                <router-link  :to="{name:'products.index'}">Products</router-link>
                                 <router-link v-if="!authenticated" to="/auth/login">Login</router-link>
                                 <router-link  v-if="!authenticated" to="/auth/register">Register</router-link>
                                 <Dropdown :title="user.name" v-if="authenticated">
