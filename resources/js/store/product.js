@@ -27,12 +27,13 @@ const mutations = {
 };
 
 const actions = {
-    async getAll({ commit }, url) {
+    async getAll({ commit }, payload) {
         try {
-            const response = await axios.get(url ?? '/user/products');
+            const response = await axios.get((payload && payload.url) ?? '/user/products', {params:payload});
             commit('setProducts', response.data.data);
             commit('setLinks', response.data.meta.links);
         } catch (error) {
+            console.log(error);
             commit('setProducts', []);
         }
     },
@@ -46,7 +47,6 @@ const actions = {
         }
     },
 };
-
 export default {
     namespaced: true,
     state,

@@ -24,9 +24,10 @@ onMounted(async () => {
     images.value = productData.gallery;
 })
 
-const priceInfo = computed(()=>{
-    return "Price " + product.value.final_price + '$';
-})
+async function addToCart(product) {
+    await store.dispatch('cart/addToCart', product);
+}
+
 </script>
 <template>
         <div v-if="product" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -51,7 +52,7 @@ const priceInfo = computed(()=>{
                 <div class="mt-4">
                     <div class="grid grid-cols-2">
                         <div  class="font-bold text-gray-700 pr-2">Price <Price>{{product.final_price}}</Price></div>
-                        <div class="text-gray-600 dark:text-gray-300"><button class="btn-style w-full">Buy</button></div>
+                        <div @click="addToCart(product)" class="text-gray-600 dark:text-gray-300"><button class="btn-style w-full">Buy</button></div>
                     </div>
                 </div>
 

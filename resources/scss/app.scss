@@ -8,7 +8,7 @@
     form label{
         @apply font-bold;
     }
-    form input[type=text], form input[type=password],form input[type=email], form select{
+    form input[type=text], form input[type=password],form input[type=email], form select, .form-control{
         @apply w-full rounded;
         border: $borderSize $borderStyle $formElementsBorderColor;
     }
@@ -36,12 +36,23 @@
         focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150;
     }
 
-    .btn-style{
+    .btn{
         @apply p-1 rounded-md text-white font-bold cursor-pointer hover:shadow-md;
+    }
+
+    .btn-style{
         background-color: $btnAdditionalColor;
     }
     .btn-style:hover{
         background-color: $btnAdditionalColorHover;
+    }
+
+    .btn-checkout{
+        background-color: $btnCheckoutColor;
+    }
+
+    .btn-checkout:hover{
+        background-color: $btnCheckoutColorHover;
     }
 
     .pagination-link-active{
@@ -52,8 +63,9 @@
     .pagination-link{
         @apply p-2 text-sm sm:p-3 border border-slate-300;
     }
-}
 
-.swiper-button-next, .swiper-button-prev{
-   color: red!important;
+    .cart-product-amount{
+        @apply absolute  text-white rounded-full h-6 w-6 text-center  left-5 bottom-3;
+        background-color: $btnAdditionalColor;
+    }
 }

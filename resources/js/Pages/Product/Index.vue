@@ -16,7 +16,7 @@ onMounted(async () => {
 async function getProducts(url){
     if(url !== null){
         try {
-            await store.dispatch('product/getAll', url);
+            await store.dispatch('product/getAll', {url:url});
             products.value = store.getters['product/products'];
             links.value = store.getters['product/links'];
         } catch (error) {
@@ -24,6 +24,7 @@ async function getProducts(url){
         }
     }
 }
+
 </script>
 
 <template>

@@ -23,6 +23,8 @@ import AuthLayout from "@/Layouts/AuthLayout.vue";
 import ProductsShow from "@/Pages/Product/Show.vue";
 import ProductsIndex from "@/Pages/Product/Index.vue";
 
+import Cart from "@/Pages/Cart/Index.vue";
+
 
 const routes = [
     {
@@ -160,6 +162,12 @@ const routes = [
                 meta: {
 
                 },
+            },
+
+            {
+                path: '/cart',
+                component: Cart,
+                name:'cart.index',
             },
 
             {

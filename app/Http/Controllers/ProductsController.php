@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Repositories\Contract\ProductRepositoryContract;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -19,9 +18,9 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(ProductResource::collection($this->repository->getAll(true))->response()->getData());
+        return response()->json(ProductResource::collection($this->repository->getAll(true, $request->all()))->response()->getData());
     }
 
     public function show(Product  $product)

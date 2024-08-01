@@ -11,6 +11,6 @@ interface ProductRepositoryContract
 {
     public function create(CreateRequest $request) : Product|false;
     public function update(Product $product,UpdateRequest $request) : bool;
-    public function getAll(bool $paginate = false) : Collection|LengthAwarePaginator;
+    public function getAll(bool $paginate = false, array $params = []) : Collection|LengthAwarePaginator;
     public function getGallery(Product $product) :array;
 }

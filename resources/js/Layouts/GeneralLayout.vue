@@ -19,10 +19,19 @@ const logout = async () => {
 const user = computed(()=>{
     return store.getters['auth/user']
 })
+
+const contCartItems = computed(()=>{
+    return store.getters['cart/countCartItems']
+})
+
+
 const authenticated = computed(()=>{
     return store.getters['auth/authenticated']
 })
 const showingNavigationDropdown = ref(false);
+
+import {ShoppingCartIcon} from "@heroicons/vue/20/solid";
+
 
 </script>
 
@@ -43,6 +52,11 @@ const showingNavigationDropdown = ref(false);
                                 <Dropdown :title="user.name" v-if="authenticated">
                                     <DropdownLink  @click.prevent="logout" to="#">Logout</DropdownLink>
                                 </Dropdown>
+
+                                <router-link class="relative" :to="{name:'cart.index'}"><ShoppingCartIcon class="h-6"/>
+                                 <span class="cart-product-amount">{{contCartItems}}</span>
+                                </router-link>
+
                             </div>
                         </div>
 

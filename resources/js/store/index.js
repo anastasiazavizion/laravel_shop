@@ -6,7 +6,7 @@ import product_admin from './admin/product.js';
 
 import category from './category.js';
 import product from './product.js';
-
+import cart from './cart.js';
 
 const store = createStore({
     modules: {
@@ -14,7 +14,8 @@ const store = createStore({
         category_admin,
         product_admin,
         category,
-        product
+        product,
+        cart
     },
     plugins: [createPersistedState()]
 });

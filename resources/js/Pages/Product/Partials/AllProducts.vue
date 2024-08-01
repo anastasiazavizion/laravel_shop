@@ -1,17 +1,25 @@
 <script setup>
 import Header from "@/Components/Header.vue";
 import Price from "@/Components/Price.vue";
+import {useStore} from "vuex";
 
 const props = defineProps({
     products:Array,
     label:String
 })
 
+const store = useStore();
+
 const label = props.label ?? 'Products';
 
 function productUrl(product){
     return {name:'products.show', params:{id:product.id}};
 }
+
+async function addToCart(product) {
+    await store.dispatch('cart/addToCart', product);
+}
+
 </script>
 
 <template>
@@ -27,14 +35,12 @@ function productUrl(product){
                 </h2>
                 <span class="font-semibold text-gray-800"><Price>{{product.price}}</Price></span>
             </div>
-
             <div class="mt-4 p-4 border-t border-gray-200">
-                <button class="btn-style">
+                <button @click="addToCart(product)" class="btn btn-style">
                     Add to Cart
                 </button>
             </div>
         </div>
     </div>
     <div v-else>No products...</div>
-
 </template>
