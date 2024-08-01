@@ -59,7 +59,9 @@ const actions = {
         let indexValue = state.cartItems.findIndex(item => item.id === data.id); //find element by product id
         if(indexValue !== -1){
             commit('updateProductAmount', {index:indexValue, amount:data.amount});
-            await axios.put('/cart/count/'+data.id,data);
+            if (rootGetters['auth/authenticated']) {
+                await axios.put('/cart/count/' + data.id, data);
+            }
         }
     },
 
