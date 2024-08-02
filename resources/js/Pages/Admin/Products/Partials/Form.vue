@@ -38,16 +38,16 @@ const categories = ref([]);
 
 const loading = ref(true);
     onMounted(async () => {
-        await store.dispatch('category/getAll');
-        categories.value = store.getters['category/categories'];
+        await store.dispatch('category_admin/getAll');
+        categories.value = store.getters['category_admin/categories'];
 
         if (props.edit) {
         const id = route.params.id;
         const payload = {
             id: id
         };
-        await store.dispatch('product/getProduct', payload);
-        product.value = store.getters['product/product'];
+        await store.dispatch('product_admin/getProduct', payload);
+        product.value = store.getters['product_admin/product'];
 
         form.value.id = id;
         form.value.title = product.value.title;
@@ -58,7 +58,7 @@ const loading = ref(true);
         form.value.quantity = product.value.quantity;
         form.value.thumbnail = product.value.thumbnail_url;
         form.value.images = product.value.images;
-        form.value.categories = store.getters['product/productCategoriesIds'];
+        form.value.categories = store.getters['product_admin/productCategoriesIds'];
 
         }
         loading.value = false;
@@ -76,11 +76,11 @@ async function handleRequest() {
         }
     }
     if (props.edit) {
-        await store.dispatch('product/updateProduct', {id: route.params.id, data: formData});
+        await store.dispatch('product_admin/updateProduct', {id: route.params.id, data: formData});
     } else {
-       await store.dispatch('product/createProduct', formData);
+       await store.dispatch('product_admin/createProduct', formData);
     }
-    errors.value = await store.getters['product/errors'];
+    errors.value = await store.getters['product_admin/errors'];
     if (Object.keys(errors.value).length === 0) {
         await router.push('/admin/products');
     }

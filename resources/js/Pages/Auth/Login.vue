@@ -49,6 +49,11 @@ const login = async () => {
         await store.dispatch('auth/login');
         const user = await store.getters['auth/user'];
         const roles = window.Laravel.jsPermissions['roles'];
+
+        await store.dispatch('cart/setExistingCartItemsForUser');
+
+        await store.dispatch('cart/getCartItemsForUser');
+
         if(roles.includes('admin') || roles.includes('moderator')){
             router.push('/admin/dashboard');
         }else{

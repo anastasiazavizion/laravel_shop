@@ -37,7 +37,7 @@ axios.interceptors.response.use(function (response) {
     if(error.response && error.response.status === 401) {
         store.commit('auth/SET_USER', {});
         store.commit('auth/SET_AUTHENTICATED', false);
-        window.location.href = "/login";
+        window.location.href = "/auth/login";
     }
     return Promise.reject(error);
 });

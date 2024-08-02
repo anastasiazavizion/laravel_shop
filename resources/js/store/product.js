@@ -3,93 +3,50 @@ import axios from 'axios';
 const state = {
     products: [],
     product:null,
+    links:[],
     errors:[]
 };
 
 const getters = {
     products: state => state.products,
     product: state => state.product,
+    links: state => state.links,
     productCategoriesIds: state => state.product.categories.map(a=>a.id),
-    errors: state => state.errors,
 };
 
 const mutations = {
     setProducts (state, value) {
         state.products = value;
     } ,
+    setLinks(state, value) {
+        state.links = value;
+    } ,
     setProduct (state, value) {
         state.product = value;
-    },
-    setErrors (state, value) {
-        state.errors = value;
     }
 };
 
 const actions = {
-
-    async getAll({ commit }) {
+    async getAll({ commit }, payload) {
         try {
-            const response = await axios.get('/products');
-            commit('setProducts', response.data);
+            const response = await axios.get((payload && payload.url) ?? '/user/products', {params:payload});
+            commit('setProducts', response.data.data);
+            commit('setLinks', response.data.meta.links);
         } catch (error) {
+            console.log(error);
             commit('setProducts', []);
         }
     },
 
     async getProduct({ commit}, payload) {
         try {
-            const response = await axios.get('/products/'+payload.id);
-            commit('setProduct', response.data);
+            const response = await axios.get('/user/products/'+payload.id);
+            commit('setProduct', response.data.product);
         } catch (error) {
             commit('setProduct', []);
         }
     },
-
-    async updateProduct({ commit }, { id, data }) {
-        commit('setErrors', []);
-        data.append('_method', 'put');
-        try {
-            const response = await axios.post('/products/'+id, data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-        } catch (error) {
-            if(error.response.status === 422){
-                commit('setErrors', error.response.data.errors);
-            }else{
-                commit('setErrors', [{'other':'Some other errors'}]);
-            }
-        }
-    },
-
-    async createProduct({ commit }, data) {
-        commit('setErrors', []);
-        try {
-            const response = await axios.post('/products/', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-        } catch (error) {
-            if(error.response.status === 422){
-                console.log(error.response.data.errors);
-                commit('setErrors', error.response.data.errors);
-            }else{
-                commit('setErrors', [{'other':'Some other errors'}]);
-            }
-        }
-    },
-
-    async deleteProduct({ commit}, payload) {
-        try {
-            const response = await axios.delete('/products/'+payload.id);
-        } catch (error) {
-        }
-    }
-
 };
-
 export default {
     namespaced: true,
     state,

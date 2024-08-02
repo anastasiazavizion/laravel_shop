@@ -17,7 +17,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $appends = ['thumbnail_url'];
+    protected $appends = ['thumbnail_url', 'final_price'];
 
     protected $fillable = [
         'slug',
@@ -66,6 +66,13 @@ class Product extends Model
     {
         return Attribute::make(
             get: fn () => str_contains($this->attributes['thumbnail'],'picsum.photos') ? $this->attributes['thumbnail'] : Storage::url($this->attributes['thumbnail'])
+        );
+    }
+
+    public function finalPrice(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => round($this->attributes['price'] - ($this->attributes['price'] * $this->attributes['discount'] / 100), 2)
         );
     }
 

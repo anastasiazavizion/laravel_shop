@@ -13,9 +13,11 @@ const logout = async () => {
         console.error(error);
     }
 };
+
 const user = computed(()=>{
     return store.getters['auth/user']
 })
+
 const authenticated = computed(()=>{
     return store.getters['auth/authenticated']
 })

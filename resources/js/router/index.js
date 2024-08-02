@@ -19,6 +19,13 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import GeneralLayout from "@/Layouts/GeneralLayout.vue";
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 
+
+import ProductsShow from "@/Pages/Product/Show.vue";
+import ProductsIndex from "@/Pages/Product/Index.vue";
+
+import Cart from "@/Pages/Cart/Index.vue";
+
+
 const routes = [
     {
         path: '/admin',
@@ -147,17 +154,32 @@ const routes = [
         children: [
             {
                 path: '',
-                component: Home,
-                meta: {
-                    middleware: ["auth"],
-                },
+                component: Home
             },
             {
                 path: '/home',
                 component: Home,
                 meta: {
-                    middleware: ["auth"],
+
                 },
+            },
+
+            {
+                path: '/cart',
+                component: Cart,
+                name:'cart.index',
+            },
+
+            {
+                path: '/products/:id',
+                component: ProductsShow,
+                name:'products.show',
+            },
+
+            {
+                path: '/products',
+                component: ProductsIndex,
+                name:'products.index',
             },
         ],
     },

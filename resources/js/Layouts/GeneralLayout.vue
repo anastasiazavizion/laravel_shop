@@ -19,10 +19,19 @@ const logout = async () => {
 const user = computed(()=>{
     return store.getters['auth/user']
 })
+
+const contCartItems = computed(()=>{
+    return store.getters['cart/countCartItems']
+})
+
+
 const authenticated = computed(()=>{
     return store.getters['auth/authenticated']
 })
 const showingNavigationDropdown = ref(false);
+
+import {ShoppingCartIcon} from "@heroicons/vue/20/solid";
+
 
 </script>
 
@@ -36,12 +45,18 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex justify-center items-center">
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center sm:justify-center">
-                                <router-link v-if="authenticated" to="/home">Home</router-link>
+                                <router-link  to="/home">Home</router-link>
+                                <router-link  :to="{name:'products.index'}">Products</router-link>
                                 <router-link v-if="!authenticated" to="/auth/login">Login</router-link>
                                 <router-link  v-if="!authenticated" to="/auth/register">Register</router-link>
                                 <Dropdown :title="user.name" v-if="authenticated">
                                     <DropdownLink  @click.prevent="logout" to="#">Logout</DropdownLink>
                                 </Dropdown>
+
+                                <router-link class="relative" :to="{name:'cart.index'}"><ShoppingCartIcon class="h-6"/>
+                                 <span class="cart-product-amount">{{contCartItems}}</span>
+                                </router-link>
+
                             </div>
                         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\CartItemsResource;
 use App\Repositories\Contract\CategoryRepositoryContract;
 use App\Repositories\CategoryRepository;
 use App\Repositories\Contract\ImageRepositoryContract;
