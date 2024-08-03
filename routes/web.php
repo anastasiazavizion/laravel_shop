@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -8,6 +10,8 @@ use App\Http\Controllers\Admin\ProductsController as AdminProductsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishListController;
+
 
 Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
 
@@ -24,6 +28,13 @@ Route::prefix('user')->name('user.')->group(function (){
     Route::resource('categories', CategoriesController::class)->only(['index']);
     Route::resource('products', ProductsController::class)->only(['index', 'show']);
 });
+
+Route::name('wishlist.')->middleware('auth:sanctum')->group(function (){
+    Route::post('wishList/{product}', [WishListController::class, 'add']);
+    Route::delete('wishList/{product}', [WishListController::class, 'remove']);
+    Route::get('wishlist/', [WishListController::class, 'getAll']);
+});
+
 
 Route::prefix('cart')->name('cart.')->middleware('auth:sanctum')->group(function (){
     Route::get('/get', [CartController::class, 'index'])->name('index');

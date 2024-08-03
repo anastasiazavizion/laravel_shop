@@ -8,11 +8,12 @@ const getters = {
     cartItems: state => state.cartItems,
     cartItemsProductIds: state => state.cartItems.map(a => a.id),
     countCartItems: state => state.cartItems.reduce((accumulator, current) => accumulator + current.amount, 0),
+    totalPrice: state => state.cartItems.reduce((accumulator, current) => accumulator + current.amount, 0),
     cartTotalPrice: state => state.cartItems.reduce((accumulator, current) => accumulator + (current.amount * current.final_price), 0).toFixed(2),
+
 };
 
 const mutations = {
-
     setCartItems(state, value) {
         state.cartItems = value;
     },
@@ -24,6 +25,10 @@ const mutations = {
        state.cartItems[data.index].amount = data.amount;
     },
 
+     removeFromCart(state, product) {
+         state.cartItems = state.cartItems.filter(item => item.id !== product.id);
+     },
+
     clearCart(state) {
         state.cartItems = [];
     },
@@ -34,7 +39,7 @@ const actions = {
     async addToCart({commit, state, rootGetters}, product) {
         let index = state.cartItems.findIndex(item => item.id === product.id);
         if (index !== -1) {
-            state.cartItems[index].amount += 1;
+            commit('updateProductAmount', {index:index, amount:state.cartItems[index].amount + 1});
         } else {
             product.amount = 1;
             commit('addToCart', product);
@@ -47,7 +52,8 @@ const actions = {
     },
 
     async removeFromCart({commit, state, rootGetters}, product) {
-        state.cartItems = state.cartItems.filter(item => item.id !== product.id);
+
+        commit('removeFromCart', product)
         if (rootGetters['auth/authenticated']) {
             await axios.delete('/cart',{data:{
                 product:product

@@ -23,8 +23,11 @@ class ProductResource extends JsonResource
                 'price' => $this->price,
                 'discount' => $this->discount,
                 'quantity' => $this->quantity,
+                'in_stock' => $this->in_stock,
                 'thumbnail_url' => $this->thumbnail_url,
-                'final_price' => $this->final_price
+                'final_price' => $this->final_price,
+                'is_in_wish_list_exist' => $this->is_in_wish_list_exist,
+                'is_in_wish_list_price' => $this->is_in_wish_list_price,
             ];
     }
 }
