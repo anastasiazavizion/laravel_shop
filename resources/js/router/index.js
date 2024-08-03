@@ -24,6 +24,7 @@ import ProductsShow from "@/Pages/Product/Show.vue";
 import ProductsIndex from "@/Pages/Product/Index.vue";
 
 import Cart from "@/Pages/Cart/Index.vue";
+import Wishlist from "@/Pages/Account/WishList.vue";
 
 
 const routes = [
@@ -180,6 +181,19 @@ const routes = [
                 path: '/products',
                 component: ProductsIndex,
                 name:'products.index',
+            },
+        ],
+    },
+    {
+        path: '/account',
+        meta:{
+            middleware:["auth"]
+        },
+        component: GeneralLayout,
+        children: [
+            {
+                path: 'wishlist',
+                component: Wishlist
             },
         ],
     },

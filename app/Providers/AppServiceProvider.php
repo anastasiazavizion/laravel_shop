@@ -7,11 +7,14 @@ use App\Repositories\Contract\CategoryRepositoryContract;
 use App\Repositories\CategoryRepository;
 use App\Repositories\Contract\ImageRepositoryContract;
 use App\Repositories\Contract\ProductRepositoryContract;
+use App\Repositories\Contract\WishListRepositoryContract;
 use App\Repositories\ImageRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\WishListRepository;
 use App\Services\Contracts\FileServiceContract;
 use App\Services\FileService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +31,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepositoryContract::class, ProductRepository::class);
         $this->app->bind(ImageRepositoryContract::class, ImageRepository::class);
         $this->app->bind(FileServiceContract::class, FileService::class);
+
+
+
+        $this->app->bind(WishListRepositoryContract::class,
+            WishListRepository::class);
+
+
     }
 
     /**

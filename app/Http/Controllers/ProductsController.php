@@ -4,6 +4,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Repositories\Contract\ProductRepositoryContract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {

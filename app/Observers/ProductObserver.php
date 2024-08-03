@@ -21,7 +21,7 @@ class ProductObserver
      */
     public function updated(Product $product): void
     {
-        //
+
     }
 
     /**

@@ -50,6 +50,9 @@ import {ShoppingCartIcon} from "@heroicons/vue/20/solid";
                                 <router-link v-if="!authenticated" to="/auth/login">Login</router-link>
                                 <router-link  v-if="!authenticated" to="/auth/register">Register</router-link>
                                 <Dropdown :title="user.name" v-if="authenticated">
+                                    <DropdownLink>
+                                        <router-link to="/account/wishlist">Wishlist</router-link>
+                                    </DropdownLink>
                                     <DropdownLink  @click.prevent="logout" to="#">Logout</DropdownLink>
                                 </Dropdown>
 
