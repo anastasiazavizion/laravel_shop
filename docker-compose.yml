@@ -9,7 +9,7 @@ services:
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
-            - '8087:80'
+            - '8088:80'
             - '${VITE_PORT:-5175}:${VITE_PORT:-5175}'
         environment:
             WWWUSER: '${WWWUSER}'
@@ -96,7 +96,7 @@ services:
         image: phpmyadmin
         restart: always
         ports:
-            - 8095:80
+            - 8099:80
         environment:
             - PMA_ARBITRARY=1
         networks:
