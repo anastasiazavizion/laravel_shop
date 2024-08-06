@@ -18,19 +18,20 @@ class WishListController extends Controller
 
     public function add(WishListRequest $request, Product $product) : JsonResponse
     {
-        if($this->repositoryInstance()->addToWish($product, $request->get('type')))
-        return response()->json('Added to wishlist', 200);
+        if($this->repositoryInstance()->addToWish($product, $request->get('type'))){
+            return response()->json('Added to wishlist', 200);
+        }
 
         return response()->json('Error', 500);
     }
 
     public function remove(WishListRequest $request, Product $product) : JsonResponse
     {
-        if($this->repositoryInstance()->removeFromWish($product, $request->get('type')))
-        return response()->json('Removed from wishlist');
+        if($this->repositoryInstance()->removeFromWish($product, $request->get('type'))){
+            return response()->json('Removed from wishlist');
+        }
 
         return response()->json('Error', 500);
-
     }
 
     public function getAll() : JsonResponse

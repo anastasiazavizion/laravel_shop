@@ -32,7 +32,7 @@ Route::prefix('user')->name('user.')->group(function (){
 Route::name('wishlist.')->middleware('auth:sanctum')->group(function (){
     Route::post('wishList/{product}', [WishListController::class, 'add']);
     Route::delete('wishList/{product}', [WishListController::class, 'remove']);
-    Route::get('wishlist/', [WishListController::class, 'getAll']);
+    Route::get('wishlist', [WishListController::class, 'getAll']);
 });
 
 
