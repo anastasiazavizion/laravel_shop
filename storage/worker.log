@@ -3549,3 +3549,89 @@
  1s DONE
  ..... 1s DONE
   2024-08-07 18:31:20 App\Notifications\PriceUpdatedNotification  953.89ms DONE
+  2024-08-07 18:44:35 App\Jobs\WishList\PriceUpdatedJob .............. RUNNING
+  2024-08-07 18:44:36 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:36 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:36 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:36 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:36 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:37 App\Jobs\WishList\PriceUpdatedJob .............. 1s DONE
+  2024-08-07 18:44:37 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:37 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:38 App\Notifications\PriceUpdatedNotification  2024-08-07 18:44:38 App\Notifications\PriceUpdatedNotification ..... 2s DONE
+ ..... 2s DONE
+  2024-08-07 18:44:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:38 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:44:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:39 App\Notifications\PriceUpdatedNotification  2024-08-07 18:44:39 App\Notifications\PriceUpdatedNotification ..... 3s DONE
+ ..... 3s DONE
+  2024-08-07 18:44:39 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:39 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:40 App\Notifications\PriceUpdatedNotification ..... 3s DONE
+  2024-08-07 18:44:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:40 App\Notifications\PriceUpdatedNotification ..... 3s DONE
+  2024-08-07 18:44:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... 2s DONE
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... 3s DONE
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... 2s DONE
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification .....  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification 1s DONE
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... 2s DONE
+ ..... 1s DONE
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... ..... RUNNING
+ RUNNING
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:41 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:44:42 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:44:42 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:44:42 App\Notifications\PriceUpdatedNotification  2024-08-07 18:44:42 App\Notifications\PriceUpdatedNotification  2024-08-07 18:44:42 App\Notifications\PriceUpdatedNotification ..... ..... ..... 1s DONE
+  2024-08-07 18:44:42 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+ 1s DONE
+  2024-08-07 18:44:42 App\Notifications\PriceUpdatedNotification 1s DONE
+ ..... 1s DONE
+  2024-08-07 18:48:37 App\Jobs\WishList\PriceUpdatedJob .............. RUNNING
+  2024-08-07 18:48:37 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:37 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:37 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:38 App\Jobs\WishList\PriceUpdatedJob .............. 1s DONE
+  2024-08-07 18:48:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:38 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:48:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:38 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:48:38 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:48:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:38 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification  743.43ms DONE
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification  907.20ms DONE
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:48:39 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification  957.60ms DONE
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification  968.53ms DONE
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification .....  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification RUNNING
+ ..... RUNNING
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification  697.19ms DONE
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification  859.09ms DONE
+  2024-08-07 18:48:40 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification  928.12ms DONE
+  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification ..... RUNNING
+  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification  895.54ms DONE
+ .....  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification  974.44ms 1s DONE
+ DONE
+  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification ..... 1s DONE
+  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification  2024-08-07 18:48:41 App\Notifications\PriceUpdatedNotification ..... 1s ..... 1s DONE
+ DONE
+ ..... 1s DONE
+  2024-08-07 18:48:42 App\Notifications\PriceUpdatedNotification  858.79ms DONE
+  2024-08-07 18:55:14 App\Jobs\WishList\PriceUpdatedJob .............. RUNNING
+  2024-08-07 18:55:17 App\Jobs\WishList\PriceUpdatedJob .............. 3s DONE

@@ -19,7 +19,7 @@ class ProductAvailableNotification extends Notification  implements ShouldQueue
      */
     public function __construct(public Product $product)
     {
-        $this->onQueue(QueueTypes::WISHLIST->value);
+        $this->onQueue(QueueTypes::WISHLIST_NOTIFICATION->value);
     }
 
     /**
