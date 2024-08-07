@@ -13,14 +13,6 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishListController;
 
-
-
-Route::get('/test', function (){
-
-
-} );
-
-
 Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
 
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
