@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -11,6 +12,13 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishListController;
+
+
+
+Route::get('/test', function (){
+
+
+} );
 
 
 Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
