@@ -32,12 +32,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ImageRepositoryContract::class, ImageRepository::class);
         $this->app->bind(FileServiceContract::class, FileService::class);
 
-
-
         $this->app->bind(WishListRepositoryContract::class,
             WishListRepository::class);
 
-
+        $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+        $this->app->register(TelescopeServiceProvider::class);
     }
 
     /**

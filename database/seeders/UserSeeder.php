@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enum\Role;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,7 +24,11 @@ class UserSeeder extends Seeder
 
         User::factory(3)->moderator()->create();
 
-        User::factory(5)->create();
+        $product = Product::first();
+
+        User::factory(500)->create()->each(function ($user) use ($product){
+            $user->wishes()->attach($product->id);
+        });
 
     }
 }
