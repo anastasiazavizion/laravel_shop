@@ -25,6 +25,7 @@ import ProductsIndex from "@/Pages/Product/Index.vue";
 
 import Cart from "@/Pages/Cart/Index.vue";
 import Wishlist from "@/Pages/Account/WishList.vue";
+import Checkout from "@/Pages/Cart/Checkout.vue";
 
 
 const routes = [
@@ -172,6 +173,13 @@ const routes = [
             },
 
             {
+                path: 'checkout',
+                component: Checkout,
+                name:'checkout.index',
+            },
+
+
+            {
                 path: '/products/:id',
                 component: ProductsShow,
                 name:'products.show',
@@ -197,6 +205,7 @@ const routes = [
             },
         ],
     },
+
 
 ];
 
