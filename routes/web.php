@@ -52,7 +52,6 @@ Route::prefix('paypal')->name('paypal.')->group(function (){
 Route::get('/invoices/{order}', InvoiceController::class)->name('invoices.order')->middleware('auth:sanctum');
 
 
-
 Route::get('orderByVendorId', [\App\Http\Controllers\OrderController::class, 'getOrderByVendorId'])->name('orderByVendorId');
 Route::get('{any}', function () {
     return view('app');

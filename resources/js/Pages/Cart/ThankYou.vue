@@ -23,6 +23,13 @@ const authenticated = computed(()=>{
     return store.getters['auth/authenticated'];
 })
 
+function getInvoice(order){
+    axios.get('/invoices/'+order.id).then((resp)=>{
+        window.open(resp.data, '_blank');
+    }).catch((error)=>{
+        console.log(error);
+    })
+}
 </script>
 <template>
 <div v-if="order">
@@ -43,7 +50,7 @@ const authenticated = computed(()=>{
     <h1 class="text-center font-bold text-lg mb-4">Sorry, cannot find this order...</h1>
 </div>
 
-<div v-if="authenticated">
-    <PrimaryButton>Get Invoice</PrimaryButton>
+<div v-if="authenticated" class="mt-4">
+    <PrimaryButton @click="getInvoice(order)">Get Invoice</PrimaryButton>
 </div>
 </template>
