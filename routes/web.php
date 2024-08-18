@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\WishListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payments\PaypalController;
+use App\Http\Controllers\InvoiceController;
 
 Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
 
@@ -47,6 +48,9 @@ Route::prefix('paypal')->name('paypal.')->group(function (){
    Route::post('order',[PaypalController::class, 'create'])->name('order.create');
    Route::post('order/{vendorOrderId}/capture',[PaypalController::class, 'capture'])->name('order.capture');
 });
+
+Route::get('/invoices/{order}', InvoiceController::class)->name('invoices.order')->middleware('auth:sanctum');
+
 
 
 Route::get('orderByVendorId', [\App\Http\Controllers\OrderController::class, 'getOrderByVendorId'])->name('orderByVendorId');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Order\Requests\OrderByVendorRequest;
+use App\Http\Requests\Order\OrderByVendorRequest;
 use App\Models\Order;
 
 class OrderController extends Controller
