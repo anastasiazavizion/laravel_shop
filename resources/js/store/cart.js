@@ -94,6 +94,10 @@ const actions = {
         } catch (error) {
             commit('setCartItems', []);
         }
+    },
+
+    async clearCart({commit}) {
+        commit('clearCart', []);
     }
 
 };

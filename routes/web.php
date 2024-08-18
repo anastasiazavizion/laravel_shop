@@ -1,17 +1,16 @@
 <?php
 
-use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
+use App\Http\Controllers\Admin\ProductsController as AdminProductsController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\UserController;
-use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
-use App\Http\Controllers\Admin\ProductsController as AdminProductsController;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\WishListController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Payments\PaypalController;
 
 Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
 
@@ -44,6 +43,13 @@ Route::prefix('cart')->name('cart.')->middleware('auth:sanctum')->group(function
     Route::delete('/', [CartController::class, 'delete'])->name('delete');
 });
 
+Route::prefix('paypal')->name('paypal.')->group(function (){
+   Route::post('order',[PaypalController::class, 'create'])->name('order.create');
+   Route::post('order/{vendorOrderId}/capture',[PaypalController::class, 'capture'])->name('order.capture');
+});
+
+
+Route::get('orderByVendorId', [\App\Http\Controllers\OrderController::class, 'getOrderByVendorId'])->name('orderByVendorId');
 Route::get('{any}', function () {
     return view('app');
 })->where('any', '.*');

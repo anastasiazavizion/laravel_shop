@@ -1,26 +1,42 @@
 <script setup>
-import {onMounted, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
 import paypalFunction from "@/Services/Payment/paypal.js";
+import {useStore} from "vuex";
+const store = useStore();
+
+const user = computed(()=>{
+    return store.getters['auth/user'];
+})
 
 const form = ref({
-    name:null,
-    lastname:null,
-    email:null,
-    phone:null,
+    name:user.value.name ?? null,
+    lastname:user.value.lastname ?? null,
+    email:user.value.email ?? null,
+    phone:user.value.phone ?? null,
     address:null,
     city:null,
 });
 
 const emptyFields = ref([]);
 
+const cartItems = computed(()=>{
+    return store.getters['cart/cartItems']
+})
+
+const cartItemsNotEmpty = computed(()=>{
+    return cartItems.value.length > 0;
+})
+
 function isEmptyField(field){
     return emptyFields.value.length > 0 && emptyFields.value.includes(field)
 }
 
 onMounted(()=>{
-    paypalFunction(form, emptyFields);
+    if(cartItemsNotEmpty.value){
+        paypalFunction(form, emptyFields);
+    }
 });
 
 function getInputStyle(field){
@@ -31,7 +47,7 @@ function getInputStyle(field){
 <template>
 
  <Header>Checkout</Header>
-   <div class="grid grid-cols-2 gap-4">
+   <div class="grid grid-cols-2 gap-4" v-if="cartItemsNotEmpty">
        <div>
            <Card>
            <form>
@@ -72,5 +88,13 @@ function getInputStyle(field){
            <div id="paypal-button-container"></div>
        </div>
    </div>
+    <div class="text-center" v-else>
+        <p class="text-lg">Sorry, you cannot do checkout with an empty cart.</p>
+
+        <router-link class="btn btn-style" to="/products">All products</router-link>
+
+
+
+    </div>
 
 </template>

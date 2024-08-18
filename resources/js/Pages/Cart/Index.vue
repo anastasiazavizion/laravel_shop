@@ -49,9 +49,11 @@ onMounted(async () => {
 function removeFromCart(item){
     store.dispatch('cart/removeFromCart', item)
 }
+
 function updateCount(event, id){
     store.dispatch('cart/updateCount', {id:id, amount:parseInt(event.target.value)})
 }
+
 function productUrl(product){
     return {name:'products.show', params:{id:product.id}};
 }
@@ -103,7 +105,7 @@ const finalPrice = computed((item)=>{
                     <div><Price>{{cartTotalPrice}}</Price></div>
                 </div>
                 <div>
-                    <button class="btn btn-checkout w-full">Proceed To Checkout</button>
+                    <router-link to="/checkout" class="btn btn-checkout w-full">Proceed To Checkout</router-link>
                 </div>
             </div>
         </div>

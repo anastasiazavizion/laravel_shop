@@ -14,6 +14,7 @@ class WishListObserver
         match (true) {
             $product->final_price < $product->getOriginal('finalPrice') => PriceUpdatedJob::dispatch($product),
             $product->exist && $product->getOriginal('exist') => ProductExistJob::dispatch($product),
+            default => null
         };
 
     }

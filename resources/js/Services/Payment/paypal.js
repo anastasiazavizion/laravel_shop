@@ -1,37 +1,58 @@
 import {useToast} from "vue-toastification";
-import {watch} from "vue";
+import {computed, watch} from "vue";
+import {useStore} from "vuex";
+import {useRouter} from "vue-router";
 
 const paypalFunction = (form, emptyFields) => {
+
+    const store = useStore();
+    const toast= useToast();
+    const router = useRouter();
+
+    const cartItems = computed(()=>{
+        return store.getters['cart/cartItems']
+    })
+
+    form.value.cartItems = cartItems.value;
+
     function hasEmptyFields() {
-        return Object.values(form.value).some(value => !value || value.trim() === '');
+        return Object.values(form.value).some(value => {
+            if (Array.isArray(value)) {
+                return false; // Skip array values
+            }
+            return !value || value.trim() === '';
+        });
     }
 
     function setEmptyFields(){
         emptyFields.value = [];
         Object.keys(form.value).forEach(key => {
+            if (Array.isArray(form.value[key])) {
+                return false; // Skip array values
+            }
             if(!form.value[key] || form.value[key].trim() === ''){
                 emptyFields.value.push(key);
             }
         });
     }
 
-    watch(form, () => {
-        setEmptyFields();
-    }, { deep: true });
 
     paypal.Buttons({
         onInit(data, actions){
             actions.disable();
-            if(!hasEmptyFields()){
-                actions.enable();
-            }
+            watch(form, () => {
+                setEmptyFields();
+                if (!hasEmptyFields()) {
+                    actions.enable();
+                } else {
+                    actions.disable();
+                }
+            }, { deep: true });
         },
 
-        // onClick is called when the button is selected
         onClick() {
             if(hasEmptyFields()){
                 setEmptyFields();
-                const toast= useToast();
                 toast.error('Please fill all fields', {
                     timeout: 3000
                 });
@@ -40,20 +61,28 @@ const paypalFunction = (form, emptyFields) => {
 
         // Call your server to set up the transaction
         createOrder: function (data, actions) {
+            console.log('create order');
             return axios.post('paypal/order', form.value).then(function (res) {
-                return res.data.vendor_order_id;
+                // Assuming res.data contains the vendor_order_id
+                return res.data.vendor_order_id; // Return this for onApprove to access it
             }).catch(function (error) {
                 console.log(error);
             });
         },
 
-
         // Call your server to finalize the transaction
         onApprove: function (data, actions) {
-            return axios.post('paypal/order/' + data.vendor_order_id + '/capture')
+            return axios.post('paypal/order/' + data.orderID + '/capture')
                 .then(function (res) {
-                console.log(res);
-            }).catch(function (orderData) {
+
+                 store.dispatch('cart/clearCart');
+
+                 toast.success('Order was created!', {
+                        onClose: () => {
+                            router.push('orders/'+res.data.vendor_order_id+'/thank-you');
+                        }
+                    });
+                }).catch(function (orderData) {
                 // Three cases to handle:
                 //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
                 //   (2) Other non-recoverable errors -> Show a failure message
@@ -87,7 +116,6 @@ const paypalFunction = (form, emptyFields) => {
                 // Or go to another URL:  actions.redirect('thank_you.html');
             });
         }
-
     }).render('#paypal-button-container');
 }
 
