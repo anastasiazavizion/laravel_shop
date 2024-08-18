@@ -7758,3 +7758,1181 @@ App\Models\Order {#1476
 } // app/Notifications/NewOrderCreatedNotification.php:40
   2024-08-18 16:06:45 App\Notifications\NewOrderCreatedNotification .. RUNNING
   2024-08-18 16:06:49 App\Notifications\NewOrderCreatedNotification .. 3s DONE
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` = illuminate:queue:restart limit 1)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕ 
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+  2024-08-18 21:02:53 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-18 21:02:56 App\Listeners\OrderCreatedListener ............. 3s DONE
