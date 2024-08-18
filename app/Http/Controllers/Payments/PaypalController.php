@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Payments;
 use App\Enum\PaymentSystemEnum;
 use App\Events\OrderCreatedEvent;
 use App\Http\Controllers\Controller;
-use App\Http\Order\Requests\CreateOrderRequest;
+use App\Http\Requests\Order\CreateOrderRequest;
 use App\Repositories\Contract\CartRepositoryContract;
 use App\Repositories\Contract\OrderRepositoryContract;
 use App\Services\Contracts\PayPalServiceContract;

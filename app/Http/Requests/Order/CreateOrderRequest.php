@@ -1,8 +1,5 @@
 <?php
-
-namespace App\Http\Order\Requests;
-
-use App\Rules\PhoneNumberRule;
+namespace App\Http\Requests\Order;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateOrderRequest extends FormRequest
