@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Order;
 
 use App\Rules\PhoneNumberRule;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateOrderRequest extends FormRequest
