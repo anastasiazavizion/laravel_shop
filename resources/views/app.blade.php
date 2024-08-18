@@ -10,9 +10,14 @@
         @vite(['resources/js/app.js', 'resources/scss/app.scss', 'resources/css/app.css'])
     </head>
     <body class="font-sans antialiased">
-     <div id="app"></div>
+
+
+    <div id="app"></div>
+     <script src="https://www.paypal.com/sdk/js?client-id=AbMhll_wuH30RQBDrZxalcYa-38zWhtydMIYPiRwN_kucqsTTURtiaJ_xsxFRwBHvfKIIY6Zcfb5CSk-&currency=USD"></script>
+
     </body>
     <script type="text/javascript">
+
         window.Laravel = {
             jsPermissions: {!! auth()->check() ? auth()->user()->jsPermissions() : 0!!}
         }

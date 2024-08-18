@@ -26,6 +26,7 @@ import ProductsIndex from "@/Pages/Product/Index.vue";
 import Cart from "@/Pages/Cart/Index.vue";
 import Wishlist from "@/Pages/Account/WishList.vue";
 import Checkout from "@/Pages/Cart/Checkout.vue";
+import ThankYou from "@/Pages/Cart/ThankYou.vue";
 
 
 const routes = [
@@ -173,9 +174,14 @@ const routes = [
             },
 
             {
-                path: 'checkout',
+                path: '/checkout',
                 component: Checkout,
                 name:'checkout.index',
+            },
+     {
+                path: 'orders/:id/thank-you',
+                component: ThankYou,
+                name:'orders.thank-you',
             },
 
 

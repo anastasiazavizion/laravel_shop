@@ -66,14 +66,15 @@ class User extends Authenticatable
             ->withPivot(['price','exist']);
     }
 
-
     public function isWishedProduct(Product $product, string $type = 'price')
     {
         return $this->wishes()->where('product_id', $product->id)
             ->wherePivot('type', $type)
             ->exists();
-
     }
 
-
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }

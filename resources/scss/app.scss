@@ -8,10 +8,12 @@
     form label{
         @apply font-bold;
     }
+
     form input[type=text], form input[type=password],form input[type=email], form select, .form-control{
-        @apply w-full rounded;
+        @apply w-full rounded focus:ring-0;
         border: $borderSize $borderStyle $formElementsBorderColor;
     }
+
     form > div{
         @apply mt-2;
     }
