@@ -5,6 +5,7 @@ import {useStore} from "vuex";
 import OrderUserDetails from "@/Pages/Cart/Partials/OrderUserDetails.vue";
 import OrderDetails from "@/Pages/Cart/Partials/OrderDetails.vue";
 import ProductDetails from "@/Pages/Cart/Partials/ProductDetails.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const route = useRoute();
 const store = useStore();
@@ -17,6 +18,18 @@ onMounted(async () => {
 const order = computed(()=>{
     return store.getters["order/order"];
 })
+
+const authenticated = computed(()=>{
+    return store.getters['auth/authenticated'];
+})
+
+function getInvoice(order){
+    axios.get('/invoices/'+order.id).then((resp)=>{
+        window.open(resp.data, '_blank');
+    }).catch((error)=>{
+        console.log(error);
+    })
+}
 </script>
 <template>
 <div v-if="order">
@@ -35,5 +48,9 @@ const order = computed(()=>{
 </div>
 <div v-else>
     <h1 class="text-center font-bold text-lg mb-4">Sorry, cannot find this order...</h1>
+</div>
+
+<div v-if="authenticated" class="mt-4">
+    <PrimaryButton @click="getInvoice(order)">Get Invoice</PrimaryButton>
 </div>
 </template>

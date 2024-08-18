@@ -17,6 +17,7 @@ return [
         'app_id'            => env('PAYPAL_LIVE_APP_ID', ''),
     ],
 
+    'tax'            => 0,
     'payment_action' => env('PAYPAL_PAYMENT_ACTION', 'Sale'), // Can only be 'Sale', 'Authorization' or 'Order'
     'currency'       => env('PAYPAL_CURRENCY', 'USD'),
     'category'       => env('PAYPAL_CATEGORY', 'PHYSICAL_GOODS'),
