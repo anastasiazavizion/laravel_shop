@@ -7,7 +7,9 @@
     "require": {
         "php": "^8.2",
         "ahmedsaoud31/laravel-permission-to-vuejs": "dev-master",
+        "azate/laravel-telegram-login-auth": "^2.4",
         "inertiajs/inertia-laravel": "^1.0",
+        "laravel-notification-channels/telegram": "^5.0",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/telescope": "^5.2",
@@ -15,7 +17,7 @@
         "laraveldaily/laravel-invoices": "^4.0",
         "spatie/laravel-permission": "^6.9",
         "srmklive/paypal": "^3.0",
-        "tightenco/ziggy": "^2.0"
+        "tightenco/ziggy": "^2.3"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",

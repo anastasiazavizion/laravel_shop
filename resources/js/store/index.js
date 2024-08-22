@@ -8,6 +8,7 @@ import category from './category.js';
 import product from './product.js';
 import cart from './cart.js';
 import order from './order.js';
+import user from './user.js';
 
 const store = createStore({
     modules: {
@@ -17,7 +18,8 @@ const store = createStore({
         category,
         product,
         cart,
-        order
+        order,
+        user,
     },
     plugins: [createPersistedState()]
 });

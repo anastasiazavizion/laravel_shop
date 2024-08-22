@@ -229,16 +229,20 @@ router.beforeEach((to, from, next) => {
         next()
     }else{
         let allow = true;
-        for(let rule of middleware){
-            if(rule.includes('can:')){
-                allow = permission.includes(rule.replace('can:',''));
-            }else if(rule === 'auth'){
-                allow = store.getters['auth/authenticated'];
-            }else{
-                allow = roles.includes(rule);
-            }
-            if(!allow){
-                break;
+        if(permission === 0 || roles === 0){
+            allow = false;
+        }else{
+            for(let rule of middleware){
+                if(rule.includes('can:')){
+                    allow = permission.includes(rule.replace('can:',''));
+                }else if(rule === 'auth'){
+                    allow = store.getters['auth/authenticated'];
+                }else{
+                    allow = roles.includes(rule);
+                }
+                if(!allow){
+                    break;
+                }
             }
         }
         if(allow){
