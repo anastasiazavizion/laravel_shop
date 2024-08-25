@@ -12,6 +12,7 @@ use App\Http\Controllers\WishListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payments\PaypalController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\Callbacks\JoinTelegramController;
 
 Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
 
@@ -51,6 +52,10 @@ Route::prefix('paypal')->name('paypal.')->group(function (){
 
 Route::get('/invoices/{order}', InvoiceController::class)->name('invoices.order')->middleware('auth:sanctum');
 
+
+Route::name('callbacks.')->prefix('callbacks')->group(function (){
+    Route::get('telegram', JoinTelegramController::class)->name('telegram')->middleware(['role:admin']);
+});
 
 Route::get('orderByVendorId', [\App\Http\Controllers\OrderController::class, 'getOrderByVendorId'])->name('orderByVendorId');
 Route::get('{any}', function () {

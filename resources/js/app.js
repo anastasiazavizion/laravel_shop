@@ -7,12 +7,15 @@ import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
+import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+
 import { register } from 'swiper/element/bundle';
 register();
 
 createApp(App)
     .use(router)
     .use(store)
+    .use(ZiggyVue)
     .use(LaravelPermissionToVueJS)
     .use(Toast)
     .mount('#app')

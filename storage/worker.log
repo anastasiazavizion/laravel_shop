@@ -8936,3 +8936,296 @@ App\Models\Order {#1476
 
   2024-08-18 21:02:53 App\Listeners\OrderCreatedListener ............. RUNNING
   2024-08-18 21:02:56 App\Listeners\OrderCreatedListener ............. 3s DONE
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+
+   ErrorException 
+
+  include(/var/www/html/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Events/Terminating.php): Failed to open stream: No such file or directory
+
+  at vendor/composer/ClassLoader.php:576
+    572▕          * @param  string $file
+    573▕          * @return void
+    574▕          */
+    575▕         self::$includeFile = \Closure::bind(static function($file) {
+  ➜ 576▕             include $file;
+    577▕         }, null, null);
+    578▕     }
+    579▕ }
+    580▕
+
+      [2m+4 vendor frames [22m
+
+  5   artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+  2024-08-22 09:43:45 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:43:45 App\Listeners\OrderCreatedListener ........ 94.95ms FAIL
+  2024-08-22 09:43:45 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:43:46 App\Listeners\OrderCreatedListener ....... 205.92ms FAIL
+  2024-08-22 09:43:46 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:45:39 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:45:44 App\Listeners\OrderCreatedListener ............. 5s FAIL
+  2024-08-22 09:45:45 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:45:46 App\Listeners\OrderCreatedListener ............. 1s FAIL
+  2024-08-22 09:45:46 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:45:49 App\Listeners\OrderCreatedListener ............. 3s FAIL
+  2024-08-22 09:48:53 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:48:55 App\Listeners\OrderCreatedListener ............. 1s FAIL
+  2024-08-22 09:48:55 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:48:56 App\Listeners\OrderCreatedListener ............. 1s FAIL
+  2024-08-22 09:48:56 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:49:00 App\Listeners\OrderCreatedListener ............. 3s FAIL
+  2024-08-22 09:53:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  115.40ms FAIL
+  2024-08-22 09:53:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  14.69ms FAIL
+  2024-08-22 09:53:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:41 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:41 App\Notifications\Admin\NewOrderCreatedAdminNotification  926.66ms FAIL
+  2024-08-22 09:53:44 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:44 App\Notifications\Admin\NewOrderCreatedAdminNotification  17.07ms FAIL
+  2024-08-22 09:53:44 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:44 App\Notifications\Admin\NewOrderCreatedAdminNotification  14.09ms FAIL
+  2024-08-22 09:53:44 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:44 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:53:49 App\Notifications\Admin\NewOrderCreatedAdminNotification  7s DONE
+  2024-08-22 09:53:49 App\Notifications\Admin\NewOrderCreatedAdminNotification  4s DONE
+  2024-08-22 09:53:51 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:53:52 Laravel\Telescope\Jobs\ProcessPendingUpdates  721.73ms DONE
+  2024-08-22 09:53:52 App\Notifications\Admin\NewOrderCreatedAdminNotification  7s FAIL
+  2024-08-22 09:53:59 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:53:59 Laravel\Telescope\Jobs\ProcessPendingUpdates  279.70ms DONE
+  2024-08-22 09:54:01 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:54:01 Laravel\Telescope\Jobs\ProcessPendingUpdates  395.74ms DONE
+  2024-08-22 09:54:09 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:54:09 Laravel\Telescope\Jobs\ProcessPendingUpdates  172.63ms DONE
+  2024-08-22 09:54:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:54:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  254.79ms DONE
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  45.46ms FAIL
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  27.54ms FAIL
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  16.72ms FAIL
+  2024-08-22 09:54:14 App\Notifications\Admin\NewOrderCreatedAdminNotification  19.09ms FAIL
+  2024-08-22 09:54:15 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:15 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:15 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:15 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:15 App\Notifications\Admin\NewOrderCreatedAdminNotification  625.89ms FAIL
+  2024-08-22 09:54:15 App\Notifications\Admin\NewOrderCreatedAdminNotification  886.99ms FAIL
+  2024-08-22 09:54:15 App\Notifications\Admin\NewOrderCreatedAdminNotification  867.43ms DONE
+  2024-08-22 09:54:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  934.65ms DONE
+  2024-08-22 09:54:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  31.38ms FAIL
+  2024-08-22 09:54:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  15.53ms FAIL
+  2024-08-22 09:54:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:17 App\Notifications\Admin\NewOrderCreatedAdminNotification  668.62ms FAIL
+  2024-08-22 09:54:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-22 09:54:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  17.45ms FAIL
+  2024-08-22 09:54:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  13.37ms FAIL
+  2024-08-22 09:54:19 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:54:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:54:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  471.40ms FAIL
+  2024-08-22 09:54:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  807.60ms DONE
+  2024-08-22 09:54:19 Laravel\Telescope\Jobs\ProcessPendingUpdates  972.52ms DONE
+  2024-08-22 09:55:17 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:17 App\Notifications\Admin\NewOrderCreatedAdminNotification  35.50ms FAIL
+  2024-08-22 09:55:17 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:17 App\Notifications\Admin\NewOrderCreatedAdminNotification  23.29ms FAIL
+  2024-08-22 09:55:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s FAIL
+  2024-08-22 09:55:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-22 09:55:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  22.22ms FAIL
+  2024-08-22 09:55:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  18.20ms FAIL
+  2024-08-22 09:55:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:20 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 09:55:20 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s FAIL
+  2024-08-22 09:55:21 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-22 09:55:30 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:55:30 Laravel\Telescope\Jobs\ProcessPendingUpdates  405.22ms DONE
+  2024-08-22 09:55:31 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:55:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  910.10ms DONE
+  2024-08-22 09:55:41 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:55:41 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:55:41 Laravel\Telescope\Jobs\ProcessPendingUpdates  353.05ms DONE
+  2024-08-22 09:55:42 Laravel\Telescope\Jobs\ProcessPendingUpdates  524.83ms DONE
+  2024-08-22 09:55:51 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:55:51 Laravel\Telescope\Jobs\ProcessPendingUpdates  233.02ms DONE
+  2024-08-22 09:55:51 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-08-22 09:55:51 Laravel\Telescope\Jobs\ProcessPendingUpdates  264.62ms DONE
+  2024-08-22 09:57:15 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:57:16 App\Listeners\OrderCreatedListener ............. 1s FAIL
+  2024-08-22 09:57:16 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:57:17 App\Listeners\OrderCreatedListener ............. 1s FAIL
+  2024-08-22 09:57:17 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 09:57:20 App\Listeners\OrderCreatedListener ............. 2s FAIL
+  2024-08-22 10:07:25 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 10:07:27 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-08-22 10:07:27 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 10:07:28 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 10:07:28 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-22 10:07:29 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-22 10:11:59 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-22 10:12:00 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-08-22 10:12:00 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 10:12:00 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-22 10:12:01 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-08-22 10:12:01 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-22 10:12:01 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-22 10:12:04 App\Notifications\NewOrderCreatedNotification .. 4s DONE
