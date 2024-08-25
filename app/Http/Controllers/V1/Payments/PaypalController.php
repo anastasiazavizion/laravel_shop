@@ -1,8 +1,9 @@
 <?php
-namespace App\Http\Controllers\Payments;
+namespace App\Http\Controllers\V1\Payments;
 use App\Enum\PaymentSystemEnum;
 use App\Events\OrderCreatedEvent;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Payments\Exception;
 use App\Http\Requests\Order\CreateOrderRequest;
 use App\Repositories\Contract\CartRepositoryContract;
 use App\Repositories\Contract\OrderRepositoryContract;

@@ -1,10 +1,11 @@
 <?php
-namespace App\Http\Controllers;
-use App\Http\Resources\ProductResource;
+namespace App\Http\Controllers\V2;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V2\Products\ProductResource;
+use App\Http\Resources\V2\Products\ProductsCollection;
 use App\Models\Product;
 use App\Repositories\Contract\ProductRepositoryContract;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -21,13 +22,13 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        return response()->json(ProductResource::collection($this->repository->getAll(true, $request->all()))->response()->getData());
+        $products = $this->repository->getAll(true, $request->all());
+        return new ProductsCollection($products);
     }
 
     public function show(Product  $product)
     {
         $product->load(['categories']);
-        return response()->json(['product'=>['data'=>$product, 'gallery'=>$this->repository->getGallery($product)]], 200);
+        return response()->json(['product'=>['data'=>new ProductResource($product), 'gallery'=>$this->repository->getGallery($product)]], 200);
     }
-
 }

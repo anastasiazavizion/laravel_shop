@@ -20,21 +20,28 @@ const mutations = {
 };
 
 const actions = {
-    async login({ commit}) {
+    async login({ commit}, payload) {
         try {
-            const response = await axios.get('/user');
+            await axios.post(route('v1.login'), payload);
+            const response = await axios.get(route('v1.user'));
             const { user, permissions } = response.data;
             commit('SET_USER', user);
             commit('SET_AUTHENTICATED', true);
             window.Laravel.jsPermissions = JSON.parse(permissions);
         } catch (error) {
+            console.log(error);
             commit('SET_USER', {});
             commit('SET_AUTHENTICATED', false);
         }
     },
-    logout({ commit }) {
-        commit('SET_USER', {});
-        commit('SET_AUTHENTICATED', false);
+    async logout({commit}) {
+        try{
+            await axios.post(route('v1.logout'));
+            commit('SET_USER', {});
+            commit('SET_AUTHENTICATED', false);
+        }catch(error){
+            console.log(error);
+        }
     }
 };
 

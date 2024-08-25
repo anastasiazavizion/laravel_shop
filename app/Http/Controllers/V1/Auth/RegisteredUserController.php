@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers\Auth;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers\V1\Auth;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+
 class RegisteredUserController
 {
     /**

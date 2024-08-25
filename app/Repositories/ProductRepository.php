@@ -55,7 +55,7 @@ class ProductRepository implements ProductRepositoryContract
     {
         $query = Product::query()->when((!empty($params['ids'])), function ($q) use ($params){
             $q->whereIn('id',$params['ids']);
-        })->with(['categories'])->latest();
+        })->with(['categories', 'images'])->latest();
         if($paginate){
             return  $query->paginate(config('app.products_limit'));
         }

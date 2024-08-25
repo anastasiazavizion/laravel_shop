@@ -29,8 +29,8 @@ const actions = {
 
     async getAll({ commit }) {
         try {
-            const response = await axios.get('/admin/data/products');
-            commit('setProducts', response.data);
+            const response = await axios.get(route('v1.admin.products.index'));
+            commit('setProducts', response.data.data);
         } catch (error) {
             commit('setProducts', []);
         }
@@ -38,8 +38,8 @@ const actions = {
 
     async getProduct({ commit}, payload) {
         try {
-            const response = await axios.get('/admin/data/products/'+payload.id);
-            commit('setProduct', response.data);
+            const response = await axios.get(route('v1.admin.products.show',payload.id));
+            commit('setProduct', response.data.data);
         } catch (error) {
             commit('setProduct', []);
         }
@@ -49,7 +49,7 @@ const actions = {
         commit('setErrors', []);
         data.append('_method', 'put');
         try {
-            const response = await axios.post('/admin/data/products/'+id, data, {
+            const response = await axios.post(route('v1.admin.products.update',id), data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -66,14 +66,13 @@ const actions = {
     async createProduct({ commit }, data) {
         commit('setErrors', []);
         try {
-            const response = await axios.post('/admin/data/products/', data, {
+            const response = await axios.post(route('v1.admin.products.store'), data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
         } catch (error) {
             if(error.response.status === 422){
-                console.log(error.response.data.errors);
                 commit('setErrors', error.response.data.errors);
             }else{
                 commit('setErrors', [{'other':'Some other errors'}]);
@@ -83,11 +82,10 @@ const actions = {
 
     async deleteProduct({ commit}, payload) {
         try {
-            const response = await axios.delete('/admin/data/products/'+payload.id);
+            const response = await axios.delete(route('v1.admin.products.destroy', payload.id));
         } catch (error) {
         }
     }
-
 };
 
 export default {

@@ -9,9 +9,8 @@ const router = useRouter();
 
 const logout = async () => {
     try {
-        const { data } = await axios.post('/logout');
-        store.dispatch('auth/logout');
-        router.push('/auth/login');
+        await store.dispatch('auth/logout');
+        await router.push('/auth/login');
     } catch (error) {
         console.error(error);
     }

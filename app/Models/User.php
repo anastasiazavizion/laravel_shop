@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -77,5 +78,10 @@ class User extends Authenticatable
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function isAdminOrModerator(): bool
+    {
+        return $this->hasAnyRole([Role::ADMIN->value, Role::MODERATOR->value]);
     }
 }

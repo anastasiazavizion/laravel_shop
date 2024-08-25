@@ -23,7 +23,7 @@
 
 <script setup>
 import {useStore} from 'vuex'
-import {computed, ref} from "vue";
+import {ref} from "vue";
 import {useRouter} from "vue-router";
 import Errors from "@/Components/Errors.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
@@ -45,8 +45,8 @@ const login = async () => {
     errors.value = [];
     try {
         await axios.get('/sanctum/csrf-cookie');
-        const response = await axios.post('/login', auth.value);
-        await store.dispatch('auth/login');
+        await store.dispatch('auth/login', auth.value);
+
         const user = await store.getters['auth/user'];
         const roles = window.Laravel.jsPermissions['roles'];
 

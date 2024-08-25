@@ -62,7 +62,7 @@ const paypalFunction = (form, emptyFields) => {
         // Call your server to set up the transaction
         createOrder: function (data, actions) {
             console.log('create order');
-            return axios.post('paypal/order', form.value).then(function (res) {
+            return axios.post(route('v1.paypal.order.create'), form.value).then(function (res) {
                 // Assuming res.data contains the vendor_order_id
                 return res.data.vendor_order_id; // Return this for onApprove to access it
             }).catch(function (error) {
@@ -72,11 +72,9 @@ const paypalFunction = (form, emptyFields) => {
 
         // Call your server to finalize the transaction
         onApprove: function (data, actions) {
-            return axios.post('paypal/order/' + data.orderID + '/capture')
+            return axios.post(route('v1.paypal.order.capture', data.orderID))
                 .then(function (res) {
-
                  store.dispatch('cart/clearCart');
-
                  toast.success('Order was created!', {
                         onClose: () => {
                             router.push('orders/'+res.data.vendor_order_id+'/thank-you');

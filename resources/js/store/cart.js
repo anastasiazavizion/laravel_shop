@@ -46,7 +46,7 @@ const actions = {
         }
 
         if(rootGetters['auth/authenticated']){
-            await axios.post('/cart', { product });
+            await axios.post(route('v1.cart.add'), { product });
         }
 
     },
@@ -55,7 +55,7 @@ const actions = {
 
         commit('removeFromCart', product)
         if (rootGetters['auth/authenticated']) {
-            await axios.delete('/cart',{data:{
+            await axios.delete(route('v1.cart.delete'),{data:{
                 product:product
                 }});
         }
@@ -66,14 +66,14 @@ const actions = {
         if(indexValue !== -1){
             commit('updateProductAmount', {index:indexValue, amount:data.amount});
             if (rootGetters['auth/authenticated']) {
-                await axios.put('/cart/count/' + data.id, data);
+                await axios.put(route('v1.cart.count', data.id), data);
             }
         }
     },
 
     async getCartItemsForUser({commit, state}) {
         try {
-            const response = await axios.get('/cart/get');
+            const response = await axios.get(route('v1.cart.index'));
             commit('setCartItems', response.data.data);
         } catch (error) {
             commit('setCartItems', []);
@@ -82,7 +82,7 @@ const actions = {
 
     async setExistingCartItemsForUser({commit, state}) {
         try {
-            const response = await axios.put('/cart/user', state.cartItems);
+            const response = await axios.put(route('v1.cart.user.update.cart'), state.cartItems);
         } catch (error) {
             console.log(error);
         }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Cart\CountRequest;
 use App\Http\Requests\Cart\UpdateCartForUserWithExistingRequest;
-use App\Http\Resources\CartItemsResource;
+use App\Http\Resources\V1\CartItemsResource;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

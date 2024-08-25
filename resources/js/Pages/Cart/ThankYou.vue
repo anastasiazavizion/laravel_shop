@@ -7,12 +7,12 @@ import OrderDetails from "@/Pages/Cart/Partials/OrderDetails.vue";
 import ProductDetails from "@/Pages/Cart/Partials/ProductDetails.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
-const route = useRoute();
+const routeP = useRoute();
 const store = useStore();
 
 onMounted(async () => {
-    if (route.params.id) {
-        await store.dispatch('order/getOrderByVendorId', route.params.id);
+    if (routeP.params.id) {
+        await store.dispatch('order/getOrderByVendorId', routeP.params.id);
     }
 })
 const order = computed(()=>{
@@ -24,7 +24,7 @@ const authenticated = computed(()=>{
 })
 
 function getInvoice(order){
-    axios.get('/invoices/'+order.id).then((resp)=>{
+    axios.get(route('v1.invoices.order', order.id)).then((resp)=>{
         window.open(resp.data, '_blank');
     }).catch((error)=>{
         console.log(error);
