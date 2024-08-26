@@ -37,7 +37,7 @@ async function deleteProduct(id) {
 
 <template>
 <Header>All products</Header>
-    <Card id="products">
+    <Card id="products" class="overflow-x-auto">
         <table class="w-full">
             <thead>
             <tr>
@@ -57,7 +57,7 @@ async function deleteProduct(id) {
                     <router-link :to="{name:'admin.products.show', params:{id:product.id}}">{{product.title}}</router-link>
                 </td>
                 <td>
-                    <img :src="product.thumbnail_url" class="w-36">
+                    <img :src="product.thumbnail_url" class="w-36" :alt="product.title">
                 </td>
                 <td>{{product.SKU}}</td>
                 <td>{{product.description}}</td>
