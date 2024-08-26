@@ -3,7 +3,6 @@ defineProps({
     images:Array
 })
 </script>
-
 <template>
     <swiper-container navigation="true" loop="true">
         <swiper-slide navigation v-for="image in images">
@@ -11,7 +10,3 @@ defineProps({
         </swiper-slide>
     </swiper-container>
 </template>
-
-<style scoped>
-
-</style>

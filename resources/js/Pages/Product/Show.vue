@@ -1,5 +1,4 @@
 <script setup>
-import Header from "@/Components/Header.vue";
 import {computed, onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
 import {useStore} from "vuex";
@@ -30,12 +29,16 @@ async function addToCart(product) {
     await store.dispatch('cart/addToCart', product);
 }
 
+const onlyOneImage = computed(()=>{
+    return images.value.length === 1;
+})
 
 </script>
 <template>
         <div v-if="product" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-               <Slider :images="images"/>
+               <Slider v-if="images.length > 1" :images="images"/>
+               <img v-if="onlyOneImage" :src="images[0]" :alt="product.title">
             </div>
             <div>
                 <div>
