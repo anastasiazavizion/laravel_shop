@@ -71,3 +71,9 @@
         background-color: $btnAdditionalColor;
     }
 }
+
+nav{
+    .router-link-active{
+        @apply underline;
+    }
+}
