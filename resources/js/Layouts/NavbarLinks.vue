@@ -40,14 +40,14 @@ const props = defineProps({
 
 const routerLinkClass = computed(()=>{
     if(props.mobile){
-        return 'w-full block';
+        return 'w-full block mb-2 mt-2';
     }
     return '';
 })
 </script>
 
 <template>
-    <router-link  to="/home">Home</router-link>
+    <router-link :class="routerLinkClass" to="/home">Home</router-link>
 
     <div v-if="(is('admin') || is('moderator')) && authenticated">
         <Dropdown :mobile="mobile" v-if="authenticated" title="Products managing">
