@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +36,6 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
-
     }
 
     public function images() :MorphMany
@@ -119,6 +117,14 @@ class Product extends Model
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany(Order::class);
-
     }
+
+    protected function casts(): array
+    {
+        return [
+            'price' => 'float',
+            'final_price' => 'float',
+        ];
+    }
+
 }

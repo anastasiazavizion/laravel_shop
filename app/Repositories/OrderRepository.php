@@ -15,7 +15,6 @@ class OrderRepository implements  OrderRepositoryContract
     public function create(array $data): Order|false
     {
         $data['status_id'] = OrderStatus::inProcess()->first()->id;
-
         $order = auth()->check()
             ? auth()->user()->orders()->create($data)
             : Order::create($data);
@@ -24,13 +23,11 @@ class OrderRepository implements  OrderRepositoryContract
         return $order;
     }
 
-
     protected function addProductsToOrder(Order $order): void
     {
         //todo change
         Auth::user()->cartItems()->with(['product'])->get()->each(function($item) use ($order) {
             $product = $item->product;
-
             $order->products()->attach($product, [
                 'quantity' => $item->amount,
                 'single_price' => $product->price,

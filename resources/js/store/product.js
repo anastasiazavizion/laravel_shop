@@ -41,7 +41,7 @@ const mutations = {
 const actions = {
     async getAll({ commit }, payload) {
         try {
-            const response = await axios.get((payload && payload.url) ?? '/user/products', {params:payload});
+            const response = await axios.get((payload && payload.url) ?? route('v1.user.products.index'), {params:payload});
             commit('setProducts', response.data.data);
             commit('setLinks', response.data.meta.links);
         } catch (error) {
@@ -51,7 +51,7 @@ const actions = {
 
     async getProduct({ commit}, payload) {
         try {
-            const response = await axios.get('/user/products/'+payload.id);
+            const response = await axios.get(route('v1.user.products.show',payload.id));
             commit('setProduct', response.data.product);
         } catch (error) {
             commit('setProduct', []);
@@ -60,7 +60,7 @@ const actions = {
 
     async addToWishList({ commit}, payload) {
         try {
-            const response = await axios.post('/wishList/'+payload.product, {type:payload.type});
+            const response = await axios.post(route('v1.wishlist.wishlist.add',payload.product), {type:payload.type});
 
         } catch (error) {
 
@@ -69,7 +69,7 @@ const actions = {
 
     async removeFromWishList({ commit}, payload) {
         try {
-            const response = await axios.delete('/wishList/'+payload.product, {
+            const response = await axios.delete(route('v1.wishlist.wishlist.remove', payload.product),  {
                 params:{type:payload.type}
             });
 
@@ -80,7 +80,7 @@ const actions = {
 
     async wishes({ commit}, payload) {
         try {
-            const response = await axios.get((payload && payload.url) ?? '/wishlist', {params:payload});
+            const response = await axios.get((payload && payload.url) ?? route('v1.wishlist.wishlist.all'), {params:payload});
             commit('setWishes', response.data.data);
             commit('setWishesLinks', response.data.links);
         } catch (error) {

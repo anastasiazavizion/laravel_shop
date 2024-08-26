@@ -3,6 +3,7 @@ import Header from "@/Components/Header.vue";
 import Price from "@/Components/Price.vue";
 import {useStore} from "vuex";
 import WishListButtons from "@/Pages/Product/Partials/WishListButtons.vue";
+import BuyButton from "@/Pages/Product/Partials/BuyButton.vue";
 
 const props = defineProps({
     products:Array,
@@ -43,12 +44,7 @@ function deleteFromWishList(){
             </div>
             <div class="mt-4 p-4 border-t border-gray-200">
                 <div class="flex justify-between">
-                    <button v-if="product.in_stock" @click="addToCart(product)" class="btn btn-style">
-                        Add to Cart
-                    </button>
-                    <div v-else>
-                        <span class="bg-yellow-400 p-2 rounded-md text-white d-inline">Not in stock</span>
-                    </div>
+                    <BuyButton :product="product" @addToCart="addToCart"></BuyButton>
                     <WishListButtons @delete-from-wish-list="deleteFromWishList" :product="product"></WishListButtons>
                 </div>
             </div>

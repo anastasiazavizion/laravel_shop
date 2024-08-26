@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
-use App\Http\Resources\CartItemsResource;
+use App\Models\Category;
+use App\Models\Product;
+use App\Policies\Admin\CategoryPolicy;
+use App\Policies\Admin\ProductPolicy;
 use App\Repositories\CartRepository;
+use App\Repositories\CategoryRepository;
 use App\Repositories\Contract\CartRepositoryContract;
 use App\Repositories\Contract\CategoryRepositoryContract;
-use App\Repositories\CategoryRepository;
 use App\Repositories\Contract\ImageRepositoryContract;
 use App\Repositories\Contract\OrderRepositoryContract;
 use App\Repositories\Contract\ProductRepositoryContract;
@@ -21,8 +24,8 @@ use App\Services\Contracts\PayPalServiceContract;
 use App\Services\FileService;
 use App\Services\InvoiceService;
 use App\Services\PayPalService;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -57,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
+        Gate::policy(Product::class, ProductPolicy::class);
+        Gate::policy(Category::class, CategoryPolicy::class);
     }
 }

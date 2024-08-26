@@ -1,5 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V1;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\Categories\CategoriesCollection;
 use App\Repositories\Contract\CategoryRepositoryContract;
 
 class CategoriesController extends Controller
@@ -17,7 +19,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return response()->json($this->repository->getAll());
+        return new CategoriesCollection($this->repository->getAll());
     }
 
 }

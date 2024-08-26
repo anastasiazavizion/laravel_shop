@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Callbacks;
+namespace App\Http\Controllers\V1\Callbacks;
 
 use App\Http\Controllers\Controller;
 use Azate\LaravelTelegramLoginAuth\TelegramLoginAuth;

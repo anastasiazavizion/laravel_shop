@@ -8,6 +8,7 @@ import ProductDetail from "@/Pages/Product/Partials/ProductDetail.vue";
 import Slider from "@/Components/Slider.vue";
 import CategoryLabel from "@/Pages/Category/Partials/CategoryLabel.vue";
 import WishList from "@/Pages/Product/Partials/WishListButtons.vue";
+import BuyButton from "@/Pages/Product/Partials/BuyButton.vue";
 
 const product = ref(null);
 const images = ref(null);
@@ -57,7 +58,7 @@ async function addToCart(product) {
                 <div class="mt-4">
                     <div class="grid grid-cols-2">
                         <div  class="font-bold text-gray-700 pr-2">Price <Price>{{product.final_price}}</Price></div>
-                        <div @click="addToCart(product)"><button class="btn-style btn w-full">Buy</button></div>
+                        <BuyButton :product="product" @addToCart="addToCart"></BuyButton>
                     </div>
                 </div>
 

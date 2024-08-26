@@ -29,8 +29,8 @@ const actions = {
 
     async getAll({ commit }) {
         try {
-            const response = await axios.get('/admin/data/categories');
-            commit('setCategories', response.data);
+            const response = await axios.get(route('v1.admin.categories.index'));
+            commit('setCategories', response.data.data);
         } catch (error) {
             commit('setCategories', []);
         }
@@ -38,8 +38,9 @@ const actions = {
 
     async getCategory({ commit}, payload) {
         try {
-            const response = await axios.get('/admin/data/categories/'+payload.id);
-            commit('setCategory', response.data);
+            const response = await axios.get(route('v1.admin.categories.show',payload.id));
+            console.log(response);
+            commit('setCategory', response.data.data);
         } catch (error) {
             commit('setCategory', []);
         }
@@ -48,7 +49,7 @@ const actions = {
     async updateCategory({ commit }, { id, data }) {
         commit('setErrors', []);
         try {
-            const response = await axios.put('/admin/data/categories/'+id, data);
+            const response = await axios.put(route('v1.admin.categories.update',id), data);
         } catch (error) {
             if(error.response.status === 422){
                 commit('setErrors', error.response.data.errors);
@@ -61,7 +62,7 @@ const actions = {
     async createCategory({ commit }, data) {
         commit('setErrors', []);
         try {
-            const response = await axios.post('/admin/data/categories/', data);
+            const response = await axios.post(route('v1.admin.categories.store'), data);
         } catch (error) {
             if(error.response.status === 422){
                 console.log(error.response.data.errors);
@@ -76,7 +77,7 @@ const actions = {
 
     async deleteCategory({ commit}, payload) {
         try {
-            const response = await axios.delete('/admin/data/categories/'+payload.id);
+            const response = await axios.delete(route('v1.admin.categories.destroy',payload.id));
         } catch (error) {
 
         }
