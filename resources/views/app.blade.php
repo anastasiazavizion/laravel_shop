@@ -11,7 +11,7 @@
     </head>
     <body class="font-sans antialiased">
     <div id="app"></div>
-     <script src="https://www.paypal.com/sdk/js?client-id=AbMhll_wuH30RQBDrZxalcYa-38zWhtydMIYPiRwN_kucqsTTURtiaJ_xsxFRwBHvfKIIY6Zcfb5CSk-&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id={{ config('paypal.' . config('paypal.mode') . '.client_id') }}&currency={{ config('paypal.currency') }}"></script>
     </body>
     <script type="text/javascript">
         window.Laravel = {
