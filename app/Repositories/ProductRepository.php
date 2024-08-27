@@ -53,9 +53,16 @@ class ProductRepository implements ProductRepositoryContract
 
     public function getAll(bool $paginate = false, array $params = []) : Collection|LengthAwarePaginator
     {
-        $query = Product::query()->when((!empty($params['ids'])), function ($q) use ($params){
+        $query = Product::query()
+            ->when((!empty($params['ids'])), function ($q) use ($params){
             $q->whereIn('id',$params['ids']);
-        })->with(['categories', 'images'])->latest();
+        })
+            ->when(!empty($params['categoryName']), function ($q) use ($params){
+                $q->whereHas('categories', function ($query) use ($params){
+                    $query->where('slug',$params['categoryName']);
+                });
+            })
+            ->with(['categories', 'images'])->latest();
         if($paginate){
             return  $query->paginate(config('app.products_limit'));
         }
