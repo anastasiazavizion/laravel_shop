@@ -174,18 +174,18 @@ const routes = [
             },
 
             {
+                path: '/products/:id',
+                component: ProductsShow,
+                name: 'products.show',
+            },
+
+            {
                 path: '/products',
                 component: ProductsIndex,
                 name: 'products.index',
                 children: [
                     {
-                        path: '/products/:id',
-                        component: ProductsShow,
-                        name: 'products.show',
-                    },
-
-                    {
-                        path: '/products/category/:categoryName',
+                        path: 'category/:categoryName',
                         component: ProductsIndex,
                         name: 'products.category',
                     },
