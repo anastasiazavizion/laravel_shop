@@ -9237,3 +9237,75 @@ App\Models\Order {#1476
   2024-08-25 11:20:32 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
   2024-08-25 11:20:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  10s DONE
   2024-08-25 11:20:43 App\Notifications\NewOrderCreatedNotification . 13s DONE
+  2024-08-27 17:40:13 App\Events\Admin\OrderCreatedEvent ............. RUNNING
+  2024-08-27 17:40:13 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-27 17:40:16 App\Events\Admin\OrderCreatedEvent ............. 2s DONE
+  2024-08-27 17:40:16 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-08-27 17:40:16 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-27 17:40:17 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-27 17:40:17 App\Listeners\OrderCreatedListener ............. 3s DONE
+  2024-08-27 17:40:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  2s DONE
+  2024-08-27 17:40:23 App\Notifications\Admin\NewOrderCreatedAdminNotification  6s DONE
+  2024-08-27 17:40:28 App\Notifications\NewOrderCreatedNotification . 12s DONE
+  2024-08-28 10:07:35 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-28 10:07:35 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:07:37 App\Events\Admin\AdminOrderCreatedEvent ........ 1s FAIL
+  2024-08-28 10:07:38 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-08-28 10:07:38 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:07:38 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-28 10:07:38 App\Events\Admin\AdminOrderCreatedEvent ... 45.86ms FAIL
+  2024-08-28 10:07:38 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:07:38 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-28 10:07:38 App\Listeners\OrderCreatedListener ............. 3s DONE
+  2024-08-28 10:07:39 App\Events\Admin\AdminOrderCreatedEvent ........ 1s FAIL
+  2024-08-28 10:07:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  2s DONE
+  2024-08-28 10:07:44 App\Notifications\Admin\NewOrderCreatedAdminNotification  5s DONE
+  2024-08-28 10:07:47 App\Notifications\NewOrderCreatedNotification .. 9s DONE
+  2024-08-28 10:09:22 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:22 App\Events\Admin\AdminOrderCreatedEvent ... 45.33ms FAIL
+  2024-08-28 10:09:22 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:22 App\Events\Admin\AdminOrderCreatedEvent ... 23.97ms FAIL
+  2024-08-28 10:09:23 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:23 App\Events\Admin\AdminOrderCreatedEvent ... 18.09ms FAIL
+  2024-08-28 10:09:23 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:23 App\Events\Admin\AdminOrderCreatedEvent ... 17.31ms FAIL
+  2024-08-28 10:09:24 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:24 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:25 App\Events\Admin\AdminOrderCreatedEvent ........ 1s FAIL
+  2024-08-28 10:09:27 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:27 App\Events\Admin\AdminOrderCreatedEvent ... 16.58ms FAIL
+  2024-08-28 10:09:27 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:27 App\Events\Admin\AdminOrderCreatedEvent ... 33.87ms FAIL
+  2024-08-28 10:09:27 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:29 App\Events\Admin\AdminOrderCreatedEvent ........ 5s FAIL
+  2024-08-28 10:09:30 App\Events\Admin\AdminOrderCreatedEvent ........ 2s FAIL
+  2024-08-28 10:09:55 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:55 App\Events\Admin\AdminOrderCreatedEvent ... 15.67ms FAIL
+  2024-08-28 10:09:55 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:55 App\Events\Admin\AdminOrderCreatedEvent ... 14.48ms FAIL
+  2024-08-28 10:09:55 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:09:57 App\Events\Admin\AdminOrderCreatedEvent ........ 2s FAIL
+  2024-08-28 10:10:18 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:10:18 App\Events\Admin\AdminOrderCreatedEvent ... 15.21ms FAIL
+  2024-08-28 10:10:18 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:10:18 App\Events\Admin\AdminOrderCreatedEvent ... 22.00ms FAIL
+  2024-08-28 10:10:19 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:10:20 App\Events\Admin\AdminOrderCreatedEvent ........ 1s FAIL
+  2024-08-28 10:21:31 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:21:34 App\Events\Admin\AdminOrderCreatedEvent ........ 2s DONE
+  2024-08-28 10:21:46 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:21:47 App\Events\Admin\AdminOrderCreatedEvent .. 822.61ms DONE
+  2024-08-28 10:21:49 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:21:49 App\Events\Admin\AdminOrderCreatedEvent .. 441.21ms DONE
+  2024-08-28 10:22:38 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:22:38 App\Events\Admin\AdminOrderCreatedEvent .. 661.47ms DONE
+  2024-08-28 10:24:05 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-08-28 10:24:05 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-28 10:24:05 App\Events\Admin\AdminOrderCreatedEvent .. 387.15ms DONE
+  2024-08-28 10:24:06 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-08-28 10:24:07 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-28 10:24:07 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-08-28 10:24:07 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-28 10:24:08 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-08-28 10:24:12 App\Notifications\Admin\NewOrderCreatedAdminNotification  5s DONE
+  2024-08-28 10:24:13 App\Notifications\NewOrderCreatedNotification .. 6s DONE

@@ -61,6 +61,7 @@ const routerLinkClass = computed(()=>{
         </Dropdown>
     </div>
 
+    <router-link v-if="is('admin') && authenticated" :class="routerLinkClass" :to="{name:'admin.orders.index'}">Orders</router-link>
     <router-link :class="routerLinkClass" :to="{name:'products.index'}">Products</router-link>
     <router-link :class="routerLinkClass" v-if="!authenticated" to="/auth/login">Login</router-link>
     <router-link :class="routerLinkClass"  v-if="!authenticated" to="/auth/register">Register</router-link>
