@@ -21,7 +21,7 @@ const payload = {
 onMounted(async () => {
     await store.dispatch('product/getProduct', payload);
     const productData = await store.getters['product/product'];
-    product.value = productData.data;
+    product.value = productData;
     images.value = productData.gallery;
 })
 

@@ -30,6 +30,7 @@ class ProductResource extends JsonResource
                 'final_price' => $this->final_price,
                 'is_in_wish_list_exist' => $this->is_in_wish_list_exist,
                 'is_in_wish_list_price' => $this->is_in_wish_list_price,
+                'gallery' => $this->gallery,
                 'categories'=> new CategoriesCollection($this->categories),
                 'images'=> new ImagesCollection($this->images),
             ];

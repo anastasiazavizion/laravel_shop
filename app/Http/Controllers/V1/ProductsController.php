@@ -22,13 +22,13 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->repository->getAll(true, $request->all());
-        return new ProductsCollection($products);
+        return new ProductsCollection($this->repository->getAll(true, $request->all()));
     }
 
     public function show(Product  $product)
     {
         $product->load(['categories']);
-        return response()->json(['product'=>['data'=>new ProductResource($product), 'gallery'=>$this->repository->getGallery($product)]], 200);
+        $product->gallery = $this->repository->getGallery($product);
+        return new ProductResource($product);
     }
 }

@@ -52,7 +52,7 @@ const actions = {
     async getProduct({ commit}, payload) {
         try {
             const response = await axios.get(route('v1.user.products.show',payload.id));
-            commit('setProduct', response.data.product);
+            commit('setProduct', response.data);
         } catch (error) {
             commit('setProduct', []);
         }

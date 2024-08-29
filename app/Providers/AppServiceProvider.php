@@ -24,6 +24,7 @@ use App\Services\Contracts\PayPalServiceContract;
 use App\Services\FileService;
 use App\Services\InvoiceService;
 use App\Services\PayPalService;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -62,5 +63,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::policy(Product::class, ProductPolicy::class);
         Gate::policy(Category::class, CategoryPolicy::class);
+
+        JsonResource::withoutWrapping();
     }
 }

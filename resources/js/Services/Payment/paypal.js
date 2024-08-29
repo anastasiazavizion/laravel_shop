@@ -61,7 +61,6 @@ const paypalFunction = (form, emptyFields) => {
 
         // Call your server to set up the transaction
         createOrder: function (data, actions) {
-            console.log('create order');
             return axios.post(route('v1.paypal.order.create'), form.value).then(function (res) {
                 // Assuming res.data contains the vendor_order_id
                 return res.data.vendor_order_id; // Return this for onApprove to access it

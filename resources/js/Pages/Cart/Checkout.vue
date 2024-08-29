@@ -83,18 +83,12 @@ function getInputStyle(field){
            </form>
            </Card>
        </div>
-
        <div>
            <div id="paypal-button-container"></div>
        </div>
    </div>
     <div class="text-center" v-else>
         <p class="text-lg">Sorry, you cannot do checkout with an empty cart.</p>
-
         <router-link class="btn btn-style" to="/products">All products</router-link>
-
-
-
     </div>
-
 </template>

@@ -9237,3 +9237,11 @@ App\Models\Order {#1476
   2024-08-25 11:20:32 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
   2024-08-25 11:20:40 App\Notifications\Admin\NewOrderCreatedAdminNotification  10s DONE
   2024-08-25 11:20:43 App\Notifications\NewOrderCreatedNotification . 13s DONE
+  2024-08-29 09:46:53 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-08-29 09:46:54 App\Listeners\OrderCreatedListener ....... 932.04ms DONE
+  2024-08-29 09:46:54 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-08-29 09:46:54 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-29 09:46:56 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-08-29 09:46:58 App\Notifications\Admin\NewOrderCreatedAdminNotification  2s DONE
+  2024-08-29 09:47:02 App\Notifications\Admin\NewOrderCreatedAdminNotification  7s DONE
+  2024-08-29 09:47:04 App\Notifications\NewOrderCreatedNotification . 10s DONE

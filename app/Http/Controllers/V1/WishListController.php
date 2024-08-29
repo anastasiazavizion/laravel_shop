@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WishListRequest;
+use App\Http\Resources\V1\Products\ProductsCollection;
 use App\Models\Product;
 use App\Repositories\Contract\WishListRepositoryContract;
 use Illuminate\Http\JsonResponse;
@@ -15,7 +16,6 @@ class WishListController extends Controller
     {
         return app()->make(WishListRepositoryContract::class, ['user' => Auth::user()]);
     }
-
 
     public function add(WishListRequest $request, Product $product) : JsonResponse
     {
@@ -31,12 +31,11 @@ class WishListController extends Controller
         if($this->repositoryInstance()->removeFromWish($product, $request->get('type'))){
             return response()->json('Removed from wishlist');
         }
-
         return response()->json('Error', 500);
     }
 
-    public function getAll() : JsonResponse
+    public function getAll()
     {
-        return response()->json($this->repositoryInstance()->getAll());
+        return new ProductsCollection($this->repositoryInstance()->getAll());
     }
 }

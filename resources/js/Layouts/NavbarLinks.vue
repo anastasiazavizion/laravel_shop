@@ -70,7 +70,7 @@ const routerLinkClass = computed(()=>{
             <DropdownLink :to="{name:'admin.dashboard'}">Admin panel</DropdownLink>
         </div>
 
-        <DropdownLink v-else>
+        <DropdownLink>
             <router-link to="/account/wishlist">Wishlist</router-link>
         </DropdownLink>
 
