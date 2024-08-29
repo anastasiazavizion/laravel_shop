@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use App\Policies\Admin\CategoryPolicy;
 use App\Policies\Admin\ProductPolicy;
 use App\Repositories\CartRepository;
@@ -24,6 +25,7 @@ use App\Services\Contracts\PayPalServiceContract;
 use App\Services\FileService;
 use App\Services\InvoiceService;
 use App\Services\PayPalService;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -65,5 +67,11 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Category::class, CategoryPolicy::class);
 
         JsonResource::withoutWrapping();
+
+        Relation::enforceMorphMap([
+            'product' => Product::class,
+            'category' => Category::class,
+            'App\Models\User' => User::class
+        ]);
     }
 }
