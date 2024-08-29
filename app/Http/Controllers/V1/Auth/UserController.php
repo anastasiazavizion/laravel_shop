@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1\Auth;
 
+use App\Http\Resources\V1\User\CurrentUserResource;
 use Illuminate\Http\Request;
 
 class UserController
@@ -9,7 +10,7 @@ class UserController
     public function user(Request $request)
     {
         $user = $request->user();
-        return response()->json(['user'=>$user, 'permissions'=>$user->jsPermissions()]);
+        return response()->json(['user'=>new CurrentUserResource($user), 'permissions'=>$user->jsPermissions()]);
 
     }
 }
