@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('admin/data/')->middleware(['role:admin|moderator'])->name('admin.')->group(function () {
         Route::apiResource('categories', AdminCategoriesController::class);
         Route::apiResource('products', AdminProductsController::class);
+        Route::apiResource('orders', \App\Http\Controllers\V1\Admin\OrderController::class);
     });
 
     Route::name('wishlist.')->group(function () {

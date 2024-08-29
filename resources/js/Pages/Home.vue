@@ -16,6 +16,10 @@ import {useStore} from "vuex";
 import Header from "@/Components/Header.vue";
 import CategoryLabel from "@/Pages/Category/Partials/CategoryLabel.vue";
 import AllProducts from "@/Pages/Product/Partials/AllProducts.vue";
+
+
+
+
 </script>
 
 <template>

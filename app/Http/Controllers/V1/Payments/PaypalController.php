@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\V1\Payments;
 use App\Enum\PaymentSystemEnum;
 use App\Events\OrderCreatedEvent;
+use App\Events\Admin\AdminOrderCreatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Payments\Exception;
 use App\Http\Requests\Order\CreateOrderRequest;
@@ -59,6 +60,7 @@ class PaypalController extends Controller
             }
             DB::commit();
             OrderCreatedEvent::dispatchIf($order, $order);
+            AdminOrderCreatedEvent::dispatch($order->total);
             return response()->json($order);
         } catch (Exception $exception) {
             DB::rollBack();

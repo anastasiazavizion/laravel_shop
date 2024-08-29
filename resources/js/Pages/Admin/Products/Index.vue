@@ -7,6 +7,7 @@ import Card from "@/Components/Card.vue";
 import {XMarkIcon} from "@heroicons/vue/24/solid";
 import {PencilIcon} from "@heroicons/vue/24/solid";
 import Swal from 'sweetalert2';
+import ProductLink from "@/Pages/Admin/Products/Partials/ProductLink.vue";
 const store = useStore();
 const router = useRouter();
 
@@ -54,7 +55,7 @@ async function deleteProduct(id) {
             <tbody>
             <tr :key="product.id" v-for="product in products">
                 <td>
-                    <router-link :to="{name:'admin.products.show', params:{id:product.id}}">{{product.title}}</router-link>
+                    <ProductLink :product="product"/>
                 </td>
                 <td>
                     <img :src="product.thumbnail_url" class="w-36" :alt="product.title">
