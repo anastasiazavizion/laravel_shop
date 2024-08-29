@@ -10,7 +10,7 @@ use App\Http\Resources\V1\Products\ProductsCollection;
 use App\Models\Product;
 use App\Repositories\Contract\ProductRepositoryContract;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Http\JsonResponse;
 class ProductsController  extends Controller
 {
     public function __construct(protected ProductRepositoryContract $repository)
@@ -21,7 +21,7 @@ class ProductsController  extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): ProductsCollection
     {
         return new ProductsCollection($this->repository->getAll());
     }
@@ -29,7 +29,7 @@ class ProductsController  extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateRequest $request)
+    public function store(CreateRequest $request): JsonResponse
     {
         if($product = $this->repository->create($request)){
             return response()->json(['message' => "Product $product->title was created", 'data'=>new ProductResource($product)], 200);
@@ -40,7 +40,7 @@ class ProductsController  extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product  $product)
+    public function show(Product  $product): ProductResource
     {
         $product->load(['categories', 'images']);
         return new ProductResource($product);
@@ -49,7 +49,7 @@ class ProductsController  extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, Product $product)
+    public function update(UpdateRequest $request, Product $product): JsonResponse
     {
         if($this->repository->update($product,$request)){
             return response()->json(['message' => "Product $product->title was updated", 'data'=>new ProductResource($product)], 200);
@@ -60,7 +60,7 @@ class ProductsController  extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product): JsonResponse
     {
         try {
             DB::beginTransaction();

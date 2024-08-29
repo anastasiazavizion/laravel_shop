@@ -3,73 +3,62 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Cart\AddProductRequest;
 use App\Http\Requests\Cart\CountRequest;
+use App\Http\Requests\Cart\DeleteProductRequest;
 use App\Http\Requests\Cart\UpdateCartForUserWithExistingRequest;
-use App\Http\Resources\V1\CartItemsResource;
+use App\Http\Resources\V1\Cart\CartItemCollection;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Repositories\Contract\CartRepositoryContract;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Http\JsonResponse;
 
 class CartController extends Controller
 {
+    public function __construct(public CartRepositoryContract $cartRepository)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): CartItemCollection
     {
-        return  response()->json(CartItemsResource::collection(Auth::user()->cartItems()->with(['product'])->get())->response()->getData());
-    }
-    public function add(Request $request)
-    {
-        $user = \Auth::user();
-        $product = $request->input('product');
-
-        $cartItem = $user->cartItems()->where('product_id', $product['id'])->first();
-
-        if ($cartItem) {
-            $cartItem->amount += 1;
-            $cartItem->save();
-        } else {
-            $user->cartItems()->create([
-                'product_id' => $product['id'],
-                'amount' => 1,
-            ]);
-        }
-        return response()->json(['message' => 'Product added to cart']);
-
-    }
-    public function delete(Request $request)
-    {
-        Auth::user()->cartItems()->withProduct($request->product['id'])->delete();
-        return response()->json(['message' => 'Product removed from cart']);
+        return new CartItemCollection(Auth::user()->cartItems()->with(['product'])->get());
     }
 
-    public function count(CountRequest $request, Product $product)
+    public function add(AddProductRequest $request): JsonResponse
     {
         $data = $request->validated();
-        Auth::user()->cartItems()->withProduct($data['id'])->update([
-           'amount'=>$data['amount']
-        ]);
-        return response()->json(['message' => 'Product amount was updated']);
+        if ($this->cartRepository->addProduct(Auth::user(), $data['id'])) {
+            return response()->json(['message' => 'Product added to cart']);
+        }
+        return response()->json(['message' => 'Something was wrong', 'data' => []], 500);
     }
 
-
-    public function updateCartForUserWithExisting(UpdateCartForUserWithExistingRequest $request)
+    public function delete(DeleteProductRequest $request): JsonResponse
     {
-        if(Auth::user()->cartItems->isEmpty()){
+        $data = $request->validated();
+        if ($this->cartRepository->removeProductFromCart(Auth::user(), $data['id'])) {
+            return response()->json(['message' => 'Product removed from cart']);
+        }
+        return response()->json(['message' => 'Something was wrong', 'data' => []], 500);
+    }
 
-            $cartItems = array_map(function ($item) {
-                return [
-                    'product_id' => $item['id'],
-                    'amount' => $item['amount'],
-                ];
-            }, $request->validated());
+    public function amount(CountRequest $request, Product $product): JsonResponse
+    {
+        $data = $request->validated();
+        if ($this->cartRepository->changeProductAmount(Auth::user(), $data['id'], $data['amount'])) {
+            return response()->json(['message' => 'Product amount was updated']);
+        }
+        return response()->json(['message' => 'Something was wrong', 'data' => []], 500);
+    }
 
-            Auth::user()->cartItems()->createMany($cartItems);
+    public function updateCartForUserWithExisting(UpdateCartForUserWithExistingRequest $request): JsonResponse
+    {
+        if ($this->cartRepository->updateCartForUserWithExisting(Auth::user(), $request->validated())) {
             return response()->json('Updated cart', 200);
         }
-
-        return response()->json('User has a cart', 200);
-
+        return response()->json(['message' => 'Something was wrong', 'data' => []], 500);
     }
 }

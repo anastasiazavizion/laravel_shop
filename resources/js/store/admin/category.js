@@ -30,7 +30,7 @@ const actions = {
     async getAll({ commit }) {
         try {
             const response = await axios.get(route('v1.admin.categories.index'));
-            commit('setCategories', response.data.data);
+            commit('setCategories', response.data);
         } catch (error) {
             commit('setCategories', []);
         }
@@ -40,7 +40,7 @@ const actions = {
         try {
             const response = await axios.get(route('v1.admin.categories.show',payload.id));
             console.log(response);
-            commit('setCategory', response.data.data);
+            commit('setCategory', response.data);
         } catch (error) {
             commit('setCategory', []);
         }

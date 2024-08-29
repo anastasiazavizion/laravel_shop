@@ -12,13 +12,13 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): OrderCollection
     {
         $orders = Order::with(['products','transaction','status'])->latest()->paginate(10);
         return new OrderCollection($orders);
     }
 
-    public function show(Order $order)
+    public function show(Order $order): OrderResource
     {
         $order->load(['products','transaction','status']);
         return new OrderResource($order);

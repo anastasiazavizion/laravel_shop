@@ -21,13 +21,13 @@ const mutations = {
         state.cartItems.push(value);
     },
 
-     updateProductAmount(state, data) {
-       state.cartItems[data.index].amount = data.amount;
+    updateProductAmount(state, data) {
+        state.cartItems[data.index].amount = data.amount;
     },
 
-     removeFromCart(state, product) {
-         state.cartItems = state.cartItems.filter(item => item.id !== product.id);
-     },
+    removeFromCart(state, product) {
+        state.cartItems = state.cartItems.filter(item => item.id !== product.id);
+    },
 
     clearCart(state) {
         state.cartItems = [];
@@ -39,34 +39,36 @@ const actions = {
     async addToCart({commit, state, rootGetters}, product) {
         let index = state.cartItems.findIndex(item => item.id === product.id);
         if (index !== -1) {
-            commit('updateProductAmount', {index:index, amount:state.cartItems[index].amount + 1});
+            commit('updateProductAmount', {index: index, amount: state.cartItems[index].amount + 1});
         } else {
             product.amount = 1;
             commit('addToCart', product);
         }
 
-        if(rootGetters['auth/authenticated']){
-            await axios.post(route('v1.cart.add'), { product });
+        if (rootGetters['auth/authenticated']) {
+            console.log(product);
+            await axios.post(route('v1.cart.add'), {id: product.id});
         }
 
     },
 
     async removeFromCart({commit, state, rootGetters}, product) {
-
         commit('removeFromCart', product)
         if (rootGetters['auth/authenticated']) {
-            await axios.delete(route('v1.cart.delete'),{data:{
-                product:product
-                }});
+            await axios.delete(route('v1.cart.delete'), {
+                data: {
+                    id: product.id
+                }
+            });
         }
     },
 
     async updateCount({commit, state, rootGetters}, data) {
         let indexValue = state.cartItems.findIndex(item => item.id === data.id); //find element by product id
-        if(indexValue !== -1){
-            commit('updateProductAmount', {index:indexValue, amount:data.amount});
+        if (indexValue !== -1) {
+            commit('updateProductAmount', {index: indexValue, amount: data.amount});
             if (rootGetters['auth/authenticated']) {
-                await axios.put(route('v1.cart.count', data.id), data);
+                await axios.put(route('v1.cart.amount', data.id), data);
             }
         }
     },
@@ -74,7 +76,7 @@ const actions = {
     async getCartItemsForUser({commit, state}) {
         try {
             const response = await axios.get(route('v1.cart.index'));
-            commit('setCartItems', response.data.data);
+            commit('setCartItems', response.data);
         } catch (error) {
             commit('setCartItems', []);
         }

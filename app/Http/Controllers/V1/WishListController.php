@@ -22,7 +22,6 @@ class WishListController extends Controller
         if($this->repositoryInstance()->addToWish($product, $request->get('type'))){
             return response()->json('Added to wishlist', 200);
         }
-
         return response()->json('Error', 500);
     }
 
@@ -34,7 +33,7 @@ class WishListController extends Controller
         return response()->json('Error', 500);
     }
 
-    public function getAll()
+    public function getAll(): ProductsCollection
     {
         return new ProductsCollection($this->repositoryInstance()->getAll());
     }

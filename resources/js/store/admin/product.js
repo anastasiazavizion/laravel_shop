@@ -30,7 +30,7 @@ const actions = {
     async getAll({ commit }) {
         try {
             const response = await axios.get(route('v1.admin.products.index'));
-            commit('setProducts', response.data.data);
+            commit('setProducts', response.data);
         } catch (error) {
             commit('setProducts', []);
         }
@@ -39,7 +39,7 @@ const actions = {
     async getProduct({ commit}, payload) {
         try {
             const response = await axios.get(route('v1.admin.products.show',payload.id));
-            commit('setProduct', response.data.data);
+            commit('setProduct', response.data);
         } catch (error) {
             commit('setProduct', []);
         }

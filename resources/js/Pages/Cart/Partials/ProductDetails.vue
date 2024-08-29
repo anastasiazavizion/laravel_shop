@@ -3,7 +3,7 @@ defineProps({
     order:Object
 })
 function productTotalPrice(product){
-    return product.pivot.single_price * product.pivot.quantity;
+    return product.single_price * product.quantity;
 }
 
 function productUrl(product){
@@ -29,8 +29,8 @@ function productUrl(product){
                     <img class="w-24" :src="product.thumbnail_url" :alt="product.name">
                 </router-link>
             </td>
-            <td>{{product.pivot.quantity}}</td>
-            <td>{{product.pivot.single_price}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.single_price}}</td>
             <td>{{productTotalPrice(product)}}</td>
         </tr>
         </tbody>

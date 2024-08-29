@@ -45,7 +45,7 @@ const actions = {
     async getOrder({ commit}, payload) {
         try {
             const response = await axios.get(route('v1.admin.orders.show', payload.id));
-            commit('setOrder', response.data.data);
+            commit('setOrder', response.data);
         } catch (error) {
             commit('setOrder',null);
         }

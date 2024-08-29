@@ -20,12 +20,12 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request): ProductsCollection
     {
         return new ProductsCollection($this->repository->getAll(true, $request->all()));
     }
 
-    public function show(Product  $product)
+    public function show(Product  $product): ProductResource
     {
         $product->load(['categories']);
         $product->gallery = $this->repository->getGallery($product);

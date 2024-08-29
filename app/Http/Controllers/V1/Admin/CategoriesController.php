@@ -10,6 +10,7 @@ use App\Http\Resources\V1\Categories\CategoryResource;
 use App\Models\Category;
 use App\Repositories\Contract\CategoryRepositoryContract;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\JsonResponse;
 
 class CategoriesController extends Controller
 {
@@ -22,7 +23,7 @@ class CategoriesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): CategoriesCollection
     {
         return new CategoriesCollection($this->repository->getAll());
     }
@@ -30,7 +31,7 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateRequest $request)
+    public function store(CreateRequest $request): JsonResponse
     {
         if($category = $this->repository->create($request)){
             return response()->json(['message' => "Category $category->name was created", 'data'=>new CategoryResource($category)], 200);
@@ -41,7 +42,7 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category  $category)
+    public function show(Category  $category): CategoryResource
     {
         return new CategoryResource($category);
     }
@@ -49,7 +50,7 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, Category $category)
+    public function update(UpdateRequest $request, Category $category): JsonResponse
     {
         if($category = $this->repository->update($request, $category)){
             return response()->json(['message' => "Category $category->name was updated", 'data'=>new CategoryResource($category)], 200);
@@ -60,7 +61,7 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): JsonResponse
     {
         try {
             DB::beginTransaction();

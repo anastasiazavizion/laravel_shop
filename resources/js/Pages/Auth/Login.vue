@@ -48,7 +48,7 @@ const login = async () => {
         await store.dispatch('auth/login', auth.value);
         await store.dispatch('cart/setExistingCartItemsForUser');
         await store.dispatch('cart/getCartItemsForUser');
-        router.push('/');
+        await router.push('/');
     } catch (error) {
         if (error.response && (error.response.status === 422)) {
             errors.value = error.response.data.errors;

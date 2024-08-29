@@ -47,8 +47,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('cart')->name('cart.')->group(function () {
         Route::get('/get', [CartController::class, 'index'])->name('index');
-        Route::post('/', [CartController::class, 'add'])->name('add');
-        Route::put('/count/{product}', [CartController::class, 'count'])->name('count');
+        Route::post('/add', [CartController::class, 'add'])->name('add');
+        Route::put('/amount/{product}', [CartController::class, 'amount'])->name('amount');
         Route::put('/user/', [CartController::class, 'updateCartForUserWithExisting'])->name('user.update.cart');
         Route::delete('/', [CartController::class, 'delete'])->name('delete');
     });

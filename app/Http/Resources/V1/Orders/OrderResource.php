@@ -3,6 +3,7 @@
 namespace App\Http\Resources\V1\Orders;
 
 use App\Http\Resources\V1\Products\ProductsCollection;
+use App\Http\Resources\V1\Status\StatusResource;
 use App\Http\Resources\V1\Transaction\TransactionResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -18,7 +19,8 @@ class OrderResource extends JsonResource
     {
         return [
           'id'=>$this->id,
-          'status'=>$this->status->name,
+          'vendor_order_id'=>$this->vendor_order_id,
+          'status'=>new StatusResource($this->status),
           'name'=>$this->name,
           'lastname'=>$this->lastname,
           'phone'=>$this->phone,

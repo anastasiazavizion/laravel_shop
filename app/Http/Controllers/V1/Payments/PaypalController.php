@@ -4,8 +4,8 @@ use App\Enum\PaymentSystemEnum;
 use App\Events\OrderCreatedEvent;
 use App\Events\Admin\AdminOrderCreatedEvent;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Payments\Exception;
 use App\Http\Requests\Order\CreateOrderRequest;
+use App\Http\Resources\V1\Orders\OrderResource;
 use App\Repositories\Contract\CartRepositoryContract;
 use App\Repositories\Contract\OrderRepositoryContract;
 use App\Services\Contracts\PayPalServiceContract;
@@ -20,7 +20,7 @@ class PaypalController extends Controller
 
     }
 
-    public function create(CreateOrderRequest $request)
+    public function create(CreateOrderRequest $request): \Illuminate\Http\JsonResponse|OrderResource
     {
         try {
             DB::beginTransaction();
@@ -40,15 +40,15 @@ class PaypalController extends Controller
             }
             $order = $this->orderRepository->create($data);
             DB::commit();
-            return response()->json($order);
-        } catch (Exception $exception) {
+            return new OrderResource($order);
+        } catch (\Exception $exception) {
             DB::rollBack();
             logs()->error($exception->getMessage());
             return response()->json('Error', 500);
         }
     }
 
-    public function capture($vendorOrderId)
+    public function capture($vendorOrderId): \Illuminate\Http\JsonResponse|OrderResource
     {
         try {
             DB::beginTransaction();
@@ -61,8 +61,8 @@ class PaypalController extends Controller
             DB::commit();
             OrderCreatedEvent::dispatchIf($order, $order);
             AdminOrderCreatedEvent::dispatch($order->total);
-            return response()->json($order);
-        } catch (Exception $exception) {
+            return new OrderResource($order);
+        } catch (\Exception $exception) {
             DB::rollBack();
             logs()->error($exception->getMessage());
             return response()->json('Error', 500);

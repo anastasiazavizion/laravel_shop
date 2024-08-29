@@ -11,15 +11,13 @@ class CategoriesController extends Controller
      */
     public function __construct(protected CategoryRepositoryContract $repository)
     {
-
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): CategoriesCollection
     {
         return new CategoriesCollection($this->repository->getAll());
     }
-
 }
