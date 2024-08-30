@@ -20,7 +20,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $appends = ['thumbnail_url', 'final_price', 'is_in_wish_list_exist', 'is_in_wish_list_price', 'in_stock'];
+    protected $appends = ['thumbnail_url', 'rate', 'final_price', 'is_in_wish_list_exist', 'is_in_wish_list_price', 'in_stock'];
 
     protected $fillable = [
         'slug',
@@ -113,6 +113,13 @@ class Product extends Model
         );
     }
 
+    public function rate(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => (int) $this->reviews()->avg('rate')
+        );
+    }
+
 
     public function orders(): BelongsToMany
     {
@@ -123,8 +130,13 @@ class Product extends Model
     {
         return [
             'price' => 'float',
-            'final_price' => 'float',
         ];
+    }
+
+
+    public function reviews(): MorphMany
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 
 }

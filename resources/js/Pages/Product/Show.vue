@@ -8,6 +8,7 @@ import Slider from "@/Components/Slider.vue";
 import CategoryLabel from "@/Pages/Category/Partials/CategoryLabel.vue";
 import WishList from "@/Pages/Product/Partials/WishListButtons.vue";
 import BuyButton from "@/Pages/Product/Partials/BuyButton.vue";
+import Reviews from "@/Pages/Product/Partials/Reviews.vue";
 
 const product = ref(null);
 const images = ref(null);
@@ -33,6 +34,11 @@ const onlyOneImage = computed(()=>{
     return images.value.length === 1;
 })
 
+const authenticated = computed(()=>{
+    return store.getters['auth/authenticated']
+})
+
+
 </script>
 <template>
         <div v-if="product" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -57,15 +63,15 @@ const onlyOneImage = computed(()=>{
                         <ProductDetail v-if="product.description">{{product.description}}</ProductDetail>
                     </div>
                 </div>
-
                 <div class="mt-4">
                     <div class="grid grid-cols-2">
                         <div  class="font-bold text-gray-700 pr-2">Price <Price>{{product.final_price}}</Price></div>
                         <BuyButton :product="product" @addToCart="addToCart"></BuyButton>
                     </div>
                 </div>
-
             </div>
-
+        </div>
+        <div v-if="product && authenticated">
+            <Reviews :product="product"/>
         </div>
 </template>
