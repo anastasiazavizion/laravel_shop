@@ -13,6 +13,7 @@ use App\Http\Controllers\V1\OrderController;
 use App\Http\Controllers\V1\Payments\PaypalController;
 use App\Http\Controllers\V1\ProductsController;
 use App\Http\Controllers\V1\WishListController;
+use App\Http\Controllers\V1\ReviewController;
 
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -32,6 +33,8 @@ Route::get('orderByVendorId', [OrderController::class, 'getOrderByVendorId'])->n
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'user'])->name('user');
+
+    Route::apiResource('products/{product}/reviews', ReviewController::class)->only(['index','store']);
 
     Route::prefix('admin/data/')->middleware(['role:admin|moderator'])->name('admin.')->group(function () {
         Route::apiResource('categories', AdminCategoriesController::class);
