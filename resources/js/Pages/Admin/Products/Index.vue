@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
 import Header from "@/Components/Header.vue";
@@ -8,14 +8,26 @@ import {XMarkIcon} from "@heroicons/vue/24/solid";
 import {PencilIcon} from "@heroicons/vue/24/solid";
 import Swal from 'sweetalert2';
 import ProductLink from "@/Pages/Admin/Products/Partials/ProductLink.vue";
+import SortIcons from "@/Components/SortIcons.vue";
+
 const store = useStore();
 const router = useRouter();
 
 const products = ref([]);
 
-onMounted(async () => {
-    await store.dispatch('product_admin/getAll');
+const sortData = ref({
+    column:null,
+    direction:null
+});
+
+async function loadProducts() {
+    await store.dispatch('product_admin/getAll', {sort:sortData.value});
     products.value = store.getters['product_admin/products'];
+}
+
+
+onMounted(async () => {
+    await loadProducts();
 })
 
 async function deleteProduct(id) {
@@ -34,6 +46,16 @@ async function deleteProduct(id) {
         }, 2000)
     }
 }
+
+function setSortData(column, direction){
+    sortData.value.column = column;
+    sortData.value.direction = direction;
+}
+
+watch(sortData, ()=>{
+    loadProducts();
+},{ deep: true })
+
 </script>
 
 <template>
@@ -42,12 +64,21 @@ async function deleteProduct(id) {
         <table class="w-full">
             <thead>
             <tr>
-                <th>Title</th>
+                <th>
+                    <SortIcons @set-sort-data="setSortData" :sort-data="sortData" column="title"/>
+                    Title
+                </th>
                 <th></th>
                 <th>SKU</th>
                 <th>Description</th>
-                <th>Price</th>
-                <th>Discount</th>
+                <th>
+                    <SortIcons @set-sort-data="setSortData" :sort-data="sortData" column="price"/>
+                    Price
+                </th>
+                <th>
+                    <SortIcons @set-sort-data="setSortData" :sort-data="sortData" column="discount"/>
+                    Discount
+                </th>
                 <th>Qantity</th>
                 <th></th>
             </tr>

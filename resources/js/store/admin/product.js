@@ -27,9 +27,9 @@ const mutations = {
 
 const actions = {
 
-    async getAll({ commit }) {
+    async getAll({ commit }, payload) {
         try {
-            const response = await axios.get(route('v1.admin.products.index'));
+            const response = await axios.get(route('v1.admin.products.index'), {params:{sort:payload.sort}});
             commit('setProducts', response.data);
         } catch (error) {
             commit('setProducts', []);

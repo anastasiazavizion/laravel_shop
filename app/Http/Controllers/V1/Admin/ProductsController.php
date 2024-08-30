@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\V1\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Products\AllProductsRequest;
 use App\Http\Requests\Admin\Products\CreateRequest;
 use App\Http\Requests\Admin\Products\UpdateRequest;
 use App\Http\Resources\V1\Products\ProductResource;
 use App\Http\Resources\V1\Products\ProductsCollection;
 use App\Models\Product;
 use App\Repositories\Contract\ProductRepositoryContract;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 class ProductsController  extends Controller
@@ -21,9 +23,9 @@ class ProductsController  extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): ProductsCollection
+    public function index(AllProductsRequest $request): ProductsCollection
     {
-        return new ProductsCollection($this->repository->getAll());
+        return new ProductsCollection($this->repository->getAll(false, $request->validated()));
     }
 
     /**
