@@ -62,6 +62,9 @@ class ProductRepository implements ProductRepositoryContract
                     $query->where('slug',$params['categoryName']);
                 });
             })
+            ->when(!empty($params['sort']), function ($q) use ($params){
+                $q->orderBy($params['sort']['column'], $params['sort']['direction']);
+            })
             ->with(['categories', 'images'])->latest();
         if($paginate){
             return  $query->paginate(config('app.products_limit'));
