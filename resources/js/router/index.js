@@ -24,6 +24,8 @@ import Cart from "@/Pages/Cart/Index.vue";
 import Wishlist from "@/Pages/Account/WishList.vue";
 import Checkout from "@/Pages/Cart/Checkout.vue";
 import ThankYou from "@/Pages/Cart/ThankYou.vue";
+import AllOrders from "@/Pages/Admin/Orders/Index.vue";
+import Order from "@/Pages/Admin/Orders/Show.vue";
 
 const routes = [
     {   path: '/',
@@ -116,6 +118,25 @@ const routes = [
                         meta: {
                             middleware: ["auth", "can:create product"],
                             title: `Product create`
+                        }
+                    },
+
+                    {
+                        name: "admin.orders.index",
+                        path: "orders",
+                        component: AllOrders,
+                        meta: {
+                            middleware: ["auth"],
+                            title: `Orders`
+                        }
+                    },
+                    {
+                        name: "admin.orders.show",
+                        path: "orders/:id",
+                        component: Order,
+                        meta: {
+                            middleware: ["auth"],
+                            title: `Order`
                         }
                     },
                 ]

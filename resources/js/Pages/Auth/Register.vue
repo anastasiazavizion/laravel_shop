@@ -1,12 +1,21 @@
 <script setup>
 import {useStore} from 'vuex'
-import { ref } from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import {useRouter} from "vue-router";
 
 import Card from '@/Components/Card.vue';
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Header from "@/Components/Header.vue";
 import Errors from "@/Components/Errors.vue";
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
+const router = useRouter();
+const store = useStore();
+
+onMounted(async () => {
+    await store.dispatch('auth/clearErrors');
+})
 
 const form = ref({
     name: "",
@@ -18,31 +27,16 @@ const form = ref({
     birthday:""
 });
 
-const errors = ref([]);
-const router = useRouter();
-const store = useStore();
+const errors = computed(()=>{
+    return store.getters['auth/errors'];
+})
 
 const register = async () => {
-    axios.post('/register', form.value)
-        .then(async function (response) {
-            await store.dispatch('auth/login');
-            const user = await store.getters['auth/user'];
-            const roles = window.Laravel.jsPermissions['roles'];
-            if(roles.includes('admin') || roles.includes('moderator')){
-                router.push('/admin/dashboard');
-            }else{
-                router.push('/');
-            }
-        })
-        .catch(function (error) {
-            if(error.response.status === 422){
-                errors.value = error.response.data.errors;
-            }
-        });
+    await store.dispatch('auth/register', form.value);
+    if(!errors.value){
+        await router.push('/');
+    }
 };
-
-import VueDatePicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css';
 
 </script>
 <template>
@@ -52,37 +46,37 @@ import '@vuepic/vue-datepicker/dist/main.css';
             <div>
                 <label>Name</label>
                 <input type="text" v-model="form.name" name="name" id="name" class="form-control">
-                <Errors :errors="errors.name"/>
+                <Errors v-if="errors" :errors="errors.name"/>
             </div>
 
             <div>
                 <label>Lastname</label>
                 <input type="text" v-model="form.lastname" name="lastname" id="lastname" class="form-control">
-                <Errors :errors="errors.lastname"/>
+                <Errors v-if="errors" :errors="errors.lastname"/>
             </div>
 
             <div>
                 <label>Birthday</label>
                 <VueDatePicker :enable-time-picker="false" v-model="form.birthday" name="birthday" id="birthday" class="form-control" />
-                <Errors :errors="errors.birthday"/>
+                <Errors v-if="errors" :errors="errors.birthday"/>
             </div>
 
             <div>
                 <label>Phone</label>
                 <input type="text" v-model="form.phone" name="phone" id="phone" class="form-control">
-                <Errors :errors="errors.phone"/>
+                <Errors v-if="errors" :errors="errors.phone"/>
             </div>
 
             <div>
                 <label>Email</label>
                 <input type="email" v-model="form.email" name="email" id="email" class="form-control">
-                <Errors :errors="errors.email"/>
+                <Errors v-if="errors" :errors="errors.email"/>
             </div>
 
             <div>
                 <label>Password</label>
                 <input type="password" v-model="form.password" name="password" id="password" class="form-control">
-                <Errors :errors="errors.password"/>
+                <Errors v-if="errors" :errors="errors.password"/>
             </div>
 
             <div>
