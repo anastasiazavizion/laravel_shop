@@ -28,7 +28,7 @@ class ProductsControllerTest extends TestCase
         });
 
 
-        $this->actingAs($this->user())->postJson(route('admin.products.store'), $data);
+        $this->actingAs($this->user())->postJson(route('v1.admin.products.store'), $data);
         $this->assertDatabaseHas(Product::class, ['slug'=>$slug]);
 
         dd($imagePath);
