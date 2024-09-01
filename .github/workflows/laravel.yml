@@ -50,5 +50,5 @@ jobs:
         DATABASE_NAME: laravel
         DATABASE_USERNAME: root
         DATABASE_PASSWORD: root
-        DATABASE_ENDPOINT: 127.0.0.1
+        DB_HOST: 127.0.0.1
       run: php artisan test
