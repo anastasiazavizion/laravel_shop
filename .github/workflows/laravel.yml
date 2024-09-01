@@ -1,6 +1,7 @@
 name: Laravel Tests
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, reopened, edited, synchronize]
 
@@ -12,14 +13,13 @@ jobs:
       mysql:
         image: 'mysql/mysql-server:8.0'
         env:
-          MYSQL_DATABASE: laravel
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: testing
+          MYSQL_ROOT_PASSWORD: password
           MYSQL_ROOT_HOST: '%'
-          MYSQL_PASSWORD: root
+          MYSQL_PASSWORD: password
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
 
     steps:
     - uses: shivammathur/setup-php@2.31.1
@@ -43,8 +43,8 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
         DB_CONNECTION: mysql
-        DATABASE_NAME: laravel
+        DATABASE_NAME: testing
         DATABASE_USERNAME: root
-        DATABASE_PASSWORD: root
-        DATABASE_ENDPOINT: 127.0.0.1
+        DATABASE_PASSWORD: password
+        DB_HOST: 127.0.0.1
       run: php artisan test
