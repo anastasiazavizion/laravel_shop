@@ -27,10 +27,8 @@ class ProductsControllerTest extends TestCase
             $mock->shouldReceive('upload')->andReturn($imagePath);
         });
 
-
         $this->actingAs($this->user())->postJson(route('v1.admin.products.store'), $data);
         $this->assertDatabaseHas(Product::class, ['slug'=>$slug]);
 
-        dd($imagePath);
     }
 }
