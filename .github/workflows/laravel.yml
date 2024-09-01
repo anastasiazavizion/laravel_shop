@@ -41,4 +41,10 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
+      env:
+        DB_CONNECTION: mysql
+        DATABASE_NAME: testing
+        DATABASE_USERNAME: root
+        DATABASE_PASSWORD: password
+        DB_HOST: 127.0.0.1
       run: php artisan test
