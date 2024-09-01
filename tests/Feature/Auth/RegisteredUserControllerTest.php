@@ -16,7 +16,7 @@ class RegisteredUserControllerTest extends TestCase
     public function test_success_register_with_valid_data(): void
     {
         $data = [...$this->userPasswordData(), ...User::factory()->make()->toArray()];
-        $response =  $this->postJson(route('register'),$data);
+        $response =  $this->postJson(route('v1.register'),$data);
         $this->assertDatabaseHas(User::class, ['email'=>$data['email']]);
         $response->assertStatus(200);
         $response->assertExactJson(['message'=>'OK']);
@@ -29,7 +29,7 @@ class RegisteredUserControllerTest extends TestCase
             'phone' => '123',
             'birthday' => '12345',
         ])->make()->toArray()];
-        $response =  $this->postJson(route('register'),$data);
+        $response =  $this->postJson(route('v1.register'),$data);
         $this->assertDatabaseMissing(User::class, ['email'=>$data['email']]);
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['phone','birthday']);

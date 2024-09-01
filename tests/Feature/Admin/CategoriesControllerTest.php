@@ -15,7 +15,7 @@ class CategoriesControllerTest extends TestCase
     {
         $categories = Category::factory(3)->create();
         $response = $this->actingAs($this->user())
-            ->getJson(route('admin.categories.index'));
+            ->getJson(route('v1.admin.categories.index'));
         $response->assertSuccessful();
         $categories->map(function ($category) use ($response){
             $response->assertJsonFragment(['name' => $category->name]);
@@ -26,7 +26,7 @@ class CategoriesControllerTest extends TestCase
     {
         $categories = Category::factory(3)->create();
         $response = $this->actingAs($this->user(Role::MODERATOR))
-            ->getJson(route('admin.categories.index'));
+            ->getJson(route('v1.admin.categories.index'));
         $response->assertSuccessful();
         $categories->map(function ($category) use ($response){
             $response->assertJsonFragment(['name' => $category->name]);
@@ -37,7 +37,7 @@ class CategoriesControllerTest extends TestCase
     {
         Category::factory(3)->create();
         $response = $this->actingAs($this->user(Role::CUSTOMER))
-            ->getJson(route('admin.categories.index'));
+            ->getJson(route('v1.admin.categories.index'));
         $response->assertForbidden();
     }
 
@@ -48,7 +48,7 @@ class CategoriesControllerTest extends TestCase
             'name' => $data['name']
         ]);
         $response = $this->actingAs($this->user())
-            ->postJson(route('admin.categories.store'), $data);
+            ->postJson(route('v1.admin.categories.store'), $data);
         $response->assertStatus(200);
         $response->assertJsonFragment(['message' => 'OK']);
         $this->assertDatabaseHas(Category::class, [
@@ -63,7 +63,7 @@ class CategoriesControllerTest extends TestCase
             'name' => $data['name']
         ]);
         $response = $this->actingAs($this->user(Role::CUSTOMER))
-            ->postJson(route('admin.categories.store'), $data);
+            ->postJson(route('v1.admin.categories.store'), $data);
         $response->assertForbidden();
     }
 
@@ -75,7 +75,7 @@ class CategoriesControllerTest extends TestCase
         ];
         $this->assertDatabaseMissing(Category::class, ['name'=>$data['name']]);
         $response = $this->actingAs($this->user())
-            ->postJson(route('admin.categories.store'), $data);
+            ->postJson(route('v1.admin.categories.store'), $data);
         $response->assertJsonValidationErrors(['name', 'parent_id']);
         $response->assertStatus(422);
     }
@@ -95,7 +95,7 @@ class CategoriesControllerTest extends TestCase
             'slug' => $newName
         ]);
         $response = $this->actingAs($this->user())
-            ->putJson(route('admin.categories.update', $category), $data);
+            ->putJson(route('v1.admin.categories.update', $category), $data);
 
         $this->assertDatabaseHas(Category::class, [
             'name' => $newName,
@@ -115,7 +115,7 @@ class CategoriesControllerTest extends TestCase
         $category = Category::factory()->createOne();
         $data = array_merge($category->toArray(), ['name' => $newName]);
         $response = $this->actingAs($this->user())
-            ->putJson(route('admin.categories.update', $category), $data);
+            ->putJson(route('v1.admin.categories.update', $category), $data);
 
         $this->assertDatabaseMissing(Category::class, [
             'name' => $newName,
@@ -132,7 +132,7 @@ class CategoriesControllerTest extends TestCase
             'id' => $category->id
         ]);
         $response =  $this->actingAs($this->user())
-            ->delete(route('admin.categories.destroy', $category));
+            ->delete(route('v1.admin.categories.destroy', $category));
         $this->assertDatabaseMissing(Category::class, [
             'id' => $category->id
         ]);
@@ -147,7 +147,7 @@ class CategoriesControllerTest extends TestCase
             'id' => $category->id
         ]);
         $response =  $this->actingAs($this->user(Role::CUSTOMER))
-            ->delete(route('admin.categories.destroy', $category));
+            ->delete(route('v1.admin.categories.destroy', $category));
         $response->assertForbidden();
     }
 
@@ -163,7 +163,7 @@ class CategoriesControllerTest extends TestCase
         ]);
         $this->assertEquals($child->parent_id, $category->id);
         $response =  $this->actingAs($this->user())
-            ->delete(route('admin.categories.destroy', $category));
+            ->delete(route('v1.admin.categories.destroy', $category));
         $this->assertDatabaseMissing(Category::class, [
             'id' => $category->id
         ]);
