@@ -13,13 +13,9 @@ jobs:
       mysql:
         image: 'mysql/mysql-server:8.0'
         env:
-          # The MySQL docker container requires these environment variables to be set
-          # so we can create and migrate the test database.
-          # See: https://hub.docker.com/_/mysql
           MYSQL_DATABASE: laravel
           MYSQL_ROOT_PASSWORD: root
           MYSQL_ROOT_HOST: '%'
-          MYSQL_USER: root
           MYSQL_PASSWORD: root
         ports:
           # Opens port 3306 on service container and host
@@ -28,7 +24,7 @@ jobs:
           # Before continuing, verify the mysql container is reachable from the ubuntu host
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
-    
+
     steps:
     - uses: shivammathur/setup-php@2.31.1
       with:
@@ -52,7 +48,7 @@ jobs:
       env:
         DB_CONNECTION: mysql
         DATABASE_NAME: laravel
-        DATABASE_USERNAME: root          
-        DATABASE_PASSWORD: root          
-        DATABASE_ENDPOINT: 127.0.0.1 
+        DATABASE_USERNAME: root
+        DATABASE_PASSWORD: root
+        DATABASE_ENDPOINT: 127.0.0.1
       run: php artisan test
