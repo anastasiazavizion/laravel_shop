@@ -42,5 +42,6 @@ jobs:
         touch database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
+        DB_USERNAME: root
         DB_HOST: 127.0.0.1
       run: php artisan test
