@@ -15,8 +15,11 @@ use App\Http\Controllers\V1\ProductsController;
 use App\Http\Controllers\V1\WishListController;
 use App\Http\Controllers\V1\ReviewController;
 
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::group(['middleware' => ['web']], function () {
+    Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
 Route::prefix('user')->name('user.')->group(function () {
