@@ -28,7 +28,7 @@ class RegisteredUserControllerTest extends TestCase
     {
         $data = [...$this->userPasswordData(), ...User::factory([
             'phone' => '123',
-            'birthday' => '12345',
+            'birthday' => 'abcd',
         ])->make()->toArray()];
         $response =  $this->postJson(route('v1.register'),$data);
         $this->assertDatabaseMissing(User::class, ['email'=>$data['email']]);
