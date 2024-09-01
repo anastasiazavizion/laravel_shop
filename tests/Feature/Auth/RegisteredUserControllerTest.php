@@ -16,6 +16,7 @@ class RegisteredUserControllerTest extends TestCase
     public function test_success_register_with_valid_data(): void
     {
         $data = [...$this->userPasswordData(), ...User::factory()->make()->toArray()];
+        $data['phone'] = '1234567890';
         $response =  $this->postJson(route('v1.register'),$data);
         $this->assertDatabaseHas(User::class, ['email'=>$data['email']]);
         $response->assertStatus(200);

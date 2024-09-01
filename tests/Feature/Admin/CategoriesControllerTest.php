@@ -50,7 +50,7 @@ class CategoriesControllerTest extends TestCase
         $response = $this->actingAs($this->user())
             ->postJson(route('v1.admin.categories.store'), $data);
         $response->assertStatus(200);
-        $response->assertJsonFragment(['message' => 'OK']);
+        $response->assertJsonFragment(['message' => 'Category '.$data['name'].' was created']);
         $this->assertDatabaseHas(Category::class, [
             'name' => $data['name']
         ]);
@@ -106,7 +106,7 @@ class CategoriesControllerTest extends TestCase
             'slug' => $category->slug
         ]);
         $response->assertStatus(200);
-        $response->assertJsonFragment(['message' => 'OK']);
+        $response->assertJsonFragment(['message' => "Category $category->name was updated"]);
     }
 
     public function test_fail_update_category_with_invalid_data_as_admin()
@@ -128,6 +128,7 @@ class CategoriesControllerTest extends TestCase
     public function test_success_remove_category_as_admin()
     {
         $category = Category::factory()->create();
+        $name = $category->name;
         $this->assertDatabaseHas(Category::class, [
             'id' => $category->id
         ]);
@@ -137,7 +138,7 @@ class CategoriesControllerTest extends TestCase
             'id' => $category->id
         ]);
         $response->assertStatus(200);
-        $response->assertJsonFragment(['message' => 'OK']);
+        $response->assertJsonFragment(['message' => "Category $name was removed"]);
     }
 
     public function test_fail_remove_category_as_customer()
@@ -154,6 +155,7 @@ class CategoriesControllerTest extends TestCase
     public function test_success_remove_category_as_admin_and_set_null_to_child()
     {
         $category = Category::factory()->createOne();
+        $name = $category->name;
         $child = Category::factory()->createOne(['parent_id' => $category->id]);
         $this->assertDatabaseHas(Category::class, [
             'id' => $category->id
@@ -168,7 +170,7 @@ class CategoriesControllerTest extends TestCase
             'id' => $category->id
         ]);
         $response->assertStatus(200);
-        $response->assertJsonFragment(['message' => 'OK']);
+        $response->assertJsonFragment(['message' => "Category $name was removed"]);
         $child->refresh();
         $this->assertNull($child->parent_id);
     }

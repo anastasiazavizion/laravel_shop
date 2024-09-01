@@ -22,15 +22,10 @@ class ProductsControllerTest extends TestCase
         $data = array_merge(Product::factory()->make()->toArray(), ['thumbnail'=>$file]);
         $slug = Str::slug($data['title']);
         $imagePath = '/uploaded/'.$slug.'.jpg';
-
         $this->mock(FileServiceContract::class, function (MockInterface $mock) use ($imagePath){
             $mock->shouldReceive('upload')->andReturn($imagePath);
         });
-
-
         $this->actingAs($this->user())->postJson(route('v1.admin.products.store'), $data);
         $this->assertDatabaseHas(Product::class, ['slug'=>$slug]);
-
-        dd($imagePath);
     }
 }
