@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
         $product = Product::first();
 
-        User::factory(500)->create()->each(function ($user) use ($product){
+        User::factory(10)->create()->each(function ($user) use ($product){
             $user->wishes()->attach($product->id);
         });
 
