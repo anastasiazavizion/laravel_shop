@@ -21,7 +21,7 @@ class AuthControllerTest extends TestCase
         ]);
         $this->assertDatabaseHas(User::class, ['email' => $user->email]);
 
-        $response = $this->postJson(route('v1.login '), [
+        $response = $this->postJson(route('v1.login'), [
             'email' => $user->email,
             'password' => $password,
         ]);
