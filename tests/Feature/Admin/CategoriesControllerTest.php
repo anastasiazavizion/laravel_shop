@@ -106,7 +106,7 @@ class CategoriesControllerTest extends TestCase
             'slug' => $category->slug
         ]);
         $response->assertStatus(200);
-        $response->assertJsonFragment(['message' => "Category $category->name was updated"]);
+        $response->assertJsonFragment(['message' => "Category $newName was updated"]);
     }
 
     public function test_fail_update_category_with_invalid_data_as_admin()
