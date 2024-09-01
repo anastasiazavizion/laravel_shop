@@ -1,4 +1,4 @@
-name: Fix Code Style Pint
+name: Pint
 
 on:
   workflow_dispatch:
