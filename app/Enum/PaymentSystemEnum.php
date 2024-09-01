@@ -1,6 +1,6 @@
 <?php
-namespace App\Enum;
 
+namespace App\Enum;
 enum PaymentSystemEnum: string
 {
     case PAY_PAL = 'PayPal';
