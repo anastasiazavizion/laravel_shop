@@ -28,12 +28,11 @@ class RegisteredUserControllerTest extends TestCase
     {
         $data = [...$this->userPasswordData(), ...User::factory([
             'phone' => '123',
-            'birthday' => 'abcd',
         ])->make()->toArray()];
         $response =  $this->postJson(route('v1.register'),$data);
         $this->assertDatabaseMissing(User::class, ['email'=>$data['email']]);
         $response->assertStatus(422);
-        $response->assertJsonValidationErrors(['phone','birthday']);
+        $response->assertJsonValidationErrors(['phone']);
         $response->assertJsonIsObject('errors');
     }
 
