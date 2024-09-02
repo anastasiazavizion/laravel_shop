@@ -8,6 +8,7 @@
         "php": "^8.2",
         "ahmedsaoud31/laravel-permission-to-vuejs": "dev-master",
         "azate/laravel-telegram-login-auth": "^2.4",
+        "darkaonline/l5-swagger": "^8.6",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel-notification-channels/telegram": "^5.0",
         "laravel/framework": "^11.9",

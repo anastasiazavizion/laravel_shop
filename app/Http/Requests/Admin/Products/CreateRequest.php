@@ -24,7 +24,7 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>['required', 'string', 'min:2', 'unique:products,id'],
+            'title'=>['required', 'string', 'min:2', 'unique:products,title'],
             'SKU'=>['required', 'string', 'min:5', 'unique:products,id'],
             'description'=>['nullable', 'string', 'min:5'],
             'price'=>['required', 'numeric'],

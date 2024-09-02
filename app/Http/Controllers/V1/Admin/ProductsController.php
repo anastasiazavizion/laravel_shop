@@ -31,9 +31,10 @@ class ProductsController  extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateRequest $request): JsonResponse
+    public function store(CreateRequest $request)
     {
-        if($product = $this->repository->create($request)){
+
+      if($product = $this->repository->create($request)){
             return response()->json(['message' => "Product $product->title was created", 'data'=>new ProductResource($product)], 200);
         }
         return response()->json(['message' => 'Something was wrong', 'data'=>[]], 500);
