@@ -19,7 +19,7 @@ const actions = {
 
     async getAll({ commit }) {
         try {
-            const response = await axios.get(route('v1.user.categories.index'));
+            const response = await axios.get(route('v1.categories.index'));
             commit('setCategories', response.data);
         } catch (error) {
             commit('setCategories', []);
