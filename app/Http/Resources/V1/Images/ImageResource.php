@@ -12,6 +12,18 @@ class ImageResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+    /**
+     * @OA\Schema(
+     *     schema="Image",
+     *     type="object",
+     *     @OA\Property(
+     *         property="url",
+     *         type="string",
+     *         example="http://example.com/images/product1.jpg"
+     *     )
+     * )
+     */
     public function toArray(Request $request): array
     {
         return [

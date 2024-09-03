@@ -12,6 +12,33 @@ class CategoryResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+    /**
+     * @OA\Schema(
+     *     schema="Category",
+     *     type="object",
+     *     @OA\Property(
+     *         property="id",
+     *         type="integer",
+     *         example=1
+     *     ),
+     *     @OA\Property(
+     *         property="name",
+     *         type="string",
+     *         example="Electronics"
+     *     ),
+     *     @OA\Property(
+     *         property="slug",
+     *         type="string",
+     *         example="electronics"
+     *     ),
+     *     @OA\Property(
+     *         property="parent",
+     *         type="object",
+     *         nullable=true
+     *     )
+     * )
+     */
     public function toArray(Request $request): array
     {
         return [
