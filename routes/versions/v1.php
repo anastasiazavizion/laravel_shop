@@ -18,14 +18,11 @@ use App\Http\Controllers\V1\ReviewController;
 Route::group(['middleware' => ['web']], function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
 
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
-Route::prefix('user')->name('user.')->group(function () {
-    Route::apiResource('categories', CategoriesController::class)->only(['index']);
-    Route::apiResource('products', ProductsController::class)->only(['index', 'show']);
-});
+Route::apiResource('categories', CategoriesController::class)->only(['index']);
+Route::apiResource('products', ProductsController::class)->only(['index', 'show']);
 
 Route::prefix('paypal')->name('paypal.')->group(function () {
     Route::post('order', [PaypalController::class, 'create'])->name('order.create');
@@ -64,5 +61,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::name('callbacks.')->prefix('callbacks')->group(function () {
         Route::get('telegram', JoinTelegramController::class)->name('telegram')->middleware(['role:admin']);
     });
+
+});
 
 });

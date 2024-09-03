@@ -41,7 +41,7 @@ const mutations = {
 const actions = {
     async getAll({ commit }, payload) {
         try {
-            const response = await axios.get((payload && payload.url) ?? route('v1.user.products.index'), {params:payload});
+            const response = await axios.get((payload && payload.url) ?? route('v1.products.index'), {params:payload});
             commit('setProducts', response.data.data);
             commit('setLinks', response.data.meta.links);
         } catch (error) {
@@ -51,7 +51,7 @@ const actions = {
 
     async getProduct({ commit}, payload) {
         try {
-            const response = await axios.get(route('v1.user.products.show',payload.id));
+            const response = await axios.get(route('v1.products.show',payload.id));
             commit('setProduct', response.data);
         } catch (error) {
             commit('setProduct', []);

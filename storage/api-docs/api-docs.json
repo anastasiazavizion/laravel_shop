@@ -1,0 +1,313 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Shop API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api": {},
+        "/sanctum/csrf-cookie": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get CSRF token",
+                "description": "This endpoint sets a CSRF token as a cookie. This is required for making authenticated requests to endpoints protected with Sanctum.",
+                "operationId": "05bdd7e62dcfee841b2ae5adbb023458",
+                "responses": {
+                    "204": {
+                        "description": "CSRF token cookie set successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "CSRF token cookie set successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                }
+            }
+        },
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authenticate user and start a session",
+                "operationId": "f5dbc526a1a3a5f6f3581ff7a2550a61",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "admin@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful, session started",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Authenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/data/products": {
+            "post": {
+                "tags": [
+                    "Admin Products"
+                ],
+                "summary": "Adds a new product",
+                "operationId": "70856d04ec2726092a8747ccf7a9b655",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "SKU": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "discount": {
+                                        "type": "number"
+                                    },
+                                    "quantity": {
+                                        "type": "number"
+                                    },
+                                    "thumbnail": {
+                                        "description": "Product thumbnail image",
+                                        "type": "file"
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "images": {
+                                        "description": "Product gallery images",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "file"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Product created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Product Electronics was created"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "slug": {
+                                                    "type": "string",
+                                                    "example": "electronics"
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Electronics"
+                                                },
+                                                "SKU": {
+                                                    "type": "string",
+                                                    "example": "ELEC123"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "A high-quality electronic product."
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 99.99
+                                                },
+                                                "discount": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 10
+                                                },
+                                                "rate": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 4.5
+                                                },
+                                                "quantity": {
+                                                    "type": "integer",
+                                                    "example": 100
+                                                },
+                                                "in_stock": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "thumbnail_url": {
+                                                    "type": "string",
+                                                    "example": "http://example.com/images/product.jpg"
+                                                },
+                                                "final_price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 89.99
+                                                },
+                                                "is_in_wish_list_exist": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "is_in_wish_list_price": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "gallery": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "http://example.com/images/gallery1.jpg"
+                                                    }
+                                                },
+                                                "categories": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Electronics"
+                                                            },
+                                                            "slug": {
+                                                                "type": "string",
+                                                                "example": "electronics"
+                                                            },
+                                                            "parent": {
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "images": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "url": {
+                                                                "type": "string",
+                                                                "example": "http://example.com/images/product1.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Something was wrong"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "Authentication"
+        },
+        {
+            "name": "Admin Products",
+            "description": "Admin Products"
+        }
+    ]
+}
