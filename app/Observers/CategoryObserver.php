@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Category;
+use App\Models\Product;
 
 class CategoryObserver
 {
@@ -19,7 +20,20 @@ class CategoryObserver
      */
     public function updated(Category $category): void
     {
-        //
+        $category->products()->searchable();
+    }
+
+    /**
+     * Handle the Category "deleting" event.
+     */
+
+    public function deleting(Category $category): void
+    {
+        $productIds = $category->products->pluck('id')->toArray();
+        Product::whereIn('id', $productIds)->searchable();
+        if ($category->childs()->exists()) {
+            $category->childs()->update(['parent_id' => null]);
+        }
     }
 
     /**
@@ -45,6 +59,5 @@ class CategoryObserver
      */
     public function forceDeleted(Category $category): void
     {
-        //
     }
 }

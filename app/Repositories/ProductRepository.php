@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+
 use App\Http\Requests\Admin\Products\CreateRequest;
 use App\Http\Requests\Admin\Products\UpdateRequest;
 use App\Models\Product;
@@ -18,7 +19,7 @@ class ProductRepository implements ProductRepositoryContract
     {
     }
 
-    public function create(CreateRequest $request) : Product|false
+    public function create(CreateRequest $request): Product|false
     {
         try {
             DB::beginTransaction();
@@ -27,14 +28,14 @@ class ProductRepository implements ProductRepositoryContract
             $this->setProductRelationsData($product, $data);
             DB::commit();
             return $product;
-        }catch(\Throwable $exception){
+        } catch (\Throwable $exception) {
             DB::rollBack();
             logs()->error($exception->getMessage());
-            return  false;
+            return false;
         }
     }
 
-    public function update(Product $product,UpdateRequest $request) : bool
+    public function update(Product $product, UpdateRequest $request): bool
     {
         try {
             DB::beginTransaction();
@@ -43,35 +44,40 @@ class ProductRepository implements ProductRepositoryContract
             $this->setProductRelationsData($product, $data);
             DB::commit();
             return true;
-        }catch(\Throwable $exception){
+        } catch (\Throwable $exception) {
             DB::rollBack();
             dd($exception->getMessage());
             logs()->error($exception->getMessage());
-            return  false;
+            return false;
         }
     }
 
-    public function getAll(bool $paginate = false, array $params = []) : Collection|LengthAwarePaginator
+    public function getAll(bool $paginate = false, array $params = []): Collection|LengthAwarePaginator
     {
+        $searchIds = [];
+        if (!empty($params['search'])) {
+            $searchResults = Product::search($params['search'])->get();
+            $searchIds = $searchResults->pluck('id');
+        }
         $query = Product::query()
-            ->when(!empty($params['search']), function ($q) use ($params) {
-                $q->whereFullText(['title','description'], $params['search']);
+            ->when(!empty($searchIds), function ($q) use ($searchIds) {
+                $q->whereIn('id', $searchIds);
             })
-            ->when((!empty($params['ids'])), function ($q) use ($params){
-            $q->whereIn('id',$params['ids']);
-        })
-            ->when(!empty($params['categoryName']), function ($q) use ($params){
-                $q->whereHas('categories', function ($query) use ($params){
-                    $query->where('slug',$params['categoryName']);
+            ->when((!empty($params['ids'])), function ($q) use ($params) {
+                $q->whereIn('id', $params['ids']);
+            })
+            ->when(!empty($params['categoryName']), function ($q) use ($params) {
+                $q->whereHas('categories', function ($query) use ($params) {
+                    $query->where('slug', $params['categoryName']);
                 });
             })
-            ->when(!empty($params['sort']), function ($q) use ($params){
+            ->when(!empty($params['sort']), function ($q) use ($params) {
                 $q->orderBy($params['sort']['column'], $params['sort']['direction']);
             })
             ->with(['categories', 'images'])->latest();
 
-        if($paginate){
-            return  $query->paginate(config('app.products_limit'));
+        if ($paginate) {
+            return $query->paginate(config('app.products_limit'));
         }
         return $query->get();
     }
@@ -79,30 +85,30 @@ class ProductRepository implements ProductRepositoryContract
     public function setProductRelationsData(Product $product, array $data): void
     {
         $product->categories()->sync($data['categories']);
-        if(!empty($data['attributes']['images'])){
+        if (!empty($data['attributes']['images'])) {
             $this->imageRepository->attach($product, 'images', $data['attributes']['images'], $product->images_dir);
         }
-        if(!empty($data['deleted_images'])){
+        if (!empty($data['deleted_images'])) {
             $this->imageRepository->detach($product, 'images', $data['deleted_images']);
         }
     }
 
-    public function formRequestData(FormRequest $request) : array
+    public function formRequestData(FormRequest $request): array
     {
         return [
-            'attributes'=>collect($request->validated())->except(['categories', 'deleted_images'])
+            'attributes' => collect($request->validated())->except(['categories', 'deleted_images'])
                 ->prepend(Str::slug($request->get('title')), 'slug')
                 ->toArray(),
-            'categories'=>$request->get('categories', []),
-            'deleted_images'=>$request->get('deleted_images', []),
+            'categories' => $request->get('categories', []),
+            'deleted_images' => $request->get('deleted_images', []),
         ];
     }
 
-    public function getGallery(Product $product) : array
+    public function getGallery(Product $product): array
     {
         return [
             $product->thumbnail_url,
-            ...$product->images->map(function ($image){
+            ...$product->images->map(function ($image) {
                 return $image->url;
             })
         ];

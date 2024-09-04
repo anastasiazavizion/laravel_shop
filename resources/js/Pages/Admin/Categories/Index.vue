@@ -21,7 +21,7 @@ onMounted(async () => {
 async function deleteCategory(id) {
     if(confirm('Are you sure?')){
         await store.dispatch('category_admin/deleteCategory', {id:id});
-        router.go(0);
+     //   router.go(0);
     }
 }
 

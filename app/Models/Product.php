@@ -14,11 +14,12 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Scout\Searchable;
 
 #[ObservedBy([ProductObserver::class, WishListObserver::class])]
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $appends = ['thumbnail_url', 'rate', 'final_price', 'is_in_wish_list_exist', 'is_in_wish_list_price', 'in_stock'];
 
@@ -138,5 +139,19 @@ class Product extends Model
     {
         return $this->morphMany(Review::class, 'reviewable');
     }
+
+
+    public function toSearchableArray()
+    {
+
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+            'categories' => $this->categories->map(function ($data) {
+                return $data['name'];
+            })->toArray(),
+        ];
+    }
+
 
 }
