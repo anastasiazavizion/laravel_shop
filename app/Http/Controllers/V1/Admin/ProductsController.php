@@ -7,9 +7,9 @@ use App\Http\Requests\Admin\Products\AllProductsRequest;
 use App\Http\Requests\Admin\Products\CreateRequest;
 use App\Http\Requests\Admin\Products\UpdateRequest;
 use App\Http\Resources\V1\Products\ProductResource;
-use App\Http\Resources\V1\Products\ProductsCollection;
 use App\Models\Product;
 use App\Repositories\Contract\ProductRepositoryContract;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 
@@ -109,9 +109,9 @@ class ProductsController  extends Controller
      *     )
      * )
      */
-    public function index(AllProductsRequest $request): ProductsCollection
+    public function index(AllProductsRequest $request)
     {
-        return new ProductsCollection($this->repository->getAll(false, $request->validated()));
+        return $this->repository->getAll(false, $request->validated());
     }
 
     /**
@@ -200,10 +200,10 @@ class ProductsController  extends Controller
      *     )
      * )
      */
-    public function show(Product  $product): ProductResource
+
+    public function show(Product  $product): JsonResource
     {
-        $product->load(['categories', 'images']);
-        return new ProductResource($product);
+        return $this->repository->getProduct($product);
     }
 
     /**

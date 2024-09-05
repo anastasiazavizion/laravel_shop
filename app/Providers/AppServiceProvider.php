@@ -19,6 +19,8 @@ use App\Repositories\ImageRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\WishListRepository;
+use App\Services\CacheService;
+use App\Services\Contracts\CacheServiceContract;
 use App\Services\Contracts\FileServiceContract;
 use App\Services\Contracts\InvoiceServiceContract;
 use App\Services\Contracts\PayPalServiceContract;
@@ -48,6 +50,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PayPalServiceContract::class, PayPalService::class);
         $this->app->bind(OrderRepositoryContract::class, OrderRepository::class);
         $this->app->bind(CartRepositoryContract::class, CartRepository::class);
+        $this->app->bind(CacheServiceContract::class, CacheService::class);
 
         $this->app->bind(InvoiceServiceContract::class, InvoiceService::class);
 
