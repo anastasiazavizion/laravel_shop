@@ -4,6 +4,10 @@ import {useStore} from "vuex";
 const props = defineProps({
     product:Object
 })
+
+if(props.product.id == 62){
+    console.log(props.product);
+}
 import {HeartIcon, CurrencyDollarIcon} from "@heroicons/vue/24/solid";
 import {computed} from "vue";
 

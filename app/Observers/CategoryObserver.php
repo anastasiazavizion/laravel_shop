@@ -2,11 +2,20 @@
 
 namespace App\Observers;
 
+use App\Events\ProductInfoWasUpdated;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\Contracts\CacheServiceContract;
 
 class CategoryObserver
 {
+    private function clearCache(Category $category): void
+    {
+        $category->products()->each(function ($product) {
+            ProductInfoWasUpdated::dispatch($product);
+        });
+    }
+
     /**
      * Handle the Category "created" event.
      */
@@ -21,6 +30,7 @@ class CategoryObserver
     public function updated(Category $category): void
     {
         $category->products()->searchable();
+        $this->clearCache($category);
     }
 
     /**
@@ -44,6 +54,7 @@ class CategoryObserver
         if($category->childs()->exists()){
             $category->childs()->update(['parent_id'=>null]);
         }
+        $this->clearCache($category);
     }
 
     /**
@@ -51,7 +62,7 @@ class CategoryObserver
      */
     public function restored(Category $category): void
     {
-        //
+        $this->clearCache($category);
     }
 
     /**
@@ -59,5 +70,6 @@ class CategoryObserver
      */
     public function forceDeleted(Category $category): void
     {
+        $this->clearCache($category);
     }
 }

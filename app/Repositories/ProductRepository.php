@@ -4,18 +4,21 @@ namespace App\Repositories;
 
 use App\Http\Requests\Admin\Products\CreateRequest;
 use App\Http\Requests\Admin\Products\UpdateRequest;
+use App\Http\Resources\V1\Products\ProductResource;
+use App\Http\Resources\V1\Products\ProductsCollection;
 use App\Models\Product;
 use App\Repositories\Contract\ImageRepositoryContract;
 use App\Repositories\Contract\ProductRepositoryContract;
+use App\Services\Contracts\CacheServiceContract;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Collection;
 
 class ProductRepository implements ProductRepositoryContract
 {
-    public function __construct(protected ImageRepositoryContract $imageRepository)
+    public function __construct(protected ImageRepositoryContract $imageRepository, protected CacheServiceContract $cacheService)
     {
     }
 
@@ -46,40 +49,46 @@ class ProductRepository implements ProductRepositoryContract
             return true;
         } catch (\Throwable $exception) {
             DB::rollBack();
-            dd($exception->getMessage());
             logs()->error($exception->getMessage());
             return false;
         }
     }
 
-    public function getAll(bool $paginate = false, array $params = []): Collection|LengthAwarePaginator
+    public function getAll(bool $paginate = false, array $params = [])
     {
-        $searchIds = [];
-        if (!empty($params['search'])) {
-            $searchResults = Product::search($params['search'])->get();
-            $searchIds = $searchResults->pluck('id');
-        }
-        $query = Product::query()
-            ->when(!empty($searchIds), function ($q) use ($searchIds) {
-                $q->whereIn('id', $searchIds);
-            })
-            ->when((!empty($params['ids'])), function ($q) use ($params) {
-                $q->whereIn('id', $params['ids']);
-            })
-            ->when(!empty($params['categoryName']), function ($q) use ($params) {
-                $q->whereHas('categories', function ($query) use ($params) {
-                    $query->where('slug', $params['categoryName']);
-                });
-            })
-            ->when(!empty($params['sort']), function ($q) use ($params) {
-                $q->orderBy($params['sort']['column'], $params['sort']['direction']);
-            })
-            ->with(['categories', 'images'])->latest();
+        $key = 'products_page_'.request('page', 1).'_'.(int)$paginate.'_params_'.md5(json_encode($params));
+        $this->cacheService->saveCacheKeys(config('cache.default_keys.products'),$key);
 
-        if ($paginate) {
-            return $query->paginate(config('app.products_limit'));
-        }
-        return $query->get();
+        $data =  Cache::rememberForever($key, function () use ($paginate,$params) {
+            $searchIds = [];
+            if (!empty($params['search'])) {
+                $searchResults = Product::search($params['search'])->get();
+                $searchIds = $searchResults->pluck('id');
+            }
+            $query = Product::query()
+                ->when(!empty($searchIds), function ($q) use ($searchIds) {
+                    $q->whereIn('id', $searchIds);
+                })
+                ->when((!empty($params['ids'])), function ($q) use ($params) {
+                    $q->whereIn('id', $params['ids']);
+                })
+                ->when(!empty($params['categoryName']), function ($q) use ($params) {
+                    $q->whereHas('categories', function ($query) use ($params) {
+                        $query->where('slug', $params['categoryName']);
+                    });
+                })
+                ->when(!empty($params['sort']), function ($q) use ($params) {
+                    $q->orderBy($params['sort']['column'], $params['sort']['direction']);
+                })
+                ->with(['categories', 'images'])->latest();
+
+            if ($paginate) {
+                return  $query->paginate(config('app.products_limit'));
+            }else{
+                return  $query->get();
+            }
+        });
+        return new ProductsCollection($data);
     }
 
     public function setProductRelationsData(Product $product, array $data): void
@@ -112,5 +121,17 @@ class ProductRepository implements ProductRepositoryContract
                 return $image->url;
             })
         ];
+    }
+
+    public function getProduct(Product $product): JsonResource
+    {
+        $key = 'product_'.$product->id;
+        $this->cacheService->saveCacheKeys(config('cache.default_keys.products'),$key);
+        $data =  Cache::rememberForever('product_'.$product->id, function () use ($product) {
+            $product->load(['categories','images']);
+            $product->gallery = $this->getGallery($product);
+            return $product;
+        });
+        return new ProductResource($data);
     }
 }
