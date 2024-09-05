@@ -21,4 +21,4 @@ yarn-error.log
 
 _ide_*.php
 .phpstorm.meta.php
-
+/storage/worker.log
