@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 #[ObservedBy([ImageObserver::class])]
@@ -33,6 +34,6 @@ class Image extends Model
 
     protected function getUrlAttribute(): string
     {
-        return Storage::url($this->path);
+        return app(FileServiceContract::class)->url($this->path,'products.images.'.$this->attributes['path']);
     }
 }
