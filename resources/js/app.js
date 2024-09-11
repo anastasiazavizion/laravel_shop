@@ -12,10 +12,27 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { register } from 'swiper/element/bundle';
 register();
 
-createApp(App)
+import UniversalSocialauth from 'universal-social-auth';
+
+const options = {
+    providers: {
+        google: {
+            clientId: '763006628274-la1sb6frp572vbhpnl66cr33m8m842lb.apps.googleusercontent.com',
+            redirectUri: 'http://127.0.0.1/auth/google/callback'
+        }
+    }
+};
+
+const Oauth = new UniversalSocialauth(axios, options);
+
+const app = createApp(App)
     .use(router)
     .use(store)
     .use(ZiggyVue)
     .use(LaravelPermissionToVueJS)
     .use(Toast)
-    .mount('#app')
+
+app.config.globalProperties.$axios = axios;
+app.config.globalProperties.$Oauth = Oauth;
+
+app.mount('#app');

@@ -27,6 +27,7 @@
         "laravel-permission-to-vuejs": "^3.0.2",
         "sweetalert2": "^11.12.3",
         "swiper": "^11.1.8",
+        "universal-social-auth": "^0.2.6",
         "uuid": "^10.0.0",
         "vue-router": "^4.4.0",
         "vue-toastification": "^2.0.0-rc.5",

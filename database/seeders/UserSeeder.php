@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
+    use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      */
@@ -18,7 +20,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        if(!User::role(Role::ADMIN->value)->exists()){
+        if (!User::role(Role::ADMIN->value)->exists()) {
             User::factory()->admin()->create();
         }
 
@@ -26,7 +28,7 @@ class UserSeeder extends Seeder
 
         $product = Product::first();
 
-        User::factory(10)->create()->each(function ($user) use ($product){
+        User::factory(5)->create()->each(function ($user) use ($product) {
             $user->wishes()->attach($product->id);
         });
 

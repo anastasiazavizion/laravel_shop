@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enum\Role;
+use App\Observers\UserObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,6 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
 use LaravelAndVueJS\Traits\LaravelPermissionToVueJS;
 use Spatie\Permission\Traits\HasRoles;
 
+#[ObservedBy(UserObserver::class)]
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles, HasApiTokens, LaravelPermissionToVueJS;
@@ -30,6 +33,10 @@ class User extends Authenticatable
         'email',
         'password',
         'telegram_id',
+        'provider_name',
+        'provider_id',
+        'provider_token',
+        'avatar',
         'created_at',
         'updated_at',
     ];
