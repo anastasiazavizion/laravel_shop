@@ -4,12 +4,14 @@ namespace App\Models;
 use App\Enum\WishListType;
 use App\Observers\ProductObserver;
 use App\Observers\WishListObserver;
+use App\Services\Contracts\CacheServiceContract;
 use App\Services\Contracts\FileServiceContract;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -71,7 +73,8 @@ class Product extends Model
     public function thumbnailUrl(): Attribute
     {
         return Attribute::make(
-            get: fn () => str_contains($this->attributes['thumbnail'],'picsum.photos') ? $this->attributes['thumbnail'] : Storage::url($this->attributes['thumbnail'])
+            get: fn () => app(FileServiceContract::class)
+                ->url($this->attributes['thumbnail'],'products.thumbnail.'.($this->attributes['id'] ?? 0))
         );
     }
     public function inStock(): Attribute
