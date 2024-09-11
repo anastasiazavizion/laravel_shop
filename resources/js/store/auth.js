@@ -13,10 +13,10 @@ const getters = {
 };
 
 const mutations = {
-    SET_AUTHENTICATED (state, value) {
+    setAuthenticated (state, value) {
         state.authenticated = value;
     },
-    SET_USER (state, value) {
+    setUser (state, value) {
         state.user = value;
     },
     setErrors (state, value) {
@@ -35,26 +35,37 @@ const actions = {
         }
     },
 
-    async login({ commit}, payload) {
+    async login({ commit, dispatch}, payload) {
         try {
             await axios.post(route('v1.login'), payload);
+            dispatch('userInfo');
+        } catch (error) {
+            commit('setErrors',error.response.data.errors);
+            commit('setUser', {});
+            commit('setAuthenticated', false);
+        }
+    },
+
+    async userInfo({ commit}) {
+        try {
             const response = await axios.get(route('v1.user'));
             const { user, permissions } = response.data;
             window.Laravel.jsPermissions = JSON.parse(permissions);
-            commit('SET_USER', user);
-            commit('SET_AUTHENTICATED', true);
+            commit('setUser', user);
+            commit('setAuthenticated', true);
             commit('setErrors',null);
         } catch (error) {
             commit('setErrors',error.response.data.errors);
-            commit('SET_USER', {});
-            commit('SET_AUTHENTICATED', false);
+            commit('setUser', {});
+            commit('setAuthenticated', false);
         }
     },
+
     async logout({commit}) {
         try{
             await axios.post(route('v1.logout'));
-            commit('SET_USER', {});
-            commit('SET_AUTHENTICATED', false);
+            commit('setUser', {});
+            commit('setAuthenticated', false);
             commit('setErrors',null);
         }catch(error){
             commit('setErrors',error.response.data.errors);

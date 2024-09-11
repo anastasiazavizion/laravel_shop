@@ -14,6 +14,7 @@ use App\Http\Controllers\V1\Payments\PaypalController;
 use App\Http\Controllers\V1\ProductsController;
 use App\Http\Controllers\V1\WishListController;
 use App\Http\Controllers\V1\ReviewController;
+use App\Http\Controllers\V1\Callbacks\SocialAuthController;
 
 Route::group(['middleware' => ['web']], function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
@@ -30,6 +31,9 @@ Route::prefix('paypal')->name('paypal.')->group(function () {
 });
 
 Route::get('orderByVendorId', [OrderController::class, 'getOrderByVendorId'])->name('orderByVendorId');
+
+Route::post('/auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback'])->name('auth.social.callback');
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'user'])->name('user');
