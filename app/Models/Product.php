@@ -74,7 +74,7 @@ class Product extends Model
     {
         return Attribute::make(
             get: fn () => app(FileServiceContract::class)
-                ->url($this->attributes['thumbnail'],'products.thumbnail.'.$this->attributes['id'])
+                ->url($this->attributes['thumbnail'],'products.thumbnail.'.($this->attributes['id'] ?? 0))
         );
     }
     public function inStock(): Attribute
