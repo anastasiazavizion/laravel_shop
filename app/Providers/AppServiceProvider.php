@@ -82,10 +82,6 @@ class AppServiceProvider extends ServiceProvider
         if(env('APP_ENV') === 'production')
         {
             URL::forceScheme('https');
-
-            if (User::count() === 0) {
-                Artisan::call('db:seed');
-            }
         }
     }
 }
