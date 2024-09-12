@@ -7,7 +7,7 @@ import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import { Ziggy } from './ziggy';
 
 import { register } from 'swiper/element/bundle';
 register();
@@ -28,7 +28,7 @@ const Oauth = new UniversalSocialauth(axios, options);
 const app = createApp(App)
     .use(router)
     .use(store)
-    .use(ZiggyVue)
+    .use(Ziggy)
     .use(LaravelPermissionToVueJS)
     .use(Toast)
 
