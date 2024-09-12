@@ -29,6 +29,7 @@ use App\Services\InvoiceService;
 use App\Services\PayPalService;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -81,6 +82,10 @@ class AppServiceProvider extends ServiceProvider
         if(env('APP_ENV') === 'production')
         {
             URL::forceScheme('https');
+
+            if (User::count() === 0) {
+                Artisan::call('db:seed');
+            }
         }
     }
 }
