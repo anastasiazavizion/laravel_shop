@@ -16,7 +16,7 @@ use App\Http\Controllers\V1\WishListController;
 use App\Http\Controllers\V1\ReviewController;
 use App\Http\Controllers\V1\Callbacks\SocialAuthController;
 
-Route::group(['middleware' => ['web']], function () {
+//Route::group(['middleware' => ['web']], function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -68,4 +68,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 
-});
+//});
