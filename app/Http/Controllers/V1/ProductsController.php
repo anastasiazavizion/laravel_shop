@@ -26,9 +26,6 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        logs()->info('TEST LOG');
-        dd(OrderStatus::all(), OrderStatus::inProcess()->first());
-
         return $this->repository->getAll(true, $request->all());
     }
 
