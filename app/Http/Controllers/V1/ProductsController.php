@@ -25,6 +25,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
+        logs()->info('TEST LOG');
         return $this->repository->getAll(true, $request->all());
     }
 
