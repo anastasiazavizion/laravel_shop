@@ -83,7 +83,7 @@ class ProductRepository implements ProductRepositoryContract
                 ->with(['categories', 'images'])->latest();
 
             if ($paginate) {
-                return  $query->paginate(config('app.products_limit'))->setPath('');
+                return  $query->paginate(config('app.products_limit'));
             }else{
                 return  $query->get();
             }
