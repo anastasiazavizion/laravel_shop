@@ -18,7 +18,7 @@ const actions = {
 
     async getUser({ commit }) {
         try {
-            const response = await axios.get('/user');
+            const response = await axios.get(route('v1.user'));
             const { user } = response.data;
             commit('setUser', user);
         } catch (error) {

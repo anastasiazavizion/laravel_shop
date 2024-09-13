@@ -1,18 +1,19 @@
 <script setup>
-import {computed, onMounted, ref} from "vue";
+import {computed, nextTick, onMounted, ref} from "vue";
 import {useStore} from "vuex";
 import Header from "@/Components/Header.vue";
+import loadTelegramWidget from "@/hooks/telegramWidget.js";
 const store = useStore();
-import loadTelegramWidget from '../../hooks/telegramWidget.js';
 
 const user = ref(null);
 
 onMounted(async () => {
-    loadTelegramWidget();
     await store.dispatch('user/getUser');
-    user.value = computed(()=>{
+    user.value = await computed(()=>{
         return store.getters['user/user'];
     })
+    await nextTick();
+    loadTelegramWidget();
 })
 </script>
 

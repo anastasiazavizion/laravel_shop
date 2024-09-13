@@ -19,6 +19,7 @@ class CurrentUserResource extends JsonResource
             'lastname'=>$this->lastname,
             'email'=>$this->email,
             'phone'=>$this->phone,
+            'telegram_id'=>$this->telegram_id
         ];
     }
 }
