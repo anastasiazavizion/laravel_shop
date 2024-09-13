@@ -43,6 +43,7 @@ class PaypalController extends Controller
             return new OrderResource($order);
         } catch (\Exception $exception) {
             DB::rollBack();
+            logs()->info($exception->getMessage());
             logs()->error($exception->getMessage());
             return response()->json('Error', 500);
         }
