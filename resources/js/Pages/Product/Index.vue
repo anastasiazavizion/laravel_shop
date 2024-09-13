@@ -51,7 +51,7 @@ function getUrl(url) {
         <div v-if="products.length > 0">
             <AllProducts :products="products"/>
             <div class="mt-8 flex gap-1 flex-wrap sm:flex-none">
-                <a @click.prevent="loadProducts(link.url)" v-if="links.length > 3"
+                <a @click.prevent="loadProducts(getUrl(link.url))" v-if="links.length > 3"
                    :class="{'pagination-link-active':link.active, 'opacity-25':!link.url, 'bg-white': !link.active}"
                    v-html="link.label" class="pagination-link" v-for="(link,index) in links" :key="index"
                    :href="link.url ? getUrl(link.url) : ''"/>
