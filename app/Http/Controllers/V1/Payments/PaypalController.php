@@ -38,12 +38,14 @@ class PaypalController extends Controller
             if (!$paypalOrderId) {
                 return response()->json('Payment was not completed', 500);
             }
+
+            logs()->info('BEFORE CREATE');
+
             $order = $this->orderRepository->create($data);
             DB::commit();
             return new OrderResource($order);
         } catch (\Exception $exception) {
             DB::rollBack();
-            logs()->info($exception->getMessage());
             logs()->error($exception->getMessage());
             return response()->json('Error', 500);
         }
