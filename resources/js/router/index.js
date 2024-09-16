@@ -26,6 +26,8 @@ import Checkout from "@/Pages/Cart/Checkout.vue";
 import ThankYou from "@/Pages/Cart/ThankYou.vue";
 import AllOrders from "@/Pages/Admin/Orders/Index.vue";
 import Order from "@/Pages/Admin/Orders/Show.vue";
+import UserOrders from "@/Pages/Account/Orders/Index.vue";
+import UserOrder from "@/Pages/Account/Orders/Show.vue";
 
 const routes = [
     {   path: '/',
@@ -219,6 +221,22 @@ const routes = [
                     middleware: ["auth"]
                 },
                 children: [
+                    {
+                        path: 'orders',
+                        component: UserOrders,
+                        name:'user.orders'
+                    },
+
+                    {
+                        path: "orders/:id",
+                        component: UserOrder,
+                        meta: {
+                            middleware: ["auth"],
+                            title: `Order`
+                        },
+                        name: "user.orders.show",
+                    },
+
                     {
                         path: 'wishlist',
                         component: Wishlist
