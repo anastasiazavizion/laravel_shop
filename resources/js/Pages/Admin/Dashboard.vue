@@ -21,6 +21,6 @@ onMounted(async () => {
     <Header>Admin panel</Header>
     <div v-if="is('admin') && (user && !user.telegram_id)" id="telegram-widget-container"></div>
     <div>
-        Info
+        Info for admin
     </div>
 </template>
