@@ -7,7 +7,7 @@ import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import { Ziggy } from './ziggy';
 
 import { register } from 'swiper/element/bundle';
 register();
@@ -17,8 +17,8 @@ import UniversalSocialauth from 'universal-social-auth';
 const options = {
     providers: {
         google: {
-            clientId: '763006628274-la1sb6frp572vbhpnl66cr33m8m842lb.apps.googleusercontent.com',
-            redirectUri: 'http://127.0.0.1/auth/google/callback'
+            clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+            redirectUri: import.meta.env.VITE_GOOGLE_REDIRECT_URL
         }
     }
 };
@@ -28,7 +28,7 @@ const Oauth = new UniversalSocialauth(axios, options);
 const app = createApp(App)
     .use(router)
     .use(store)
-    .use(ZiggyVue)
+    .use(Ziggy)
     .use(LaravelPermissionToVueJS)
     .use(Toast)
 

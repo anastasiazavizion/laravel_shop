@@ -10,6 +10,7 @@
         @vite(['resources/js/app.js', 'resources/scss/app.scss', 'resources/css/app.css'])
     </head>
     <body class="font-sans antialiased">
+    <h1>Test</h1>
     <div id="app"></div>
     <script src="https://www.paypal.com/sdk/js?client-id={{ config('paypal.' . config('paypal.mode') . '.client_id') }}&currency={{ config('paypal.currency') }}"></script>
     </body>

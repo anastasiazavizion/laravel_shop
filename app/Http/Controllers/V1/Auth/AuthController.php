@@ -80,7 +80,7 @@ class AuthController
     public function authenticate(LoginRequest $request): JsonResponse
     {
         if (Auth::attempt($request->validated())) {
-            $request->session()->regenerate();
+            session()->regenerate();
             return response()->json(['message' => 'Authenticated'], 200);
         }
         return response()->json(['message' => 'Unauthorized'], 401);
@@ -89,8 +89,8 @@ class AuthController
     public function logout(Request $request): JsonResponse
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        session()->invalidate();
+        session()->regenerateToken();
         return response()->json(['message' => 'Logout'], 200);
     }
 }
