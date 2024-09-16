@@ -7,9 +7,32 @@ import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-createApp(App)
+import { Ziggy } from './ziggy';
+
+import { register } from 'swiper/element/bundle';
+register();
+
+import UniversalSocialauth from 'universal-social-auth';
+
+const options = {
+    providers: {
+        google: {
+            clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+            redirectUri: import.meta.env.VITE_GOOGLE_REDIRECT_URL
+        }
+    }
+};
+
+const Oauth = new UniversalSocialauth(axios, options);
+
+const app = createApp(App)
     .use(router)
     .use(store)
+    .use(Ziggy)
     .use(LaravelPermissionToVueJS)
     .use(Toast)
-    .mount('#app')
+
+app.config.globalProperties.$axios = axios;
+app.config.globalProperties.$Oauth = Oauth;
+
+app.mount('#app');

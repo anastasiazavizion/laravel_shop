@@ -12,16 +12,16 @@ const router = useRouter();
 const categories = ref([]);
 
 onMounted(async () => {
-    await store.dispatch('category/getAll');
-    categories.value = store.getters['category/categories'];
+    await store.dispatch('category_admin/getAll');
+    categories.value = store.getters['category_admin/categories'];
 })
 
 
 
 async function deleteCategory(id) {
     if(confirm('Are you sure?')){
-        await store.dispatch('category/deleteCategory', {id:id});
-        router.go(0);
+        await store.dispatch('category_admin/deleteCategory', {id:id});
+     //   router.go(0);
     }
 }
 
@@ -29,7 +29,7 @@ async function deleteCategory(id) {
 
 <template>
 <Header>All categories</Header>
-    <Card>
+    <Card v-if="categories">
         <table class="w-full">
             <thead>
             <tr>

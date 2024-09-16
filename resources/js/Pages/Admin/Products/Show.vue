@@ -16,8 +16,8 @@ const payload = {
 };
 
 onMounted(async () => {
-    await store.dispatch('product/getProduct', payload);
-    product.value = await store.getters['product/product'];
+    await store.dispatch('product_admin/getProduct', payload);
+    product.value = await store.getters['product_admin/product'];
 })
 
 </script>

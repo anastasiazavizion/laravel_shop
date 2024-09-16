@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Enum;
 use App\Traits\RolesPermissions;
 

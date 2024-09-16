@@ -35,6 +35,7 @@ class UpdateRequest extends FormRequest
             'thumbnail'=>['nullable', 'file'],
             'categories.*'=>['required', 'exists:categories,id'],
             'images.*'=>[ 'image:jpg,jpeg,png'],
+            'deleted_images.*'=>['nullable', 'exists:images,id'],
         ];
     }
 }

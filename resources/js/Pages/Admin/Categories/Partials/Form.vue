@@ -27,8 +27,8 @@ const props = defineProps({
 })
 
 onMounted(async () => {
-    await store.dispatch('category/getAll');
-    parentCategories.value = store.getters['category/categories'];  //todo remove own id
+    await store.dispatch('category_admin/getAll');
+    parentCategories.value = store.getters['category_admin/categories'];  //todo remove own id
 
     if(props.edit) {
         const id = route.params.id;
@@ -38,8 +38,8 @@ onMounted(async () => {
 
         parentCategories.value = parentCategories.value.filter((item)=>item.id != id); //don't include
 
-        await store.dispatch('category/getCategory', payload);
-        category.value = store.getters['category/category'];
+        await store.dispatch('category_admin/getCategory', payload);
+        category.value = store.getters['category_admin/category'];
         form.value.name = category.value.name;
         form.value.parent_id = category.value.parent_id;
         form.value.id = id;
@@ -48,11 +48,11 @@ onMounted(async () => {
 
 async function handleRequest() {
     if (props.edit) {
-        await store.dispatch('category/updateCategory', { id: route.params.id, data: form.value });
+        await store.dispatch('category_admin/updateCategory', { id: route.params.id, data: form.value });
     }else {
-        await store.dispatch('category/createCategory', form.value);
+        await store.dispatch('category_admin/createCategory', form.value);
     }
-    errors.value = await store.getters['category/errors'];
+    errors.value = await store.getters['category_admin/errors'];
     if(Object.keys(errors.value).length === 0){
         await router.push('/admin/categories');
     }

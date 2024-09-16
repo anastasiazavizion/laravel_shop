@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Product;
 use App\Repositories\Contract\ImageRepositoryContract;
 use App\Services\Contracts\FileServiceContract;
 use Illuminate\Database\Eloquent\Model;
@@ -27,14 +28,18 @@ class ImageRepository implements  ImageRepositoryContract
         }
     }
 
-    public function detach(Model $model, string $relation): void
+    public function detach(Model $model, string $relation, array $images = []): void
     {
         if(!method_exists($model, $relation)){
             throw new \Exception($model::class, "Model $model doesn't have relation $relation");
         }else{
-            $fileService = app(FileServiceContract::class);
-            call_user_func([$model, $relation])->get()->map(function ($item) use ($fileService){
-                $fileService->remove($item->path);
+            $query = call_user_func([$model, $relation]);
+
+            $query->when(!empty($images), function ($query) use ($images) {
+                $query->whereIn('id', $images);
+            });
+
+            $query->get()->map(function ($item){
                 $item->delete();
             });
         }
