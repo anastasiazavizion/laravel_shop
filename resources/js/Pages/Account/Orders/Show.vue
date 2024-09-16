@@ -9,5 +9,5 @@ const route = useRoute();
 
 <template>
     <Header>Order #{{route.params.id}}</Header>
-    <OrderInfo :admin="true"></OrderInfo>
+    <OrderInfo/>
 </template>
