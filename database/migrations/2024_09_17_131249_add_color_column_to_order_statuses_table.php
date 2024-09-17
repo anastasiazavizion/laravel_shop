@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        \App\Models\OrderStatus::create(['name'=>'In process', 'color'=>'#e5a50a']);
-        \App\Models\OrderStatus::create(['name'=>'Paid','color'=>'#26a269']);
+        Schema::table('order_statuses', function (Blueprint $table) {
+            $table->string('color',20)->nullable();
+        });
     }
 
     /**
@@ -20,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('order_statuses', function (Blueprint $table) {
+            $table->dropColumn('color');
+        });
     }
 };

@@ -27,9 +27,7 @@ class OrderController extends Controller
             logs()->error($exception);
             return response()->json([], 500);
         }
-
     }
-
 
     /**
      * Display a listing of the resource.
@@ -64,4 +62,10 @@ class OrderController extends Controller
             return response()->json(['message' => $exception->getMessage(), 'data'=>[]], $exception->getCode());
         }
     }
+
+    public function allOrdersAmount(): int
+    {
+        return Order::count();
+    }
+
 }

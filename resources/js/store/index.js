@@ -10,6 +10,8 @@ import cart from './cart.js';
 import order from './order.js';
 import user from './user.js';
 import review from './review.js';
+import admin_charts from './admin/charts.js';
+import admin_users from './admin/user.js';
 
 const store = createStore({
     modules: {
@@ -21,7 +23,9 @@ const store = createStore({
         cart,
         order,
         user,
-        review
+        review,
+        admin_charts,
+        admin_users
     },
     plugins: [createPersistedState()]
 });

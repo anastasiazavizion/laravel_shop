@@ -4,11 +4,13 @@ const state = {
     order:null,
     orders:null,
     links:null,
+    allOrdersAmount:0,
 };
 const getters = {
     order: state => state.order,
     orders: state => state.orders,
     links: state => state.links,
+    allOrdersAmount: state => state.allOrdersAmount,
 };
 
 const mutations = {
@@ -20,6 +22,9 @@ const mutations = {
     },
     setLinks(state, value) {
         state.links = value;
+    },
+    setAllOrdersAmount(state, value) {
+        state.allOrdersAmount = value;
     }
 };
 
@@ -56,6 +61,16 @@ const actions = {
         } catch (error) {
             console.log(error);
             commit('setOrder',null);
+        }
+    },
+
+    async allOrdersAmount({ commit}) {
+        try {
+            const response = await axios.get(route('v1.admin.allOrdersAmount'));
+            commit('setAllOrdersAmount', response.data);
+        } catch (error) {
+            console.log(error);
+            commit('setAllOrdersAmount',null);
         }
     },
 
