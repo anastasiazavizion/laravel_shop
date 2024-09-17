@@ -1,5 +1,10 @@
 <script setup>
-
+const props = defineProps({
+    admin:{
+        type:Boolean,
+        default:false
+    }
+})
 </script>
 
 <template>
@@ -13,6 +18,8 @@
         <th>City</th>
         <th>Total</th>
         <th>Date</th>
+        <th></th>
+        <th v-if="admin && can('delete order')"></th>
     </tr>
     </thead>
 </template>
