@@ -15,6 +15,7 @@ use App\Http\Controllers\V1\ProductsController;
 use App\Http\Controllers\V1\WishListController;
 use App\Http\Controllers\V1\ReviewController;
 use App\Http\Controllers\V1\Callbacks\SocialAuthController;
+use App\Http\Controllers\V1\Admin\AdminChartsController;
 
 //Route::group(['middleware' => ['web']], function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
@@ -44,6 +45,22 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('categories', AdminCategoriesController::class);
         Route::apiResource('products', AdminProductsController::class);
     });
+
+
+    Route::name('admin.')->middleware(['role:admin|moderator'])->group(function (){
+
+        Route::get('/ordersAmountByProducts', [AdminChartsController::class, 'ordersAmountByProducts'])->name('ordersAmountByProducts');
+        Route::get('/ordersAmountByCities', [AdminChartsController::class, 'ordersAmountByCities'])->name('ordersAmountByCities');
+        Route::get('/ordersAmountByStatuses', [AdminChartsController::class, 'ordersAmountByStatuses'])->name('ordersAmountByStatuses');
+        Route::get('/ordersAmountByCategories', [AdminChartsController::class, 'ordersAmountByCategories'])->name('ordersAmountByCategories');
+        Route::get('/ordersTotal', [AdminChartsController::class, 'ordersTotal'])->name('ordersTotal');
+        Route::get('/allOrdersAmount', [OrderController::class, 'allOrdersAmount'])->name('allOrdersAmount');
+        Route::get('/allProductsAmount', [AdminProductsController::class, 'allProductsAmount'])->name('allProductsAmount');
+        Route::get('/allUsersAmount', [\App\Http\Controllers\V1\Admin\UserController::class, 'allUsersAmount'])->name('allUsersAmount');
+
+
+    });
+
 
     Route::apiResource('orders', OrderController::class)->only(['index','show','destroy']);
 

@@ -3,11 +3,13 @@ import axios from 'axios';
 const state = {
     products: [],
     product:null,
+    allProductsAmount:0,
     errors:[]
 };
 
 const getters = {
     products: state => state.products,
+    allProductsAmount: state => state.allProductsAmount,
     product: state => state.product,
     productCategoriesIds: state => state.product.categories.map(a=>a.id),
     errors: state => state.errors,
@@ -19,6 +21,9 @@ const mutations = {
     } ,
     setProduct (state, value) {
         state.product = value;
+    },
+    setAllProductsAmount (state, value) {
+        state.allProductsAmount = value;
     },
     setErrors (state, value) {
         state.errors = value;
@@ -85,7 +90,18 @@ const actions = {
             const response = await axios.delete(route('v1.admin.products.destroy', payload.id));
         } catch (error) {
         }
-    }
+    },
+
+    async allProductsAmount({ commit}) {
+        try {
+            const response = await axios.get(route('v1.admin.allProductsAmount'));
+            commit('setAllProductsAmount', response.data);
+        } catch (error) {
+            console.log(error);
+            commit('setAllProductsAmount',null);
+        }
+    },
+
 };
 
 export default {
