@@ -29,7 +29,7 @@ class AdminChartsController extends Controller
         return Product::query()->select('categories.name',DB::raw('count(*) as total'))->join('order_product','order_product.product_id','=','products.id')
             ->join('category_product','products.id','=','category_product.product_id')
             ->join('categories','categories.id','=','category_product.category_id')
-            ->groupBy('category_product.category_id')->get()->pluck('total','name');
+            ->groupBy('categories.name')->get()->pluck('total','name');
     }
 
     public function ordersAmountByStatuses()
