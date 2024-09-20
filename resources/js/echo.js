@@ -4,9 +4,8 @@ import Pusher from 'pusher-js';
 import {useToast} from "vue-toastification";
 window.Pusher = Pusher;
 
-console.log(import.meta.env.VITE_REVERB_PORT ?? 80);
-console.log(import.meta.env.VITE_REVERB_PORT ?? 443);
-
+console.log(import.meta.env.VITE_PUSHER_APP_KEY);
+console.log(import.meta.env.VITE_PUSHER_APP_CLUSTER);
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
