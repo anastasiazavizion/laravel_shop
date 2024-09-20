@@ -2,7 +2,7 @@
 import {computed, onMounted, ref, watch} from "vue";
 import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
-import paypalFunction from "@/Services/Payment/paypal.js";
+import paypalFunction from "@/hooks/paypal.js";
 import {useStore} from "vuex";
 const store = useStore();
 
