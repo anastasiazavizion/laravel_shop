@@ -75,6 +75,10 @@
         @apply relative text-3xl text-slate-800 font-bold shadow-lg rounded-lg p-24 border border-slate-300  text-center justify-center;
         background: linear-gradient(45deg,$mainColor, #fff);
     }
+
+    .error{
+        @apply text-red-600 font-bold;
+    }
 }
 
 nav{

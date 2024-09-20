@@ -11,7 +11,7 @@ use App\Repositories\Contract\OrderRepositoryContract;
 use App\Services\Contracts\PayPalServiceContract;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use \Illuminate\Http\JsonResponse;
 class PaypalController extends Controller
 {
 
@@ -20,7 +20,7 @@ class PaypalController extends Controller
 
     }
 
-    public function create(CreateOrderRequest $request): \Illuminate\Http\JsonResponse|OrderResource
+    public function create(CreateOrderRequest $request): JsonResponse|OrderResource
     {
         try {
             DB::beginTransaction();
@@ -48,7 +48,7 @@ class PaypalController extends Controller
         }
     }
 
-    public function capture($vendorOrderId): \Illuminate\Http\JsonResponse|OrderResource
+    public function capture($vendorOrderId): JsonResponse|OrderResource
     {
         try {
             DB::beginTransaction();
