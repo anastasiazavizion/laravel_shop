@@ -161,3 +161,27 @@
   2024-09-20 10:19:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
   2024-09-20 10:19:21 App\Notifications\Admin\NewOrderCreatedAdminNotification  3s DONE
   2024-09-20 10:19:24 App\Notifications\NewOrderCreatedNotification .. 6s DONE
+  2024-09-20 12:20:50 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 12:20:52 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-20 12:21:07 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 12:21:07 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-20 12:21:07 App\Events\Admin\AdminOrderCreatedEvent .. 253.24ms FAIL
+  2024-09-20 12:21:08 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-20 12:21:08 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-20 12:21:08 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 12:21:08 App\Events\Admin\AdminOrderCreatedEvent ... 48.51ms FAIL
+  2024-09-20 12:21:10 App\Listeners\OrderCreatedListener ............. 2s DONE
+  2024-09-20 12:21:10 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 12:21:14 App\Events\Admin\AdminOrderCreatedEvent ........ 3s FAIL
+  2024-09-20 12:21:20 App\Notifications\Admin\NewOrderCreatedAdminNotification  11s DONE
+  2024-09-20 12:21:22 App\Notifications\NewOrderCreatedNotification . 13s DONE
+  2024-09-20 12:22:15 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 12:22:16 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-20 12:22:24 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 12:22:25 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-20 12:22:26 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-20 12:22:26 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-20 12:22:27 App\Events\Admin\AdminOrderCreatedEvent ........ 2s DONE
+  2024-09-20 12:22:27 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-09-20 12:22:27 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-09-20 12:22:29 App\Notifications\NewOrderCreatedNotification .. 2s DONE

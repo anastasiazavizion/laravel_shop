@@ -18,7 +18,7 @@ class AdminOrderCreatedEvent implements ShouldBroadcast
      */
     public function __construct(public float $total)
     {
-        $this->broadcastVia('reverb');
+        $this->broadcastVia('pusher');
     }
 
     /**
