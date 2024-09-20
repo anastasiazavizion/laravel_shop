@@ -15,8 +15,9 @@ use App\Http\Controllers\V1\ProductsController;
 use App\Http\Controllers\V1\WishListController;
 use App\Http\Controllers\V1\ReviewController;
 use App\Http\Controllers\V1\Callbacks\SocialAuthController;
+use App\Http\Controllers\V1\Admin\AdminChartsController;
 
-Route::group(['middleware' => ['web']], function () {
+//Route::group(['middleware' => ['web']], function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -43,8 +44,25 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('admin/data/')->middleware(['role:admin|moderator'])->name('admin.')->group(function () {
         Route::apiResource('categories', AdminCategoriesController::class);
         Route::apiResource('products', AdminProductsController::class);
-        Route::apiResource('orders', \App\Http\Controllers\V1\Admin\OrderController::class);
     });
+
+
+    Route::name('admin.')->middleware(['role:admin|moderator'])->group(function (){
+
+        Route::get('/ordersAmountByProducts', [AdminChartsController::class, 'ordersAmountByProducts'])->name('ordersAmountByProducts');
+        Route::get('/ordersAmountByCities', [AdminChartsController::class, 'ordersAmountByCities'])->name('ordersAmountByCities');
+        Route::get('/ordersAmountByStatuses', [AdminChartsController::class, 'ordersAmountByStatuses'])->name('ordersAmountByStatuses');
+        Route::get('/ordersAmountByCategories', [AdminChartsController::class, 'ordersAmountByCategories'])->name('ordersAmountByCategories');
+        Route::get('/ordersTotal', [AdminChartsController::class, 'ordersTotal'])->name('ordersTotal');
+        Route::get('/allOrdersAmount', [OrderController::class, 'allOrdersAmount'])->name('allOrdersAmount');
+        Route::get('/allProductsAmount', [AdminProductsController::class, 'allProductsAmount'])->name('allProductsAmount');
+        Route::get('/allUsersAmount', [\App\Http\Controllers\V1\Admin\UserController::class, 'allUsersAmount'])->name('allUsersAmount');
+
+
+    });
+
+
+    Route::apiResource('orders', OrderController::class)->only(['index','show','destroy']);
 
     Route::name('wishlist.')->group(function () {
         Route::post('wishList/{product}', [WishListController::class, 'add'])->name('wishlist.add');
@@ -68,4 +86,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 
-});
+//});

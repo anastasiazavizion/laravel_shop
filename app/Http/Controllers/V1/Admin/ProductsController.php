@@ -343,4 +343,11 @@ class ProductsController  extends Controller
             return response()->json(['message' => $exception->getMessage(), 'data'=>[]], $exception->getCode());
         }
     }
+
+
+    public function allProductsAmount(): int
+    {
+        return Product::count();
+    }
+
 }

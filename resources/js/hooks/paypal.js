@@ -3,7 +3,7 @@ import {computed, watch} from "vue";
 import {useStore} from "vuex";
 import {useRouter} from "vue-router";
 
-const paypalFunction = (form, emptyFields) => {
+const paypalFunction = (form, emptyFields, errors) => {
 
     const store = useStore();
     const toast= useToast();
@@ -36,7 +36,6 @@ const paypalFunction = (form, emptyFields) => {
         });
     }
 
-
     paypal.Buttons({
         onInit(data, actions){
             actions.disable();
@@ -61,11 +60,13 @@ const paypalFunction = (form, emptyFields) => {
 
         // Call your server to set up the transaction
         createOrder: function (data, actions) {
+            errors.value = {};
             return axios.post(route('v1.paypal.order.create'), form.value).then(function (res) {
-                // Assuming res.data contains the vendor_order_id
-                return res.data.vendor_order_id; // Return this for onApprove to access it
+                return res.data.vendor_order_id;
             }).catch(function (error) {
-                console.log(error);
+                if(error.response.status === 422){
+                    errors.value = error.response.data.errors;
+                }
             });
         },
 
@@ -73,47 +74,18 @@ const paypalFunction = (form, emptyFields) => {
         onApprove: function (data, actions) {
             return axios.post(route('v1.paypal.order.capture', data.orderID))
                 .then(function (res) {
-                 store.dispatch('cart/clearCart');
                  toast.success('Order was created!', {
                         onClose: () => {
+                            store.dispatch('cart/clearCart');
                             router.push('orders/'+res.data.vendor_order_id+'/thank-you');
                         }
                     });
                 }).catch(function (orderData) {
-                // Three cases to handle:
-                //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-                //   (2) Other non-recoverable errors -> Show a failure message
-                //   (3) Successful transaction -> Show confirmation or thank you
-
-                // This example reads a v2/checkout/orders capture response, propagated from the server
-                // You could use a different API or structure for your 'orderData'
-                    const errorDetail = Array.isArray(orderData.details) && orderData.details[0];
-
-                    if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
-                    return actions.restart(); // Recoverable state, per:
-                    // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
-                }
-
-                if (errorDetail) {
-                    let msg = 'Sorry, your transaction could not be processed.';
-                    if (errorDetail.description) msg += '\n\n' + errorDetail.description;
-                    if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
-                    return alert(msg); // Show a failure message (try to avoid alerts in production environments)
-                }
-
-                // Successful capture! For demo purposes:
-                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    const transaction = orderData.purchase_units[0].payments.captures[0];
-                    alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-
-                // Replace the above to show a success message within this page, e.g.
-                // const element = document.getElementById('paypal-button-container');
-                // element.innerHTML = '';
-                // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                // Or go to another URL:  actions.redirect('thank_you.html');
+                    if(orderData.response.status === 500 && orderData.response.statusText === 'Internal Server Error'){
+                        errors.value.server = 'Problems on server, please try later'
+                    }
             });
         }
     }).render('#paypal-button-container');
 }
-
 export default paypalFunction;

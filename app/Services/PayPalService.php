@@ -2,8 +2,6 @@
 namespace App\Services;
 
 use App\Enum\TransactionStatus;
-use App\Http\Requests\CreateOrderRequest;
-use App\Models\Product;
 use App\Repositories\Contract\CartRepositoryContract;
 use App\Services\Contracts\PayPalServiceContract;
 use Illuminate\Support\Collection;

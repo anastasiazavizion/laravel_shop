@@ -57,3 +57,107 @@
   2024-09-05 20:12:19 Laravel\Scout\Jobs\RemoveFromSearch ............ RUNNING
   2024-09-11 11:18:17 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
   2024-09-11 11:18:18 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-13 17:10:00 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-13 17:10:02 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-16 16:52:45 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-16 16:52:46 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-16 16:53:05 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:53:06 App\Events\Admin\AdminOrderCreatedEvent ........ 1s FAIL
+  2024-09-16 16:53:07 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:53:07 App\Events\Admin\AdminOrderCreatedEvent ... 44.89ms FAIL
+  2024-09-16 16:53:08 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:53:08 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-16 16:53:08 App\Events\Admin\AdminOrderCreatedEvent .. 810.94ms FAIL
+  2024-09-16 16:53:10 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-16 16:53:10 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-16 16:53:10 App\Listeners\OrderCreatedListener ............. 2s DONE
+  2024-09-16 16:53:19 App\Notifications\Admin\NewOrderCreatedAdminNotification  9s DONE
+  2024-09-16 16:53:25 App\Notifications\NewOrderCreatedNotification . 15s DONE
+  2024-09-16 16:55:19 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-16 16:55:20 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-16 16:55:29 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:55:29 App\Events\Admin\AdminOrderCreatedEvent ... 18.25ms FAIL
+  2024-09-16 16:55:29 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:55:29 App\Events\Admin\AdminOrderCreatedEvent ... 16.75ms FAIL
+  2024-09-16 16:55:30 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:55:30 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-16 16:55:30 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-16 16:55:30 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-16 16:55:31 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-09-16 16:55:31 App\Notifications\Admin\NewOrderCreatedAdminNotification  843.89ms DONE
+  2024-09-16 16:55:31 App\Events\Admin\AdminOrderCreatedEvent ........ 1s FAIL
+  2024-09-16 16:55:32 App\Notifications\NewOrderCreatedNotification .. 2s DONE
+  2024-09-16 16:56:01 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-16 16:56:02 Laravel\Scout\Jobs\MakeSearchable ........ 784.13ms DONE
+  2024-09-16 16:56:10 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:56:10 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-16 16:56:10 App\Events\Admin\AdminOrderCreatedEvent ... 49.54ms FAIL
+  2024-09-16 16:56:10 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-16 16:56:10 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:56:10 App\Events\Admin\AdminOrderCreatedEvent ... 17.52ms FAIL
+  2024-09-16 16:56:11 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 16:56:11 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-16 16:56:12 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-09-16 16:56:12 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-09-16 16:56:13 App\Events\Admin\AdminOrderCreatedEvent  2024-09-16 16:56:13 App\Notifications\NewOrderCreatedNotification .. 2s DONE
+ ........ 1s FAIL
+  2024-09-16 17:18:09 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-16 17:18:18 Laravel\Scout\Jobs\MakeSearchable .............. 8s DONE
+  2024-09-16 17:18:24 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-16 17:18:25 App\Events\Admin\AdminOrderCreatedEvent ........  2024-09-16 17:18:25 App\Notifications\NewOrderCreatedNotification RUNNING
+ .. RUNNING
+  2024-09-16 17:18:25 App\Events\Admin\AdminOrderCreatedEvent ... 69.64ms FAIL
+  2024-09-16 17:18:25 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-09-16 17:18:26 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 17:18:26 App\Events\Admin\AdminOrderCreatedEvent ... 16.36ms FAIL
+  2024-09-16 17:18:26 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-16 17:18:26 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-16 17:18:27 App\Events\Admin\AdminOrderCreatedEvent .. 908.41ms FAIL
+  2024-09-16 17:18:28 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-09-16 17:18:28 App\Notifications\NewOrderCreatedNotification .. 3s DONE
+  2024-09-20 09:41:46 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 09:41:48 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-20 09:42:33 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-20 09:42:34 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 09:42:35 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-20 09:42:35 App\Events\Admin\AdminOrderCreatedEvent .. 914.29ms FAIL
+  2024-09-20 09:42:36 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 09:42:36 App\Events\Admin\AdminOrderCreatedEvent ... 57.16ms FAIL
+  2024-09-20 09:42:36 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 09:42:37 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-20 09:42:40 App\Listeners\OrderCreatedListener ............. 6s DONE
+  2024-09-20 09:42:43 App\Events\Admin\AdminOrderCreatedEvent ........ 7s FAIL
+  2024-09-20 09:43:04 App\Notifications\NewOrderCreatedNotification . 29s DONE
+  2024-09-20 09:43:05 App\Notifications\Admin\NewOrderCreatedAdminNotification  28s DONE
+  2024-09-20 09:53:41 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 09:53:43 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-20 09:53:52 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 09:53:52 App\Events\Admin\AdminOrderCreatedEvent ... 24.07ms FAIL
+  2024-09-20 09:53:53 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 09:53:53 App\Events\Admin\AdminOrderCreatedEvent ... 59.49ms FAIL
+  2024-09-20 09:53:53 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 09:53:54 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-20 09:53:54 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-20 09:53:54 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-20 09:53:54 App\Events\Admin\AdminOrderCreatedEvent ........ 1s FAIL
+  2024-09-20 09:53:55 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-09-20 09:53:56 App\Notifications\Admin\NewOrderCreatedAdminNotification  1s DONE
+  2024-09-20 09:53:57 App\Notifications\NewOrderCreatedNotification .. 2s DONE
+  2024-09-20 10:10:55 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 10:10:57 Laravel\Scout\Jobs\MakeSearchable .............. 2s DONE
+  2024-09-20 10:17:22 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 10:17:24 Laravel\Scout\Jobs\MakeSearchable .............. 2s DONE
+  2024-09-20 10:19:02 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 10:19:02 Laravel\Scout\Jobs\MakeSearchable ........ 744.92ms DONE
+  2024-09-20 10:19:11 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 10:19:11 App\Events\Admin\AdminOrderCreatedEvent .. 270.05ms FAIL
+  2024-09-20 10:19:12 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 10:19:12 App\Events\Admin\AdminOrderCreatedEvent ... 13.42ms FAIL
+  2024-09-20 10:19:12 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-20 10:19:12 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-20 10:19:15 App\Events\Admin\AdminOrderCreatedEvent ........ 3s FAIL
+  2024-09-20 10:19:17 App\Listeners\OrderCreatedListener ............. 5s DONE
+  2024-09-20 10:19:18 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-20 10:19:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-20 10:19:21 App\Notifications\Admin\NewOrderCreatedAdminNotification  3s DONE
+  2024-09-20 10:19:24 App\Notifications\NewOrderCreatedNotification .. 6s DONE
