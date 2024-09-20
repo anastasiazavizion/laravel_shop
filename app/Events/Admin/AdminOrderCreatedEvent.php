@@ -18,6 +18,7 @@ class AdminOrderCreatedEvent implements ShouldBroadcast
      */
     public function __construct(public float $total)
     {
+        logs()->info('AdminOrderCreatedEvent dispatched with total: ' . $total);
         $this->broadcastVia('pusher');
     }
 
