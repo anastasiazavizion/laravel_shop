@@ -15,7 +15,7 @@ const store = useStore();
 const label = props.label ?? 'Products';
 
 function productUrl(product){
-    return {name:'products.show', params:{id:product.id}};
+    return {name:'products.show', params:{id:product.slug}};
 }
 
 async function addToCart(product) {
