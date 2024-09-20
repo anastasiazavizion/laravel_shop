@@ -7,10 +7,11 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         @routes
-        @vite(['resources/js/app.js', 'resources/css/app.css'])
+        @vite(['resources/js/app.js', 'resources/scss/app.scss', 'resources/css/app.css'])
     </head>
     <body class="font-sans antialiased">
-     <div id="app"></div>
+    <div id="app"></div>
+    <script src="https://www.paypal.com/sdk/js?client-id={{ config('paypal.' . config('paypal.mode') . '.client_id') }}&currency={{ config('paypal.currency') }}"></script>
     </body>
     <script type="text/javascript">
         window.Laravel = {

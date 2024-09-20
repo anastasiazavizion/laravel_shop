@@ -8,6 +8,7 @@ import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
 import Errors from "@/Components/Errors.vue";
 import BaseListBox from "@/Components/BaseListBox.vue";
+import ImagePreview from "@/Pages/Admin/Products/Partials/ImagePreview.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -29,22 +30,24 @@ const form = ref({
     quantity: 0,
     categories: [],
     images: [],
-    thumbnail:null
+    deleted_images:[],
+    thumbnail:'',
 });
 
 const categories = ref([]);
 
+const loading = ref(true);
     onMounted(async () => {
-        await store.dispatch('category/getAll');
-        categories.value = store.getters['category/categories'];
+        await store.dispatch('category_admin/getAll');
+        categories.value = store.getters['category_admin/categories'];
 
         if (props.edit) {
         const id = route.params.id;
         const payload = {
             id: id
         };
-        await store.dispatch('product/getProduct', payload);
-        product.value = store.getters['product/product'];
+        await store.dispatch('product_admin/getProduct', payload);
+        product.value = store.getters['product_admin/product'];
 
         form.value.id = id;
         form.value.title = product.value.title;
@@ -53,14 +56,16 @@ const categories = ref([]);
         form.value.price = product.value.price;
         form.value.discount = product.value.discount;
         form.value.quantity = product.value.quantity;
-        form.value.categories = store.getters['product/productCategoriesIds'];
+        form.value.thumbnail = product.value.thumbnail_url;
+        form.value.images = product.value.images;
+        form.value.categories = store.getters['product_admin/productCategoriesIds'];
+
         }
+        loading.value = false;
     })
 
 async function handleRequest() {
-
     let formData = new FormData();
-
     for (const key in form.value) {
         if (Array.isArray(form.value[key])) {
             form.value[key].forEach((item, index) => {
@@ -70,13 +75,12 @@ async function handleRequest() {
             formData.append(key, form.value[key]);
         }
     }
-
     if (props.edit) {
-        await store.dispatch('product/updateProduct', {id: route.params.id, data: formData});
+        await store.dispatch('product_admin/updateProduct', {id: route.params.id, data: formData});
     } else {
-       await store.dispatch('product/createProduct', formData);
+       await store.dispatch('product_admin/createProduct', formData);
     }
-    errors.value = await store.getters['product/errors'];
+    errors.value = await store.getters['product_admin/errors'];
     if (Object.keys(errors.value).length === 0) {
         await router.push('/admin/products');
     }
@@ -89,29 +93,6 @@ const btnTitle = computed(() => {
 const header = computed(() => {
     return props.edit ? 'Edit Product' : 'Create Product'
 })
-
-function updateThumbnail(event){
-    let files = event.target.files;
-    if (files.length){
-        form.value.thumbnail = files[0];
-    }else{
-        form.value.thumbnail = null;
-    }
-}
-
-function updateImages(event){
-    let files = event.target.files;
-    if (files.length){
-        let arr = [];
-        for(let f of files){
-            arr.push(f);
-        }
-        form.value.images = arr;
-    }else{
-        form.value.images = [];
-    }
-}
-
 </script>
 
 <template>
@@ -161,14 +142,12 @@ function updateImages(event){
             </div>
 
             <div>
-                <label for="thumbnail">Thumbnail</label>
-                <input @change="updateThumbnail($event)" type="file" name="thumbnail" id="thumbnail">
+                <ImagePreview name="thumbnail" btn-text="Thumbnail" :multiple="false" v-if="!loading || !edit" :images="form.thumbnail" v-model="form.thumbnail"></ImagePreview>
                 <Errors :errors="errors.thumbnail"/>
             </div>
 
             <div>
-                <label for="images">Images</label>
-                <input multiple @change="updateImages($event)" type="file" name="images[]">
+                <ImagePreview name="images" btn-text="Images" :multiple="true" v-if="!loading || !edit"  :images="form.images" v-model:deleted-images="form.deleted_images" v-model="form.images"></ImagePreview>
                 <Errors :errors="errors.images"/>
             </div>
 

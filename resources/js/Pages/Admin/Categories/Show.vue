@@ -12,8 +12,8 @@ const payload = {
     id: route.params.id
 };
 onMounted(async () => {
-    await store.dispatch('category/getCategory', payload);
-    category.value = await store.getters['category/category'];
+    await store.dispatch('category_admin/getCategory', payload);
+    category.value = await store.getters['category_admin/category'];
 })
 </script>
 

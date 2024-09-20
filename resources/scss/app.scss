@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "variables/variables";
+
+@layer base {
+    form label{
+        @apply font-bold;
+    }
+
+    form input[type=text], form input[type=password],form input[type=email], form select, .form-control{
+        @apply w-full rounded focus:ring-0;
+        border: $borderSize $borderStyle $formElementsBorderColor;
+    }
+
+    form > div{
+        @apply mt-2;
+    }
+
+    table td, table th{
+        @apply border-collapse  p-2 ;
+        border: $borderSize $borderStyle $tableBorderColor;
+    }
+    table th{
+        background-color: $tableBgColor;
+    }
+
+    svg{
+        @apply inline;
+    }
+}
+
+@layer components {
+    .uploadBtn{
+        @apply inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs
+        text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none
+        focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150;
+    }
+
+    .btn{
+        @apply p-1 rounded-md text-white font-bold cursor-pointer hover:shadow-md;
+    }
+
+    .btn-style{
+        background-color: $btnAdditionalColor;
+    }
+    .btn-style:hover{
+        background-color: $btnAdditionalColorHover;
+    }
+
+    .btn-checkout{
+        background-color: $btnCheckoutColor;
+    }
+
+    .btn-checkout:hover{
+        background-color: $btnCheckoutColorHover;
+    }
+
+    .pagination-link-active{
+        @apply text-white;
+        background-color: $btnAdditionalColor;
+    }
+
+    .pagination-link{
+        @apply p-2 text-sm sm:p-3 border border-slate-300;
+    }
+
+    .cart-product-amount{
+        @apply absolute  text-white rounded-full h-6 w-6 text-center  left-5 bottom-3;
+        background-color: $btnAdditionalColor;
+    }
+
+    .adminCard{
+        @apply relative text-3xl text-slate-800 font-bold shadow-lg rounded-lg p-24 border border-slate-300  text-center justify-center;
+        background: linear-gradient(45deg,$mainColor, #fff);
+    }
+
+    .error{
+        @apply text-red-600 font-bold;
+    }
+}
+
+nav{
+    .router-link-active{
+        @apply underline;
+    }
+}

@@ -5,6 +5,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Artisan;
 
 class CategoryProductSeeder extends Seeder
 {
@@ -23,5 +24,8 @@ class CategoryProductSeeder extends Seeder
                 });
             });
         });
+
+        //index products using algolia
+        Artisan::call('products-index');
     }
 }

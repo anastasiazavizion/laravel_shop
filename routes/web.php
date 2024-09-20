@@ -1,27 +1,21 @@
 <?php
+
+use App\Enum\WishListType;
 use Illuminate\Support\Facades\Route;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\UserController;
-use App\Http\Controllers\Admin\CategoriesController;
-use App\Http\Controllers\Admin\ProductsController;
+//$pr = \Illuminate\Support\Facades\Cache::get('product_63');
+
+//$pr2 = \App\Models\Product::find(63);
+
+//dd($pr2->isWishedProduct(WishListType::EXIST->value));
 
 
 
+//dd(/*$pr->is_in_wish_list_exist,$pr->is_in_wish_list_price,*/$pr2->is_in_wish_list_exist,$pr2->is_in_wish_list_price);
 
 
-Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
+/*dd(Cache::get('products_page_1_1_params_d751713988987e9331980363e24189ce'));*/
 
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
-
-Route::middleware(['auth:sanctum','role:admin|moderator'])->name('admin.')->group(function (){
-    Route::resource('categories', CategoriesController::class)->except(['create', 'edit']);
-    Route::resource('products', ProductsController::class);
-});
 
 
 Route::get('{any}', function () {

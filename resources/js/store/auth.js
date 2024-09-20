@@ -3,40 +3,76 @@ import axios from 'axios';
 const state = {
     authenticated: false,
     user: {},
+    errors: null,
 };
 
 const getters = {
     authenticated: state => state.authenticated,
     user: state => state.user,
+    errors: state => state.errors,
 };
 
 const mutations = {
-    SET_AUTHENTICATED (state, value) {
+    setAuthenticated (state, value) {
         state.authenticated = value;
     },
-    SET_USER (state, value) {
+    setUser (state, value) {
         state.user = value;
+    },
+    setErrors (state, value) {
+        state.errors = value;
     },
 };
 
 const actions = {
-    async login({ commit }) {
+    async register({ commit, dispatch}, payload) {
         try {
-            const response = await axios.get('/user');
-
-            const { user, permissions } = response.data;
-            commit('SET_USER', user);
-            commit('SET_AUTHENTICATED', true);
-            window.Laravel.jsPermissions = JSON.parse(permissions);
-
+            await axios.post(route('v1.register'), payload);
+            await dispatch('login',payload)
+            commit('setErrors',null);
         } catch (error) {
-            commit('SET_USER', {});
-            commit('SET_AUTHENTICATED', false);
+            commit('setErrors',error.response.data.errors);
         }
     },
-    logout({ commit }) {
-        commit('SET_USER', {});
-        commit('SET_AUTHENTICATED', false);
+
+    async login({ commit, dispatch}, payload) {
+        try {
+            await axios.post(route('v1.login'), payload);
+            dispatch('userInfo');
+        } catch (error) {
+            commit('setErrors',error.response.data.errors);
+            commit('setUser', {});
+            commit('setAuthenticated', false);
+        }
+    },
+
+    async userInfo({ commit}) {
+        try {
+            const response = await axios.get(route('v1.user'));
+            const { user, permissions } = response.data;
+            window.Laravel.jsPermissions = JSON.parse(permissions);
+            commit('setUser', user);
+            commit('setAuthenticated', true);
+            commit('setErrors',null);
+        } catch (error) {
+            commit('setErrors',error.response.data.errors);
+            commit('setUser', {});
+            commit('setAuthenticated', false);
+        }
+    },
+
+    async logout({commit}) {
+        try{
+            await axios.post(route('v1.logout'));
+            commit('setUser', {});
+            commit('setAuthenticated', false);
+            commit('setErrors',null);
+        }catch(error){
+            commit('setErrors',error.response.data.errors);
+        }
+    },
+    async clearErrors({commit}) {
+        commit('setErrors',null);
     }
 };
 

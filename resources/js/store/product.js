@@ -2,94 +2,99 @@ import axios from 'axios';
 
 const state = {
     products: [],
-    product:null,
-    errors:[]
+    product: null,
+    links: [],
+    wishes_links: [],
+    errors: [],
+    wishes: []
 };
 
 const getters = {
     products: state => state.products,
     product: state => state.product,
-    productCategoriesIds: state => state.product.categories.map(a=>a.id),
-    errors: state => state.errors,
+    wishes: state => state.wishes,
+    links: state => state.links,
+    wishes_links: state => state.wishes_links,
+    productCategoriesIds: state => state.product.categories.map(a => a.id),
 };
 
 const mutations = {
-    setProducts (state, value) {
+    setProducts(state, value) {
         state.products = value;
-    } ,
-    setProduct (state, value) {
+    },
+    setLinks(state, value) {
+        state.links = value;
+    },
+
+    setWishesLinks(state, value) {
+        state.wishes_links = value;
+    },
+    setProduct(state, value) {
         state.product = value;
     },
-    setErrors (state, value) {
-        state.errors = value;
+
+    setWishes(state, value) {
+        state.wishes = value;
     }
 };
 
 const actions = {
-
-    async getAll({ commit }) {
+    async getAll({commit}, payload) {
         try {
-            const response = await axios.get('/products');
-            commit('setProducts', response.data);
+            const params = payload ? {
+                params: {
+                    search: payload.search, ids: payload.ids
+                }
+            } : [];
+
+            const response = await axios.get((payload && payload.url) ?? route('v1.products.index'), params);
+            commit('setProducts', response.data.data);
+            commit('setLinks', response.data.meta.links);
         } catch (error) {
+            console.log(error);
             commit('setProducts', []);
         }
     },
 
-    async getProduct({ commit}, payload) {
+    async getProduct({commit}, payload) {
         try {
-            const response = await axios.get('/products/'+payload.id);
+            const response = await axios.get(route('v1.products.show', payload.id));
             commit('setProduct', response.data);
         } catch (error) {
             commit('setProduct', []);
         }
     },
 
-    async updateProduct({ commit }, { id, data }) {
-        commit('setErrors', []);
-        data.append('_method', 'put');
+    async addToWishList({commit}, payload) {
         try {
-            const response = await axios.post('/products/'+id, data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
+            const response = await axios.post(route('v1.wishlist.wishlist.add', payload.product), {type: payload.type});
+
         } catch (error) {
-            if(error.response.status === 422){
-                commit('setErrors', error.response.data.errors);
-            }else{
-                commit('setErrors', [{'other':'Some other errors'}]);
-            }
+
         }
     },
 
-    async createProduct({ commit }, data) {
-        commit('setErrors', []);
+    async removeFromWishList({commit}, payload) {
         try {
-            const response = await axios.post('/products/', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const response = await axios.delete(route('v1.wishlist.wishlist.remove', payload.product), {
+                params: {type: payload.type}
             });
+
         } catch (error) {
-            if(error.response.status === 422){
-                console.log(error.response.data.errors);
-                commit('setErrors', error.response.data.errors);
-            }else{
-                commit('setErrors', [{'other':'Some other errors'}]);
-            }
+
         }
     },
 
-    async deleteProduct({ commit}, payload) {
+    async wishes({commit}, payload) {
         try {
-            const response = await axios.delete('/products/'+payload.id);
+            const response = await axios.get((payload && payload.url) ?? route('v1.wishlist.wishlist.all'), {params: payload});
+            commit('setWishes', response.data.data);
+            commit('setWishesLinks', response.data.links);
         } catch (error) {
+            commit('setWishes', []);
         }
-    }
-
+    },
 };
-
 export default {
     namespaced: true,
     state,

@@ -35,9 +35,17 @@ axios.interceptors.response.use(function (response) {
     // Any status codes that fall outside the range of 2xx cause this function to trigger
     // Do something with response error
     if(error.response && error.response.status === 401) {
-        store.commit('auth/SET_USER', {});
-        store.commit('auth/SET_AUTHENTICATED', false);
-        window.location.href = "/login";
+        store.commit('auth/setUser', {});
+        store.commit('auth/setAuthenticated', false);
+        window.location.href = "/auth/login";
     }
     return Promise.reject(error);
 });
+
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allow your team to quickly build robust real-time web applications.
+ */
+
+import './echo';

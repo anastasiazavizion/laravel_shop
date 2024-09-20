@@ -21,7 +21,7 @@ class AuthControllerTest extends TestCase
         ]);
         $this->assertDatabaseHas(User::class, ['email' => $user->email]);
 
-        $response = $this->postJson(route('login'), [
+        $response = $this->postJson(route('v1.login'), [
             'email' => $user->email,
             'password' => $password,
         ]);
@@ -39,7 +39,7 @@ class AuthControllerTest extends TestCase
             'password'=>'password'
         ];
         $this->assertDatabaseMissing(User::class, ['email' => $data['email']]);
-        $response = $this->postJson(route('login'), $data);
+        $response = $this->postJson(route('v1.login'), $data);
         $response->assertExactJson(['message' => 'Unauthorized']);
         $response->assertJsonCount(1);
         $response->assertUnauthorized();
@@ -54,7 +54,7 @@ class AuthControllerTest extends TestCase
             'password'=>''
         ];
         $this->assertDatabaseMissing(User::class, ['email' => $data['email']]);
-        $response = $this->postJson(route('login'), $data);
+        $response = $this->postJson(route('v1.login'), $data);
 
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['email', 'password']);
@@ -64,21 +64,21 @@ class AuthControllerTest extends TestCase
     public function test_success_admin_view_products(): void
     {
         $user = $this->user();
-        $response = $this->actingAs($user)->getJson(route('admin.products.index'));
+        $response = $this->actingAs($user)->getJson(route('v1.admin.products.index'));
         $response->assertStatus(200);
     }
 
     public function test_success_moderator_view_products(): void
     {
         $user = $this->user(Role::MODERATOR);
-        $response = $this->actingAs($user)->getJson(route('admin.products.index'));
+        $response = $this->actingAs($user)->getJson(route('v1.admin.products.index'));
         $response->assertStatus(200);
     }
 
     public function test_fail_customer_view_products(): void
     {
         $user = $this->user(Role::CUSTOMER);
-        $response = $this->actingAs($user)->getJson(route('admin.products.index'));
+        $response = $this->actingAs($user)->getJson(route('v1.admin.products.index'));
         $response->assertStatus(403);
     }
 
