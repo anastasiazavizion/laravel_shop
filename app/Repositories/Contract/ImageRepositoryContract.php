@@ -1,12 +1,7 @@
 <?php
 namespace App\Repositories\Contract;
 
-use App\Http\Requests\Admin\Categories\CreateRequest;
-use App\Http\Requests\Admin\Categories\UpdateRequest;
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Collection;
 
 interface ImageRepositoryContract
 {

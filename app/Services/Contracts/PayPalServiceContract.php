@@ -3,9 +3,6 @@ namespace App\Services\Contracts;
 
 use App\Enum\TransactionStatus;
 use App\Http\Requests\CreateOrderRequest;
-use App\Models\CartItem;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
 interface PayPalServiceContract

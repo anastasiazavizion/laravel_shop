@@ -2,9 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Product;
 use App\Repositories\Contract\ImageRepositoryContract;
-use App\Services\Contracts\FileServiceContract;
 use Illuminate\Database\Eloquent\Model;
 
 class ImageRepository implements  ImageRepositoryContract
