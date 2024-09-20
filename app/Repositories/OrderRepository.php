@@ -9,24 +9,24 @@ use App\Models\OrderStatus;
 use App\Repositories\Contract\OrderRepositoryContract;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 
 class OrderRepository implements  OrderRepositoryContract
 {
-    public function create(array $data): Order|false
+    public function create(array $data, Collection $cartItems): Order|false
     {
         $data['status_id'] = OrderStatus::inProcess()->first()->id;
         $order = auth()->check()
             ? auth()->user()->orders()->create($data)
             : Order::create($data);
 
-        $this->addProductsToOrder($order);
+        $this->addProductsToOrder($order, $cartItems);
         return $order;
     }
 
-    protected function addProductsToOrder(Order $order): void
+    protected function addProductsToOrder(Order $order, Collection $cartItems): void
     {
-        //todo change
-        Auth::user()->cartItems()->with(['product'])->get()->each(function($item) use ($order) {
+        $cartItems->each(function($item) use ($order) {
             $product = $item->product;
             $order->products()->attach($product, [
                 'quantity' => $item->amount,
@@ -41,7 +41,6 @@ class OrderRepository implements  OrderRepositoryContract
             }
         });
     }
-
 
     public function setTransaction(string $vendorOrderId, PaymentSystemEnum $paymentSystem, TransactionStatus $paymentStatus): Order
     {

@@ -30,15 +30,15 @@ class PaypalController extends Controller
 
             $subTotal = $this->cartRepository->getSubTotal($cartItems);
             $paypalOrderId  = $this->payPalService->create($cartItems);
+            if (!$paypalOrderId) {
+                return response()->json('Payment was not completed', 500);
+            }
             $data = [
                 ...$request->validated(),
                 'vendor_order_id'=>$paypalOrderId,
                 'total'=>$subTotal
             ];
-            if (!$paypalOrderId) {
-                return response()->json('Payment was not completed', 500);
-            }
-            $order = $this->orderRepository->create($data);
+            $order = $this->orderRepository->create($data,$cartItems);
             DB::commit();
             return new OrderResource($order);
         } catch (\Exception $exception) {
