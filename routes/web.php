@@ -1,6 +1,7 @@
 <?php
 
 use App\Enum\WishListType;
+use App\Events\Admin\AdminOrderCreatedEvent;
 use Illuminate\Support\Facades\Route;
 
 //$pr = \Illuminate\Support\Facades\Cache::get('product_63');
@@ -19,5 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('{any}', function () {
+
+    AdminOrderCreatedEvent::dispatch(100);
+
     return view('app');
 })->where('any', '.*');
