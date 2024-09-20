@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\Order;
 return new class extends Migration
 {
     /**
@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignIdFor(\App\Models\Order::class)->constrained('orders');
-
+            $table->foreignIdFor(Order::class)->constrained('orders')->cascadeOnDelete();
             $table->string('payment_system');
             $table->string('status');
             $table->timestamps();
