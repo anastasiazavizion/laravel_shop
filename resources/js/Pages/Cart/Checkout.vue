@@ -50,7 +50,7 @@ function getInputStyle(field){
 <template>
 
  <Header>Checkout</Header>
-   <div class="grid grid-cols-2 gap-4" v-if="cartItemsNotEmpty">
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" v-if="cartItemsNotEmpty">
        <div>
            <Card>
            <form>
