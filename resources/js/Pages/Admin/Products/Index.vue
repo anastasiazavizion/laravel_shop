@@ -97,8 +97,8 @@ watch(sortData, ()=>{
                 <td>{{product.discount}}</td>
                 <td>{{product.quantity}}</td>
                 <td>
-                    <router-link v-if="can('edit product')" :to="{name:'admin.products.edit', params:{id:product.id}}"><PencilIcon class="w-4 cursor-pointer"></PencilIcon></router-link>
-                    <XMarkIcon  @click="deleteProduct(product.id)" v-if="can('delete category')" class="w-4 cursor-pointer"></XMarkIcon>
+                    <router-link v-if="can('edit product')" :to="{name:'admin.products.edit', params:{id:product.slug}}"><PencilIcon class="w-4 cursor-pointer"></PencilIcon></router-link>
+                    <XMarkIcon  @click="deleteProduct(product.slug)" v-if="can('delete category')" class="w-4 cursor-pointer"></XMarkIcon>
                 </td>
             </tr>
             </tbody>

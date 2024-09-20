@@ -12,7 +12,7 @@ const props = defineProps({
 const reviews = ref([]);
 
 onMounted(async () => {
-    await store.dispatch('review/getReviews', props.product.id)
+    await store.dispatch('review/getReviews', props.product.slug);
     reviews.value = await store.getters['review/reviews'];
 })
 

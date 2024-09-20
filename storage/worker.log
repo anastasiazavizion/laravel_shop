@@ -193,3 +193,8 @@
   2024-09-20 13:29:35 App\Events\Admin\AdminOrderCreatedEvent ........ 1s DONE
   2024-09-20 13:31:23 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
   2024-09-20 13:31:26 App\Events\Admin\AdminOrderCreatedEvent ........ 2s DONE
+  2024-09-20 14:46:36 App\Jobs\WishList\PriceUpdatedJob .............. RUNNING
+  2024-09-20 14:46:36 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-20 14:46:40 App\Jobs\WishList\PriceUpdatedJob .............. 3s DONE
+  2024-09-20 14:46:40 Laravel\Scout\Jobs\MakeSearchable .............. 3s DONE
+  2024-09-20 14:47:25 Laravel\Scout\Jobs\RemoveFromSearch ............ RUNNING

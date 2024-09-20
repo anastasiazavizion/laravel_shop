@@ -5,5 +5,5 @@ defineProps({
 </script>
 
 <template>
-    <router-link :to="{name:'admin.products.show', params:{id:product.id}}">{{product.title}}</router-link>
+    <router-link :to="{name:'admin.products.show', params:{id:product.slug}}">{{product.title}}</router-link>
 </template>
