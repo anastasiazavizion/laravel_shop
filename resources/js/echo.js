@@ -19,6 +19,7 @@ window.Echo = new Echo({
 window.Echo.private('admin-channel')
     .listen('.admin.order.created', (e) => {
         console.log(e);
+        console.log(e.total);
         const toast = useToast();
         toast("You have new order with total "+e.total);
     });
