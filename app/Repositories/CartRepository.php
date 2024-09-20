@@ -5,7 +5,6 @@ use App\Models\Product;
 use App\Models\User;
 use App\Repositories\Contract\CartRepositoryContract;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 class CartRepository implements CartRepositoryContract
 {

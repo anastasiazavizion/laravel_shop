@@ -2,7 +2,6 @@
 namespace App\Services;
 use App\Models\Order;
 use App\Services\Contracts\InvoiceServiceContract;
-use Illuminate\Support\Facades\Storage;
 use LaravelDaily\Invoices\Invoice;
 
 use App\Enum\OrderStatusEnum;
@@ -28,11 +27,7 @@ class InvoiceService implements InvoiceServiceContract
             ]
         ]);
 
-
         $fileName = 'invoices/'.Str::slug($customer->name . ' ' . $order->vendor_order_id);
-
-       // $fileName = Str::slug($customer->name . ' ' . $order->vendor_order_id);
-
 
         $invoice = Facade::make('receipt')
             ->series('BIG')
@@ -54,14 +49,12 @@ class InvoiceService implements InvoiceServiceContract
     protected function invoiceItems(Collection $products): array
     {
         $items = [];
-
         foreach ($products as $product) {
             $items[] = InvoiceItem::make($product->title)
                 ->pricePerUnit($product->pivot->single_price)
                 ->quantity($product->pivot->quantity)
                 ->units('pc');
         }
-
         return $items;
     }
 }

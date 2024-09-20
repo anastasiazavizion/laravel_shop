@@ -1,14 +1,12 @@
 <?php
 namespace App\Repositories;
 
-
 use App\Enum\PaymentSystemEnum;
 use App\Enum\TransactionStatus;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Repositories\Contract\OrderRepositoryContract;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
 
 class OrderRepository implements  OrderRepositoryContract
