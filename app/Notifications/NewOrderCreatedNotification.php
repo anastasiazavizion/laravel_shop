@@ -42,6 +42,9 @@ class NewOrderCreatedNotification extends Notification  implements ShouldQueue
 
         Storage::setVisibility($invoice->filename, 'public');
 
+        logs()->info('PATH='.Storage::temporaryUrl($invoice->filename, now()->addMinutes(10)));
+
+
         logs()->info('URL='.$invoice->url());
 
         logs()->info($invoice->filename);
