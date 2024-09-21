@@ -1,35 +1,35 @@
 <template>
     <Header>Login</Header>
-   <Card>
-       <form @submit.prevent="login" method="post">
-           <div>
-               <label for="email">Email</label>
-               <input type="text" v-model="auth.email" name="email" id="email">
-               <Errors :errors="errors.email"/>
-           </div>
-           <div>
-               <label for="password">Password</label>
-               <input type="password" v-model="auth.password" name="password" id="password">
-           </div>
+    <Card>
+        <form @submit.prevent="login" method="post">
+            <div>
+                <label for="email">Email</label>
+                <input type="text" v-model="auth.email" name="email" id="email">
+                <Errors :errors="errors.email"/>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" v-model="auth.password" name="password" id="password">
+            </div>
 
-           <div class="flex items-center gap-4">
-               <PrimaryButton type="submit">Login</PrimaryButton>
-               <PrimaryButton type="button" @click="useAuthProvider('google', null)">
-                   <GoogleIcon/>
-                   Continue with Google
-               </PrimaryButton>
-           </div>
+            <div class="flex items-center gap-4">
+                <PrimaryButton type="submit">Login</PrimaryButton>
+                <PrimaryButton type="button" @click="useAuthProvider('google', null)">
+                    <GoogleIcon/>
+                    Continue with Google
+                </PrimaryButton>
+            </div>
 
-           <div v-if="errorsAuth" class="text-red-600 font-bold">
-               Something is wrong...
-           </div>
-       </form>
-   </Card>
+            <div v-if="errors.auth" class="text-red-600 font-bold">
+                Something is wrong...
+            </div>
+        </form>
+    </Card>
 </template>
 
 <script setup>
 import {useStore} from 'vuex'
-import {ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import Errors from "@/Components/Errors.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
@@ -40,11 +40,19 @@ import GoogleIcon from "@/Components/Icons/GoogleIcon.vue";
 const router = useRouter();
 const store = useStore();
 
+onMounted(async () => {
+    await store.dispatch('auth/clearErrors');
+})
+
 const auth = ref({
     email: "",
     password: ""
 });
-const errors = ref([]);
+
+const errors = computed(()=>{
+    return store.getters['auth/errors'];
+})
+
 const errorsAuth = ref(false);
 
 async function actionsAfterLogin() {
@@ -54,19 +62,10 @@ async function actionsAfterLogin() {
 }
 const login = async () => {
     errorsAuth.value = false;
-    errors.value = [];
-    try {
-        await axios.get('/sanctum/csrf-cookie');
-        await store.dispatch('auth/login', auth.value);
-        await actionsAfterLogin();
-    } catch (error) {
-        if (error.response && (error.response.status === 422)) {
-            errors.value = error.response.data.errors;
-        }else if(error.response.status === 401){
-            errorsAuth.value = true;
-        }else {
-            console.error('An error occurred during the login process:', error);
-        }
+    await axios.get('/sanctum/csrf-cookie');
+    await store.dispatch('auth/login', auth.value);
+    if(!errors.value){
+      await actionsAfterLogin();
     }
 }
 
@@ -95,7 +94,7 @@ function useAuthProvider(provider, proData) {
         })
         .catch((err) => {
             console.log(err);
-            errorsAuth.value = true;
+            errors.value = {auth:true};
         })
 }
 
@@ -114,7 +113,7 @@ function useSocialLogin() {
         })
         .catch((err) => {
             console.log(err);
-            errorsAuth.value = true;
+            errors.value = {auth:true};
         })
 }
 </script>

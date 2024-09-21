@@ -50,7 +50,7 @@ class UserFactory extends Factory
     public function admin(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email' => 'admin@gmail.com',
+            'email' => env('MAIL_FROM_ADDRESS','admin@gmail.com'),
         ])->afterCreating(function (User $user){
             $user->syncRoles([Role::ADMIN->value]);
         });

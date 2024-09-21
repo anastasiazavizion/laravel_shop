@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Storage;
 
 class NewOrderCreatedNotification extends Notification  implements ShouldQueue
 {
@@ -37,14 +38,16 @@ class NewOrderCreatedNotification extends Notification  implements ShouldQueue
     {
         $invoiceService = app(InvoiceServiceContract::class);
         $invoice = $invoiceService->generate($order);
-        $invoice->save('public');
-        logs()->info(storage_path('app/public/'.$invoice->filename));
+        $invoice->save('s3');
+
+        Storage::setVisibility($invoice->filename, 'public');
+
         return (new MailMessage)
                     ->subject('New Order on '.env('APP_NAME'))
                     ->greeting("Hello, {$order->name} {$order->lastname}")
                     ->line('Thank you for order!')
                     ->line('You can check invoice attachment')
-                    ->attach(storage_path('app/public/'.$invoice->filename));
+                    ->attach(Storage::url($invoice->filename));
     }
 
 }

@@ -41,7 +41,7 @@ async function deleteOrder(id) {
     if (result.isConfirmed) {
         await store.dispatch('order/deleteOrder', {id:id});
         setTimeout(function (){
-            router.go(0);
+           // router.go(0);
         }, 2000)
     }
 }

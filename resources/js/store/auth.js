@@ -3,7 +3,7 @@ import axios from 'axios';
 const state = {
     authenticated: false,
     user: {},
-    errors: null,
+    errors: [],
 };
 
 const getters = {
@@ -29,7 +29,7 @@ const actions = {
         try {
             await axios.post(route('v1.register'), payload);
             await dispatch('login',payload)
-            commit('setErrors',null);
+            dispatch('clearErrors');
         } catch (error) {
             commit('setErrors',error.response.data.errors);
         }
@@ -39,21 +39,26 @@ const actions = {
         try {
             await axios.post(route('v1.login'), payload);
             dispatch('userInfo');
+            dispatch('clearErrors');
         } catch (error) {
-            commit('setErrors',error.response.data.errors);
+            if(error.response.status === 403){
+                commit('setErrors',{auth:true});
+            }else{
+                commit('setErrors',error.response.data.errors);
+            }
             commit('setUser', {});
             commit('setAuthenticated', false);
         }
     },
 
-    async userInfo({ commit}) {
+    async userInfo({ commit,dispatch}) {
         try {
             const response = await axios.get(route('v1.user'));
             const { user, permissions } = response.data;
             window.Laravel.jsPermissions = JSON.parse(permissions);
             commit('setUser', user);
             commit('setAuthenticated', true);
-            commit('setErrors',null);
+            dispatch('clearErrors');
         } catch (error) {
             commit('setErrors',error.response.data.errors);
             commit('setUser', {});
@@ -61,18 +66,19 @@ const actions = {
         }
     },
 
-    async logout({commit}) {
+    async logout({commit, dispatch}) {
         try{
             await axios.post(route('v1.logout'));
             commit('setUser', {});
             commit('setAuthenticated', false);
-            commit('setErrors',null);
+            dispatch('clearErrors');
         }catch(error){
             commit('setErrors',error.response.data.errors);
         }
     },
+
     async clearErrors({commit}) {
-        commit('setErrors',null);
+        commit('setErrors',[]);
     }
 };
 

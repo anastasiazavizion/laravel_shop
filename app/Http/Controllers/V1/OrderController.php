@@ -49,6 +49,7 @@ class OrderController extends Controller
         return new OrderResource($order);
     }
 
+    //TODO move to admin
     public function destroy(Order $order): JsonResponse
     {
         try {
@@ -58,6 +59,8 @@ class OrderController extends Controller
             return response()->json(['message' => "Order #$order->id was removed", 'data'=>new OrderResource($order)], 200);
         }catch (\Exception $exception){
             DB::rollBack();
+            dd($exception->getMessage());
+
             logs()->error($exception->getMessage());
             return response()->json(['message' => $exception->getMessage(), 'data'=>[]], $exception->getCode());
         }
