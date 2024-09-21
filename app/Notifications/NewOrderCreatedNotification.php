@@ -37,16 +37,17 @@ class NewOrderCreatedNotification extends Notification  implements ShouldQueue
     {
         $invoiceService = app(InvoiceServiceContract::class);
         $invoice = $invoiceService->generate($order);
-        $invoice->save('public');
+        $invoice->save('s3');
 
+        logs()->info($invoice->filename);
 
         logs()->info(storage_path('app/public/'.$invoice->filename));
         return (new MailMessage)
                     ->subject('New Order on '.env('APP_NAME'))
                     ->greeting("Hello, {$order->name} {$order->lastname}")
                     ->line('Thank you for order!')
-                    ->line('You can check invoice attachment')
-                    ->attach(storage_path('app/public/'.$invoice->filename));
+                    ->line('You can check invoice attachment');
+                   /* ->attach(storage_path('app/public/'.$invoice->filename));*/
     }
 
 }
