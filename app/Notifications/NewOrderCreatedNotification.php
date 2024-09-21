@@ -39,6 +39,7 @@ class NewOrderCreatedNotification extends Notification  implements ShouldQueue
         $invoice = $invoiceService->generate($order);
         $invoice->save('s3');
 
+        logs()->info($invoice->url());
         logs()->info($invoice->filename);
 
         logs()->info(storage_path('app/public/'.$invoice->filename));
