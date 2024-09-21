@@ -42,7 +42,7 @@ class AuthControllerTest extends TestCase
         $response = $this->postJson(route('v1.login'), $data);
         $response->assertExactJson(['message' => 'Unauthorized']);
         $response->assertJsonCount(1);
-        $response->assertUnauthorized();
+        $response->assertStatus(403);
         $this->assertInvalidCredentials($data);
         $this->assertGuest();
     }
