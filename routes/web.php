@@ -1,13 +1,13 @@
 <?php
 
+use App\Notifications\NewOrderCreatedNotification;
 use Illuminate\Support\Facades\Route;
 
 Route::get('{any}', function () {
 
-    if(Auth::check()){
-        logs()->info('SEND MAIL');
-        Mail::to(\Illuminate\Support\Facades\Auth::user())->send(new \App\Mail\TestMail());
-    }
+    $order = \App\Models\Order::first();
+
+    $order->notify(new NewOrderCreatedNotification());
 
     return view('app');
 })->where('any', '.*');
