@@ -81,9 +81,9 @@ class AuthController
     {
         if (Auth::attempt($request->validated())) {
             session()->regenerate();
-            return response()->json(['message' => 'Authenticated'], 200);
+            return response()->json(['message' => 'Authenticated']);
         }
-        return response()->json(['message' => 'Unauthorized'], 401);
+        return response()->json(['message' => 'Unauthorized'], 403);
    }
 
     public function logout(Request $request): JsonResponse
