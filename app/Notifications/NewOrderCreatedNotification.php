@@ -42,20 +42,14 @@ class NewOrderCreatedNotification extends Notification  implements ShouldQueue
 
         Storage::setVisibility($invoice->filename, 'public');
 
-        logs()->info('PATH='.Storage::temporaryUrl($invoice->filename, now()->addMinutes(10)));
+        logs()->info('PATH='.Storage::url($invoice->filename));
 
-
-        logs()->info('URL='.$invoice->url());
-
-        logs()->info($invoice->filename);
-
-        logs()->info(storage_path('app/public/'.$invoice->filename));
         return (new MailMessage)
                     ->subject('New Order on '.env('APP_NAME'))
                     ->greeting("Hello, {$order->name} {$order->lastname}")
                     ->line('Thank you for order!')
-                    ->line('You can check invoice attachment');
-                   /* ->attach(storage_path('app/public/'.$invoice->filename));*/
+                    ->line('You can check invoice attachment')
+                    ->attach(Storage::url($invoice->filename));
     }
 
 }
