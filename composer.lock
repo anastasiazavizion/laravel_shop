@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33760dd13b11238877c906d0f28988db",
+    "content-hash": "66b80c55b766aa3cd15a4fde6cd8fc2d",
     "packages": [
         {
             "name": "ahmedsaoud31/laravel-permission-to-vuejs",
@@ -11773,7 +11773,9 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.2",
+        "ext-intl": "*",
+        "ext-gd": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"

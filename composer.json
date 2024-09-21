@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-intl": "*",
+        "ext-gd": "*",
         "ahmedsaoud31/laravel-permission-to-vuejs": "dev-master",
         "algolia/algoliasearch-client-php": "^3.0",
         "azate/laravel-telegram-login-auth": "^2.4",
