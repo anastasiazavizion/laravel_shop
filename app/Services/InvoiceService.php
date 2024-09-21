@@ -2,6 +2,7 @@
 namespace App\Services;
 use App\Models\Order;
 use App\Services\Contracts\InvoiceServiceContract;
+use Illuminate\Support\Facades\Storage;
 use LaravelDaily\Invoices\Invoice;
 
 use App\Enum\OrderStatusEnum;
@@ -39,6 +40,8 @@ class InvoiceService implements InvoiceServiceContract
             ->addItems($this->invoiceItems($order->products))
             ->logo(public_path('vendor/invoices/sample-logo.png'))
             ->save('s3');
+
+        Storage::setVisibility($fileName, 'public');
 
         if ($order->status->name === OrderStatusEnum::IN_PROCESS->value) {
             $invoice->payUntilDays(config('invoices.date.pay_until_days'));

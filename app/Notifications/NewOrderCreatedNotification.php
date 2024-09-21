@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Storage;
 
 class NewOrderCreatedNotification extends Notification  implements ShouldQueue
 {
@@ -39,7 +40,10 @@ class NewOrderCreatedNotification extends Notification  implements ShouldQueue
         $invoice = $invoiceService->generate($order);
         $invoice->save('s3');
 
-        logs()->info($invoice->url());
+        Storage::setVisibility($invoice->filename, 'public');
+
+        logs()->info('URL='.$invoice->url());
+
         logs()->info($invoice->filename);
 
         logs()->info(storage_path('app/public/'.$invoice->filename));
