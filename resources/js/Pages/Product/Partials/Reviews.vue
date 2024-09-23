@@ -1,7 +1,7 @@
 <script setup>
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import {StarIcon} from "@heroicons/vue/24/solid/index.js";
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import Header from "@/Components/Header.vue";
 import {useStore} from "vuex";
 
@@ -9,11 +9,15 @@ const props = defineProps({
     product:Object
 })
 
-const reviews = ref([]);
-
+async function getReviews() {
+    await store.dispatch('review/getReviews', props.product.id);
+}
 onMounted(async () => {
-    await store.dispatch('review/getReviews', props.product.slug);
-    reviews.value = await store.getters['review/reviews'];
+    await getReviews();
+})
+
+const reviews = computed(()=>{
+    return  store.getters['review/reviews'];
 })
 
 const reviewForm = ref({
@@ -23,8 +27,9 @@ const reviewForm = ref({
 });
 const store = useStore();
 
-function addReview(){
-    store.dispatch('review/addReview', reviewForm.value);
+async function addReview() {
+    await store.dispatch('review/addReview', reviewForm.value);
+    await getReviews();
 }
 
 const ratings =  Array(5).fill().map((_, i) => i + 1);

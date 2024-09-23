@@ -64,7 +64,7 @@ const login = async () => {
     errorsAuth.value = false;
     await axios.get('/sanctum/csrf-cookie');
     await store.dispatch('auth/login', auth.value);
-    if(!errors.value){
+    if(!errors.value.length){
       await actionsAfterLogin();
     }
 }

@@ -24,7 +24,9 @@ use App\Http\Controllers\V1\Admin\AdminChartsController;
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
 Route::apiResource('categories', CategoriesController::class)->only(['index']);
-Route::apiResource('products', ProductsController::class)->only(['index', 'show']);
+
+Route::apiResource('products', ProductsController::class)
+    ->only(['index', 'show'])->scoped(['product' => 'slug']);;
 
 Route::prefix('paypal')->name('paypal.')->group(function () {
     Route::post('order', [PaypalController::class, 'create'])->name('order.create');
@@ -43,7 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('admin/data/')->middleware(['role:admin|moderator'])->name('admin.')->group(function () {
         Route::apiResource('categories', AdminCategoriesController::class);
-        Route::apiResource('products', AdminProductsController::class);
+        Route::apiResource('products', AdminProductsController::class)->scoped(['product' => 'slug']);;;
     });
 
 
