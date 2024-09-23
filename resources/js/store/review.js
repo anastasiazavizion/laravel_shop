@@ -25,7 +25,8 @@ const actions = {
     async getReviews({ commit}, product) {
         try {
             const response = await axios.get(route('v1.reviews.index',{ product: product }));
-            commit('setReviews', response.data.data);
+            console.log(response.data);
+            commit('setReviews', response.data);
         } catch (error) {
             console.log(error);
         }
