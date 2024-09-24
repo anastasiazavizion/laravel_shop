@@ -202,3 +202,27 @@
   2024-09-21 15:07:59 Laravel\Scout\Jobs\MakeSearchable ........ 808.92ms DONE
   2024-09-21 15:10:18 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
   2024-09-21 15:10:19 Laravel\Scout\Jobs\MakeSearchable ........ 848.76ms DONE
+  2024-09-24 09:47:01 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:47:02 App\Jobs\CheckNotCompletedOrdersJob ...... 641.99ms DONE
+  2024-09-24 09:48:01 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:48:01 App\Jobs\CheckNotCompletedOrdersJob ...... 590.89ms DONE
+  2024-09-24 09:49:02 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:49:02 App\Jobs\CheckNotCompletedOrdersJob ...... 287.69ms DONE
+  2024-09-24 09:50:00 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:50:00 App\Jobs\CheckNotCompletedOrdersJob ...... 341.94ms DONE
+  2024-09-24 09:51:01 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:51:02 App\Jobs\CheckNotCompletedOrdersJob ...... 767.45ms DONE
+  2024-09-24 09:52:01 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:52:01 App\Jobs\CheckNotCompletedOrdersJob ...... 376.36ms DONE
+  2024-09-24 09:53:01 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:53:02 App\Jobs\CheckNotCompletedOrdersJob ...... 886.90ms DONE
+  2024-09-24 09:54:02 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:54:03 App\Jobs\CheckNotCompletedOrdersJob ...... 423.07ms DONE
+  2024-09-24 09:55:00 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:55:01 App\Jobs\CheckNotCompletedOrdersJob ...... 354.18ms DONE
+  2024-09-24 09:56:00 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:56:01 App\Jobs\CheckNotCompletedOrdersJob ...... 367.43ms DONE
+  2024-09-24 09:57:01 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:57:02 App\Jobs\CheckNotCompletedOrdersJob ...... 494.70ms DONE
+  2024-09-24 09:58:00 App\Jobs\CheckNotCompletedOrdersJob ............ RUNNING
+  2024-09-24 09:58:01 App\Jobs\CheckNotCompletedOrdersJob ...... 456.56ms DONE
