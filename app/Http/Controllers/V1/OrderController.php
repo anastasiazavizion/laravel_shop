@@ -50,7 +50,7 @@ class OrderController extends Controller
     }
 
     //TODO move to admin
-    public function destroy(Order $order): JsonResponse
+/*    public function destroy(Order $order): JsonResponse
     {
         try {
             DB::beginTransaction();
@@ -59,12 +59,30 @@ class OrderController extends Controller
             return response()->json(['message' => "Order #$order->id was removed", 'data'=>new OrderResource($order)], 200);
         }catch (\Exception $exception){
             DB::rollBack();
-            dd($exception->getMessage());
-
             logs()->error($exception->getMessage());
             return response()->json(['message' => $exception->getMessage(), 'data'=>[]], $exception->getCode());
         }
     }
+    */
+
+
+    public function destroy(OrderByVendorRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        try {
+            $order = Order::where('vendor_order_id', $data['id'])
+                ->firstOrFail();
+            DB::beginTransaction();
+            $order->delete();
+            DB::commit();
+            return response()->json(['message' => "", 'data'=>new OrderResource($order)], 200);
+        }catch (\Exception $exception){
+            DB::rollBack();
+            logs()->error($exception->getMessage());
+            return response()->json(['message' => $exception->getMessage(), 'data'=>[]], $exception->getCode());
+        }
+    }
+
 
     public function allOrdersAmount(): int
     {

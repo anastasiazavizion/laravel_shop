@@ -37,6 +37,10 @@ const actions = {
             commit('setReviews', null);
         }
     },
+
+    async clearErrors({ commit}) {
+        commit('setErrors',[]);
+    },
 };
 export default {
     namespaced: true,

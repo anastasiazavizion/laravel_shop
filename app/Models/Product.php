@@ -133,6 +133,7 @@ class Product extends Model
     {
         return [
             'price' => 'float',
+            'quantity'=>'integer'
         ];
     }
 

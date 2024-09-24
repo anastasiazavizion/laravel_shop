@@ -18,10 +18,14 @@ class OrderProductResource extends JsonResource
     {
         return [
           'id'=>$this->id,
+          'amount'=>(int)$this->pivot->quantity,
           'thumbnail_url'=>$this->thumbnail_url,
           'title'=>$this->pivot->name,
-          'quantity'=>$this->pivot->quantity,
-          'single_price'=>$this->pivot->single_price
+          'slug'=>$this->slug,
+          'quantity'=>(int)$this->pivot->quantity,
+          'single_price'=>(float)$this->pivot->single_price,
+          'final_price'=>(float)$this->final_price,
         ];
+
     }
 }

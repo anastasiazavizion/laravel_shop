@@ -37,6 +37,7 @@ onMounted(async () => {
                 quantity: product.quantity,
                 title: product.title,
                 in_stock: product.in_stock,
+                slug: product.slug,
                 thumbnail_url: product.thumbnail_url,
                 amount:amount,
                 id: product.id,
@@ -55,13 +56,8 @@ function updateCount(event, id){
 }
 
 function productUrl(product){
-    return {name:'products.show', params:{id:product.id}};
+    return {name:'products.show', params:{id:product.slug}};
 }
-
-const finalPrice = computed((item)=>{
-    return item.amount * item.final_price;
-})
-
 </script>
 
 <template>

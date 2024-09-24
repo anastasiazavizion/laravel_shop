@@ -5,11 +5,20 @@ import Card from "@/Components/Card.vue";
 import paypalFunction from "@/hooks/paypal.js";
 import {useStore} from "vuex";
 import Errors from "@/Components/Errors.vue";
+import {useRoute} from "vue-router";
 const store = useStore();
 
 const user = computed(()=>{
     return store.getters['auth/user'];
 })
+const route = useRoute();
+
+const id = route.params.id;
+
+if(id){
+    store.dispatch('order/deleteOrderByVendorOrderId', { id: id });
+}
+
 
 const errors = ref({});
 
@@ -31,6 +40,9 @@ const cartItems = computed(()=>{
 const cartItemsNotEmpty = computed(()=>{
     return cartItems.value.length > 0;
 })
+
+console.log(cartItemsNotEmpty.value);
+
 
 function isEmptyField(field){
     return emptyFields.value.length > 0 && emptyFields.value.includes(field)

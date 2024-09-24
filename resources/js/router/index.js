@@ -186,7 +186,7 @@ const routes = [
             },
 
             {
-                path: '/checkout',
+                path: '/checkout/:id?',
                 component: Checkout,
                 name: 'checkout.index',
             },
