@@ -14,10 +14,12 @@ use App\Repositories\Contract\CategoryRepositoryContract;
 use App\Repositories\Contract\ImageRepositoryContract;
 use App\Repositories\Contract\OrderRepositoryContract;
 use App\Repositories\Contract\ProductRepositoryContract;
+use App\Repositories\Contract\ReviewRepositoryContract;
 use App\Repositories\Contract\WishListRepositoryContract;
 use App\Repositories\ImageRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\ReviewRepository;
 use App\Repositories\WishListRepository;
 use App\Services\CacheService;
 use App\Services\Contracts\CacheServiceContract;
@@ -29,7 +31,6 @@ use App\Services\InvoiceService;
 use App\Services\PayPalService;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -55,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CacheServiceContract::class, CacheService::class);
 
         $this->app->bind(InvoiceServiceContract::class, InvoiceService::class);
+        $this->app->bind(ReviewRepositoryContract::class, ReviewRepository::class);
 
         $this->app->bind(WishListRepositoryContract::class,
             WishListRepository::class);

@@ -4,6 +4,9 @@ import {StarIcon} from "@heroicons/vue/24/solid/index.js";
 import {computed, onMounted, ref} from "vue";
 import Header from "@/Components/Header.vue";
 import {useStore} from "vuex";
+import Errors from "@/Components/Errors.vue";
+
+const store = useStore();
 
 const props = defineProps({
     product:Object
@@ -17,7 +20,7 @@ onMounted(async () => {
 })
 
 const reviews = computed(()=>{
-    return  store.getters['review/reviews'];
+    return store.getters['review/reviews'];
 })
 
 const reviewForm = ref({
@@ -25,7 +28,18 @@ const reviewForm = ref({
     description:null,
     rate:props.product.rate ?? null
 });
-const store = useStore();
+
+const user = computed(()=>{
+    return store.getters['auth/user'];
+})
+
+const errors = computed(()=>{
+    return store.getters['review/errors'];
+})
+
+const currentUserGaveReview = computed(()=>{
+    return user.value && reviews.value.map((item)=>item.user.id).includes(user.value.id);
+})
 
 async function addReview() {
     await store.dispatch('review/addReview', reviewForm.value);
@@ -40,23 +54,29 @@ function starHover(value){
 </script>
 
 <template>
+
     <Header class="mt-4">Reviews</Header>
-    <form class="mb-4" @submit.prevent="addReview">
+    <form class="mb-8" @submit.prevent="addReview">
         <div>
             <StarIcon
-                :class="{'text-yellow-800':(index + 1 ) <= reviewForm.rate}"
+                :class="{'text-yellow-800':(index + 1 ) <= reviewForm.rate, 'cursor-pointer':!currentUserGaveReview}"
 
-                @mouseover="starHover(index + 1)" class="w-8 cursor-pointer" :key="rating" v-for="(rating,index) in ratings"></StarIcon>
+            @mouseover="!currentUserGaveReview ? starHover(index + 1): null" class="w-8" :key="rating" v-for="(rating,index) in ratings"></StarIcon>
+            <Errors :errors="errors.rate"/>
         </div>
 
-        <div>
-            <label for="title">Review text</label>
-            <textarea  v-model="reviewForm.description" name="description" id="description" class="form-control"></textarea>
+        <div v-if="!currentUserGaveReview">
+            <div>
+                <label for="title">Review text</label>
+                <textarea  v-model="reviewForm.description" name="description" id="description" class="form-control"></textarea>
+                <Errors :errors="errors.description"/>
+            </div>
+
+            <div class="mt-4">
+                <PrimaryButton type="submit">Add</PrimaryButton>
+            </div>
         </div>
 
-        <div>
-            <PrimaryButton type="submit">Add</PrimaryButton>
-        </div>
     </form>
 
     <div class="mb-4" :key="index" v-for="(review,index) in reviews">
@@ -67,7 +87,7 @@ function starHover(value){
                    class="w-8" :key="rating" v-for="(rating,index) in ratings">
                </StarIcon>
            </div>
-            <div>{{review.user}} <span class="text-sm text-slate-800">{{review.date}}</span></div>
+            <div>{{review.user.name}} <span class="text-sm text-slate-800">{{review.date}}</span></div>
         </div>
 
         <div v-if="review.description">{{review.description}}</div>

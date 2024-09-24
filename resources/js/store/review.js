@@ -1,16 +1,19 @@
-import axios from 'axios';
-
 const state = {
-    reviews : null
+    reviews : null,
+    errors:[]
 };
 
 const getters = {
-    reviews: state => state.reviews
+    reviews: state => state.reviews,
+    errors: state => state.errors,
 };
 
 const mutations = {
     setReviews (state, value) {
         state.reviews = value;
+    },
+    setErrors (state, value) {
+        state.errors = value;
     }
 };
 
@@ -18,21 +21,22 @@ const actions = {
 
     async addReview({ commit}, payload) {
         try {
-            const response = await axios.post(route('v1.reviews.store',{ product: payload.id }), payload);
+            await axios.post(route('v1.reviews.store',{ product: payload.id }), payload);
+            commit('setErrors',[]);
         } catch (error) {
+            if(error.response.status === 422){
+                commit('setErrors', error.response.data.errors);
+            }
         }
     },
     async getReviews({ commit}, product) {
         try {
             const response = await axios.get(route('v1.reviews.index',{ product: product }));
-            console.log(response.data);
             commit('setReviews', response.data);
         } catch (error) {
-            console.log(error);
+            commit('setReviews', null);
         }
     },
-
-
 };
 export default {
     namespaced: true,

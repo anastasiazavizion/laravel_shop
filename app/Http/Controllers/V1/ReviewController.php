@@ -7,16 +7,21 @@ use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\V1\Review\ReviewCollection;
 use App\Http\Resources\V1\Review\ReviewResource;
 use App\Models\Product;
+use App\Repositories\Contract\ReviewRepositoryContract;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+    public function __construct(public ReviewRepositoryContract $reviewRepository)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Product $product)
     {
-        return new ReviewCollection($product->reviews()->get());
+        return new ReviewCollection($this->reviewRepository->getAll($product));
     }
 
     /**
@@ -24,11 +29,7 @@ class ReviewController extends Controller
      */
     public function store(ReviewRequest $request,Product $product)
     {
-        $review = $product->reviews()->create([
-            ...$request->validated(),
-            'user_id'=>Auth::id()
-        ]);
-
+        $review = $this->reviewRepository->create($product,[...$request->validated(),'user_id'=>Auth::id()]);
          if($review){
             return response()->json(['message' => "Review was created", 'data'=>new ReviewResource($review)], 200);
         }
