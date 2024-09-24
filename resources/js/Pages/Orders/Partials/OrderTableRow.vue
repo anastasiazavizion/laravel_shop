@@ -18,6 +18,7 @@ import {XMarkIcon} from "@heroicons/vue/24/solid/index.js";
 import Swal from "sweetalert2";
 import {useStore} from "vuex";
 import {useRouter} from "vue-router";
+import StatusLabel from "@/Pages/Orders/Partials/StatusLabel.vue";
 
 const orderLink = computed(()=>{
     if(props.admin){
@@ -60,6 +61,7 @@ async function deleteOrder(id) {
         <td>{{order.city}}</td>
         <td>{{order.total}}</td>
         <td>{{order.created_at}}</td>
+        <td><StatusLabel class="w-full" :status="order.status"/></td>
         <td>
             <router-link :to="orderLink">
                 <InformationCircleIcon class="w-8 cursor-pointer"></InformationCircleIcon>

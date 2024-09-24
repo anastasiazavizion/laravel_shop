@@ -31,7 +31,7 @@ async function loadOrders(url = null) {
 
 <template>
     <div v-if="orders">
-        <table class="w-full">
+        <table class="w-full text-center">
             <OrderTableHeader :admin="admin"/>
             <tbody>
             <OrderTableRow :admin="admin" :key="order.id" v-for="order in orders" :order="order"/>
