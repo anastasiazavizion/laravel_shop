@@ -17,7 +17,10 @@ class ReviewResource extends JsonResource
         return [
             'rate'=>$this->rate,
             'description'=>$this->description,
-            'user'=>$this->user->name,
+            'user'=>[
+                'id'=>$this->user->id,
+                'name'=>$this->user->name,
+            ],
             'date'=>$this->created_at->diffForHumans()
         ];
     }
