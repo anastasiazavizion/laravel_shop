@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use App\Enum\OrderStatusEnum;
+use App\Observers\OrderObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+#[ObservedBy([OrderObserver::class])]
 class Order extends Model
 {
     use HasFactory, Notifiable;
@@ -26,8 +29,8 @@ class Order extends Model
 
     public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Product::class)->withPivot(['name', 'single_price',
-            'quantity']);
+        return $this->belongsToMany(Product::class)
+            ->withPivot(['name', 'single_price','quantity']);
     }
 
     public function transaction(): \Illuminate\Database\Eloquent\Relations\HasOne
@@ -42,4 +45,6 @@ class Order extends Model
         })->sum('total');
 
     }
+
+
 }

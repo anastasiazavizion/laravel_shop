@@ -16,6 +16,7 @@ async function getReviews() {
     await store.dispatch('review/getReviews', props.product.id);
 }
 onMounted(async () => {
+    await store.dispatch('review/clearErrors');
     await getReviews();
 })
 
