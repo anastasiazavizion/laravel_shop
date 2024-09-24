@@ -22,7 +22,7 @@ class RegisteredUserControllerTest extends TestCase
         $response =  $this->postJson(route('v1.register'),$data);
         $this->assertDatabaseHas(User::class, ['email'=>$data['email']]);
         $response->assertStatus(200);
-        $response->assertJson('Registered');
+        $response->assertJson(['Registered']);
     }
 
     public function test_fail_register_with_invalid_data(): void

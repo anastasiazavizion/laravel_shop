@@ -27,7 +27,7 @@ class AuthControllerTest extends TestCase
         ]);
 
         $response->assertStatus(200);
-        $response->assertJson('Authenticated');
+        $response->assertJson(['Authenticated']);
         $this->assertAuthenticatedAs($user);
     }
 
@@ -39,7 +39,7 @@ class AuthControllerTest extends TestCase
         ];
         $this->assertDatabaseMissing(User::class, ['email' => $data['email']]);
         $response = $this->postJson(route('v1.login'), $data);
-        $response->assertJson('Unauthorized');
+        $response->assertJson(['Unauthorized']);
         $response->assertStatus(403);
         $this->assertInvalidCredentials($data);
         $this->assertGuest();
