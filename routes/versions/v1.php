@@ -49,7 +49,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
 
-    Route::name('admin.')->middleware(['role:admin|moderator'])->group(function (){
+    Route::name('admin.')->prefix('admin')->middleware(['role:admin|moderator'])->group(function (){
 
         Route::get('/ordersAmountByProducts', [AdminChartsController::class, 'ordersAmountByProducts'])->name('ordersAmountByProducts');
         Route::get('/ordersAmountByCities', [AdminChartsController::class, 'ordersAmountByCities'])->name('ordersAmountByCities');
@@ -59,6 +59,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/allOrdersAmount', [OrderController::class, 'allOrdersAmount'])->name('allOrdersAmount');
         Route::get('/allProductsAmount', [AdminProductsController::class, 'allProductsAmount'])->name('allProductsAmount');
         Route::get('/allUsersAmount', [\App\Http\Controllers\V1\Admin\UserController::class, 'allUsersAmount'])->name('allUsersAmount');
+
+        Route::apiResource('orders', \App\Http\Controllers\V1\Admin\OrderController::class)->only(['destroy']);
 
 
     });

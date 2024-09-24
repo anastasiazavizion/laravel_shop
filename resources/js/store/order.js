@@ -74,14 +74,6 @@ const actions = {
         }
     },
 
-    //TODO move to admin
-    async deleteOrder({ commit}, payload) {
-        try {
-            const response = await axios.delete(route('v1.orders.destroy', payload.id));
-        } catch (error) {
-        }
-    },
-
     async deleteOrderByVendorOrderId({ commit}, payload) {
         try {
             const response = await axios.delete(route('v1.orders.destroy', payload.id), {params:{id:payload.id}});

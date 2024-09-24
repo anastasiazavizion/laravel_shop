@@ -49,23 +49,6 @@ class OrderController extends Controller
         return new OrderResource($order);
     }
 
-    //TODO move to admin
-/*    public function destroy(Order $order): JsonResponse
-    {
-        try {
-            DB::beginTransaction();
-            $order->delete();
-            DB::commit();
-            return response()->json(['message' => "Order #$order->id was removed", 'data'=>new OrderResource($order)], 200);
-        }catch (\Exception $exception){
-            DB::rollBack();
-            logs()->error($exception->getMessage());
-            return response()->json(['message' => $exception->getMessage(), 'data'=>[]], $exception->getCode());
-        }
-    }
-    */
-
-
     public function destroy(OrderByVendorRequest $request): JsonResponse
     {
         $data = $request->validated();
