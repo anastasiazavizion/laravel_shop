@@ -29,6 +29,11 @@
     svg{
         @apply inline;
     }
+
+    nav, .dropdown-menu{
+        @apply text-white;
+        background-color: $navColor;
+    }
 }
 
 @layer components {
@@ -43,10 +48,10 @@
     }
 
     .btn-style{
-        background-color: $btnAdditionalColor;
+        background-color: $mainColor;
     }
     .btn-style:hover{
-        background-color: $btnAdditionalColorHover;
+        background-color: $mainColorHover;
     }
 
     .btn-checkout{
@@ -59,8 +64,13 @@
 
     .pagination-link-active{
         @apply text-white;
-        background-color: $btnAdditionalColor;
+        background-color: $mainColor;
     }
+
+    .pagination-link-active:hover{
+        background-color: $mainColorHover;
+    }
+
 
     .pagination-link{
         @apply p-2 text-sm sm:p-3 border border-slate-300;
@@ -68,7 +78,7 @@
 
     .cart-product-amount{
         @apply absolute  text-white rounded-full h-6 w-6 text-center  left-5 bottom-3;
-        background-color: $btnAdditionalColor;
+        background-color: $mainColor;
     }
 
     .adminCard{
@@ -80,9 +90,29 @@
         @apply text-red-600 font-bold;
     }
 
-    .primaryBtn{
-        @apply inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
-        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150;
+    .primary-btn{
+        @apply inline-flex text-center justify-center  px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
+        focus:outline-none  transition ease-in-out duration-150;
+
+        background-color: $mainColor;
+    }
+
+    .primary-btn:hover{
+        background-color: $mainColorHover;
+    }
+
+    .active-wish-list{
+        color: $mainColor;
+    }
+
+    .not-in-stock{
+        background-color: $notInStockColor;
+    }
+    .edit-btn{
+        background-color: $editColorBtn;
+    }
+    .edit-btn:hover{
+        background-color: $editColorBtnHover;
     }
 }
 
@@ -90,4 +120,13 @@ nav{
     .router-link-active{
         @apply underline;
     }
+}
+
+.custom-toast {
+    background-color: $mainColor!important;
+    color: white;
+}
+
+:root {
+    --primary-color: #{$mainColor}; // Interpolating the Sass variable
 }

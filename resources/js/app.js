@@ -30,7 +30,9 @@ const app = createApp(App)
     .use(store)
     .use(Ziggy)
     .use(LaravelPermissionToVueJS)
-    .use(Toast)
+    .use(Toast, {
+        toastClassName:'custom-toast'
+    })
 
 app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$Oauth = Oauth;

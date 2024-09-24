@@ -20,13 +20,14 @@ onMounted(async () => {
 
     const labels = Object.keys(ordersAmountByCities.value);
     const amounts = Object.values(ordersAmountByCities.value);
+    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
 
     chartData.value = {
         labels: labels,
         datasets: [
             {
                 label: 'Orders Amount By Cities',
-                backgroundColor: '#26a269',
+                backgroundColor: primaryColor,
                 data: amounts
             }
         ]

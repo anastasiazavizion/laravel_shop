@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const state = {
     categories: [],
     category:null,
@@ -39,7 +37,6 @@ const actions = {
     async getCategory({ commit}, payload) {
         try {
             const response = await axios.get(route('v1.admin.categories.show',payload.id));
-            console.log(response);
             commit('setCategory', response.data);
         } catch (error) {
             commit('setCategory', []);
@@ -65,7 +62,6 @@ const actions = {
             const response = await axios.post(route('v1.admin.categories.store'), data);
         } catch (error) {
             if(error.response.status === 422){
-                console.log(error.response.data.errors);
                 commit('setErrors', error.response.data.errors);
             }else{
                 commit('setErrors', [{'other':'Some other errors'}]);
@@ -73,13 +69,10 @@ const actions = {
         }
     },
 
-
-
     async deleteCategory({ commit}, payload) {
         try {
             const response = await axios.delete(route('v1.admin.categories.destroy',payload.id));
         } catch (error) {
-
         }
     },
 

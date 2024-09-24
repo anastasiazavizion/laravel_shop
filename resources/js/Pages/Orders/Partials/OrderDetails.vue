@@ -1,19 +1,16 @@
 <script setup>
-import ThankYouDetails from "@/Pages/Cart/Partials/ThankYouDetails.vue";
 import StatusLabel from "@/Pages/Orders/Partials/StatusLabel.vue";
+import Price from "@/Components/Price.vue";
+import Details from "@/Components/Details.vue";
 const props = defineProps({
     order:Object
 })
-
-console.log(props.order);
-
-
 </script>
 
 <template>
     <p class="text-lg font-bold">Order Info</p>
-    <ThankYouDetails label="Total">{{order.total}}</ThankYouDetails>
-    <ThankYouDetails label="Status">
+    <Details label="Total"><Price>{{order.total}}</Price></Details>
+    <Details label="Status">
       <StatusLabel :status="order.status"/>
-    </ThankYouDetails>
+    </Details>
 </template>

@@ -5,7 +5,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <nav class="bg-black text-white border-b border-gray-100">
+    <nav class="border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex justify-center items-center">

@@ -1,8 +1,8 @@
 <template>
     <button
-        class="primaryBtn bg-red-800 hover:bg-red-700 focus:bg-red-700 active:bg-red-900"
+        class="primary-btn bg-red-800 hover:bg-red-700 focus:bg-red-700 active:bg-red-900"
     >
-        <XMarkIcon  class="w-4 cursor-pointer"></XMarkIcon> Delete <slot />
+        <XMarkIcon  class="w-4 cursor-pointer mr-1"></XMarkIcon>Delete <slot />
     </button>
 </template>
 <script setup>

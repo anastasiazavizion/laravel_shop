@@ -46,10 +46,8 @@ const actions = {
         }
 
         if (rootGetters['auth/authenticated']) {
-            console.log(product);
             await axios.post(route('v1.cart.add'), {id: product.id});
         }
-
     },
 
     async removeFromCart({commit, state, rootGetters}, product) {

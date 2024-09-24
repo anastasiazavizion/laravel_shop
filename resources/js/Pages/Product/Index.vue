@@ -1,27 +1,31 @@
 <script setup>
-import {onMounted, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 import {useStore} from "vuex";
 import AllProducts from "@/Pages/Product/Partials/AllProducts.vue";
 import {useRoute} from "vue-router";
 import LoadingButton from "@/Components/LoadingButton.vue";
 import SearchForm from "@/Components/SearchForm.vue";
 
-const products = ref([]);
-const links = ref([]);
+const products = computed(()=>{
+    return store.getters['product/products'];
+})
+
+const links = computed(()=>{
+    return store.getters['product/links'];
+})
+
 const store = useStore();
 const route = useRoute();
 const loading = ref(true);
 const searchStr = ref(null);
 
 const loadProducts = async (url = null) => {
+    loading.value = true;
     const categoryName = route.params.categoryName || null;
     const search = searchStr.value;
     await store.dispatch('product/getAll', {url, categoryName, search});
-    products.value = await store.getters['product/products'];
-    links.value = await store.getters['product/links'];
     loading.value = false;
 };
-
 
 onMounted(() => {
     loadProducts();
@@ -50,6 +54,7 @@ function getUrl(url) {
 
         <div v-if="products.length > 0">
             <AllProducts :products="products"/>
+
             <div class="mt-8 flex gap-1 flex-wrap sm:flex-none">
                 <a @click.prevent="loadProducts(getUrl(link.url))" v-if="links.length > 3"
                    :class="{'pagination-link-active':link.active, 'opacity-25':!link.url, 'bg-white': !link.active}"

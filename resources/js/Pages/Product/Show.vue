@@ -37,8 +37,6 @@ const onlyOneImage = computed(()=>{
 const authenticated = computed(()=>{
     return store.getters['auth/authenticated']
 })
-
-
 </script>
 <template>
         <div v-if="product" class="grid grid-cols-1 sm:grid-cols-2 gap-4">

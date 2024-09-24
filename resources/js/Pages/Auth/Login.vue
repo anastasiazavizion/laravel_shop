@@ -14,7 +14,7 @@
 
             <div class="flex items-center gap-4">
                 <PrimaryButton type="submit">Login</PrimaryButton>
-                <PrimaryButton type="button" @click="useAuthProvider('google', null)">
+                <PrimaryButton class="bg-white text-black hover:bg-slate-100 hover:text-black border border-slate-300" type="button" @click="useAuthProvider('google', null)">
                     <GoogleIcon/>
                     Continue with Google
                 </PrimaryButton>
@@ -64,7 +64,7 @@ const login = async () => {
     errorsAuth.value = false;
     await axios.get('/sanctum/csrf-cookie');
     await store.dispatch('auth/login', auth.value);
-    if(!errors.value.length){
+    if(Object.keys(errors.value).length === 0){
       await actionsAfterLogin();
     }
 }
