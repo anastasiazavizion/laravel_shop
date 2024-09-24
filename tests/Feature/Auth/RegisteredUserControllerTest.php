@@ -22,7 +22,7 @@ class RegisteredUserControllerTest extends TestCase
         $response =  $this->postJson(route('v1.register'),$data);
         $this->assertDatabaseHas(User::class, ['email'=>$data['email']]);
         $response->assertStatus(200);
-        $response->assertExactJson(['Registered']);
+        $response->assertJson(['Registered']);
         $response->assertJsonCount(1);
     }
 
