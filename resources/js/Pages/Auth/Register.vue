@@ -17,6 +17,14 @@ onMounted(async () => {
     await store.dispatch('auth/clearErrors');
 })
 
+function find18YearsOldBirthday() {
+    const today = new Date();
+    const years = 18;
+    const birthDate = new Date(today.setFullYear(today.getFullYear() - years));
+    return birthDate.toLocaleDateString();
+}
+
+
 const form = ref({
     name: "",
     lastname: "",
@@ -24,7 +32,7 @@ const form = ref({
     password_confirmation: "",
     phone: "",
     email: "",
-    birthday:""
+    birthday:find18YearsOldBirthday()
 });
 
 const errors = computed(()=>{
@@ -33,7 +41,7 @@ const errors = computed(()=>{
 
 const register = async () => {
     await store.dispatch('auth/register', form.value);
-    if(!errors.value){
+    if(Object.keys(errors.value).length === 0){
         await router.push('/');
     }
 };

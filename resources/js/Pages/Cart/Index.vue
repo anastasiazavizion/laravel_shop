@@ -96,12 +96,13 @@ function productUrl(product){
             <div class="sm:col-span-2  bg-slate-50 p-2 sm:px-4">
                 <Header class="text-3xl">Order Summary</Header>
 
-                <div class="grid grid-cols-2 border-b mb-2 pb-2">
+                <div class="grid grid-cols-2 border-b mb-4 pb-2">
                     <div>Total</div>
                     <div><Price>{{cartTotalPrice}}</Price></div>
                 </div>
-                <div>
-                    <router-link to="/checkout" class="btn btn-checkout w-full">Proceed To Checkout</router-link>
+
+                <div class="mt-4">
+                    <router-link :to="{name:'checkout.index'}" class="btn btn-checkout w-full">Checkout with Paypal</router-link>
                 </div>
             </div>
         </div>
