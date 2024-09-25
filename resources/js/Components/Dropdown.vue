@@ -15,7 +15,7 @@ defineProps({
 <template>
     <Menu as="div" :class="{'inline-block': !mobile}" class="relative text-left dropdown-menu">
         <div>
-            <MenuButton  :class="{'px-3 justify-center': !mobile}" class="inline-flex w-full gap-x-1.5 rounded-md   py-2 text-sm font-semibold text-white shadow-sm">
+            <MenuButton  :class="{'justify-center': !mobile}" class="inline-flex w-full gap-x-1.5 rounded-md  py-2 sm:py-0 text-sm font-semibold text-white shadow-sm">
                 {{title}}
                 <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
             </MenuButton>
