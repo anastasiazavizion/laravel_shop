@@ -17,6 +17,6 @@ class RegisteredUserController
         $user = User::create($request->validated());
         event(new Registered($user));
         Auth::login($user);
-        return response()->json(['message' => 'OK'], 200);
+        return response()->json('Registered', 200);
     }
 }

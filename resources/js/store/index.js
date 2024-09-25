@@ -12,6 +12,7 @@ import user from './user.js';
 import review from './review.js';
 import admin_charts from './admin/charts.js';
 import admin_users from './admin/user.js';
+import admin_orders from './admin/order.js';
 
 const store = createStore({
     modules: {
@@ -25,7 +26,8 @@ const store = createStore({
         user,
         review,
         admin_charts,
-        admin_users
+        admin_users,
+        admin_orders
     },
     plugins: [createPersistedState()]
 });

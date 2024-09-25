@@ -18,6 +18,7 @@ const props = defineProps({
         <th>City</th>
         <th>Total</th>
         <th>Date</th>
+        <th>Status</th>
         <th></th>
         <th v-if="admin && can('delete order')"></th>
     </tr>

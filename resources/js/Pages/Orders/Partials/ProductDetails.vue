@@ -1,4 +1,6 @@
 <script setup>
+import Price from "@/Components/Price.vue";
+
 defineProps({
     order:Object
 })
@@ -30,8 +32,8 @@ function productUrl(product){
                 </router-link>
             </td>
             <td>{{product.quantity}}</td>
-            <td>{{product.single_price}}</td>
-            <td>{{productTotalPrice(product)}}</td>
+            <td><Price>{{product.single_price}}</Price></td>
+            <td><Price>{{productTotalPrice(product)}}</Price></td>
         </tr>
         </tbody>
     </table>

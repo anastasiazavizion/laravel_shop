@@ -3,9 +3,10 @@ import {onMounted, ref} from "vue";
 import {useStore} from "vuex";
 import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
-import {XMarkIcon} from "@heroicons/vue/24/solid";
-import {PencilIcon} from "@heroicons/vue/24/solid";
 import {useRouter} from "vue-router";
+import EditButton from "@/Components/EditButton.vue";
+import DeleteButton from "@/Components/DeleteButton.vue";
+import Swal from "sweetalert2";
 const store = useStore();
 const router = useRouter();
 
@@ -17,12 +18,22 @@ onMounted(async () => {
 })
 
 
-
 async function deleteCategory(id) {
-    if(confirm('Are you sure?')){
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+    });
+    if (result.isConfirmed) {
         await store.dispatch('category_admin/deleteCategory', {id:id});
-     //   router.go(0);
+        setTimeout(function (){
+            router.go(0);
+        }, 2000)
     }
+
 }
 
 </script>
@@ -45,8 +56,12 @@ async function deleteCategory(id) {
                 </td>
                 <td>{{category.parent ? category.parent.name : ''}}</td>
                 <td>
-                    <router-link v-if="can('edit category')" :to="{name:'admin.categories.edit', params:{id:category.id}}"><PencilIcon class="w-4 cursor-pointer"></PencilIcon></router-link>
-                    <XMarkIcon @click="deleteCategory(category.id)" v-if="can('delete category')" class="w-4 cursor-pointer"></XMarkIcon>
+                    <div class="flex gap-4 flex-col">
+                        <router-link v-if="can('edit category')" :to="{name:'admin.categories.edit', params:{id:category.id}}">
+                            <EditButton class="w-full"/>
+                        </router-link>
+                        <DeleteButton class="w-full" @click="deleteCategory(category.id)" v-if="can('delete category')"/>
+                    </div>
                 </td>
             </tr>
             </tbody>

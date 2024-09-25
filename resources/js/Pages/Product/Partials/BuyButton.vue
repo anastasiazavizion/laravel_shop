@@ -11,7 +11,7 @@ const emits = defineEmits(['add-to-cart']);
         Add to Cart
     </button>
     <div v-else>
-        <span class="bg-yellow-400 p-2 rounded-md text-white d-inline">Not in stock</span>
+        <span class="not-in-stock p-2 rounded-md text-white d-inline">Not in stock</span>
     </div>
 </template>
 

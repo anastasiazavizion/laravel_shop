@@ -11,7 +11,6 @@ import ShowCategory from "@/Pages/Admin/Categories/Show.vue";
 import EditCategory from "@/Pages/Admin/Categories/Edit.vue";
 import CategoriesCreate from "@/Pages/Admin/Categories/Create.vue";
 
-import ShowProduct from "@/Pages/Admin/Products/Show.vue";
 import EditProduct from "@/Pages/Admin/Products/Edit.vue";
 import ProductsCreate from "@/Pages/Admin/Products/Create.vue";
 
@@ -30,7 +29,8 @@ import UserOrders from "@/Pages/Account/Orders/Index.vue";
 import UserOrder from "@/Pages/Account/Orders/Show.vue";
 
 const routes = [
-    {   path: '/',
+    {
+        path: '/',
         component: MainLayout,
         children: [
             {
@@ -63,7 +63,6 @@ const routes = [
                             title: `Categories`
                         }
                     },
-
                     {
                         name: "admin.categories.show",
                         path: "categories/:id",
@@ -73,7 +72,6 @@ const routes = [
                             title: `Category`
                         }
                     },
-
                     {
                         name: "admin.categories.edit",
                         path: "categories/:id/edit",
@@ -83,7 +81,6 @@ const routes = [
                             title: `Category`
                         }
                     },
-
                     {
                         name: "admin.categories.create",
                         path: "categories/create",
@@ -91,16 +88,6 @@ const routes = [
                         meta: {
                             middleware: ["auth", "can:create category"],
                             title: `Category create`
-                        }
-                    },
-
-                    {
-                        name: "admin.products.show",
-                        path: "products/:id",
-                        component: ShowProduct,
-                        meta: {
-                            middleware: ["auth"],
-                            title: `Product`
                         }
                     },
                     {
@@ -112,7 +99,6 @@ const routes = [
                             title: `Product`
                         }
                     },
-
                     {
                         name: "admin.products.create",
                         path: "products/create",
@@ -122,7 +108,6 @@ const routes = [
                             title: `Product create`
                         }
                     },
-
                     {
                         name: "admin.orders.index",
                         path: "orders",
@@ -143,7 +128,6 @@ const routes = [
                     },
                 ]
             },
-
             {
                 path: '/auth',
                 children: [
@@ -156,7 +140,6 @@ const routes = [
                             title: `Login`
                         }
                     },
-
                     {
                         name: "register",
                         path: "register",
@@ -168,7 +151,6 @@ const routes = [
                     }
                 ]
             },
-
             {
                 path: '',
                 component: Home
@@ -178,13 +160,11 @@ const routes = [
                 component: Home,
                 meta: {},
             },
-
             {
                 path: '/cart',
                 component: Cart,
                 name: 'cart.index',
             },
-
             {
                 path: '/checkout/:id?',
                 component: Checkout,
@@ -195,13 +175,11 @@ const routes = [
                 component: ThankYou,
                 name: 'orders.thank-you',
             },
-
             {
                 path: '/products/:id',
                 component: ProductsShow,
                 name: 'products.show',
             },
-
             {
                 path: '/products',
                 component: ProductsIndex,
@@ -214,7 +192,6 @@ const routes = [
                     },
                 ]
             },
-
             {
                 path: '/account',
                 meta: {
@@ -224,9 +201,8 @@ const routes = [
                     {
                         path: 'orders',
                         component: UserOrders,
-                        name:'user.orders'
+                        name: 'user.orders'
                     },
-
                     {
                         path: "orders/:id",
                         component: UserOrder,
@@ -236,17 +212,22 @@ const routes = [
                         },
                         name: "user.orders.show",
                     },
-
                     {
                         path: 'wishlist',
+                        name: "user.wishlist",
                         component: Wishlist
                     },
                 ],
             },
-
+            // Catch-all route for not found pages
+            {
+                path:"/:notFound(.*)",
+                redirect:'/'
+            },
         ]
     },
 ];
+
 
 const router = createRouter({
     history: createWebHistory(),

@@ -27,11 +27,11 @@ const props = defineProps({
     }
 })
 
-const route = useRoute();
+const router = useRoute();
 
 onMounted(async () => {
-    if (route.params.id) {
-        await store.dispatch(props.vendor ? 'order/getOrderByVendorId' : "order/getOrder",{id:route.params.id});
+    if (router.params.id) {
+        await store.dispatch(props.vendor ? 'order/getOrderByVendorId' : "order/getOrder",{id:router.params.id});
     }
 })
 

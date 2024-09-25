@@ -30,7 +30,7 @@ class CreateRequest extends FormRequest
             'price'=>['required', 'numeric'],
             'discount'=>['nullable', 'numeric'],
             'quantity'=>['required', 'numeric'],
-            'thumbnail'=>['nullable', 'file'],
+            'thumbnail'=>['required','file'],
             'categories.*'=>['required', 'exists:categories,id'],
             'images.*'=>[ 'image:jpg,jpeg,png'],
         ];

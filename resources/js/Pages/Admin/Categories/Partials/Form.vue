@@ -12,9 +12,7 @@ const router = useRouter();
 const route = useRoute();
 const store = useStore();
 
-const parentCategories = ref([]);
 const errors = ref([]);
-const category = ref(null);
 
 const form = ref({
     name: "",
@@ -26,25 +24,32 @@ const props = defineProps({
     edit:Boolean
 })
 
+const parentCategories  = computed(()=>{
+    return store.getters['category_admin/categories'];
+});
+
+const category  = computed(()=>{
+    return store.getters['category_admin/category'];
+});
+
+
 onMounted(async () => {
     await store.dispatch('category_admin/getAll');
-    parentCategories.value = store.getters['category_admin/categories'];  //todo remove own id
 
     if(props.edit) {
         const id = route.params.id;
         const payload = {
             id: id
         };
-
-        parentCategories.value = parentCategories.value.filter((item)=>item.id != id); //don't include
-
+        parentCategories.value = parentCategories.value.filter((item)=>item.id != id); //don't include current category
         await store.dispatch('category_admin/getCategory', payload);
-        category.value = store.getters['category_admin/category'];
         form.value.name = category.value.name;
-        form.value.parent_id = category.value.parent_id;
+        form.value.parent_id = category.value.parent.id;
         form.value.id = id;
     }
 })
+
+
 
 async function handleRequest() {
     if (props.edit) {

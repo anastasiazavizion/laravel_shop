@@ -89,7 +89,7 @@ const actions = {
         try {
             const response = await axios.get((payload && payload.url) ?? route('v1.wishlist.wishlist.all'), {params: payload});
             commit('setWishes', response.data.data);
-            commit('setWishesLinks', response.data.links);
+            commit('setWishesLinks', response.data.meta.links);
         } catch (error) {
             commit('setWishes', []);
         }

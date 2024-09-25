@@ -4,11 +4,10 @@ import {useRouter} from "vue-router";
 import {useStore} from "vuex";
 import Header from "@/Components/Header.vue";
 import Card from "@/Components/Card.vue";
-import {XMarkIcon} from "@heroicons/vue/24/solid";
-import {PencilIcon} from "@heroicons/vue/24/solid";
 import Swal from 'sweetalert2';
-import ProductLink from "@/Pages/Admin/Products/Partials/ProductLink.vue";
 import SortIcons from "@/Components/SortIcons.vue";
+import DeleteButton from "@/Components/DeleteButton.vue";
+import EditButton from "@/Components/EditButton.vue";
 
 const store = useStore();
 const router = useRouter();
@@ -25,6 +24,9 @@ async function loadProducts() {
     products.value = store.getters['product_admin/products'];
 }
 
+function productUrl(product){
+    return {name:'products.show', params:{id:product.slug}};
+}
 
 onMounted(async () => {
     await loadProducts();
@@ -86,7 +88,7 @@ watch(sortData, ()=>{
             <tbody>
             <tr :key="product.id" v-for="product in products">
                 <td>
-                    <ProductLink :product="product"/>
+                    <router-link :to="productUrl(product)">{{product.title}}</router-link>
                 </td>
                 <td>
                     <img :src="product.thumbnail_url" class="w-36" :alt="product.title">
@@ -97,8 +99,12 @@ watch(sortData, ()=>{
                 <td>{{product.discount}}</td>
                 <td>{{product.quantity}}</td>
                 <td>
-                    <router-link v-if="can('edit product')" :to="{name:'admin.products.edit', params:{id:product.slug}}"><PencilIcon class="w-4 cursor-pointer"></PencilIcon></router-link>
-                    <XMarkIcon  @click="deleteProduct(product.slug)" v-if="can('delete category')" class="w-4 cursor-pointer"></XMarkIcon>
+                  <div class="flex gap-4 flex-col">
+                      <router-link v-if="can('edit product')" :to="{name:'admin.products.edit', params:{id:product.slug}}">
+                          <EditButton class="w-full"/>
+                      </router-link>
+                      <DeleteButton class="w-full" @click="deleteProduct(product.slug)" v-if="can('delete category')"/>
+                  </div>
                 </td>
             </tr>
             </tbody>

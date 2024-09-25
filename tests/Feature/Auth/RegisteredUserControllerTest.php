@@ -20,10 +20,9 @@ class RegisteredUserControllerTest extends TestCase
         $data = [...$this->userPasswordData(), ...User::factory()->make()->toArray()];
         $data['phone'] = '1234567890';
         $response =  $this->postJson(route('v1.register'),$data);
+        $this->assertEquals('Registered', $response->json());
         $this->assertDatabaseHas(User::class, ['email'=>$data['email']]);
         $response->assertStatus(200);
-        $response->assertExactJson(['message'=>'OK']);
-        $response->assertJsonCount(1);
     }
 
     public function test_fail_register_with_invalid_data(): void

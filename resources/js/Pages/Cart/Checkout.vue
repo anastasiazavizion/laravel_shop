@@ -19,7 +19,6 @@ if(id){
     store.dispatch('order/deleteOrderByVendorOrderId', { id: id });
 }
 
-
 const errors = ref({});
 
 const form = ref({
@@ -40,9 +39,6 @@ const cartItems = computed(()=>{
 const cartItemsNotEmpty = computed(()=>{
     return cartItems.value.length > 0;
 })
-
-console.log(cartItemsNotEmpty.value);
-
 
 function isEmptyField(field){
     return emptyFields.value.length > 0 && emptyFields.value.includes(field)

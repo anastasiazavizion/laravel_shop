@@ -68,12 +68,10 @@ const routerLinkClass = computed(()=>{
     <router-link :class="routerLinkClass"  v-if="!authenticated" to="/auth/register">Register</router-link>
 
     <Dropdown :mobile="mobile" :title="user.name" v-if="authenticated">
-        <div v-if="is('admin')">
-            <DropdownLink :to="{name:'admin.dashboard'}">Admin panel</DropdownLink>
-        </div>
+        <DropdownLink v-if="is('admin')" :to="{name:'admin.dashboard'}">Admin panel</DropdownLink>
 
-        <DropdownLink>
-            <router-link to="/account/wishlist">Wishlist</router-link>
+        <DropdownLink :to="{name:'user.wishlist'}">
+                Wishlist
         </DropdownLink>
 
         <DropdownLink @click.prevent="logout" to="#">Logout</DropdownLink>

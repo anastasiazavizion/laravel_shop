@@ -1,5 +1,6 @@
 <script setup>
-import ThankYouDetails from "@/Pages/Cart/Partials/ThankYouDetails.vue";
+import Details from "@/Components/Details.vue";
+
 defineProps({
     order:Object
 })
@@ -7,10 +8,10 @@ defineProps({
 
 <template>
     <p class="text-lg font-bold">User Info</p>
-    <ThankYouDetails label="Name">{{order.name}}</ThankYouDetails>
-    <ThankYouDetails label="Lastname">{{order.lastname}}</ThankYouDetails>
-    <ThankYouDetails label="Phone">{{order.phone}}</ThankYouDetails>
-    <ThankYouDetails label="Email">{{order.email}}</ThankYouDetails>
-    <ThankYouDetails label="City">{{order.city}}</ThankYouDetails>
-    <ThankYouDetails label="Address">{{order.address}}</ThankYouDetails>
+    <Details label="Name">{{order.name}}</Details>
+    <Details label="Lastname">{{order.lastname}}</Details>
+    <Details label="Phone">{{order.phone}}</Details>
+    <Details label="Email">{{order.email}}</Details>
+    <Details label="City">{{order.city}}</Details>
+    <Details label="Address">{{order.address}}</Details>
 </template>

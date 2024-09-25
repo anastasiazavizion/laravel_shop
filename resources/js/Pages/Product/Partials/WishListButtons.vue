@@ -5,9 +5,6 @@ const props = defineProps({
     product:Object
 })
 
-if(props.product.id == 62){
-    console.log(props.product);
-}
 import {HeartIcon, CurrencyDollarIcon} from "@heroicons/vue/24/solid";
 import {computed} from "vue";
 
@@ -24,7 +21,6 @@ function addToWishList(type){
     store.dispatch('product/addToWishList', {product:props.product.id, type:type});
 }
 function removeFromWishList(type){
-    console.log('removeFromWishList');
     if(type === 'price'){
         props.product.is_in_wish_list_price = false;
     }else{
@@ -45,10 +41,10 @@ const authenticated = computed(()=>{
 <template>
     <div v-if="authenticated">
     <button title="Add to favourite" @click="product.is_in_wish_list_exist ? removeFromWishList('exist') : addToWishList('exist')">
-        <HeartIcon :class="{'text-green-500':product.is_in_wish_list_exist}" class="h-8"></HeartIcon>
+        <HeartIcon :class="{'active-wish-list':product.is_in_wish_list_exist}" class="h-8"></HeartIcon>
     </button>
     <button title="Follow on prices change" @click="product.is_in_wish_list_price ? removeFromWishList('price') : addToWishList('price')">
-        <CurrencyDollarIcon :class="{'text-green-500':product.is_in_wish_list_price}" class="h-8"></CurrencyDollarIcon>
+        <CurrencyDollarIcon :class="{'active-wish-list':product.is_in_wish_list_price}" class="h-8"></CurrencyDollarIcon>
     </button>
     </div>
 </template>
