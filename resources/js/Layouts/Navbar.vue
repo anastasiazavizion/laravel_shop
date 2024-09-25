@@ -50,7 +50,7 @@ const showingNavigationDropdown = ref(false);
             :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
             class="sm:hidden p-4 pt-0"
         >
-            <NavbarLinks :mobile="true"/>
+            <NavbarLinks @close-dropdown="showingNavigationDropdown = false" :mobile="true"/>
         </div>
     </nav>
 </template>

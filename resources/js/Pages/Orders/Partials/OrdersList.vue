@@ -37,7 +37,7 @@ async function loadOrders(url = null) {
 </script>
 
 <template>
-    <div v-if="orders && !loading">
+    <div class="w-full overflow-x-scroll" v-if="orders && !loading">
         <table class="w-full text-center">
             <OrderTableHeader :admin="admin"/>
             <tbody>
