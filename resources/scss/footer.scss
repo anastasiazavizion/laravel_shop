@@ -1,0 +1,18 @@
+footer{
+    background-color: $navColor;
+    @apply p-4 text-white;
+
+    .social-icon{
+        @apply fill-gray-300 hover:fill-white w-7 h-7;
+    }
+    h4{
+        @apply text-lg font-semibold mb-4 text-white;
+    }
+
+    .footer-ul{
+        @apply space-y-2;
+        a{
+            @apply text-gray-300 hover:text-white text-sm;
+        }
+    }
+}
