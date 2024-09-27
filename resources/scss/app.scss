@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "variables/variables";
+@use "variables/variables";
 
 @mixin main-color($hover:true){
     @apply text-white;
@@ -134,7 +134,7 @@
 
 }
 
-@import "footer";
+@use "_footer";
 
 .custom-toast {
     background-color: $mainColor!important;
