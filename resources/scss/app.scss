@@ -1,15 +1,16 @@
+@use "variables";
+@use "_footer";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@use "variables/variables";
-
 @mixin main-color($hover:true){
     @apply text-white;
-    background-color: $mainColor;
+    background-color: variables.$mainColor;
     @if($hover){
         &:hover{
-            background-color: $mainColorHover;
+            background-color: variables.$mainColorHover;
         }
     }
 }
@@ -26,7 +27,7 @@
 
         input[type=text], input[type=password], input[type=email], select, .form-control{
             @apply w-full rounded focus:ring-0;
-            border: $borderSize $borderStyle $formElementsBorderColor;
+            border: variables.$borderSize variables.$borderStyle variables.$formElementsBorderColor;
         }
 
     }
@@ -34,11 +35,11 @@
     table{
         td, th{
             @apply border-collapse  p-2 ;
-            border: $borderSize $borderStyle $tableBorderColor;
+            border: variables.$borderSize variables.$borderStyle variables.$tableBorderColor;
         }
 
         th{
-            background-color: $tableBgColor;
+            background-color: variables.$tableBgColor;
         }
     }
 
@@ -64,10 +65,10 @@
     }
 
     .btn-checkout{
-        background-color: $btnCheckoutColor;
+        background-color: variables.$btnCheckoutColor;
         @apply p-2 mt-4;
         &:hover{
-            background-color: $btnCheckoutColorHover;
+            background-color: variables.$btnCheckoutColorHover;
         }
     }
 
@@ -92,7 +93,7 @@
 
     .adminCard{
         @apply relative text-3xl text-slate-800 font-bold shadow-lg rounded-lg p-24 border border-slate-300  text-center justify-center;
-        background: linear-gradient(45deg,$mainColor, #fff);
+        background: linear-gradient(45deg,variables.$mainColor, #fff);
     }
 
     .error{
@@ -100,16 +101,16 @@
     }
 
     .active-wish-list{
-        color: $mainColor;
+        color: variables.$mainColor;
     }
 
     .not-in-stock{
-        background-color: $notInStockColor;
+        background-color: variables.$notInStockColor;
     }
     .edit-btn{
-        background-color: $editColorBtn;
+        background-color: variables.$editColorBtn;
         &:hover{
-            background-color: $editColorBtnHover;
+            background-color: variables.$editColorBtnHover;
         }
     }
 
@@ -123,7 +124,7 @@
 
     nav, .dropdown-menu{
         @apply text-white;
-        background-color: $navColor;
+        background-color: variables.$navColor;
     }
 
     nav{
@@ -134,13 +135,11 @@
 
 }
 
-@use "_footer";
-
 .custom-toast {
-    background-color: $mainColor!important;
+    background-color: variables.$mainColor!important;
     color: white;
 }
 
 :root {
-    --primary-color: #{$mainColor}; // Interpolating the Sass variable
+    --primary-color: #{variables.$mainColor}; // Interpolating the Sass variable
 }
