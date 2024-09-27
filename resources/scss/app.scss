@@ -2,38 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "variables/variables";
+@use "variables/variables";
+
+@mixin main-color($hover:true){
+    @apply text-white;
+    background-color: $mainColor;
+    @if($hover){
+        &:hover{
+            background-color: $mainColorHover;
+        }
+    }
+}
 
 @layer base {
-    form label{
-        @apply font-bold;
+    form{
+        label{
+            @apply font-bold;
+        }
+
+        > div{
+            @apply mt-2;
+        }
+
+        input[type=text], input[type=password], input[type=email], select, .form-control{
+            @apply w-full rounded focus:ring-0;
+            border: $borderSize $borderStyle $formElementsBorderColor;
+        }
+
     }
 
-    form input[type=text], form input[type=password],form input[type=email], form select, .form-control{
-        @apply w-full rounded focus:ring-0;
-        border: $borderSize $borderStyle $formElementsBorderColor;
-    }
+    table{
+        td, th{
+            @apply border-collapse  p-2 ;
+            border: $borderSize $borderStyle $tableBorderColor;
+        }
 
-    form > div{
-        @apply mt-2;
-    }
-
-    table td, table th{
-        @apply border-collapse  p-2 ;
-        border: $borderSize $borderStyle $tableBorderColor;
-    }
-    table th{
-        background-color: $tableBgColor;
+        th{
+            background-color: $tableBgColor;
+        }
     }
 
     svg{
         @apply inline;
     }
 
-    nav, .dropdown-menu{
-        @apply text-white;
-        background-color: $navColor;
-    }
 }
 
 @layer components {
@@ -48,38 +60,34 @@
     }
 
     .btn-style{
-        background-color: $mainColor;
-    }
-    .btn-style:hover{
-        background-color: $mainColorHover;
+        @include main-color();
     }
 
     .btn-checkout{
         background-color: $btnCheckoutColor;
         @apply p-2 mt-4;
+        &:hover{
+            background-color: $btnCheckoutColorHover;
+        }
     }
 
-    .btn-checkout:hover{
-        background-color: $btnCheckoutColorHover;
+    .primary-btn{
+        @apply inline-flex text-center justify-center  px-4 py-2 border border-transparent rounded-md font-semibold text-xs  uppercase tracking-widest
+        focus:outline-none  transition ease-in-out duration-150;
+        @include main-color();
     }
 
     .pagination-link-active{
-        @apply text-white;
-        background-color: $mainColor;
+        @include main-color();
     }
-
-    .pagination-link-active:hover{
-        background-color: $mainColorHover;
-    }
-
 
     .pagination-link{
         @apply p-2 text-sm sm:p-3 border border-slate-300;
     }
 
     .cart-product-amount{
-        @apply absolute  text-white rounded-full h-6 w-6 text-center  left-5 bottom-3;
-        background-color: $mainColor;
+        @apply absolute rounded-full h-6 w-6 text-center left-5 bottom-3;
+        @include main-color(false);
     }
 
     .adminCard{
@@ -91,17 +99,6 @@
         @apply text-red-600 font-bold;
     }
 
-    .primary-btn{
-        @apply inline-flex text-center justify-center  px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
-        focus:outline-none  transition ease-in-out duration-150;
-
-        background-color: $mainColor;
-    }
-
-    .primary-btn:hover{
-        background-color: $mainColorHover;
-    }
-
     .active-wish-list{
         color: $mainColor;
     }
@@ -111,9 +108,9 @@
     }
     .edit-btn{
         background-color: $editColorBtn;
-    }
-    .edit-btn:hover{
-        background-color: $editColorBtnHover;
+        &:hover{
+            background-color: $editColorBtnHover;
+        }
     }
 
     .default-component{
@@ -123,32 +120,21 @@
     main{
         @apply p-4 lg:pr-0 lg:pl-0;
     }
-}
 
-nav{
-    .router-link-active{
-        @apply underline;
-    }
-}
-
-footer{
-    background-color: $navColor;
-    @apply p-4 text-white;
-
-    .social-icon{
-        @apply fill-gray-300 hover:fill-white w-7 h-7;
-    }
-    h4{
-        @apply text-lg font-semibold mb-4 text-white;
+    nav, .dropdown-menu{
+        @apply text-white;
+        background-color: $navColor;
     }
 
-    .footer-ul{
-        @apply space-y-2;
-        a{
-            @apply text-gray-300 hover:text-white text-sm;
+    nav{
+        .router-link-active{
+            @apply underline;
         }
     }
+
 }
+
+@use "_footer";
 
 .custom-toast {
     background-color: $mainColor!important;
