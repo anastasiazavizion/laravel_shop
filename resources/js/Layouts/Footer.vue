@@ -5,8 +5,8 @@ import GithubIcon from "@/Components/Icons/GithubIcon.vue";
 </script>
 
 <template>
-    <footer class="default-component w-full mt-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <footer class="w-full mt-4">
+        <div class="default-component  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="lg:flex lg:items-center">
                 <ul class="flex space-x-6">
                     <li>
