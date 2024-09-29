@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use App\Models\Image;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 #[ObservedBy([CategoryObserver::class])]
@@ -40,10 +41,9 @@ class Category extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function childs() : HasMany
+    public function children() : HasMany
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-
 
 }

@@ -47,6 +47,11 @@
         @apply inline;
     }
 
+    input[type=checkbox]{
+        @apply h-4 w-4 rounded border-gray-300 focus:ring-transparent;
+        color: variables.$mainColor;
+    }
+
 }
 
 @layer components {
@@ -130,6 +135,18 @@
     nav{
         .router-link-active{
             @apply underline;
+        }
+    }
+    .filter-icon{
+        color: variables.$mainColor;
+    }
+
+    .product-filter-form{
+        label{
+            @apply font-normal ml-3;
+        }
+        .category{
+            margin-left: 15px;
         }
     }
 

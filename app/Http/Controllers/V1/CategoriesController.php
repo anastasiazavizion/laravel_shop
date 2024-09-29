@@ -3,6 +3,7 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\Categories\CategoriesCollection;
 use App\Repositories\Contract\CategoryRepositoryContract;
+use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
@@ -16,8 +17,10 @@ class CategoriesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): CategoriesCollection
+    public function index(Request $request): CategoriesCollection|array
     {
-        return new CategoriesCollection($this->repository->getAll());
+        return new CategoriesCollection(
+            $request->has('group') ? $this->repository->getNestedCategories() : $this->repository->getAll()
+        );
     }
 }
