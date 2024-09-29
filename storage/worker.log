@@ -22,3 +22,11 @@
   2024-09-24 18:44:27 App\Listeners\OrderCreatedListener ............. 3s DONE
   2024-09-24 18:44:31 App\Notifications\Admin\NewOrderCreatedAdminNotification  5s DONE
   2024-09-24 18:44:39 App\Notifications\NewOrderCreatedNotification . 13s DONE
+  2024-09-29 18:49:04 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-29 18:49:09 Laravel\Scout\Jobs\MakeSearchable .............. 4s DONE
+  2024-09-29 18:49:49 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-29 18:49:50 Laravel\Scout\Jobs\MakeSearchable ........ 757.14ms DONE
+  2024-09-29 18:50:20 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-29 18:50:21 Laravel\Scout\Jobs\MakeSearchable ........ 760.43ms DONE
+  2024-09-29 18:51:48 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-29 18:51:49 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE

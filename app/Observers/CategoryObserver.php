@@ -41,8 +41,8 @@ class CategoryObserver
     {
         $productIds = $category->products->pluck('id')->toArray();
         Product::whereIn('id', $productIds)->searchable();
-        if ($category->childs()->exists()) {
-            $category->childs()->update(['parent_id' => null]);
+        if ($category->children()->exists()) {
+            $category->children()->update(['parent_id' => null]);
         }
     }
 
@@ -51,8 +51,8 @@ class CategoryObserver
      */
     public function deleted(Category $category): void
     {
-        if($category->childs()->exists()){
-            $category->childs()->update(['parent_id'=>null]);
+        if($category->children()->exists()){
+            $category->children()->update(['parent_id'=>null]);
         }
         $this->clearCache($category);
     }
