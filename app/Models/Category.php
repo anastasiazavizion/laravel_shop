@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\SortByNameScope;
 use App\Observers\CategoryObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -44,6 +45,12 @@ class Category extends Model
     public function children() : HasMany
     {
         return $this->hasMany(Category::class, 'parent_id');
+    }
+
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new SortByNameScope());
     }
 
 }
