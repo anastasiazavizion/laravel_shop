@@ -12,5 +12,6 @@ interface CategoryRepositoryContract
     public function update(UpdateRequest $request,Category $category) : Category;
 
     public function getAll() : Collection;
+    public function getNestedCategories();
 
 }

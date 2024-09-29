@@ -43,10 +43,12 @@ const actions = {
         try {
             const params = payload ? {
                 params: {
-                    search: payload.search, ids: payload.ids
+                    search: payload.filters.search,
+                    categoryName: payload.filters.categoryName,
+                    categories: payload.filters.categories,
+                    ids: payload.ids
                 }
             } : [];
-
             const response = await axios.get((payload && payload.url) ?? route('v1.products.index'), params);
             commit('setProducts', response.data.data);
             commit('setLinks', response.data.meta.links);

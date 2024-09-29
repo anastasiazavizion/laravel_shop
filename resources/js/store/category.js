@@ -17,9 +17,9 @@ const mutations = {
 
 const actions = {
 
-    async getAll({ commit }) {
+    async getAll({ commit }, payload) {
         try {
-            const response = await axios.get(route('v1.categories.index'));
+            const response = await axios.get(route('v1.categories.index'), {params:payload});
             commit('setCategories', response.data);
         } catch (error) {
             commit('setCategories', []);

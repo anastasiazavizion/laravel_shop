@@ -25,13 +25,19 @@ const props = defineProps({
 })
 
 const parentCategories  = computed(()=>{
-    return store.getters['category_admin/categories'];
+    let allCategories = store.getters['category_admin/categories'];
+    if (props.edit) {
+        const childrenCategoryIds = allCategories.filter(item =>
+            item.parent && item.parent.id == route.params.id
+        ).map(item => item.id); // Extract only the IDs
+        allCategories = allCategories.filter(item => !childrenCategoryIds.includes(item.id));
+    }
+    return allCategories;
 });
 
 const category  = computed(()=>{
     return store.getters['category_admin/category'];
 });
-
 
 onMounted(async () => {
     await store.dispatch('category_admin/getAll');
@@ -44,12 +50,10 @@ onMounted(async () => {
         parentCategories.value = parentCategories.value.filter((item)=>item.id != id); //don't include current category
         await store.dispatch('category_admin/getCategory', payload);
         form.value.name = category.value.name;
-        form.value.parent_id = category.value.parent.id;
+        form.value.parent_id = category.value.parent ? category.value.parent.id : null;
         form.value.id = id;
     }
 })
-
-
 
 async function handleRequest() {
     if (props.edit) {
@@ -84,7 +88,7 @@ const header = computed(()=>{
             <div>
                 <label for="parent_id">Parent category</label>
                 <select v-model="form.parent_id" name="parent_id">
-                    <option value="">Select</option>
+                    <option :value="null">Select</option>
                     <option :key="category.id" v-for="category in parentCategories" :value="category.id">{{category.name}}</option>
                 </select>
                 <Errors :errors="errors.parent"/>

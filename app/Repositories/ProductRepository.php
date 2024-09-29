@@ -77,6 +77,11 @@ class ProductRepository implements ProductRepositoryContract
                         $query->where('slug', $params['categoryName']);
                     });
                 })
+                ->when(!empty($params['categories']), function ($q) use ($params) {
+                    $q->whereHas('categories', function ($query) use ($params) {
+                        $query->whereIn('categories.id', $params['categories']);
+                    });
+                })
                 ->when(!empty($params['sort']), function ($q) use ($params) {
                     $q->orderBy($params['sort']['column'], $params['sort']['direction']);
                 })

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 use App\Http\Requests\Admin\Categories\CreateRequest;
 use App\Http\Requests\Admin\Categories\UpdateRequest;
+use App\Http\Resources\V1\Categories\CategoryResource;
 use App\Models\Category;
 use App\Repositories\Contract\CategoryRepositoryContract;
 use Illuminate\Support\Str;
@@ -36,5 +37,22 @@ class CategoryRepository implements CategoryRepositoryContract
     public function getAll() : Collection
     {
         return Category::query()->with(['parent'])->get();
+    }
+
+    public function getNestedCategories()
+    {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+        return self::buildNestedCategories($categories);
+    }
+
+    private static function buildNestedCategories(\Illuminate\Support\Collection $categories)
+    {
+        $nestedCategories = [];
+        foreach ($categories as $category) {
+            $nestedCategory = new CategoryResource($category);
+            $nestedCategory->children = self::buildNestedCategories($category->children);
+            $nestedCategories[] = $nestedCategory;
+        }
+        return $nestedCategories;
     }
 }
