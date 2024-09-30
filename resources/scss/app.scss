@@ -26,8 +26,12 @@
         }
 
         input[type=text], input[type=password], input[type=email], select, .form-control{
-            @apply w-full rounded focus:ring-0;
+            @apply w-full rounded  focus:ring-transparent;
             border: variables.$borderSize variables.$borderStyle variables.$formElementsBorderColor;
+            &:focus{
+                outline: variables.$mainColor;
+                border-color: variables.$mainColor;
+            }
         }
 
     }
