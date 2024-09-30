@@ -37,17 +37,15 @@ Route::get('orderByVendorId', [OrderController::class, 'getOrderByVendorId'])->n
 
 Route::post('/auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback'])->name('auth.social.callback');
 
+Route::apiResource('products/{product}/reviews', ReviewController::class)->only(['index','store']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'user'])->name('user');
-
-    Route::apiResource('products/{product}/reviews', ReviewController::class)->only(['index','store']);
 
     Route::prefix('admin/data/')->middleware(['role:admin|moderator'])->name('admin.')->group(function () {
         Route::apiResource('categories', AdminCategoriesController::class);
         Route::apiResource('products', AdminProductsController::class)->scoped(['product' => 'slug']);;;
     });
-
 
     Route::name('admin.')->prefix('admin')->middleware(['role:admin|moderator'])->group(function (){
 

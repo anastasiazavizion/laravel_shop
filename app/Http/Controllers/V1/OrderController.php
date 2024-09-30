@@ -7,9 +7,7 @@ use App\Http\Requests\Order\GetOrdersRequest;
 use App\Http\Requests\Order\OrderByVendorRequest;
 use App\Http\Resources\V1\Orders\OrderCollection;
 use App\Http\Resources\V1\Orders\OrderResource;
-use App\Http\Resources\V1\Products\ProductResource;
 use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
