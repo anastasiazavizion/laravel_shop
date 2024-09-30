@@ -162,6 +162,12 @@
         }
     }
 
+    .map{
+        .info-window div:nth-child(odd){
+            @apply font-bold;
+        }
+
+    }
 
 }
 

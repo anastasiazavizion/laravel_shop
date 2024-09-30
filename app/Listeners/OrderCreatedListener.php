@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Enum\Role;
 use App\Events\OrderCreatedEvent;
+use App\Jobs\GeocodeAddressJob;
 use App\Models\User;
 use App\Notifications\NewOrderCreatedNotification;
 use App\Notifications\Admin\NewOrderCreatedAdminNotification;
@@ -28,6 +29,8 @@ class OrderCreatedListener implements ShouldQueue
      */
     public function handle(OrderCreatedEvent $event): void
     {
+        GeocodeAddressJob::dispatch($event->order);
+
         $event->order->notify(new NewOrderCreatedNotification());
 
         Notification::send(

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 
 #[ObservedBy([OrderObserver::class])]
@@ -46,5 +47,9 @@ class Order extends Model
 
     }
 
+    public function coordinates(): HasOne
+    {
+        return $this->hasOne(OrderCoordinate::class);
+    }
 
 }

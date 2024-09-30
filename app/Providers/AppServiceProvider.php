@@ -24,9 +24,11 @@ use App\Repositories\WishListRepository;
 use App\Services\CacheService;
 use App\Services\Contracts\CacheServiceContract;
 use App\Services\Contracts\FileServiceContract;
+use App\Services\Contracts\GeocoderServiceContract;
 use App\Services\Contracts\InvoiceServiceContract;
 use App\Services\Contracts\PayPalServiceContract;
 use App\Services\FileService;
+use App\Services\GeocoderService;
 use App\Services\InvoiceService;
 use App\Services\PayPalService;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -57,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(InvoiceServiceContract::class, InvoiceService::class);
         $this->app->bind(ReviewRepositoryContract::class, ReviewRepository::class);
+        $this->app->bind(GeocoderServiceContract::class, GeocoderService::class);
 
         $this->app->bind(WishListRepositoryContract::class,
             WishListRepository::class);
