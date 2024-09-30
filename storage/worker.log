@@ -30,3 +30,5 @@
   2024-09-29 18:50:21 Laravel\Scout\Jobs\MakeSearchable ........ 760.43ms DONE
   2024-09-29 18:51:48 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
   2024-09-29 18:51:49 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-30 10:02:06 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 10:02:09 Laravel\Scout\Jobs\MakeSearchable .............. 2s DONE
