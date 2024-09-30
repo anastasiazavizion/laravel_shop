@@ -32,7 +32,7 @@ function deleteFromWishList(){
 <template>
     <Header>{{label}}</Header>
     <div v-if="products" class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div :key="product.id" v-for="product in products" class="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-700">
+        <div :key="product.id" v-for="product in products" class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div>
                 <router-link :to="productUrl(product)"><img class="object-cover h-64 w-full" :src="product.thumbnail_url" :alt="product.title" /></router-link>
             </div>
