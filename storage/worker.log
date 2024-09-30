@@ -32,3 +32,255 @@
   2024-09-29 18:51:49 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
   2024-09-30 10:02:06 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
   2024-09-30 10:02:09 Laravel\Scout\Jobs\MakeSearchable .............. 2s DONE
+  2024-09-30 13:55:51 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 13:55:51 App\Jobs\GeocodeAddressJob ................ 73.60ms FAIL
+  2024-09-30 13:55:51 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 13:55:51 App\Jobs\GeocodeAddressJob ................ 44.03ms FAIL
+  2024-09-30 13:55:52 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 13:55:53 App\Jobs\GeocodeAddressJob ..................... 1s FAIL
+  2024-09-30 13:56:03 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:56:03 Laravel\Telescope\Jobs\ProcessPendingUpdates  233.53ms DONE
+  2024-09-30 13:56:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:56:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  263.71ms DONE
+  2024-09-30 13:56:23 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:56:23 Laravel\Telescope\Jobs\ProcessPendingUpdates  499.79ms DONE
+  2024-09-30 13:57:58 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 13:57:58 App\Jobs\GeocodeAddressJob ................ 50.70ms FAIL
+  2024-09-30 13:57:59 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 13:57:59 App\Jobs\GeocodeAddressJob ................ 15.46ms FAIL
+  2024-09-30 13:58:09 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:58:09 Laravel\Telescope\Jobs\ProcessPendingUpdates  151.89ms DONE
+  2024-09-30 13:58:19 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:58:19 Laravel\Telescope\Jobs\ProcessPendingUpdates  267.38ms DONE
+  2024-09-30 13:58:29 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:58:29 Laravel\Telescope\Jobs\ProcessPendingUpdates  285.00ms DONE
+  2024-09-30 13:59:18 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:59:18 Laravel\Telescope\Jobs\ProcessPendingUpdates  168.10ms DONE
+  2024-09-30 13:59:28 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:59:28 Laravel\Telescope\Jobs\ProcessPendingUpdates  217.77ms DONE
+  2024-09-30 13:59:38 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 13:59:38 Laravel\Telescope\Jobs\ProcessPendingUpdates  463.00ms DONE
+  2024-09-30 14:00:40 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:00:40 Laravel\Telescope\Jobs\ProcessPendingUpdates  313.28ms DONE
+  2024-09-30 14:00:50 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:00:50 Laravel\Telescope\Jobs\ProcessPendingUpdates  193.34ms DONE
+  2024-09-30 14:01:25 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:01:26 App\Jobs\GeocodeAddressJob ............... 775.24ms DONE
+  2024-09-30 14:01:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:01:37 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:01:37 App\Jobs\GeocodeAddressJob ................ 34.30ms FAIL
+  2024-09-30 14:01:37 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:01:37 App\Jobs\GeocodeAddressJob ................ 16.54ms FAIL
+  2024-09-30 14:01:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... 1s DONE
+  2024-09-30 14:01:46 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:01:46 Laravel\Telescope\Jobs\ProcessPendingUpdates  162.29ms DONE
+  2024-09-30 14:01:48 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:01:48 App\Jobs\GeocodeAddressJob ............... 282.49ms DONE
+  2024-09-30 14:01:56 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:01:56 Laravel\Telescope\Jobs\ProcessPendingUpdates  135.83ms DONE
+  2024-09-30 14:01:58 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:01:58 Laravel\Telescope\Jobs\ProcessPendingUpdates  160.65ms DONE
+  2024-09-30 14:01:59 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:01:59 Laravel\Telescope\Jobs\ProcessPendingUpdates  630.34ms DONE
+  2024-09-30 14:02:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:02:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  228.96ms DONE
+  2024-09-30 14:02:09 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:02:09 Laravel\Telescope\Jobs\ProcessPendingUpdates  281.82ms DONE
+  2024-09-30 14:03:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:03:36 Laravel\Telescope\Jobs\ProcessPendingUpdates  96.57ms FAIL
+  2024-09-30 14:03:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:03:36 Laravel\Telescope\Jobs\ProcessPendingUpdates  144.53ms FAIL
+  2024-09-30 14:03:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:03:36 Laravel\Telescope\Jobs\ProcessPendingUpdates  139.24ms FAIL
+  2024-09-30 14:05:25 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:05:26 App\Jobs\GeocodeAddressJob ............... 629.13ms DONE
+  2024-09-30 14:05:35 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:05:35 Laravel\Telescope\Jobs\ProcessPendingUpdates  175.49ms DONE
+  2024-09-30 14:05:45 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:05:45 Laravel\Telescope\Jobs\ProcessPendingUpdates  179.45ms DONE
+  2024-09-30 14:05:55 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:05:55 Laravel\Telescope\Jobs\ProcessPendingUpdates  189.36ms DONE
+  2024-09-30 14:06:17 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:06:17 App\Jobs\GeocodeAddressJob ............... 483.33ms DONE
+  2024-09-30 14:06:27 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:06:27 Laravel\Telescope\Jobs\ProcessPendingUpdates  194.56ms DONE
+  2024-09-30 14:06:38 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:06:38 Laravel\Telescope\Jobs\ProcessPendingUpdates  200.49ms DONE
+  2024-09-30 14:06:48 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:06:48 Laravel\Telescope\Jobs\ProcessPendingUpdates  176.67ms DONE
+  2024-09-30 14:06:53 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:06:53 App\Jobs\GeocodeAddressJob ............... 306.13ms DONE
+  2024-09-30 14:07:03 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:07:03 Laravel\Telescope\Jobs\ProcessPendingUpdates  136.24ms DONE
+  2024-09-30 14:07:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:07:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  266.22ms DONE
+  2024-09-30 14:07:22 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:07:22 Laravel\Telescope\Jobs\ProcessPendingUpdates  236.28ms DONE
+  2024-09-30 14:07:23 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:07:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  225.11ms DONE
+  2024-09-30 14:07:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:07:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  183.84ms DONE
+  2024-09-30 14:07:57 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:07:57 App\Jobs\GeocodeAddressJob ................ 89.99ms FAIL
+  2024-09-30 14:07:57 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:07:57 App\Jobs\GeocodeAddressJob ................ 35.59ms FAIL
+  2024-09-30 14:07:57 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:07:58 App\Jobs\GeocodeAddressJob ............... 387.92ms DONE
+  2024-09-30 14:08:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:08:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  376.61ms DONE
+  2024-09-30 14:08:19 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:08:20 Laravel\Telescope\Jobs\ProcessPendingUpdates ... 1s DONE
+  2024-09-30 14:08:29 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:08:29 Laravel\Telescope\Jobs\ProcessPendingUpdates  125.48ms DONE
+  2024-09-30 14:10:14 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:10:14 App\Jobs\GeocodeAddressJob ................ 71.52ms FAIL
+  2024-09-30 14:10:14 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:10:14 App\Jobs\GeocodeAddressJob ................ 93.68ms FAIL
+  2024-09-30 14:10:16 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:10:17 App\Jobs\GeocodeAddressJob ..................... 1s FAIL
+  2024-09-30 14:10:48 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:10:48 Laravel\Telescope\Jobs\ProcessPendingUpdates  184.64ms DONE
+  2024-09-30 14:12:52 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:12:53 App\Jobs\GeocodeAddressJob ..................... 1s FAIL
+  2024-09-30 14:12:53 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:12:53 App\Jobs\GeocodeAddressJob ................ 61.73ms FAIL
+  2024-09-30 14:13:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:13:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  166.43ms DONE
+  2024-09-30 14:13:14 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:13:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... 1s DONE
+  2024-09-30 14:13:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:13:25 Laravel\Telescope\Jobs\ProcessPendingUpdates  585.79ms DONE
+  2024-09-30 14:17:24 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:17:24 App\Jobs\GeocodeAddressJob ................ 14.20ms FAIL
+  2024-09-30 14:17:25 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:17:25 App\Jobs\GeocodeAddressJob ................ 54.79ms FAIL
+  2024-09-30 14:17:35 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:17:35 Laravel\Telescope\Jobs\ProcessPendingUpdates  195.66ms DONE
+  2024-09-30 14:17:46 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:17:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  364.90ms DONE
+  2024-09-30 14:18:59 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:18:59 Laravel\Telescope\Jobs\ProcessPendingUpdates  429.41ms DONE
+  2024-09-30 14:20:05 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:20:05 App\Jobs\GeocodeAddressJob ................ 64.70ms FAIL
+  2024-09-30 14:20:05 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:20:05 App\Jobs\GeocodeAddressJob ................ 56.78ms FAIL
+  2024-09-30 14:20:05 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:20:06 App\Jobs\GeocodeAddressJob ............... 832.88ms FAIL
+  2024-09-30 14:20:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:20:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  647.09ms DONE
+  2024-09-30 14:20:26 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:20:26 Laravel\Telescope\Jobs\ProcessPendingUpdates  170.34ms DONE
+  2024-09-30 14:20:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:20:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... 1s DONE
+  2024-09-30 14:21:44 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:21:44 App\Jobs\GeocodeAddressJob ................ 73.36ms FAIL
+  2024-09-30 14:21:44 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:21:44 App\Jobs\GeocodeAddressJob ................ 75.60ms FAIL
+  2024-09-30 14:21:45 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:21:46 App\Jobs\GeocodeAddressJob ............... 712.17ms FAIL
+  2024-09-30 14:21:56 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:21:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  795.49ms DONE
+  2024-09-30 14:22:06 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:22:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  126.90ms DONE
+  2024-09-30 14:28:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:28:36 Laravel\Telescope\Jobs\ProcessPendingUpdates  187.92ms DONE
+  2024-09-30 14:28:46 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2024-09-30 14:28:46 Laravel\Telescope\Jobs\ProcessPendingUpdates  250.61ms DONE
+  2024-09-30 14:50:10 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:11 Laravel\Scout\Jobs\MakeSearchable ..............  2024-09-30 14:50:11 Laravel\Scout\Jobs\MakeSearchable RUNNING
+ .............. RUNNING
+  2024-09-30 14:50:11 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:11 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:12 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable .............. .............. 2s DONE
+ 2s DONE
+ .............. .............. 2s DONE
+ 1s DONE
+ .............. 1s DONE
+  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:13 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable ........ 754.58ms DONE
+  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable ........ 805.55ms DONE
+ .............. 1s DONE
+ .............. 1s DONE
+  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable ........ 691.23ms DONE
+  2024-09-30 14:50:14 Laravel\Scout\Jobs\MakeSearchable ........ 472.81ms DONE
+  2024-09-30 14:50:15 Laravel\Scout\Jobs\MakeSearchable ........ 675.90ms DONE
+  2024-09-30 14:50:15 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:15 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:15 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:15 Laravel\Scout\Jobs\MakeSearchable ........ 497.82ms DONE
+  2024-09-30 14:50:15 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable ........ 695.13ms DONE
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable ........ 806.58ms DONE
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable ........ 620.38ms DONE
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable ........ 466.29ms DONE
+  2024-09-30 14:50:16 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:17 Laravel\Scout\Jobs\MakeSearchable ........ 662.88ms DONE
+  2024-09-30 14:50:17 Laravel\Scout\Jobs\MakeSearchable ........ 640.73ms DONE
+  2024-09-30 14:50:17 Laravel\Scout\Jobs\MakeSearchable ........ 514.06ms DONE
+  2024-09-30 14:50:17 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:17 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:17 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable ........ 654.28ms DONE
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable ........ 626.15ms DONE
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable ........ 454.57ms DONE
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable ........ 541.47ms DONE
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable ........ 454.08ms DONE
+  2024-09-30 14:50:18 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:19 Laravel\Scout\Jobs\MakeSearchable ........ 621.41ms DONE
+  2024-09-30 14:50:19 Laravel\Scout\Jobs\MakeSearchable ........ 487.66ms DONE
+  2024-09-30 14:50:19 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:19 Laravel\Scout\Jobs\MakeSearchable ........ 415.75ms DONE
+  2024-09-30 14:50:19 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:19 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:19 Laravel\Scout\Jobs\MakeSearchable ........ 635.40ms DONE
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable ........ 600.54ms DONE
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable ........ 709.14ms DONE
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable ........ 734.66ms DONE
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable ........ 678.67ms DONE
+  2024-09-30 14:50:20 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:21 Laravel\Scout\Jobs\MakeSearchable ........ 556.99ms DONE
+  2024-09-30 14:50:21 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:50:21 Laravel\Scout\Jobs\MakeSearchable ........ 447.00ms DONE
+  2024-09-30 14:50:22 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-30 14:53:02 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:53:04 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-09-30 14:53:19 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-30 14:53:19 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:53:20 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-30 14:53:20 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-30 14:53:20 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-30 14:53:21 App\Jobs\GeocodeAddressJob ..................... 1s DONE
+  2024-09-30 14:53:21 App\Events\Admin\AdminOrderCreatedEvent  2024-09-30 14:53:21 App\Listeners\OrderCreatedListener ........ 1s DONE
+ ............. 1s DONE
+  2024-09-30 14:53:26 App\Notifications\Admin\NewOrderCreatedAdminNotification  5s DONE
+  2024-09-30 14:53:34 App\Notifications\NewOrderCreatedNotification . 13s DONE
+  2024-09-30 14:56:41 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-09-30 14:56:42 Laravel\Scout\Jobs\MakeSearchable ........ 891.23ms DONE
+  2024-09-30 14:56:51 App\Events\Admin\AdminOrderCreatedEvent ........ RUNNING
+  2024-09-30 14:56:51 App\Listeners\OrderCreatedListener ............. RUNNING
+  2024-09-30 14:56:51 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-09-30 14:56:51 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-09-30 14:56:51 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-09-30 14:56:52 App\Events\Admin\AdminOrderCreatedEvent ........ 1s DONE
+  2024-09-30 14:56:52 App\Listeners\OrderCreatedListener ............. 1s DONE
+  2024-09-30 14:56:54 App\Notifications\Admin\NewOrderCreatedAdminNotification  2s DONE
+  2024-09-30 14:56:54 App\Jobs\GeocodeAddressJob ..................... 2s DONE
+  2024-09-30 14:56:56 App\Notifications\NewOrderCreatedNotification .. 4s DONE

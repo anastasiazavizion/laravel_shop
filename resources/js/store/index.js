@@ -13,6 +13,7 @@ import review from './review.js';
 import admin_charts from './admin/charts.js';
 import admin_users from './admin/user.js';
 import admin_orders from './admin/order.js';
+import map from './admin/map.js';
 
 const store = createStore({
     modules: {
@@ -27,7 +28,8 @@ const store = createStore({
         review,
         admin_charts,
         admin_users,
-        admin_orders
+        admin_orders,
+        map,
     },
     plugins: [createPersistedState()]
 });

@@ -60,6 +60,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::apiResource('orders', \App\Http\Controllers\V1\Admin\OrderController::class)->only(['destroy']);
 
+        Route::get('/map/markers',[\App\Http\Controllers\V1\Admin\MapController::class, 'index'])->name('map.markers');
+
 
     });
 
