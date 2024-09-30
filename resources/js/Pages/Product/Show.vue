@@ -33,10 +33,6 @@ async function addToCart(product) {
 const onlyOneImage = computed(()=>{
     return images.value.length === 1;
 })
-
-const authenticated = computed(()=>{
-    return store.getters['auth/authenticated']
-})
 </script>
 <template>
         <div v-if="product" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -69,7 +65,7 @@ const authenticated = computed(()=>{
                 </div>
             </div>
         </div>
-        <div v-if="product && authenticated">
+        <div v-if="product">
             <Reviews :product="product"/>
         </div>
 </template>

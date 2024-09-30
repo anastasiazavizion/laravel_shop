@@ -43,9 +43,9 @@ const actions = {
         try {
             const params = payload ? {
                 params: {
-                    search: payload.filters.search,
-                    categoryName: payload.filters.categoryName,
-                    categories: payload.filters.categories,
+                    search: payload.filters ? payload.filters.search : '',
+                    categoryName: payload.filters ? payload.filters.categoryName : '',
+                    categories: payload.filters ? payload.filters.categories : [],
                     ids: payload.ids
                 }
             } : [];

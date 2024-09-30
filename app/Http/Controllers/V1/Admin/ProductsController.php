@@ -12,13 +12,15 @@ use App\Repositories\Contract\ProductRepositoryContract;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Gate;
 
 
 class ProductsController  extends Controller
 {
+
     public function __construct(protected ProductRepositoryContract $repository)
     {
-        $this->authorizeResource(Product::class);
+
     }
 
     /**
@@ -111,6 +113,7 @@ class ProductsController  extends Controller
      */
     public function index(AllProductsRequest $request)
     {
+        Gate::authorize('viewAny', Product::class);
         return $this->repository->getAll(false, $request->validated());
     }
 
@@ -160,7 +163,8 @@ class ProductsController  extends Controller
      */
     public function store(CreateRequest $request)
     {
-      if($product = $this->repository->create($request)){
+        Gate::authorize('create', Product::class);
+        if($product = $this->repository->create($request)){
             return response()->json(['message' => "Product $product->title was created", 'data'=>new ProductResource($product)], 200);
         }
         return response()->json(['message' => 'Something was wrong', 'data'=>[]], 500);
@@ -203,6 +207,7 @@ class ProductsController  extends Controller
 
     public function show(Product  $product): JsonResource
     {
+        Gate::authorize('view', $product);
         return $this->repository->getProduct($product);
     }
 
@@ -260,6 +265,7 @@ class ProductsController  extends Controller
      */
     public function update(UpdateRequest $request, Product $product): JsonResponse
     {
+        Gate::authorize('update',$product);
         if($this->repository->update($product,$request)){
             return response()->json(['message' => "Product $product->title was updated", 'data'=>new ProductResource($product)], 200);
         }
@@ -331,6 +337,7 @@ class ProductsController  extends Controller
      */
     public function destroy(Product $product): JsonResponse
     {
+        Gate::authorize('delete', $product);
         try {
             DB::beginTransaction();
             $title = $product->title;

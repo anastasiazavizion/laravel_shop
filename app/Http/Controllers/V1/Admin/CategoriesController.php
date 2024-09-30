@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Repositories\Contract\CategoryRepositoryContract;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Gate;
 
 class CategoriesController extends Controller
 {
@@ -25,6 +26,7 @@ class CategoriesController extends Controller
      */
     public function index(): CategoriesCollection
     {
+        Gate::authorize('viewAny', Category::class);
         return new CategoriesCollection($this->repository->getAll());
     }
 
@@ -33,6 +35,7 @@ class CategoriesController extends Controller
      */
     public function store(CreateRequest $request): JsonResponse
     {
+        Gate::authorize('create', Category::class);
         if($category = $this->repository->create($request)){
             return response()->json(['message' => "Category $category->name was created", 'data'=>new CategoryResource($category)], 200);
         }
@@ -44,6 +47,7 @@ class CategoriesController extends Controller
      */
     public function show(Category  $category): CategoryResource
     {
+        Gate::authorize('view', $category);
         return new CategoryResource($category);
     }
 
@@ -52,6 +56,7 @@ class CategoriesController extends Controller
      */
     public function update(UpdateRequest $request, Category $category): JsonResponse
     {
+        Gate::authorize('update', $category);
         if($category = $this->repository->update($request, $category)){
             return response()->json(['message' => "Category $category->name was updated", 'data'=>new CategoryResource($category)], 200);
         }
@@ -63,6 +68,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category): JsonResponse
     {
+        Gate::authorize('delete', $category);
         try {
             DB::beginTransaction();
             $name = $category->name;

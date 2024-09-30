@@ -8,6 +8,7 @@ use App\Http\Resources\V1\Review\ReviewCollection;
 use App\Http\Resources\V1\Review\ReviewResource;
 use App\Models\Product;
 use App\Repositories\Contract\ReviewRepositoryContract;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
@@ -15,7 +16,6 @@ class ReviewController extends Controller
     public function __construct(public ReviewRepositoryContract $reviewRepository)
     {
     }
-
     /**
      * Display a listing of the resource.
      */
@@ -34,5 +34,12 @@ class ReviewController extends Controller
             return response()->json(['message' => "Review was created", 'data'=>new ReviewResource($review)], 200);
         }
         return response()->json(['message' => 'Something was wrong', 'data'=>[]], 500);
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('auth', only: ['store']),
+        ];
     }
 }

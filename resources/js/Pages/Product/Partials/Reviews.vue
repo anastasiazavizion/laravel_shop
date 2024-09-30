@@ -39,7 +39,7 @@ const errors = computed(()=>{
 })
 
 const currentUserGaveReview = computed(()=>{
-    return user.value && reviews.value.map((item)=>item.user.id).includes(user.value.id);
+    return user.value && (reviews.value && reviews.value.map((item)=>item.user.id).includes(user.value.id));
 })
 
 async function addReview() {
@@ -52,21 +52,25 @@ const ratings =  Array(5).fill().map((_, i) => i + 1);
 function starHover(value){
     reviewForm.value.rate = value;
 }
+
+const authenticated = computed(()=>{
+    return store.getters['auth/authenticated']
+})
 </script>
 
 <template>
 
     <Header class="mt-4">Reviews</Header>
-    <form class="mb-8" @submit.prevent="addReview">
+    <form  class="mb-8" @submit.prevent="addReview">
         <div>
             <StarIcon
-                :class="{'text-yellow-800':(index + 1 ) <= reviewForm.rate, 'cursor-pointer':!currentUserGaveReview}"
+                :class="{'text-yellow-800':(index + 1 ) <= reviewForm.rate, 'cursor-pointer':!currentUserGaveReview && authenticated}"
 
-            @mouseover="!currentUserGaveReview ? starHover(index + 1): null" class="w-8" :key="rating" v-for="(rating,index) in ratings"></StarIcon>
+            @mouseover="!currentUserGaveReview && authenticated ? starHover(index + 1): null" class="w-8" :key="rating" v-for="(rating,index) in ratings"></StarIcon>
             <Errors :errors="errors.rate"/>
         </div>
 
-        <div v-if="!currentUserGaveReview">
+        <div v-if="!currentUserGaveReview && authenticated">
             <div>
                 <label for="title">Review text</label>
                 <textarea  v-model="reviewForm.description" name="description" id="description" class="form-control"></textarea>
