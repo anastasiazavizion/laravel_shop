@@ -154,6 +154,15 @@
         }
     }
 
+    .tab{
+        @apply shadow rounded-lg p-2 text-lg font-medium  focus:outline-none active:outline-none;
+        &.active-tab{
+            @apply border;
+            border-color: variables.$mainColor;
+        }
+    }
+
+
 }
 
 .custom-toast {
