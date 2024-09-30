@@ -24,12 +24,15 @@ const props = defineProps({
     edit:Boolean
 })
 
+const id = props.edit ? route.params.id : 0;
+
 const parentCategories  = computed(()=>{
     let allCategories = store.getters['category_admin/categories'];
     if (props.edit) {
-        const childrenCategoryIds = allCategories.filter(item =>
+        let childrenCategoryIds = allCategories.filter(item =>
             item.parent && item.parent.id == route.params.id
-        ).map(item => item.id); // Extract only the IDs
+        ).map(item => item.id);
+        childrenCategoryIds.push(parseInt(id)); //current id
         allCategories = allCategories.filter(item => !childrenCategoryIds.includes(item.id));
     }
     return allCategories;
@@ -41,13 +44,10 @@ const category  = computed(()=>{
 
 onMounted(async () => {
     await store.dispatch('category_admin/getAll');
-
     if(props.edit) {
-        const id = route.params.id;
         const payload = {
             id: id
         };
-        parentCategories.value = parentCategories.value.filter((item)=>item.id != id); //don't include current category
         await store.dispatch('category_admin/getCategory', payload);
         form.value.name = category.value.name;
         form.value.parent_id = category.value.parent ? category.value.parent.id : null;
