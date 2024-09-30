@@ -6,6 +6,7 @@ import paypalFunction from "@/hooks/paypal.js";
 import {useStore} from "vuex";
 import Errors from "@/Components/Errors.vue";
 import {useRoute} from "vue-router";
+import initializeAutocomplete from "@/hooks/googleAutocomplete.js";
 const store = useStore();
 
 const user = computed(()=>{
@@ -47,12 +48,15 @@ function isEmptyField(field){
 onMounted(()=>{
     if(cartItemsNotEmpty.value){
         paypalFunction(form, emptyFields,errors);
+        initializeAutocomplete("address", form);
     }
 });
 
 function getInputStyle(field){
     return {border: isEmptyField(field) ? '2px solid red' : '1px solid gray'};
 }
+
+
 </script>
 
 <template>
@@ -93,6 +97,7 @@ function getInputStyle(field){
                </div>
 
                <div>
+                   {{form.address}}
                    <label for="address">Address</label>
                    <input :style="getInputStyle('address')" v-model="form.address" type="text" name="address" id="address" class="form-control">
                    <Errors :errors="errors.address"/>
