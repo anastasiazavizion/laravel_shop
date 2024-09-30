@@ -234,7 +234,7 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     const middleware = to.meta.middleware;
     const permissions = window.Laravel.jsPermissions;
     const roles = permissions['roles'];
@@ -262,6 +262,7 @@ router.beforeEach((to, from, next) => {
         if (allow) {
             next()
         } else {
+            await store.dispatch('auth/logout')
             next({name: "login"})
         }
     }
