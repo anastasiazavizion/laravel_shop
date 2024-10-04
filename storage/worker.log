@@ -284,3 +284,61 @@
   2024-09-30 14:56:54 App\Notifications\Admin\NewOrderCreatedAdminNotification  2s DONE
   2024-09-30 14:56:54 App\Jobs\GeocodeAddressJob ..................... 2s DONE
   2024-09-30 14:56:56 App\Notifications\NewOrderCreatedNotification .. 4s DONE
+  2024-10-04 14:40:31 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 14:40:33 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-10-04 14:47:01 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 14:47:02 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-10-04 15:26:31 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:26:31 Laravel\Scout\Jobs\MakeSearchable ........ 227.18ms DONE
+  2024-10-04 15:28:41 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:28:42 App\Jobs\WishList\PriceUpdatedJob .............. RUNNING
+  2024-10-04 15:28:42 Laravel\Scout\Jobs\MakeSearchable ........ 838.83ms DONE
+  2024-10-04 15:28:42 App\Jobs\WishList\PriceUpdatedJob ........ 595.90ms DONE
+  2024-10-04 15:37:23 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:37:24 Laravel\Scout\Jobs\MakeSearchable ........ 758.72ms DONE
+  2024-10-04 15:44:13 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:44:14 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-10-04 15:44:25 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:44:25 Laravel\Scout\Jobs\MakeSearchable ........ 610.27ms DONE
+  2024-10-04 15:53:52 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:53:53 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-10-04 15:54:12 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:54:13 Laravel\Scout\Jobs\MakeSearchable ........ 819.07ms DONE
+  2024-10-04 15:55:04 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:55:05 Laravel\Scout\Jobs\MakeSearchable ........ 697.89ms DONE
+  2024-10-04 15:55:54 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:55:55 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-10-04 15:56:06 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 15:56:06 Laravel\Scout\Jobs\MakeSearchable ........ 313.50ms DONE
+  2024-10-04 16:05:37 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:05:38 Laravel\Scout\Jobs\MakeSearchable ........ 829.99ms DONE
+  2024-10-04 16:06:15 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:06:15 Laravel\Scout\Jobs\MakeSearchable ........ 223.84ms DONE
+  2024-10-04 16:09:06 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:09:06 Laravel\Scout\Jobs\MakeSearchable ........ 640.74ms DONE
+  2024-10-04 16:09:32 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:09:32 Laravel\Scout\Jobs\MakeSearchable ........ 516.68ms DONE
+  2024-10-04 16:11:35 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:11:36 Laravel\Scout\Jobs\MakeSearchable ........ 830.03ms DONE
+  2024-10-04 16:11:54 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:11:55 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-10-04 16:13:11 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:13:11 Laravel\Scout\Jobs\MakeSearchable ........ 120.65ms DONE
+  2024-10-04 16:14:38 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:14:39 Laravel\Scout\Jobs\MakeSearchable ........ 984.39ms DONE
+  2024-10-04 16:15:06 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:15:07 Laravel\Scout\Jobs\MakeSearchable .............. 1s DONE
+  2024-10-04 16:15:25 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:15:25 Laravel\Scout\Jobs\MakeSearchable ........ 757.74ms DONE
+  2024-10-04 16:15:41 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:15:42 Laravel\Scout\Jobs\MakeSearchable ........ 873.32ms DONE
+  2024-10-04 16:19:11 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:19:12 Laravel\Scout\Jobs\MakeSearchable ........ 839.70ms DONE
+  2024-10-04 16:23:50 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:23:51 Laravel\Scout\Jobs\MakeSearchable ........ 877.17ms DONE
+  2024-10-04 16:24:20 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:24:20 Laravel\Scout\Jobs\MakeSearchable ........ 918.67ms DONE
+  2024-10-04 16:25:58 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:25:58 Laravel\Scout\Jobs\MakeSearchable ........ 370.09ms DONE
+  2024-10-04 16:26:14 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-04 16:26:14 Laravel\Scout\Jobs\MakeSearchable ........ 692.67ms DONE

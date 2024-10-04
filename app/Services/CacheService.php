@@ -10,6 +10,7 @@ class CacheService implements CacheServiceContract
     public function removeAllCacheByKey($key): void
     {
         $keysToDelete = Cache::get($key);
+
         if(!empty($keysToDelete)){
             foreach ($keysToDelete as $itemDel) {
                 Cache::forget($itemDel);

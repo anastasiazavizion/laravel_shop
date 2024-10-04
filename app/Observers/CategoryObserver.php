@@ -5,7 +5,6 @@ namespace App\Observers;
 use App\Events\ProductInfoWasUpdated;
 use App\Models\Category;
 use App\Models\Product;
-use App\Services\Contracts\CacheServiceContract;
 
 class CategoryObserver
 {

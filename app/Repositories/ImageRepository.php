@@ -15,7 +15,6 @@ class ImageRepository implements  ImageRepositoryContract
         if(!method_exists($model, $relation)){
             throw new \Exception($model::class, "Model $model doesn't have relation $relation");
         }else{
-
            if (!empty($images)) {
                 foreach($images as $image) {
                     call_user_func([$model, $relation])->create([
