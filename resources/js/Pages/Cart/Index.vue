@@ -52,6 +52,15 @@ function removeFromCart(item){
 }
 
 function updateCount(event, id){
+    let value = Number(event.target.value);
+    const max = event.target.max;
+    // Check if the value is greater than the max or less than min
+    if (value > max) {
+        value = max; // Set to max if it exceeds
+    } else if (value < 1) {
+        value = 1; // Set to min if it goes below
+    }
+    event.target.value = value;
     store.dispatch('cart/updateCount', {id:id, amount:parseInt(event.target.value)})
 }
 
