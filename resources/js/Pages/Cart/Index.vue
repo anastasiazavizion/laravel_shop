@@ -51,8 +51,21 @@ function removeFromCart(item){
     store.dispatch('cart/removeFromCart', item)
 }
 
-function updateCount(event, id){
-    store.dispatch('cart/updateCount', {id:id, amount:parseInt(event.target.value)})
+function updateCount(event, item){
+    const oldAmount = item.amount;
+    let value = Number(event.target.value);
+    const max = event.target.max;
+    const id = item.id;
+    // Check if the value is greater than the max or less than min
+    if (value > max) {
+        value = max; // Set to max if it exceeds
+    } else if (value < 1) {
+        value = 1; // Set to min if it goes below
+    }
+    event.target.value = value;
+    if(oldAmount !== value){
+        store.dispatch('cart/updateCount', {id:id, amount:value})
+    }
 }
 
 function productUrl(product){
@@ -76,7 +89,7 @@ function productUrl(product){
                         <input v-if="item.in_stock"
                             class="form-control"
                             :value="item.amount"
-                            @input="updateCount($event, item.id)"
+                            @input="updateCount($event, item)"
                             type="number"
                             min="1"
                             :max="item.quantity ?? ''"
