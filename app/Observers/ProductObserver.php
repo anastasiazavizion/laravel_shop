@@ -4,27 +4,19 @@ namespace App\Observers;
 
 use App\Models\Product;
 use App\Repositories\Contract\ImageRepositoryContract;
-use App\Services\Contracts\CacheServiceContract;
 use App\Services\Contracts\FileServiceContract;
+use App\Observers\Traits\ClearProductsCache;
 
 class ProductObserver
 {
-    public function clearCache(): void
-    {
-        $cacheService = app(CacheServiceContract::class);
-        $cacheService->removeAllCacheByKey(config('cache.default_keys.products'));
-    }
-
-    public function __construct()
-    {
-       $this->clearCache();
-    }
+    use ClearProductsCache;
 
     /**
      * Handle the Product "created" event.
      */
     public function created(Product $product): void
     {
+        $this->clearProductsCache();
     }
 
     /**
@@ -32,7 +24,7 @@ class ProductObserver
      */
     public function updated(Product $product): void
     {
-
+        $this->clearProductsCache();
     }
 
     /**
@@ -40,10 +32,21 @@ class ProductObserver
      */
     public function deleted(Product $product): void
     {
+        $this->clearProductsCache();
         $product->categories()->detach();
-        app(ImageRepositoryContract::class)->detach($product,'images');
+        app(ImageRepositoryContract::class)->detach($product, 'images');
         $fileService = app(FileServiceContract::class);
         $fileService->remove($product->thumbnail);
     }
 
+    public function restored(Product $product): void
+    {
+        $this->clearProductsCache();
+    }
+
+
+    public function forceDeleted(Product $product): void
+    {
+        $this->clearProductsCache();
+    }
 }
