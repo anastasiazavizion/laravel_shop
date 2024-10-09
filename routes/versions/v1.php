@@ -16,10 +16,11 @@ use App\Http\Controllers\V1\WishListController;
 use App\Http\Controllers\V1\ReviewController;
 use App\Http\Controllers\V1\Callbacks\SocialAuthController;
 use App\Http\Controllers\V1\Admin\AdminChartsController;
+use App\Http\Controllers\V1\Admin\MapController;
 
-//Route::group(['middleware' => ['web']], function () {
-    Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 
@@ -37,7 +38,7 @@ Route::get('orderByVendorId', [OrderController::class, 'getOrderByVendorId'])->n
 
 Route::post('/auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback'])->name('auth.social.callback');
 
-Route::apiResource('products/{product}/reviews', ReviewController::class)->only(['index','store']);
+Route::apiResource('products/{product}/reviews', ReviewController::class)->only(['index', 'store']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'user'])->name('user');
@@ -47,7 +48,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('products', AdminProductsController::class)->scoped(['product' => 'slug']);;;
     });
 
-    Route::name('admin.')->prefix('admin')->middleware(['role:admin|moderator'])->group(function (){
+    Route::name('admin.')->prefix('admin')->middleware(['role:admin|moderator'])->group(function () {
 
         Route::get('/ordersAmountByProducts', [AdminChartsController::class, 'ordersAmountByProducts'])->name('ordersAmountByProducts');
         Route::get('/ordersAmountByCities', [AdminChartsController::class, 'ordersAmountByCities'])->name('ordersAmountByCities');
@@ -60,13 +61,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::apiResource('orders', \App\Http\Controllers\V1\Admin\OrderController::class)->only(['destroy']);
 
-        Route::get('/map/markers',[\App\Http\Controllers\V1\Admin\MapController::class, 'index'])->name('map.markers');
-
+        Route::get('/map/markers', [MapController::class, 'index'])->name('map.markers');
 
     });
 
-
-    Route::apiResource('orders', OrderController::class)->only(['index','show','destroy']);
+    Route::apiResource('orders', OrderController::class)->only(['index', 'show', 'destroy']);
 
     Route::name('wishlist.')->group(function () {
         Route::post('wishList/{product}', [WishListController::class, 'add'])->name('wishlist.add');
@@ -89,5 +88,3 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
 });
-
-//});
