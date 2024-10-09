@@ -27,6 +27,7 @@ class GeocodeAddressJob implements ShouldQueue
      */
     public function handle(): void
     {
+        logs()->info('GeocodeAddressJob');
         app(GeocoderServiceContract::class)->setCoordinates($this->model);
     }
 }
