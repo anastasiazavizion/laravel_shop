@@ -170,7 +170,7 @@ return [
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
-            'database' => 1, // be sure this number differs from your other redis databases
+            'database' => env('REDIS_CACHE_DB'), // be sure this number differs from your other redis databases
         ],
 
     ],
