@@ -136,11 +136,6 @@
         background-color: variables.$navColor;
     }
 
-    nav{
-        .router-link-active{
-            @apply underline;
-        }
-    }
     .filter-icon{
         color: variables.$mainColor;
     }
@@ -169,6 +164,12 @@
 
     }
 
+}
+
+nav{
+    .router-link-active{
+        @apply underline;
+    }
 }
 
 .custom-toast {
