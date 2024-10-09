@@ -1,6 +1,6 @@
 <h1>Shop</h1>
 
-<p>It is SPA - a store site with products, the ability to make an order and pay via Paypal,and an admin panel for admin users.</p>
+<p>This is a SPA - a website-shop with products, the ability to make an order and pay via Paypal,and an admin panel for admin users.</p>
 
 <h2>Features</h2>
 <ul>
@@ -19,13 +19,14 @@
 
 <h2>Technologies Used</h2>
 <ul>
-    <li><strong>Frontend</strong>: Vue.js, Tailwind CSS, SASS</li>
-    <li><strong>Backend</strong>: Laravel</li>
+    <li><strong>Frontend</strong>: Vue.js, Vuex, HTML, CSS, Tailwind CSS, SASS</li>
+    <li><strong>Backend</strong>: PHP, Laravel</li>
     <li><strong>Database</strong>: MySQL/PostgreSQL</li>
     <li><strong>Caching, Queue</strong>: Redis</li>
     <li><strong>Cloud Storage</strong>: AWS S3</li>
     <li><strong>Real-time Communication</strong>: Pusher</li>
     <li><strong>Libraries</strong>: Chart.js</li>
+    <li><strong>Packages</strong>: Sanctum, Scout(Algolia)</li>
     <li><strong>Notifications:</strong> Email (Gmail server, Telegram)</li>
 </ul>
 
@@ -63,10 +64,6 @@
 
 <h2>Contributing</h2>
 <p>Contributions are welcome! Please open an issue or submit a pull request for any changes you'd like to suggest.</p>
-
-<h2>License</h2>
-<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
-
 
 ![Screenshot from 2024-10-09 16-59-15](https://github.com/user-attachments/assets/aa9bb7eb-c568-45fb-a2ce-eccfb0b22f6e)
 ![Screenshot from 2024-10-09 16-58-56](https://github.com/user-attachments/assets/18e2559a-3f17-4998-bc05-d4abf96d8b17)
