@@ -342,3 +342,19 @@
   2024-10-04 16:25:58 Laravel\Scout\Jobs\MakeSearchable ........ 370.09ms DONE
   2024-10-04 16:26:14 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
   2024-10-04 16:26:14 Laravel\Scout\Jobs\MakeSearchable ........ 692.67ms DONE
+  2024-10-09 20:30:57 Laravel\Scout\Jobs\MakeSearchable .............. RUNNING
+  2024-10-09 20:31:00 Laravel\Scout\Jobs\MakeSearchable .............. 2s DONE
+  2024-10-09 20:31:11 App\Events\Admin\AdminOrderCreatedEvent  2024-10-09 20:31:11 App\Listeners\OrderCreatedListener ........ RUNNING
+ ............. RUNNING
+  2024-10-09 20:31:14 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-10-09 20:31:14 App\Events\Admin\AdminOrderCreatedEvent ........ 3s DONE
+  2024-10-09 20:31:15 App\Notifications\NewOrderCreatedNotification .. RUNNING
+  2024-10-09 20:31:18 App\Listeners\OrderCreatedListener ............. 6s DONE
+  2024-10-09 20:31:18 App\Jobs\GeocodeAddressJob ..................... 4s FAIL
+  2024-10-09 20:31:18 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-10-09 20:31:18 App\Notifications\Admin\NewOrderCreatedAdminNotification  RUNNING
+  2024-10-09 20:31:18 App\Jobs\GeocodeAddressJob ................ 82.52ms FAIL
+  2024-10-09 20:31:18 App\Jobs\GeocodeAddressJob ..................... RUNNING
+  2024-10-09 20:31:21 App\Jobs\GeocodeAddressJob ..................... 2s FAIL
+  2024-10-09 20:31:32 App\Notifications\Admin\NewOrderCreatedAdminNotification  14s DONE
+  2024-10-09 20:31:58 App\Notifications\NewOrderCreatedNotification . 42s DONE

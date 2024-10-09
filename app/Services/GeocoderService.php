@@ -19,7 +19,8 @@ class GeocoderService implements GeocoderServiceContract
 
                 $coordinates = $results[0]->getCoordinates();
 
-                logs()->info($coordinates);
+                logs()->info($coordinates->getLatitude());
+                logs()->info($coordinates->getLongitude());
 
                 $model->coordinates()->updateOrCreate(
                     ['lat' => $coordinates->getLatitude(), 'lng' => $coordinates->getLongitude()]
