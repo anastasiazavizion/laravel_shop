@@ -19,22 +19,11 @@ class GeocoderService implements GeocoderServiceContract
 
                 $coordinates = $results[0]->getCoordinates();
 
+                logs()->info($coordinates);
 
                 $model->coordinates()->updateOrCreate(
                     ['lat' => $coordinates->getLatitude(), 'lng' => $coordinates->getLongitude()]
                 );
-
-           /*
-                $coordinates = $results[0]->getCoordinates();
-
-                // Check if an existing coordinate entry exists, if so update it, otherwise create a new one
-                $modelCoordinate = $model->coordinates()->first() ?: new OrderCoordinate();
-
-                $modelCoordinate->lat = $coordinates->getLatitude();
-                $modelCoordinate->lng = $coordinates->getLongitude();
-
-                $modelCoordinate->order_id = $model->id;
-                $modelCoordinate->save();*/
             }
 
         }
