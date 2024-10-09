@@ -8,6 +8,7 @@ import OrdersAmountByCities from "@/Pages/Admin/Partials/OrdersAmountByCities.vu
 import OrdersAmountByStatuses from "@/Pages/Admin/Partials/OrdersAmountByStatuses.vue";
 import OrdersAmountByCategories from "@/Pages/Admin/Partials/OrdersAmountByCategories.vue";
 import {Tab, TabGroup, TabList, TabPanel, TabPanels} from "@headlessui/vue";
+import Map from "@/Pages/Admin/Partials/Map.vue";
 
 const store = useStore();
 
@@ -47,17 +48,15 @@ onMounted(async () => {
 })
 
 const tabs = ref([
-    {name: 'Statistic', active: true},
-    {name: 'Map', active: false},
+    {id:1, name: 'Statistic', active: true},
+    {id:2, name: 'Map', active: false}
 ]);
 
-const activePaymentType = ref()
-
-function setActiveTab(tab) {
-    activePaymentType.value = tab.name;
+function setActiveTab({id}) {
+    tabs.value.forEach((item)=>item.active = false);
+    const tab = tabs.value.find((item)=>item.id === id);
+    tab.active = true;
 }
-
-import Map from "@/Pages/Admin/Partials/Map.vue";
 
 </script>
 
@@ -68,7 +67,7 @@ import Map from "@/Pages/Admin/Partials/Map.vue";
         <TabList class="text-center grid grid-cols-2 mt-8 gap-8">
             <Tab class="tab"
                  @click="setActiveTab(tab)"
-                 :class="[activePaymentType === tab.name ? 'active-tab' : '']"
+                 :class="[tab.active ? 'active-tab' : '']"
                  :key="tab.name"
                  v-for="tab in tabs">
                 {{ tab.name }}
