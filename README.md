@@ -1,19 +1,19 @@
 <h1>Shop</h1>
 
-<p>This is a SPA - a website-shop with products, the ability to make an order and pay via Paypal,and an admin panel for admin users.</p>
+<p>This is a SPA - a webshop with products, the ability to make an order and pay via Paypal, and an admin panel for admin users.</p>
 
 <h2>Features</h2>
 <ul>
     <li><strong>User Authentication</strong>: Secure sign-up and login: default login, via Google</li>
-    <li><strong>List all products</strong>: there is a pagination, an ability to filter products by category, fulltext search by title and description (use Scout and Algolia)</li>
+    <li><strong>List all products</strong>: there is a pagination, an ability to filter products by category, full-text search by title and description (use Scout and Algolia)</li>
     <li><strong>Product page</strong>: general product info, rate and comments</li>
     <li><strong>Cart and checkout page</strong>: user can pay via Paypal</li>
     <li><strong>Generate invoice for order</strong>: use LaravelDaily/laravel-invoices</li>
     <li><strong>Products wishlist</strong>: the ability to subscribe to price or availability changes</li>
-    <li><strong>Mail notifications:</strong> send email after creating and order and when trigger products changes from wishlist</li>
+    <li><strong>Mail notifications:</strong> send email after creating an order and when trigger products changes from wishlist</li>
     <li><strong>Roles and permissions system</strong></li>
-    <li><strong>Admin panel:</strong> admin can manage products and categories, view orders and statistic. Also admin can see a Google map with all customers adresses</li>
-    <li><strong>Google autocomplete:</strong> when user fill in a form for complete an order the user can use Google autocomplete for select a necessary address</li>
+    <li><strong>Admin panel:</strong> admin can manage products and categories, and view orders and statistics. Also, the admin can see a Google map with all customer's adresses</li>
+    <li><strong>Google autocomplete:</strong> when a user fills in a form to complete an order the user can use Google autocomplete to select a necessary address</li>
     <li><strong>Telegram bot for admin</strong>: when there is a new order admin will have a notification in the telegram bot</li>
 </ul>
 
