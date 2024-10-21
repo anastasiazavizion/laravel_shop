@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Nova;
-
+use Laravel\Nova\Fields\File;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Currency;
@@ -26,6 +26,14 @@ class Product extends Resource
      * @var string
      */
     public static $title = 'title';
+
+    public static $globalSearchResults = 5;
+
+    public function subtitle ()
+    {
+        $categories = implode(',',$this->categories?->pluck('name')->toArray());
+        return !empty($categories)? "Categories: $categories" : "";
+    }
 
     /**
      * The columns that should be searched.
@@ -53,13 +61,20 @@ class Product extends Resource
     {
         return [
             ID::make()->sortable()->hideFromIndex(),
-            Slug::make('Slug')->from('Title')->readonly(true)->required(),
-            Text::make('Title')->required()->sortable()->showOnPreview(),
+            Slug::make('Slug')->from('Title')->required(),
+            Text::make('Title')
+                ->required()
+                ->sortable()
+                ->showOnPreview()
+                ->rules('required', 'max:255')
+                ->updateRules('unique:products,title, {{resourceId}}')
+                ->creationRules('unique:products,title, {{resourceId}}'),
             Text::make('SKU')->required()->help('SKU for Product. Min 5 symbols'),
             Currency::make('Price')->required()->sortable()->showOnPreview(),
             Number::make('Discount'),
             Number::make('Quantity')->required(),
             Text::make('Description'),
+            File::make('Thumbnail'),
             BelongsToMany::make('Categories')->showOnIndex()->showOnDetail()
         ];
     }

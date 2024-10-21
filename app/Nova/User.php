@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Enum\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Gravatar;
@@ -25,6 +26,11 @@ class User extends Resource
      * @var string
      */
     public static $title = 'name';
+
+    public function subtitle ()
+    {
+        return $this->hasRole(Role::ADMIN->value) ? 'ADMIN' : 'USER';
+    }
 
     /**
      * The columns that should be searched.
@@ -107,5 +113,10 @@ class User extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function authorizable()
+    {
+        return true;
     }
 }
