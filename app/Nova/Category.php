@@ -4,28 +4,32 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Slug;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
 
-class Product extends Resource
+class Category extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Product>
+     * @var class-string<\App\Models\Category>
      */
-    public static $model = \App\Models\Product::class;
+    public static $model = \App\Models\Category::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    public static $title = 'name';
+
+    public static $tableStyle = 'tight';
+
+    public static $showColumnBorders = true;
+
+    public static $perPageOptions = [10, 20, 50];
 
     /**
      * The columns that should be searched.
@@ -33,16 +37,9 @@ class Product extends Resource
      * @var array
      */
     public static $search = [
-        'id','title', 'description', 'SKU'
+        'id','name'
     ];
 
-    public static $tableStyle = 'tight';
-
-    public static $showColumnBorders = true;
-
-//    public static $clickAction = 'edit';
-
-    public static $perPageOptions = [10, 20, 50];
     /**
      * Get the fields displayed by the resource.
      *
@@ -52,15 +49,10 @@ class Product extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable()->hideFromIndex(),
-            Slug::make('Slug')->from('Title')->readonly(true)->required(),
-            Text::make('Title')->required()->sortable()->showOnPreview(),
-            Text::make('SKU')->required()->help('SKU for Product. Min 5 symbols'),
-            Currency::make('Price')->required()->sortable()->showOnPreview(),
-            Number::make('Discount'),
-            Number::make('Quantity')->required(),
-            Text::make('Description'),
-            BelongsToMany::make('Categories')->showOnIndex()->showOnDetail()
+            ID::make()->sortable(),
+            Slug::make('Slug')->from('Name'),
+            Text::make('Name')->sortable()->required()->showOnPreview(),
+            BelongsToMany::make('Products'),
         ];
     }
 
@@ -107,11 +99,4 @@ class Product extends Resource
     {
         return [];
     }
-
-
-    public static function usesScout()
-    {
-        return false;
-    }
-
 }
