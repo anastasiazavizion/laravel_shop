@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 use App\Nova\Filters\ProductCategory;
+use App\Nova\Metrics\NewProducts;
 use Laravel\Nova\Fields\File;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -88,7 +89,9 @@ class Product extends Resource
      */
     public function cards(NovaRequest $request)
     {
-        return [];
+        return [
+            new NewProducts()
+        ];
     }
 
     /**
