@@ -17,6 +17,8 @@ use App\Http\Controllers\V1\ReviewController;
 use App\Http\Controllers\V1\Callbacks\SocialAuthController;
 use App\Http\Controllers\V1\Admin\AdminChartsController;
 use App\Http\Controllers\V1\Admin\MapController;
+use App\Http\Controllers\V1\Admin\UserController as AdminUsersController;
+use App\Http\Controllers\V1\Admin\OrderController as AdminOrderController;
 
 
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
@@ -57,9 +59,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/ordersTotal', [AdminChartsController::class, 'ordersTotal'])->name('ordersTotal');
         Route::get('/allOrdersAmount', [OrderController::class, 'allOrdersAmount'])->name('allOrdersAmount');
         Route::get('/allProductsAmount', [AdminProductsController::class, 'allProductsAmount'])->name('allProductsAmount');
-        Route::get('/allUsersAmount', [\App\Http\Controllers\V1\Admin\UserController::class, 'allUsersAmount'])->name('allUsersAmount');
+        Route::get('/allUsersAmount', [AdminUsersController::class, 'allUsersAmount'])->name('allUsersAmount');
 
-        Route::apiResource('orders', \App\Http\Controllers\V1\Admin\OrderController::class)->only(['destroy']);
+        Route::apiResource('orders', AdminOrderController::class)->only(['destroy']);
 
         Route::get('/map/markers', [MapController::class, 'index'])->name('map.markers');
 
