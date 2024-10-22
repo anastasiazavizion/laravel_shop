@@ -5,6 +5,7 @@ namespace App\Nova;
 use App\Enum\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -57,6 +58,18 @@ class User extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
+            Text::make('Lastname')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Phone')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Date::make('Birthday')
+                ->sortable()
+                ->rules('required','date'),
 
             Text::make('Email')
                 ->sortable()
