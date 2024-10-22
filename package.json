@@ -3,7 +3,9 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "build-markdown-editor": "cd nova-components/MarkdownEditor && npm run dev",
+        "build-markdown-editor-prod": "cd nova-components/MarkdownEditor && npm run prod"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
