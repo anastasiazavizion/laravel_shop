@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Enum\Role;
+use Codewithnastya\MarkdownEditor\MarkdownEditor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Date;
@@ -59,9 +60,11 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Lastname')
+            MarkdownEditor::make('Lastname'),
+
+       /*     Text::make('Lastname')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255'),*/
 
             Text::make('Phone')
                 ->sortable()
